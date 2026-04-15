@@ -1,0 +1,1278 @@
+[
+    {
+        "id": 0,
+        "name": "PingManagedThread",
+        "qualifiedName": "PingManagedThread",
+        "description": "PingManagedThread 是一个用于执行 Ping 操作的托管线程类，负责在网络环境中定期发送 ICMP 请求以检测目标主机的可达性。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 1,
+        "name": "TradeActionProducer",
+        "qualifiedName": "TradeActionProducer",
+        "description": "TradeActionProducer 是一个用于生成或分发交易行为（Trade Action）的组件，通常在系统中负责将交易相关事件或指令发送到消息队列或下游处理模块。",
+        "methods": [],
+        "dependencies": [
+            39
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 2,
+        "name": "PingServlet2SessionLocal",
+        "qualifiedName": "PingServlet2SessionLocal",
+        "description": "PingServlet2SessionLocal 是一个用于处理本地会话的 Ping 请求的 Servlet，主要职责是验证服务可用性并管理本地会话状态。",
+        "methods": [],
+        "dependencies": [
+            35,
+            45
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 3,
+        "name": "PingServlet2Jsp",
+        "qualifiedName": "PingServlet2Jsp",
+        "description": "PingServlet2Jsp 是一个用于处理 Ping 请求并转发至 JSP 页面的 Servlet，主要职责是在 Web 应用中作为前端控制器，将请求传递给相应的 JSP 视图进行渲染。",
+        "methods": [],
+        "dependencies": [
+            12
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 4,
+        "name": "QuoteData",
+        "qualifiedName": "QuoteData",
+        "description": "QuoteData 是一个用于封装报价相关数据的类，在系统中作为数据载体，用于存储和传递报价信息。",
+        "methods": [],
+        "dependencies": [
+            68
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 5,
+        "name": "PingSession2",
+        "qualifiedName": "PingSession2",
+        "description": "PingSession2 是一个用于管理或执行网络连通性检测（如 ICMP Ping）会话的类，其具体职责和功能需结合实现细节进一步明确。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 6,
+        "name": "PingWebSocketJson",
+        "qualifiedName": "PingWebSocketJson",
+        "description": "PingWebSocketJson 是一个用于处理 WebSocket 心跳（ping）消息的类，通常负责维持 WebSocket 连接的活跃状态。",
+        "methods": [],
+        "dependencies": [
+            64,
+            32
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 7,
+        "name": "OrdersAlertFilter",
+        "qualifiedName": "OrdersAlertFilter",
+        "description": "OrdersAlertFilter 是一个用于过滤订单预警信息的类，负责根据特定条件筛选需要触发警报的订单。",
+        "methods": [],
+        "dependencies": [
+            35,
+            55,
+            39,
+            43
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 8,
+        "name": "TradeConfigServlet",
+        "qualifiedName": "TradeConfigServlet",
+        "description": "TradeConfigServlet 是一个用于处理交易配置相关请求的 Servlet，负责接收和响应与交易配置有关的 HTTP 请求。",
+        "methods": [],
+        "dependencies": [
+            8,
+            36,
+            71,
+            43,
+            39,
+            35,
+            58,
+            56
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 9,
+        "name": "PingServlet2DB",
+        "qualifiedName": "PingServlet2DB",
+        "description": "PingServlet2DB 是一个用于测试数据库连接的 Servlet，通常用于验证应用与数据库之间的连通性。",
+        "methods": [],
+        "dependencies": [
+            58
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 10,
+        "name": "TimerStat",
+        "qualifiedName": "TimerStat",
+        "description": "TimerStat 是一个用于统计和管理定时器相关数据的类，可能用于记录时间间隔、性能指标或调度信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 11,
+        "name": "PingEJBLocal",
+        "qualifiedName": "PingEJBLocal",
+        "description": "PingEJBLocal 是一个本地 EJB 接口，用于提供基本的连通性测试或心跳检测功能，通常在企业级 Java 应用中用于验证服务可用性。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 12,
+        "name": "PingBean",
+        "qualifiedName": "PingBean",
+        "description": "PingBean 是一个用于表示或处理 Ping 操作相关数据的简单 Java Bean 类，通常用于网络连通性检测场景中封装 Ping 请求或响应的基本信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 13,
+        "name": "PingServletCDIBeanManagerViaCDICurrent",
+        "qualifiedName": "PingServletCDIBeanManagerViaCDICurrent",
+        "description": "PingServletCDIBeanManagerViaCDICurrent 是一个用于通过 CDI Current 上下文获取 BeanManager 的 Servlet 类，主要用于验证或测试 CDI 容器的可用性及集成状态。",
+        "methods": [],
+        "dependencies": [
+            46
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 14,
+        "name": "PingJDBCWrite",
+        "qualifiedName": "PingJDBCWrite",
+        "description": "PingJDBCWrite 类用于执行 JDBC 写操作的连通性检测，验证数据库写入通道的可用性。",
+        "methods": [],
+        "dependencies": [
+            35,
+            58,
+            28
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 15,
+        "name": "PingServlet2JNDI",
+        "qualifiedName": "PingServlet2JNDI",
+        "description": "PingServlet2JNDI 是一个用于通过 JNDI（Java Naming and Directory Interface）执行 ping 操作的 Servlet，主要职责是验证 JNDI 资源的可用性或连通性。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 16,
+        "name": "MDBStats",
+        "qualifiedName": "MDBStats",
+        "description": "MDBStats 是一个用于收集和管理消息驱动 Bean（MDB）相关统计信息的类，提供对 MDB 运行时性能和状态数据的访问。",
+        "methods": [],
+        "dependencies": [
+            16,
+            10
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 17,
+        "name": "PingServletCDIBeanManagerViaJNDI",
+        "qualifiedName": "PingServletCDIBeanManagerViaJNDI",
+        "description": "PingServletCDIBeanManagerViaJNDI 是一个用于通过 JNDI 查找并验证 CDI BeanManager 可用性的 Servlet 类，通常用于测试或健康检查场景。",
+        "methods": [],
+        "dependencies": [
+            46
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 18,
+        "name": "PingServlet",
+        "qualifiedName": "PingServlet",
+        "description": "PingServlet 是一个用于处理 ping 请求的 Servlet，通常用于健康检查或服务可用性验证。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 19,
+        "name": "PingJDBCRead",
+        "qualifiedName": "PingJDBCRead",
+        "description": "PingJDBCRead 类用于执行 JDBC 读取操作的健康检查或连通性测试，验证数据库读取功能是否正常。",
+        "methods": [],
+        "dependencies": [
+            58,
+            35,
+            28
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 20,
+        "name": "PingSession3",
+        "qualifiedName": "PingSession3",
+        "description": "PingSession3 是一个用于管理 ICMP Ping 会话的类，负责执行网络连通性检测和响应处理。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 21,
+        "name": "PingJDBCRead2JSP",
+        "qualifiedName": "PingJDBCRead2JSP",
+        "description": "PingJDBCRead2JSP 是一个用于通过 JDBC 执行数据库读取操作并返回结果的类，通常用于 JSP 页面中进行数据库连通性测试或数据查询。",
+        "methods": [],
+        "dependencies": [
+            58,
+            35,
+            28
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 22,
+        "name": "MarketSummaryWebSocket",
+        "qualifiedName": "MarketSummaryWebSocket",
+        "description": "MarketSummaryWebSocket 是一个用于通过 WebSocket 连接接收或推送市场摘要信息的类，负责处理与市场数据相关的实时通信。",
+        "methods": [],
+        "dependencies": [
+            43,
+            41,
+            60,
+            39
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 23,
+        "name": "TradeWebContextListener",
+        "qualifiedName": "TradeWebContextListener",
+        "description": "TradeWebContextListener 是一个用于监听 Web 应用上下文生命周期事件的监听器类，通常负责在应用启动或关闭时执行初始化或清理操作。",
+        "methods": [],
+        "dependencies": [
+            43,
+            35,
+            58
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 24,
+        "name": "PingServlet2ServletRcv",
+        "qualifiedName": "PingServlet2ServletRcv",
+        "description": "PingServlet2ServletRcv 是一个用于接收 servlet 间 ping 请求的 Servlet 类，主要职责是在 Web 应用中响应其他 servlet 发起的连通性测试。",
+        "methods": [],
+        "dependencies": [
+            12
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 25,
+        "name": "MarketSummarySingleton",
+        "qualifiedName": "MarketSummarySingleton",
+        "description": "MarketSummarySingleton 是一个单例类，用于提供市场摘要信息的全局唯一访问点，确保系统中市场摘要数据的一致性和集中管理。",
+        "methods": [],
+        "dependencies": [
+            25,
+            43,
+            35,
+            42,
+            37,
+            28,
+            65,
+            48
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 26,
+        "name": "JsonDecoder",
+        "qualifiedName": "JsonDecoder",
+        "description": "JsonDecoder 负责将 JSON 格式的数据解析为程序内部可用的对象或数据结构，是系统中处理 JSON 反序列化的关键组件。",
+        "methods": [],
+        "dependencies": [
+            64
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 27,
+        "name": "PingJSONP",
+        "qualifiedName": "PingJSONP",
+        "description": "PingJSONP 是一个用于处理 JSONP 格式 Ping 请求的类，通常用于跨域健康检查或服务状态探测。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 28,
+        "name": "QuoteDataBean",
+        "qualifiedName": "QuoteDataBean",
+        "description": "QuoteDataBean 是一个用于封装报价数据的数据传输对象（DTO），主要用于在系统各层之间传递报价相关信息。",
+        "methods": [],
+        "dependencies": [
+            35,
+            28
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 29,
+        "name": "PingSession1",
+        "qualifiedName": "PingSession1",
+        "description": "PingSession1 是一个未定义具体功能的类，当前没有提供 Javadoc 说明且不包含任何方法，可能为占位类或尚未实现的组件。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 30,
+        "name": "DTStreamer3MDB",
+        "qualifiedName": "DTStreamer3MDB",
+        "description": "DTStreamer3MDB 是一个用于处理 3M 数据流的数据库交互类，负责与数据库进行通信以支持数据流操作。",
+        "methods": [],
+        "dependencies": [
+            43,
+            16,
+            10,
+            35,
+            22
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 31,
+        "name": "PingServlet2Include",
+        "qualifiedName": "PingServlet2Include",
+        "description": "PingServlet2Include 是一个用于处理包含（include）操作的 Servlet，通常用于在 Web 应用中嵌入或组合其他 Servlet 或资源的输出。",
+        "methods": [],
+        "dependencies": [
+            35,
+            47
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 32,
+        "name": "JsonEncoder",
+        "qualifiedName": "JsonEncoder",
+        "description": "JsonEncoder 是一个用于将数据编码为 JSON 格式的工具类，负责提供序列化功能以支持系统中的数据交换和存储。",
+        "methods": [],
+        "dependencies": [
+            64
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 33,
+        "name": "PingCDIBean",
+        "qualifiedName": "PingCDIBean",
+        "description": "PingCDIBean 是一个 CDI（Contexts and Dependency Injection）托管的 Bean，用于提供 Ping 相关的功能或服务，具体实现细节未在方法列表中体现。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 34,
+        "name": "PingServlet2Servlet",
+        "qualifiedName": "PingServlet2Servlet",
+        "description": "PingServlet2Servlet 是一个用于处理 Ping 请求的 Servlet，通常用于验证服务连通性或健康状态。",
+        "methods": [],
+        "dependencies": [
+            12,
+            24
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 35,
+        "name": "TradeConfig",
+        "qualifiedName": "TradeConfig",
+        "description": "TradeConfig 类用于存储和管理交易相关的配置信息，在系统中作为交易配置的数据载体。",
+        "methods": [],
+        "dependencies": [
+            35,
+            43
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 36,
+        "name": "RunStatsDataBean",
+        "qualifiedName": "RunStatsDataBean",
+        "description": "RunStatsDataBean 是一个数据载体类，用于封装和传递运行统计相关的数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 37,
+        "name": "OrderDataBean",
+        "qualifiedName": "OrderDataBean",
+        "description": "OrderDataBean 是一个用于封装订单相关数据的数据载体类，通常作为数据传输对象（DTO）在系统各层之间传递订单信息。",
+        "methods": [],
+        "dependencies": [
+            37,
+            28
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 38,
+        "name": "PingUpgradeServlet",
+        "qualifiedName": "PingUpgradeServlet",
+        "description": "PingUpgradeServlet 是一个用于处理 Ping 协议升级请求的 Servlet，通常在 WebSocket 或类似协议升级场景中使用，负责建立长连接或升级现有 HTTP 连接。",
+        "methods": [],
+        "dependencies": [
+            38,
+            43
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 39,
+        "name": "TradeAction",
+        "qualifiedName": "TradeAction",
+        "description": "TradeAction 类用于表示交易相关的操作，是交易系统中处理交易行为的基础类。",
+        "methods": [],
+        "dependencies": [
+            43,
+            39,
+            35,
+            45,
+            48,
+            28,
+            65,
+            37
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 40,
+        "name": "TradeScenarioServlet",
+        "qualifiedName": "TradeScenarioServlet",
+        "description": "TradeScenarioServlet 是一个用于处理交易场景相关请求的 Servlet，负责接收和响应与交易场景相关的 HTTP 请求。",
+        "methods": [],
+        "dependencies": [
+            40,
+            35,
+            55
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 41,
+        "name": "RecentStockChangeList",
+        "qualifiedName": "RecentStockChangeList",
+        "description": "RecentStockChangeList 用于表示最近股票变动的列表，作为数据容器在系统中传递或存储股票变化信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 42,
+        "name": "HoldingDataBean",
+        "qualifiedName": "HoldingDataBean",
+        "description": "HoldingDataBean 是一个数据承载类，用于封装和传递与持仓（Holding）相关的数据信息。该类不包含业务逻辑方法，主要作为数据传输对象（DTO）在系统各层间使用。",
+        "methods": [],
+        "dependencies": [
+            42,
+            28
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 43,
+        "name": "Log",
+        "qualifiedName": "Log",
+        "description": "Log类用于记录系统运行时的日志信息，提供日志输出功能，便于调试和监控系统行为。",
+        "methods": [],
+        "dependencies": [
+            43,
+            35
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 44,
+        "name": "PingServletCDI",
+        "qualifiedName": "PingServletCDI",
+        "description": "PingServletCDI 是一个用于处理 ping 请求的 Servlet，利用 CDI（Contexts and Dependency Injection）进行依赖注入，通常用于健康检查或服务可用性验证。",
+        "methods": [],
+        "dependencies": [
+            46,
+            57
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 45,
+        "name": "TradeSLSBBean",
+        "qualifiedName": "TradeSLSBBean",
+        "description": "TradeSLSBBean 是一个无状态会话 Bean，用于封装与交易（Trade）相关的业务逻辑，在系统中充当业务服务层组件。",
+        "methods": [],
+        "dependencies": [
+            43,
+            58,
+            65,
+            48,
+            28,
+            45,
+            35,
+            37,
+            42,
+            39
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 46,
+        "name": "PingInterceptor",
+        "qualifiedName": "PingInterceptor",
+        "description": "PingInterceptor 是一个用于拦截和处理 ping 请求的拦截器类，通常用于监控、健康检查或通信链路的存活检测。",
+        "methods": [],
+        "dependencies": [
+            33
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 47,
+        "name": "PingServlet2IncludeRcv",
+        "qualifiedName": "PingServlet2IncludeRcv",
+        "description": "PingServlet2IncludeRcv 是一个用于处理包含（include）请求的 Servlet，主要职责是在 Web 应用中接收并响应由其他 Servlet 通过 RequestDispatcher.include() 调用所传递的请求，通常用于性能测试或验证请求包含机制的正确性。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 48,
+        "name": "AccountDataBean",
+        "qualifiedName": "AccountDataBean",
+        "description": "AccountDataBean 是一个用于封装账户相关数据的数据传输对象（DTO），主要职责是在系统各层之间传递账户信息。",
+        "methods": [],
+        "dependencies": [
+            48,
+            65
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 49,
+        "name": "ExternalContextProducer",
+        "qualifiedName": "ExternalContextProducer",
+        "description": "ExternalContextProducer 是一个用于生成或提供外部上下文（ExternalContext）的类，通常在需要将外部环境信息注入到系统中的场景下使用，起到桥接系统与外部环境的作用。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 50,
+        "name": "PingWebSocketTextSync",
+        "qualifiedName": "PingWebSocketTextSync",
+        "description": "PingWebSocketTextSync 是一个用于处理 WebSocket 文本同步 ping 操作的类，主要职责是在 WebSocket 通信中发送或响应文本类型的 ping 消息以维持连接活跃状态。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 51,
+        "name": "QuoteJSF",
+        "qualifiedName": "QuoteJSF",
+        "description": "QuoteJSF 是一个未明确具体职责的类，当前缺乏 Javadoc 说明且不包含任何方法，可能为占位类或尚未实现的组件。",
+        "methods": [],
+        "dependencies": [
+            51,
+            49,
+            1,
+            39,
+            28,
+            4
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 52,
+        "name": "PingServlet2PDF",
+        "qualifiedName": "PingServlet2PDF",
+        "description": "PingServlet2PDF 是一个用于处理 PDF 相关请求的 Servlet，主要职责是响应客户端的 ping 请求并生成或返回 PDF 内容。",
+        "methods": [],
+        "dependencies": [
+            12,
+            43
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 53,
+        "name": "PingWebSocketBinary",
+        "qualifiedName": "PingWebSocketBinary",
+        "description": "PingWebSocketBinary 类用于处理 WebSocket 二进制格式的 Ping 消息，负责在 WebSocket 通信中发送或响应二进制 Ping 帧以维持连接活跃状态。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 54,
+        "name": "KeyBlock",
+        "qualifiedName": "KeyBlock",
+        "description": "KeyBlock 类当前无明确职责描述，未包含任何方法，可能为占位类或尚未实现的功能模块。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 55,
+        "name": "TradeAppServlet",
+        "qualifiedName": "TradeAppServlet",
+        "description": "TradeAppServlet 是一个用于处理交易相关请求的 Servlet 类，作为 Web 应用中交易功能的入口点，负责接收 HTTP 请求并协调相应的业务逻辑处理。",
+        "methods": [],
+        "dependencies": [
+            55,
+            39,
+            63
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 56,
+        "name": "TradeBuildDB",
+        "qualifiedName": "TradeBuildDB",
+        "description": "TradeBuildDB 是一个用于构建或管理交易相关数据库结构的类，可能负责初始化、更新或维护交易数据表。",
+        "methods": [],
+        "dependencies": [
+            58,
+            56,
+            43,
+            35,
+            48
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 57,
+        "name": "PingEJBLocalDecorator",
+        "qualifiedName": "PingEJBLocalDecorator",
+        "description": "PingEJBLocalDecorator 是一个用于装饰或包装本地 EJB（Enterprise JavaBean）的类，可能用于增强或拦截对 Ping EJB 本地接口的调用。",
+        "methods": [],
+        "dependencies": [
+            11
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 58,
+        "name": "TradeDirect",
+        "qualifiedName": "TradeDirect",
+        "description": "TradeDirect 类当前无明确职责描述，因其缺少 Javadoc 和方法定义，无法确定其具体功能和在系统中的作用。",
+        "methods": [],
+        "dependencies": [
+            16,
+            36,
+            43,
+            58,
+            28,
+            70,
+            48,
+            35,
+            37,
+            65,
+            42
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 59,
+        "name": "PingServletWriter",
+        "qualifiedName": "PingServletWriter",
+        "description": "PingServletWriter 是一个用于处理 Ping 请求并生成响应的 Servlet 组件，通常用于健康检查或连通性测试。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 60,
+        "name": "ActionMessage",
+        "qualifiedName": "ActionMessage",
+        "description": "ActionMessage 是一个用于封装动作相关消息的类，通常在系统中作为传递操作指令或事件信息的数据载体。",
+        "methods": [],
+        "dependencies": [
+            43
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 61,
+        "name": "PingManagedExecutor",
+        "qualifiedName": "PingManagedExecutor",
+        "description": "PingManagedExecutor 是一个用于管理和执行任务的类，可能与心跳检测（Ping）或任务调度相关，但具体职责需结合实现细节进一步确认。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 62,
+        "name": "PingCDIJSFBean",
+        "qualifiedName": "PingCDIJSFBean",
+        "description": "PingCDIJSFBean 是一个用于 JavaServer Faces (JSF) 应用的 CDI 管理 Bean，通常用于处理与前端页面交互的逻辑或提供简单的健康检查（如 ping）功能。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 63,
+        "name": "TradeServletAction",
+        "qualifiedName": "TradeServletAction",
+        "description": "TradeServletAction 是一个用于处理交易相关请求的 Servlet 动作类，负责接收和响应与交易业务相关的 HTTP 请求。",
+        "methods": [],
+        "dependencies": [
+            39,
+            35,
+            63,
+            48,
+            68,
+            28,
+            37,
+            65,
+            42
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 64,
+        "name": "JsonMessage",
+        "qualifiedName": "JsonMessage",
+        "description": "JsonMessage 是一个用于封装和处理 JSON 格式消息的类，通常在系统中承担数据传输或序列化/反序列化的职责。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 65,
+        "name": "AccountProfileDataBean",
+        "qualifiedName": "AccountProfileDataBean",
+        "description": "AccountProfileDataBean 是一个用于封装账户档案相关数据的数据传输对象（DTO），主要用于在系统各层之间传递账户基本信息。",
+        "methods": [],
+        "dependencies": [
+            65
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 66,
+        "name": "ExplicitGC",
+        "qualifiedName": "ExplicitGC",
+        "description": "ExplicitGC 类用于显式触发垃圾回收操作，提供对 JVM 垃圾回收机制的直接控制。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 67,
+        "name": "PingWebSocketTextAsync",
+        "qualifiedName": "PingWebSocketTextAsync",
+        "description": "PingWebSocketTextAsync 是一个用于异步发送 WebSocket 文本 Ping 消息的类，通常用于维持 WebSocket 连接活跃或检测连接状态。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 68,
+        "name": "FinancialUtils",
+        "qualifiedName": "FinancialUtils",
+        "description": "FinancialUtils 是一个用于提供金融相关工具方法的工具类，但当前未定义任何具体方法。",
+        "methods": [],
+        "dependencies": [
+            42
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 69,
+        "name": "JSFLoginFilter",
+        "qualifiedName": "JSFLoginFilter",
+        "description": "JSFLoginFilter 是一个用于 JavaServer Faces (JSF) 应用的登录过滤器，负责在请求到达受保护资源前验证用户身份，确保未认证用户被重定向到登录页面。",
+        "methods": [],
+        "dependencies": [
+            39,
+            51,
+            4,
+            62
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 70,
+        "name": "KeySequenceDirect",
+        "qualifiedName": "KeySequenceDirect",
+        "description": "KeySequenceDirect 类当前无明确职责描述，缺乏 Javadoc 和方法定义，无法确定其具体功能和在系统中的作用。",
+        "methods": [],
+        "dependencies": [
+            70,
+            54,
+            43
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 71,
+        "name": "MarketSummaryDataBean",
+        "qualifiedName": "MarketSummaryDataBean",
+        "description": "MarketSummaryDataBean 是一个用于封装市场摘要数据的数据载体类，通常用于在系统各组件间传递市场汇总信息。",
+        "methods": [],
+        "dependencies": [
+            28,
+            35,
+            71,
+            68
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 72,
+        "name": "ActionDecoder",
+        "qualifiedName": "ActionDecoder",
+        "description": "ActionDecoder 是一个用于解码动作（Action）的类，负责将原始数据或编码后的动作信息转换为可执行或可理解的动作对象，在系统中起到动作解析和转换的作用。",
+        "methods": [],
+        "dependencies": [
+            43,
+            60
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    }
+]

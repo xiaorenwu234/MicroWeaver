@@ -1,0 +1,496 @@
+[
+    {
+        "id": 0,
+        "name": "AirportCodeMapping",
+        "qualifiedName": "AirportCodeMapping",
+        "description": "AirportCodeMapping 类用于管理和映射机场代码，提供机场代码与其他标识符之间的转换关系。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 1,
+        "name": "AuthServiceImpl",
+        "qualifiedName": "AuthServiceImpl",
+        "description": "AuthServiceImpl 是一个认证服务的实现类，负责提供用户认证相关的业务逻辑实现，在系统中充当认证功能的核心处理组件。",
+        "methods": [],
+        "dependencies": [
+            6
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 2,
+        "name": "CustomerService",
+        "qualifiedName": "CustomerService",
+        "description": "CustomerService 类用于处理与客户相关的服务操作，提供客户支持和管理功能。",
+        "methods": [],
+        "dependencies": [
+            10
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 3,
+        "name": "FlightLoader",
+        "qualifiedName": "FlightLoader",
+        "description": "FlightLoader 是一个用于加载航班数据的类，在系统中负责从数据源读取并初始化航班相关信息。",
+        "methods": [],
+        "dependencies": [
+            20,
+            0,
+            3,
+            19
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 4,
+        "name": "BookingsREST",
+        "qualifiedName": "BookingsREST",
+        "description": "BookingsREST 是一个用于处理预订相关 RESTful API 请求的类，提供预订资源的访问和操作接口。",
+        "methods": [],
+        "dependencies": [
+            12
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 5,
+        "name": "CustomerInfo",
+        "qualifiedName": "CustomerInfo",
+        "description": "CustomerInfo类用于表示和管理客户的基本信息，作为系统中客户数据的载体。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 6,
+        "name": "ConnectionManager",
+        "qualifiedName": "ConnectionManager",
+        "description": "ConnectionManager 负责管理应用程序与外部资源（如数据库或服务）之间的连接，包括连接的创建、维护和释放，以确保高效且可靠的资源使用。",
+        "methods": [],
+        "dependencies": [
+            6
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 7,
+        "name": "RESTCookieSessionFilter",
+        "qualifiedName": "RESTCookieSessionFilter",
+        "description": "RESTCookieSessionFilter 是一个用于在 RESTful 服务中处理基于 Cookie 的会话管理的过滤器，负责拦截请求并维护或验证用户会话状态。",
+        "methods": [],
+        "dependencies": [
+            17,
+            22,
+            18,
+            14,
+            16,
+            4,
+            21,
+            5,
+            8
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 8,
+        "name": "AddressInfo",
+        "qualifiedName": "AddressInfo",
+        "description": "AddressInfo类用于表示和管理地址相关信息，作为系统中地址数据的封装实体。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 9,
+        "name": "Loader",
+        "qualifiedName": "Loader",
+        "description": "Loader类当前无明确职责描述，未定义任何方法，可能为占位类或待实现的加载器基类。",
+        "methods": [],
+        "dependencies": [
+            9,
+            17,
+            19,
+            3,
+            25,
+            13
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 10,
+        "name": "CustomerServiceImpl",
+        "qualifiedName": "CustomerServiceImpl",
+        "description": "CustomerServiceImpl 是客户服务功能的具体实现类，负责提供客户相关业务逻辑的实现，在系统中充当服务层组件，用于处理与客户实体相关的操作和事务。",
+        "methods": [],
+        "dependencies": [
+            6
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 11,
+        "name": "AppConfig",
+        "qualifiedName": "AppConfig",
+        "description": "AppConfig 是一个用于配置应用程序的类，负责管理应用的配置参数和设置。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 12,
+        "name": "BookingServiceImpl",
+        "qualifiedName": "BookingServiceImpl",
+        "description": "BookingServiceImpl 是一个实现预订业务逻辑的服务类，负责处理与预订相关的操作和流程。",
+        "methods": [],
+        "dependencies": [
+            6,
+            12,
+            15
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 13,
+        "name": "BookingLoader",
+        "qualifiedName": "BookingLoader",
+        "description": "BookingLoader 负责加载预订（Booking）相关数据，在系统中充当数据加载器的角色，通常用于从数据源获取预订信息并提供给其他组件使用。",
+        "methods": [],
+        "dependencies": [
+            12
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 14,
+        "name": "AuthService",
+        "qualifiedName": "AuthService",
+        "description": "AuthService 负责处理用户认证相关逻辑，是系统中认证功能的核心服务类。",
+        "methods": [],
+        "dependencies": [
+            15,
+            1
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 15,
+        "name": "KeyGenerator",
+        "qualifiedName": "KeyGenerator",
+        "description": "KeyGenerator 是一个用于生成密钥的工具类，在系统中负责提供安全的密钥生成功能。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 16,
+        "name": "FlightsREST",
+        "qualifiedName": "FlightsREST",
+        "description": "FlightsREST 类是一个用于处理航班相关 RESTful API 请求的控制器类，负责提供航班信息的查询、管理等接口服务。",
+        "methods": [],
+        "dependencies": [
+            23
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 17,
+        "name": "ServiceLocator",
+        "qualifiedName": "ServiceLocator",
+        "description": "ServiceLocator 是一个用于集中管理和提供服务实例的定位器类，通常实现服务查找与解耦，使系统组件能够通过统一接口获取所需服务而无需直接依赖具体实现。",
+        "methods": [],
+        "dependencies": [
+            12,
+            10,
+            1,
+            23,
+            20,
+            17
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 18,
+        "name": "AcmeAirApp",
+        "qualifiedName": "AcmeAirApp",
+        "description": "AcmeAirApp 是一个应用程序入口类，用于启动和管理 AcmeAir 应用的生命周期，通常作为系统的主要启动点。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 19,
+        "name": "CustomerLoader",
+        "qualifiedName": "CustomerLoader",
+        "description": "CustomerLoader 负责加载客户数据，在系统中作为客户信息的加载器组件。",
+        "methods": [],
+        "dependencies": [
+            10
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 20,
+        "name": "FlightServiceImpl",
+        "qualifiedName": "FlightServiceImpl",
+        "description": "FlightServiceImpl 是一个实现航班相关业务逻辑的服务类，负责处理与航班操作相关的具体功能。",
+        "methods": [],
+        "dependencies": [
+            6,
+            0,
+            15
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 21,
+        "name": "CustomerREST",
+        "qualifiedName": "CustomerREST",
+        "description": "CustomerREST 是一个用于处理客户相关 RESTful API 请求的控制器类，负责接收和响应与客户资源相关的 HTTP 操作。",
+        "methods": [],
+        "dependencies": [
+            21,
+            10,
+            5,
+            2
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 22,
+        "name": "LoginREST",
+        "qualifiedName": "LoginREST",
+        "description": "LoginREST 是一个用于处理用户登录相关 RESTful API 请求的类，负责接收登录请求、验证用户凭据并返回相应的认证结果。",
+        "methods": [],
+        "dependencies": [
+            2,
+            14,
+            1
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 23,
+        "name": "FlightService",
+        "qualifiedName": "FlightService",
+        "description": "FlightService 是一个用于处理航班相关业务逻辑的服务类，负责协调和管理与航班操作相关的功能。",
+        "methods": [],
+        "dependencies": [
+            20
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 24,
+        "name": "SupportWebSocket",
+        "qualifiedName": "SupportWebSocket",
+        "description": "SupportWebSocket 是一个用于支持 WebSocket 功能的类，可能作为 WebSocket 相关功能的基类或工具类，但当前未定义具体方法。",
+        "methods": [],
+        "dependencies": [
+            24
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 25,
+        "name": "SessionLoader",
+        "qualifiedName": "SessionLoader",
+        "description": "SessionLoader 是一个用于加载会话数据的类，在系统中负责从存储介质中读取并初始化会话信息。",
+        "methods": [],
+        "dependencies": [
+            1
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 26,
+        "name": "AcmeAirConfiguration",
+        "qualifiedName": "AcmeAirConfiguration",
+        "description": "AcmeAirConfiguration 类用于配置 AcmeAir 应用的相关设置，提供系统运行所需的配置参数。",
+        "methods": [],
+        "dependencies": [
+            17,
+            20,
+            10,
+            12,
+            1
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 27,
+        "name": "LoaderREST",
+        "qualifiedName": "LoaderREST",
+        "description": "LoaderREST 是一个用于通过 REST 接口加载数据的类，负责与远程服务通信以获取或提交数据。",
+        "methods": [],
+        "dependencies": [
+            9
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    }
+]

@@ -1,0 +1,600 @@
+
+    {
+        "id": 0,
+        "name": "UpdateCartQuantitiesController",
+        "qualifiedName": "UpdateCartQuantitiesController",
+        "description": "负责处理购物车商品数量更新请求的控制器类，协调相关业务逻辑以实现购物车中商品数量的修改。",
+        "methods": [],
+        "dependencies": [
+            29,
+            8,
+            12
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 1,
+        "name": "AccountFormController",
+        "qualifiedName": "AccountFormController",
+        "description": "AccountFormController 是一个用于处理账户相关表单操作的控制器类，负责接收用户输入、协调业务逻辑并返回相应的视图或响应。",
+        "methods": [],
+        "dependencies": [
+            13,
+            20,
+            35,
+            18,
+            32
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 2,
+        "name": "SqlMapSequenceDao",
+        "qualifiedName": "SqlMapSequenceDao",
+        "description": "SqlMapSequenceDao 是一个用于通过 SQL 映射（如 iBatis/MyBatis）访问和管理数据库序列（sequence）的数据访问对象（DAO），负责提供与序列相关的持久化操作。",
+        "methods": [],
+        "dependencies": [
+            11
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 3,
+        "name": "SignonController",
+        "qualifiedName": "SignonController",
+        "description": "SignonController 负责处理用户登录（签到）相关的请求，是认证流程的入口控制器。",
+        "methods": [],
+        "dependencies": [
+            18,
+            32,
+            35
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 4,
+        "name": "ListOrdersController",
+        "qualifiedName": "ListOrdersController",
+        "description": "ListOrdersController 是一个用于处理订单列表相关请求的控制器类，负责协调订单数据的获取与展示。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 5,
+        "name": "SearchProductsController",
+        "qualifiedName": "SearchProductsController",
+        "description": "SearchProductsController 是一个用于处理产品搜索相关请求的控制器类，负责接收用户搜索输入，调用相应服务进行产品查询，并返回搜索结果。",
+        "methods": [],
+        "dependencies": [
+            18
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 6,
+        "name": "OrderForm",
+        "qualifiedName": "OrderForm",
+        "description": "OrderForm 类用于表示订单表单，封装与订单相关的信息和操作，在系统中作为订单数据的载体。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 7,
+        "name": "SqlMapProductDao",
+        "qualifiedName": "SqlMapProductDao",
+        "description": "SqlMapProductDao 是一个数据访问对象（DAO）类，负责通过 SQL 映射机制对产品（Product）相关数据进行持久化操作，如增删改查等。",
+        "methods": [],
+        "dependencies": [
+            16,
+            7
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 8,
+        "name": "CartItem",
+        "qualifiedName": "CartItem",
+        "description": "CartItem 类用于表示购物车中的单个商品项，封装了商品的相关信息及其在购物车中的数量等属性。",
+        "methods": [],
+        "dependencies": [
+            12
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 9,
+        "name": "RemoveItemFromCartController",
+        "qualifiedName": "RemoveItemFromCartController",
+        "description": "负责处理从购物车中移除商品的请求，作为控制器协调相关业务逻辑与用户交互。",
+        "methods": [],
+        "dependencies": [
+            29
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 10,
+        "name": "Order",
+        "qualifiedName": "Order",
+        "description": "Order类用于表示和管理订单信息，是系统中处理订单相关业务的核心实体类。",
+        "methods": [],
+        "dependencies": [
+            35,
+            29,
+            10,
+            21
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 11,
+        "name": "Sequence",
+        "qualifiedName": "Sequence",
+        "description": "Sequence 类是一个用于表示或管理序列化数据的通用类，其具体职责和功能需结合上下文进一步明确。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 12,
+        "name": "Item",
+        "qualifiedName": "Item",
+        "description": "Item类是一个通用的数据项类，用于表示系统中的基本元素或条目，具体功能需结合上下文进一步明确。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 13,
+        "name": "AccountForm",
+        "qualifiedName": "AccountForm",
+        "description": "AccountForm 是一个用于表示账户相关表单数据的类，通常作为数据传输对象（DTO）在用户界面与业务逻辑层之间传递账户信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 14,
+        "name": "SqlMapItemDao",
+        "qualifiedName": "SqlMapItemDao",
+        "description": "SqlMapItemDao 是一个数据访问对象（DAO）类，用于通过 SQL 映射机制对 Item 实体进行持久化操作，封装了与数据库交互的逻辑。",
+        "methods": [],
+        "dependencies": [
+            12,
+            16,
+            10,
+            21
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 15,
+        "name": "ViewItemController",
+        "qualifiedName": "ViewItemController",
+        "description": "ViewItemController 是一个用于处理查看项（View Item）相关操作的控制器类，负责协调用户请求与业务逻辑之间的交互。",
+        "methods": [],
+        "dependencies": [
+            18,
+            12
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 16,
+        "name": "Product",
+        "qualifiedName": "Product",
+        "description": "Product类用于表示系统中的产品实体，封装了产品的基本属性和行为。作为领域模型的核心组成部分，该类在业务逻辑层中承担产品信息的存储与管理职责。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 17,
+        "name": "SqlMapAccountDao",
+        "qualifiedName": "SqlMapAccountDao",
+        "description": "SqlMapAccountDao 是一个数据访问对象（DAO）类，负责通过 SQL 映射机制对账户（Account）相关的数据进行持久化操作，如增删改查等。",
+        "methods": [],
+        "dependencies": [
+            35
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 18,
+        "name": "PetStoreImpl",
+        "qualifiedName": "PetStoreImpl",
+        "description": "PetStoreImpl 是一个实现类，用于提供宠物商店相关功能的具体实现，但当前未定义任何方法。",
+        "methods": [],
+        "dependencies": [
+            27,
+            7,
+            14,
+            17,
+            34
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 19,
+        "name": "OrderFormController",
+        "qualifiedName": "OrderFormController",
+        "description": "OrderFormController 是一个控制器类，负责处理与订单表单相关的请求和业务逻辑协调。",
+        "methods": [],
+        "dependencies": [
+            6,
+            23,
+            18,
+            32,
+            35,
+            10
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 20,
+        "name": "AccountValidator",
+        "qualifiedName": "AccountValidator",
+        "description": "AccountValidator 是一个用于验证账户相关信息的工具类，负责确保账户数据符合系统规定的格式和业务规则。",
+        "methods": [],
+        "dependencies": [
+            13,
+            35
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 21,
+        "name": "LineItem",
+        "qualifiedName": "LineItem",
+        "description": "LineItem 类表示购物车或订单中的单个商品条目，通常包含商品信息、数量和价格等属性，用于在结算或订单处理过程中管理具体的商品明细。",
+        "methods": [],
+        "dependencies": [
+            8,
+            12
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 22,
+        "name": "ViewOrderController",
+        "qualifiedName": "ViewOrderController",
+        "description": "ViewOrderController 负责处理与查看订单相关的用户请求，作为控制器协调视图与业务逻辑之间的交互。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 23,
+        "name": "OrderValidator",
+        "qualifiedName": "OrderValidator",
+        "description": "OrderValidator 负责验证订单数据的合法性，确保订单在处理前满足业务规则和数据完整性要求。",
+        "methods": [],
+        "dependencies": [
+            6,
+            10
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 24,
+        "name": "AddItemToCartController",
+        "qualifiedName": "AddItemToCartController",
+        "description": "负责处理将商品添加到购物车的请求，作为控制器协调用户输入与业务逻辑之间的交互。",
+        "methods": [],
+        "dependencies": [
+            29,
+            18
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 25,
+        "name": "ViewProductController",
+        "qualifiedName": "ViewProductController",
+        "description": "ViewProductController 负责处理与产品查看相关的用户请求，作为控制器协调视图与模型之间的交互。",
+        "methods": [],
+        "dependencies": [
+            18
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 26,
+        "name": "ViewCategoryController",
+        "qualifiedName": "ViewCategoryController",
+        "description": "ViewCategoryController 是一个用于处理分类视图相关请求的控制器类，负责协调用户界面与后端逻辑之间的交互。",
+        "methods": [],
+        "dependencies": [
+            18
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 27,
+        "name": "SqlMapCategoryDao",
+        "qualifiedName": "SqlMapCategoryDao",
+        "description": "SqlMapCategoryDao 是一个数据访问对象（DAO）类，用于通过 SQL 映射方式对分类（Category）数据进行持久化操作，通常与 ORM 框架（如 iBATIS 或 MyBatis）配合使用。",
+        "methods": [],
+        "dependencies": [
+            28
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 28,
+        "name": "Category",
+        "qualifiedName": "Category",
+        "description": "Category 类用于表示分类或类别实体，通常在系统中作为数据模型存在，用于组织和管理具有共同特征的项目或内容。",
+        "methods": [],
+        "dependencies": [
+            28
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 29,
+        "name": "Cart",
+        "qualifiedName": "Cart",
+        "description": "Cart类用于表示购物车，负责管理用户所选商品的集合，在系统中作为用户与商品之间的临时存储容器。",
+        "methods": [],
+        "dependencies": [
+            8,
+            29,
+            12
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 30,
+        "name": "SignonInterceptor",
+        "qualifiedName": "SignonInterceptor",
+        "description": "SignonInterceptor 是一个用于拦截用户登录请求的拦截器类，主要职责是在请求处理前验证用户身份或执行登录相关的预处理逻辑。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 31,
+        "name": "SignoffController",
+        "qualifiedName": "SignoffController",
+        "description": "SignoffController 是一个控制器类，负责处理与签核（Signoff）相关的请求和业务逻辑协调。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 32,
+        "name": "UserSession",
+        "qualifiedName": "UserSession",
+        "description": "UserSession 类用于管理用户会话状态，维护用户在系统中的登录和交互上下文。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 33,
+        "name": "ViewCartController",
+        "qualifiedName": "ViewCartController",
+        "description": "ViewCartController 负责处理与查看购物车相关的用户请求，作为控制器协调视图展示和业务逻辑交互。",
+        "methods": [],
+        "dependencies": [
+            29
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 34,
+        "name": "SqlMapOrderDao",
+        "qualifiedName": "SqlMapOrderDao",
+        "description": "SqlMapOrderDao 是一个数据访问对象（DAO）类，负责处理与订单相关的数据库操作，通常通过 SQL 映射框架（如 iBATIS 或 MyBatis）实现持久层交互。",
+        "methods": [],
+        "dependencies": [
+            2,
+            10,
+            21
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 35,
+        "name": "Account",
+        "qualifiedName": "Account",
+        "description": "Account类用于表示用户账户，作为系统中账户相关数据和操作的基础实体。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    }
+]

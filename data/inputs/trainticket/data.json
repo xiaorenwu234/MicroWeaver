@@ -1,0 +1,5736 @@
+[
+    {
+        "id": 0,
+        "name": "TokenDto",
+        "qualifiedName": "edu.fudanselab.trainticket.dto.TokenDto",
+        "description": "用于封装用户令牌（Token）信息的数据传输对象（DTO），主要职责是在用户认证成功后生成并返回令牌。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "create token and back to user\r\n\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/dto/TokenDto.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 1,
+        "name": "PriceConfig",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.PriceConfig",
+        "description": "PriceConfig 是一个用于表示票价配置信息的实体类，通常用于存储和管理与火车票价格相关的配置数据。",
+        "methods": [],
+        "dependencies": [
+            1
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/PriceConfig.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 2,
+        "name": "GetOrderByIdInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.GetOrderByIdInfo",
+        "description": "该类是一个用于封装根据订单ID查询订单信息请求数据的实体类，在系统中作为数据传输对象（DTO）使用，主要用于订单查询相关操作的数据承载。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/GetOrderByIdInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 3,
+        "name": "RouteRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.RouteRepository",
+        "description": "RouteRepository 是一个抽象数据访问接口，负责管理 Route 实体的持久化操作，提供根据 ID、起止站点等条件查询路线，以及删除指定路线的功能。该类在系统中作为路由信息的数据访问层，被业务逻辑层调用以实现对路线数据的访问和管理。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/RouteRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 4,
+        "name": "EmailConfig",
+        "qualifiedName": "edu.fudanselab.trainticket.config.EmailConfig",
+        "description": "该类是用于配置电子邮件相关设置的配置类，属于系统邮件功能的基础设施组件。",
+        "methods": [],
+        "dependencies": [
+            201
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/config/EmailConfig.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 5,
+        "name": "RebookController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.RebookController",
+        "description": "RebookController 负责处理车票改签相关的请求，包括改签操作和差价支付，是系统中改签业务的入口控制器。",
+        "methods": [],
+        "dependencies": [
+            5,
+            6,
+            218,
+            34,
+            127
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/RebookController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 6,
+        "name": "RebookInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.RebookInfo",
+        "description": "RebookInfo 是一个用于表示车票改签信息的实体类，主要在系统中承载与改签相关的数据。该类位于 edu.fudanselab.trainticket.entity 包中，作为数据模型与其他业务逻辑组件交互。",
+        "methods": [],
+        "dependencies": [
+            6,
+            249
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/RebookInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 7,
+        "name": "AuthUserRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.AuthUserRepository",
+        "description": "AuthUserRepository 是一个用于管理 AuthUser 实体的持久化接口，提供基于用户名的查询（包括单个和多个结果）以及通过用户 ID 删除用户的功能，属于数据访问层组件。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/AuthUserRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 8,
+        "name": "NotificationServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.NotificationServiceImpl",
+        "description": "NotificationServiceImpl 是通知服务的具体实现类，负责处理与订单相关的各类通知操作，包括订单创建、修改、取消及车票预留成功后的通知。该类通过调用外部服务发送通知，是系统中通知模块的核心组件。",
+        "methods": [],
+        "dependencies": [
+            145,
+            229,
+            29,
+            8,
+            63
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/NotificationServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 9,
+        "name": "TokenServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.TokenServiceImpl",
+        "description": "TokenServiceImpl 是一个用于处理用户认证令牌的服务实现类，主要职责是根据用户提供的基本认证信息生成并返回认证令牌，位于系统的服务层，实现了与用户认证相关的 TokenService 接口。",
+        "methods": [],
+        "dependencies": [
+            169,
+            0,
+            9,
+            21,
+            19,
+            264,
+            225,
+            218,
+            7,
+            188,
+            236,
+            80,
+            285
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/TokenServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 10,
+        "name": "SecurityController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.SecurityController",
+        "description": "SecurityController 是一个用于管理安全配置的控制器类，提供安全配置的增删改查及账户安全检查等RESTful接口，位于系统安全模块的Web层，负责与前端交互并调用后端服务处理安全相关业务。",
+        "methods": [],
+        "dependencies": [
+            206,
+            10,
+            218,
+            18
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/SecurityController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 11,
+        "name": "TransferTravelInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TransferTravelInfo",
+        "description": "表示中转行程信息的实体类，用于封装与中转旅行相关的数据，如出行日期等。",
+        "methods": [],
+        "dependencies": [
+            11,
+            249
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TransferTravelInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 12,
+        "name": "PreserveController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.PreserveController",
+        "description": "PreserveController 负责处理车票预订相关的请求，提供车票预订和首页访问的接口，是车票预订功能的入口控制器。",
+        "methods": [],
+        "dependencies": [
+            248,
+            12,
+            97,
+            218,
+            249,
+            94,
+            99
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/PreserveController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 13,
+        "name": "Travel",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Travel",
+        "description": "Travel类是火车票系统中的实体类，用于表示与旅行相关的信息。",
+        "methods": [],
+        "dependencies": [
+            85
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Travel.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 14,
+        "name": "CancelController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.CancelController",
+        "description": "CancelController 是一个用于处理车票取消相关请求的控制器类，提供计算退票费用和执行退票操作的功能，同时支持首页访问。它位于系统的Web层，负责与客户端交互并协调相关业务逻辑。",
+        "methods": [],
+        "dependencies": [
+            114,
+            14,
+            218,
+            43,
+            255,
+            136
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/CancelController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 15,
+        "name": "VerifyCodeService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.VerifyCodeService",
+        "description": "VerifyCodeService 是一个抽象服务类，负责生成和验证验证码。它提供生成图像验证码和验证用户输入验证码的抽象方法，用于在 Web 应用中实现验证码功能，通常与 HTTP 请求/响应交互，并支持自定义头部信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/VerifyCodeService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 16,
+        "name": "WaitListOrderVO",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.WaitListOrderVO",
+        "description": "WaitListOrderVO 是一个用于表示候补订单信息的值对象（VO），主要包含与候补订单相关的日期信息，通过 getDate() 和 setDate() 方法进行访问和设置，在系统中用于数据传输和封装。",
+        "methods": [],
+        "dependencies": [
+            249,
+            16
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/WaitListOrderVO.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 17,
+        "name": "InsidePaymentServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.InsidePaymentServiceImpl",
+        "description": "InsidePaymentServiceImpl 是一个内部支付服务的实现类，负责处理与用户账户和支付相关的业务逻辑，包括支付、创建账户、充值、查询账户与支付信息、退款以及支付差额处理等。该类在系统中作为支付模块的核心服务，与订单状态管理等功能协同工作。",
+        "methods": [],
+        "dependencies": [
+            89,
+            157,
+            262,
+            269,
+            159,
+            214,
+            17,
+            218,
+            37,
+            21,
+            70,
+            199,
+            60,
+            173,
+            130,
+            42,
+            80
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/InsidePaymentServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 18,
+        "name": "SecurityConfig",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.SecurityConfig",
+        "description": "SecurityConfig 是一个用于安全配置的实体类，可能用于存储或管理与系统安全相关的配置信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/SecurityConfig.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 19,
+        "name": "BasicAuthDto",
+        "qualifiedName": "edu.fudanselab.trainticket.dto.BasicAuthDto",
+        "description": "用于封装用户登录信息的数据传输对象（DTO），主要在用户认证过程中传递用户名和密码等基本认证凭据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "user login dto\r\n\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/dto/BasicAuthDto.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 20,
+        "name": "TripResponse",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TripResponse",
+        "description": "TripResponse 是一个用于封装列车票务系统中行程相关信息的实体类，主要作为数据传输对象（DTO）在服务间传递行程查询结果。",
+        "methods": [],
+        "dependencies": [
+            133,
+            20
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TripResponse.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 21,
+        "name": "ServiceResolver",
+        "qualifiedName": "edu.fudanselab.trainticket.service.ServiceResolver",
+        "description": "ServiceResolver 是一个抽象类，用于解析服务名称到对应的服务 URL，主要职责是提供服务发现功能，其子类需实现具体的 URL 解析逻辑。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/ServiceResolver.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 22,
+        "name": "DeliveryRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.DeliveryRepository",
+        "description": "DeliveryRepository 是一个数据访问接口，负责管理 Delivery 实体的持久化操作，提供根据 ID 或订单 ID 查询、删除以及获取全部配送记录的功能，是系统中配送模块与数据存储之间的桥梁。",
+        "methods": [],
+        "dependencies": [
+            277
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/DeliveryRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 23,
+        "name": "AdminUserServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.AdminUserServiceImpl",
+        "description": "AdminUserServiceImpl 是一个管理用户信息的服务实现类，负责提供用户数据的增删改查功能，包括获取所有用户、删除指定用户、更新用户信息和添加新用户。该类位于系统的服务实现层，为管理员用户提供后台用户管理支持。",
+        "methods": [],
+        "dependencies": [
+            176,
+            238,
+            21,
+            23,
+            218
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/AdminUserServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 24,
+        "name": "OrderController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.OrderController",
+        "description": "OrderController 是一个负责处理火车票订单相关业务的控制器类，提供订单创建、查询、修改、删除、支付及安全校验等RESTful接口，作为系统订单模块的入口与外部交互。",
+        "methods": [],
+        "dependencies": [
+            230,
+            70,
+            266,
+            73,
+            249,
+            218,
+            24
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/OrderController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 25,
+        "name": "AuthController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.AuthController",
+        "description": "AuthController 负责处理与用户认证相关的请求，包括创建默认用户和提供基础的健康检查接口（如返回问候信息）。该类位于系统的控制层，接收并处理来自客户端的认证相关 HTTP 请求，协调调用服务层完成业务逻辑，并返回相应的响应结果。",
+        "methods": [],
+        "dependencies": [
+            25,
+            264,
+            117,
+            218,
+            175
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/AuthController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 26,
+        "name": "OrderInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.OrderInitData",
+        "description": "OrderInitData 类用于在系统启动时初始化订单相关数据，通过实现 run 方法支持命令行参数触发初始化逻辑，属于系统初始化模块的一部分。",
+        "methods": [],
+        "dependencies": [
+            70,
+            266
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/OrderInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 27,
+        "name": "PlainAssurance",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.PlainAssurance",
+        "description": "表示火车票保险信息的实体类，用于存储和管理保险相关的数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/PlainAssurance.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 28,
+        "name": "TravelService2Impl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.TravelService2Impl",
+        "description": "TravelService2Impl 是一个旅行服务实现类，负责处理与火车票相关的查询、创建、更新和删除操作。它提供根据行程ID获取路线和列车类型、批量查询车票信息、管理行程详情等功能，并包含多个辅助方法用于内部逻辑处理，如获取余票数量、设置响应数据等。该类在系统中充当旅行信息业务逻辑的核心处理单元，与实体类（如TravelInfo、TripInfo）和其他服务交互以完成完整的票务操作。",
+        "methods": [],
+        "dependencies": [
+            224,
+            81,
+            133,
+            28,
+            85,
+            67,
+            193,
+            218,
+            274,
+            21,
+            20,
+            279,
+            181,
+            148,
+            73,
+            184,
+            13,
+            124,
+            249,
+            155,
+            205
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/TravelService2Impl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 29,
+        "name": "Mail",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Mail",
+        "description": "表示邮件信息的实体类，用于封装邮件相关数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Mail.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 30,
+        "name": "ItemNameUtil",
+        "qualifiedName": "edu.fudanselab.trainticket.util.ItemNameUtil",
+        "description": "ItemNameUtil 是一个工具类，提供字符串格式化方法，用于简化和转换项目名称，例如将名称转换为小写连字符格式或缩短名称。",
+        "methods": [],
+        "dependencies": [
+            30
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/util/ItemNameUtil.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 31,
+        "name": "PriceInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.PriceInitData",
+        "description": "PriceInitData 是一个用于初始化票价数据的启动类，通过实现 run 方法在系统启动时执行票价相关数据的初始化逻辑。",
+        "methods": [],
+        "dependencies": [
+            1,
+            231,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author Chenjie Xu\r\n@date 2017/6/12.\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/PriceInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 32,
+        "name": "BasicController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.BasicController",
+        "description": "BasicController 是一个处理基础旅行相关查询请求的控制器类，负责提供首页访问、单个或批量行程查询以及车站ID查询等接口，位于系统Web层，通过HTTP请求与客户端交互。",
+        "methods": [],
+        "dependencies": [
+            13,
+            218,
+            111,
+            32
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author Chenjie\r\n@date 2017/6/6.\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/BasicController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 33,
+        "name": "User",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.User",
+        "description": "User类是系统中的用户实体类，用于表示和管理用户的基本信息，通常作为数据模型在持久化层和业务逻辑层之间传递。",
+        "methods": [],
+        "dependencies": [
+            33
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/User.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 34,
+        "name": "RebookService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.RebookService",
+        "description": "RebookService 是一个抽象服务类，负责处理车票改签相关业务，包括执行改签操作和支付改签产生的票价差额。该类定义了改签流程的核心接口，需由具体实现类完成实际逻辑。",
+        "methods": [],
+        "dependencies": [
+            6,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/RebookService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 35,
+        "name": "FoodOrderRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.FoodOrderRepository",
+        "description": "FoodOrderRepository 是一个数据访问接口，负责对食品订单（FoodOrder）实体进行持久化操作，包括根据ID或订单号查询、删除以及获取所有食品订单。该类在系统中作为仓储层组件，为上层业务逻辑提供对食品订单数据的访问能力。",
+        "methods": [],
+        "dependencies": [
+            212
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/FoodOrderRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 36,
+        "name": "AdminOrderServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.AdminOrderServiceImpl",
+        "description": "AdminOrderServiceImpl 是一个管理员订单服务实现类，负责处理与火车票订单相关的管理操作，包括查询所有订单、删除订单、更新订单和添加订单。该类在系统中作为订单管理模块的服务层实现，为管理员提供对订单数据的完整控制能力。",
+        "methods": [],
+        "dependencies": [
+            162,
+            36,
+            21,
+            70,
+            218
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/AdminOrderServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 37,
+        "name": "OrderStatus",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.OrderStatus",
+        "description": "OrderStatus 是一个用于表示订单状态的枚举类，提供状态码与状态名称之间的映射和查询功能。",
+        "methods": [],
+        "dependencies": [
+            37,
+            113
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/OrderStatus.java",
+        "typeKind": "enum"
+    },
+    {
+        "id": 38,
+        "name": "RouteInfoCommon",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.RouteInfoCommon",
+        "description": "RouteInfoCommon类用于封装路线的通用信息，主要包括途经站点列表和相邻站点间的距离列表。该类在系统中作为数据传输对象（DTO），用于在不同模块间传递路线相关的基本数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/RouteInfoCommon.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 39,
+        "name": "TrainServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.TrainServiceImpl",
+        "description": "TrainServiceImpl 是 TrainService 接口的实现类，负责提供列车类型（TrainType）的完整 CRUD 操作，包括创建、查询（按 ID、名称或名称列表）、更新和删除，同时支持通用查询。该类在系统中作为列车类型数据的核心业务逻辑处理单元，与数据访问层及上层服务交互，所有方法均携带 HttpHeaders 以支持请求上下文传递。",
+        "methods": [],
+        "dependencies": [
+            137,
+            81,
+            71,
+            39
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/TrainServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 40,
+        "name": "ContactsRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.ContactsRepository",
+        "description": "ContactsRepository 是一个抽象数据访问接口，负责管理联系人（Contacts）实体的持久化操作。它提供基于账户ID、文档号和文档类型等条件的查询方法，以及删除和全量查询功能，在系统中作为联系人数据访问层的核心组件。",
+        "methods": [],
+        "dependencies": [
+            57
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/ContactsRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 41,
+        "name": "Account",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Account",
+        "description": "表示用户账户信息的实体类，用于在火车票系统中存储和管理账户相关数据。",
+        "methods": [],
+        "dependencies": [
+            210,
+            270
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Account.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 42,
+        "name": "PaymentInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.PaymentInfo",
+        "description": "PaymentInfo 是一个实体类，用于表示与火车票支付相关的支付信息，在系统中主要用于数据持久化和传输。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/PaymentInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 43,
+        "name": "CancelServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.CancelServiceImpl",
+        "description": "CancelServiceImpl 是一个负责处理订单取消业务的核心服务类，主要职责包括取消订单、计算退款金额、执行退款操作以及发送通知邮件。该类通过与订单服务和其他外部服务交互，完成跨服务的订单取消流程，并提供用户账户信息获取和资金回退功能，在系统中扮演订单取消与退款协调者的角色。",
+        "methods": [],
+        "dependencies": [
+            114,
+            43,
+            37,
+            21,
+            279,
+            256,
+            249,
+            218,
+            63,
+            80
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/CancelServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 44,
+        "name": "JWTFilter",
+        "qualifiedName": "edu.fudanselab.trainticket.config.jwt.JWTFilter",
+        "description": "JWTFilter 是一个用于处理 JWT（JSON Web Token）认证的过滤器，负责在请求处理链中验证和解析 JWT 令牌，确保请求的安全性。",
+        "methods": [],
+        "dependencies": [
+            113,
+            249,
+            5,
+            24,
+            235,
+            194,
+            10,
+            243,
+            12,
+            273,
+            147,
+            14,
+            226,
+            143,
+            154,
+            140
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/config/jwt/JWTFilter.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 45,
+        "name": "FoodDeliveryInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.FoodDeliveryInitData",
+        "description": "负责初始化食品配送相关数据的启动类，通过 run 方法执行初始化逻辑。",
+        "methods": [],
+        "dependencies": [
+            208,
+            45
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/FoodDeliveryInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 46,
+        "name": "ConfigService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.ConfigService",
+        "description": "ConfigService 是一个抽象服务类，负责管理系统中的配置信息，提供配置的创建、更新、查询（单个和全部）以及删除等核心操作。该类作为配置管理模块的服务层接口，定义了标准的 CRUD 方法，供具体实现类继承和实现。",
+        "methods": [],
+        "dependencies": [
+            186,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/ConfigService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 47,
+        "name": "PreserveOtherServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.PreserveOtherServiceImpl",
+        "description": "PreserveOtherServiceImpl 是一个用于处理火车票预定相关业务逻辑的服务实现类，主要职责包括订单创建、座位分配、保险添加、联系人信息获取、餐饮及托运服务创建、安全校验以及通知邮件发送等。该类通过调用其他内部服务（如用户服务、行程详情服务、站点查询等）协同完成完整的车票预定流程，在系统中扮演核心业务协调者的角色。",
+        "methods": [],
+        "dependencies": [
+            209,
+            212,
+            218,
+            141,
+            33,
+            37,
+            70,
+            74,
+            73,
+            13,
+            184,
+            155,
+            85,
+            192,
+            47,
+            21,
+            20,
+            279,
+            57,
+            124,
+            249,
+            97,
+            63,
+            205,
+            80
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/PreserveOtherServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 48,
+        "name": "WaitListOrderServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.WaitListOrderServiceImpl",
+        "description": "WaitListOrderServiceImpl 是候补订单服务的实现类，负责管理候补订单的创建、查询、更新及状态修改等核心业务逻辑，并通过触发线程处理候补订单的后续流程。该类在系统中作为候补订单模块的服务层组件，与订单数据模型和外部接口交互。",
+        "methods": [],
+        "dependencies": [
+            161,
+            251,
+            132,
+            92,
+            16,
+            218,
+            48,
+            227
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/WaitListOrderServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 49,
+        "name": "UserInitUser",
+        "qualifiedName": "edu.fudanselab.trainticket.init.UserInitUser",
+        "description": "UserInitUser 是一个用于初始化用户数据的启动类，通过实现 run 方法在系统启动时执行用户相关的初始化逻辑。",
+        "methods": [],
+        "dependencies": [
+            245,
+            160,
+            33
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/UserInitUser.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 50,
+        "name": "PaymentServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.PaymentServiceImpl",
+        "description": "PaymentServiceImpl 是支付服务的核心实现类，负责处理与支付相关的业务逻辑，包括支付、充值、查询账户信息以及支付初始化等操作。该类位于服务实现层，为上层调用提供具体的支付功能支持。",
+        "methods": [],
+        "dependencies": [
+            88,
+            50,
+            83,
+            60,
+            223,
+            218,
+            174
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author Administrator\r\n@date 2017/6/23.\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/PaymentServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 51,
+        "name": "RouteService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.RouteService",
+        "description": "RouteService 是一个抽象服务类，负责管理路线（Route）相关的核心业务逻辑，包括根据起终点查询路线、获取所有路线、按ID查询单条或多条路线、创建/修改路线以及删除路线。该类为路线数据操作提供统一接口，通常由具体实现类完成实际的数据访问和处理，是系统中路线管理模块的关键组成部分。",
+        "methods": [],
+        "dependencies": [
+            218,
+            202
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/RouteService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 52,
+        "name": "ConsignRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.ConsignRepository",
+        "description": "ConsignRepository 是一个用于管理托运记录（ConsignRecord）的抽象数据访问接口，提供基于账户ID、订单ID、收货人等条件查询托运记录的功能。该类在系统中作为仓储层组件，负责与数据存储交互，为上层业务逻辑提供数据支持。",
+        "methods": [],
+        "dependencies": [
+            156
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/ConsignRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 53,
+        "name": "SeatController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.SeatController",
+        "description": "SeatController 是一个用于处理座位相关业务请求的控制器类，主要职责包括创建座位信息和查询区间余票。它位于系统的控制层，接收 HTTP 请求并协调相应的服务逻辑，与其他组件通过 RESTful 接口进行交互。",
+        "methods": [],
+        "dependencies": [
+            242,
+            53,
+            73,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/SeatController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 54,
+        "name": "TrainTicketInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.TrainTicketInitData",
+        "description": "负责初始化火车票系统相关数据的启动类，通过 run 方法执行初始化逻辑。",
+        "methods": [],
+        "dependencies": [
+            88,
+            60,
+            223
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/TrainTicketInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 55,
+        "name": "AssuranceServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.AssuranceServiceImpl",
+        "description": "AssuranceServiceImpl 是一个提供保险服务实现的类，负责处理与保险相关的增删改查操作，包括根据ID或订单ID查询保险、创建和修改保险、删除保险以及获取所有保险和保险类型信息。该类在系统中作为保险业务逻辑的核心实现，与订单服务紧密关联。",
+        "methods": [],
+        "dependencies": [
+            118,
+            189,
+            105,
+            27,
+            55,
+            108,
+            96,
+            218
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/AssuranceServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 56,
+        "name": "TravelPlanService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.TravelPlanService",
+        "description": "TravelPlanService 是一个抽象服务类，负责提供旅行规划相关的功能，包括查询中转方案、获取最便宜、最快和最少站点的行程方案。该类定义了旅行规划的核心接口，供具体实现类扩展，与 TripInfo 和 TransferTravelInfo 等数据模型类协作，为上层调用者提供统一的行程查询服务。",
+        "methods": [],
+        "dependencies": [
+            11,
+            193,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/TravelPlanService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 57,
+        "name": "Contacts",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Contacts",
+        "description": "Contacts类用于表示用户联系人信息，重写了equals和hashCode方法以支持对象比较和哈希操作，在系统中通常用于管理购票相关的联系人数据。",
+        "methods": [],
+        "dependencies": [
+            57
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Contacts.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 58,
+        "name": "AdminBasicInfoServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.AdminBasicInfoServiceImpl",
+        "description": "AdminBasicInfoServiceImpl 是一个管理后台基础信息的业务实现类，负责提供对联系人、车站、列车、系统配置和票价等核心数据的增删改查操作。该类作为 AdminBasicInfoService 接口的具体实现，为管理员提供统一的数据管理接口，在系统中承担基础数据维护的核心职责。",
+        "methods": [],
+        "dependencies": [
+            84,
+            81,
+            21,
+            58,
+            57,
+            62,
+            186,
+            218,
+            104
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/AdminBasicInfoServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 59,
+        "name": "RouteServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.RouteServiceImpl",
+        "description": "RouteServiceImpl 是路线管理的核心服务实现类，负责提供路线的创建、修改、删除、查询（包括按ID、起终点、批量ID及全量查询）等业务功能，是系统中处理路线相关操作的主要服务组件。",
+        "methods": [],
+        "dependencies": [
+            51,
+            3,
+            59,
+            202,
+            218,
+            274
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/RouteServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 60,
+        "name": "Payment",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Payment",
+        "description": "Payment实体类，用于表示火车票系统中的支付信息。",
+        "methods": [],
+        "dependencies": [
+            60
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Payment.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 61,
+        "name": "TrainFoodServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.TrainFoodServiceImpl",
+        "description": "TrainFoodServiceImpl 是一个实现类，负责处理列车餐饮相关业务逻辑，包括创建列车餐饮信息、列出所有列车餐饮以及根据行程ID查询对应的列车餐饮信息。该类在系统中作为服务层组件，提供与列车餐饮数据交互的接口。",
+        "methods": [],
+        "dependencies": [
+            200,
+            121,
+            222,
+            61,
+            218
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/TrainFoodServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 62,
+        "name": "Station",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Station",
+        "description": "Station类用于表示火车站实体，主要职责是封装车站相关信息，如车站名称，并提供相应属性的访问和修改方法。",
+        "methods": [],
+        "dependencies": [
+            62
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Station.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 63,
+        "name": "NotifyInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.NotifyInfo",
+        "description": "通用通知信息实体类，用于封装通知相关的数据，在系统中作为数据传输对象（DTO）或持久化实体使用。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/NotifyInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 64,
+        "name": "TravelPlanController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.TravelPlanController",
+        "description": "TravelPlanController 是一个控制器类，负责处理与旅行规划相关的HTTP请求，包括获取中转方案、按最低价格、最短时间和最少站点查询行程信息。该类在系统中作为前端与旅行规划服务之间的接口，协调不同查询策略的调用。",
+        "methods": [],
+        "dependencies": [
+            11,
+            64,
+            56,
+            193,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/TravelPlanController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 65,
+        "name": "ConfigRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.ConfigRepository",
+        "description": "ConfigRepository 是一个抽象数据访问接口，负责对配置项（Config）进行持久化操作，包括根据名称查询、查询所有配置以及按名称删除配置。该类位于数据访问层，为上层业务逻辑提供统一的配置数据管理接口。",
+        "methods": [],
+        "dependencies": [
+            186
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/ConfigRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 66,
+        "name": "ConsignService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.ConsignService",
+        "description": "ConsignService 是一个抽象服务类，负责处理托运记录的相关操作，包括插入、更新和多种方式查询托运记录（如按账户ID、订单ID或收货人名称）。该类在系统中作为托运业务逻辑的接口定义，供具体实现类继承并提供实际功能。",
+        "methods": [],
+        "dependencies": [
+            218,
+            141
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/ConsignService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 67,
+        "name": "TripRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.TripRepository",
+        "description": "TripRepository 是一个抽象的数据访问接口，负责对 Trip 实体进行持久化操作，包括根据 TripId 或 RouteId 查询行程、删除指定行程以及获取所有行程。该类为行程数据的访问提供统一接口，通常由具体的持久化实现类（如基于数据库的 Repository）继承并实现。",
+        "methods": [],
+        "dependencies": [
+            133,
+            85
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/TripRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 68,
+        "name": "StationService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.StationService",
+        "description": "StationService 是一个抽象服务类，负责车站信息的 CRUD 操作及多种查询功能，包括按名称、ID 及批量方式查询车站。该类在系统中作为车站数据访问的统一接口，供上层业务调用，并与 Station 实体及 HTTP 请求头交互。",
+        "methods": [],
+        "dependencies": [
+            62,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/StationService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 69,
+        "name": "PaymentDifferenceInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.PaymentDifferenceInfo",
+        "description": "表示支付差额信息的实体类，用于封装与支付金额差异相关的数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/PaymentDifferenceInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 70,
+        "name": "Order",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Order",
+        "description": "Order类用于表示火车票订单实体，主要职责是封装订单相关数据，并提供对象相等性判断和哈希码计算以支持集合操作。",
+        "methods": [],
+        "dependencies": [
+            37,
+            279,
+            70,
+            249
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Order.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 71,
+        "name": "TrainTypeRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.TrainTypeRepository",
+        "description": "TrainTypeRepository 是一个用于管理 TrainType 实体的持久化操作的抽象数据访问接口，提供根据 ID、名称或名称列表查询列车类型，以及删除和获取所有列车类型的功能。该类在系统中充当数据访问层，与 TrainType 实体紧密关联，通常被服务层调用以完成对列车类型数据的存取操作。",
+        "methods": [],
+        "dependencies": [
+            81
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/TrainTypeRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 72,
+        "name": "WaitListOrderController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.WaitListOrderController",
+        "description": "WaitListOrderController 是一个用于处理候补订单相关请求的控制器类，提供创建候补订单、获取所有订单以及获取候补订单列表等功能，位于系统的 Web 层，负责与前端进行交互。",
+        "methods": [],
+        "dependencies": [
+            72,
+            161,
+            16,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/WaitListOrderController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 73,
+        "name": "Seat",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Seat",
+        "description": "Seat类是一个实体类，用于表示火车票系统中的座位信息，属于领域模型的一部分。",
+        "methods": [],
+        "dependencies": [
+            73
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Seat.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 74,
+        "name": "Ticket",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Ticket",
+        "description": "表示火车票信息的实体类，用于封装车票相关数据。",
+        "methods": [],
+        "dependencies": [
+            74
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Ticket.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 75,
+        "name": "TravelAdvanceResultUnit",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TravelAdvanceResultUnit",
+        "description": "通用实体类，用于封装旅行预购结果的相关数据，具体职责需结合其属性或上下文进一步明确。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TravelAdvanceResultUnit.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 76,
+        "name": "PriceServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.PriceServiceImpl",
+        "description": "PriceServiceImpl 是价格配置管理的服务实现类，负责提供价格配置的增删改查功能，包括根据路线ID和列车类型查询价格配置、批量查询、创建、更新和删除价格配置等操作。",
+        "methods": [],
+        "dependencies": [
+            231,
+            1,
+            76,
+            203,
+            218
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/PriceServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 77,
+        "name": "RabbitReceive",
+        "qualifiedName": "edu.fudanselab.trainticket.mq.RabbitReceive",
+        "description": "RabbitReceive 类负责处理从 RabbitMQ 接收到的消息，其核心方法 process 用于解析和执行消息载荷所表示的业务逻辑，在系统中充当消息消费者的角色。",
+        "methods": [],
+        "dependencies": [
+            229,
+            165,
+            29,
+            244,
+            77,
+            155,
+            63
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/mq/RabbitReceive.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 78,
+        "name": "NotificationController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.NotificationController",
+        "description": "NotificationController 负责处理与通知相关的 HTTP 请求，包括订单创建、修改、取消成功以及车票预订成功等场景的通知逻辑，同时提供测试邮件发送和主页访问的端点。该类作为通知服务的入口，接收 NotifyInfo 数据并触发相应的通知操作。",
+        "methods": [],
+        "dependencies": [
+            145,
+            192,
+            63
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author Wenvi\r\n@date 2017/6/15\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/NotificationController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 79,
+        "name": "LeftTicketInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.LeftTicketInfo",
+        "description": "LeftTicketInfo类用于封装余票信息，是车票查询系统中的实体类，主要职责是存储和表示特定车次的余票数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/LeftTicketInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 80,
+        "name": "ServiceResolverImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.ServiceResolverImpl",
+        "description": "ServiceResolverImpl 是一个服务解析实现类，负责根据服务名称获取对应的服务URL地址，用于服务间的通信定位。",
+        "methods": [],
+        "dependencies": [
+            21,
+            80
+        ],
+        "edge_types": [
+            "extends",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/ServiceResolverImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 81,
+        "name": "TrainType",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TrainType",
+        "description": "表示列车类型的实体类，用于封装列车类型相关信息，在系统中作为数据模型使用。",
+        "methods": [],
+        "dependencies": [
+            81
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TrainType.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 82,
+        "name": "RoutePlanInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.RoutePlanInfo",
+        "description": "RoutePlanInfo类用于封装路线规划的基本信息，主要包含起始站和终点站的名称，为车票预订系统中的路线查询提供数据支持。",
+        "methods": [],
+        "dependencies": [
+            82,
+            249
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/RoutePlanInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 83,
+        "name": "AddMoneyRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.AddMoneyRepository",
+        "description": "该类是一个数据访问层组件，用于处理与“充值”（AddMoney）相关的数据操作，但当前未定义具体方法。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/AddMoneyRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 84,
+        "name": "AdminBasicInfoService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.AdminBasicInfoService",
+        "description": "AdminBasicInfoService 是一个抽象服务类，负责提供铁路订票系统中管理员对基础数据的增删改查操作，包括联系人、车站、列车、配置和票价等信息。该类定义了一系列抽象方法，由具体实现类完成实际业务逻辑，是系统管理功能模块的核心接口。",
+        "methods": [],
+        "dependencies": [
+            81,
+            57,
+            62,
+            186,
+            218,
+            104
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/AdminBasicInfoService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 85,
+        "name": "Trip",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Trip",
+        "description": "Trip类用于表示火车票系统中的行程实体，封装了与行程相关的数据属性，是系统中用于数据传输和持久化的基础实体类。",
+        "methods": [],
+        "dependencies": [
+            133,
+            85,
+            249
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Trip.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 86,
+        "name": "StationFoodStore",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.StationFoodStore",
+        "description": "StationFoodStore 是一个实体类，用于表示火车站内的餐饮商店信息，在系统中主要用于数据持久化和业务逻辑中的相关信息传递。",
+        "methods": [],
+        "dependencies": [
+            125,
+            86
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/StationFoodStore.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 87,
+        "name": "VerifyCodeController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.VerifyCodeController",
+        "description": "VerifyCodeController 负责处理验证码相关请求，包括生成图像验证码和验证用户提交的验证码。该控制器在系统中提供验证码服务，用于增强安全性，与其他控制器协同完成用户身份验证流程。",
+        "methods": [],
+        "dependencies": [
+            15,
+            87
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/VerifyCodeController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 88,
+        "name": "PaymentService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.PaymentService",
+        "description": "PaymentService 是一个抽象服务类，负责处理与支付相关的业务逻辑，包括支付、充值、查询账户信息以及支付初始化等操作。该类定义了支付模块的核心接口，供具体实现类扩展，是支付功能在系统中的统一入口。",
+        "methods": [],
+        "dependencies": [
+            60,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author Chenjie\r\n@date 2017/4/3\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/PaymentService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 89,
+        "name": "InsidePaymentService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.InsidePaymentService",
+        "description": "InsidePaymentService 是一个抽象服务类，负责处理系统内部的支付相关业务逻辑，包括支付、账户创建、充值、退款、查询等操作。该类定义了支付服务的核心接口，供具体实现类继承和实现，是支付模块与系统其他部分交互的关键组件。",
+        "methods": [],
+        "dependencies": [
+            199,
+            214,
+            218,
+            42
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author Administrator\r\n@date 2017/6/20.\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/InsidePaymentService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 90,
+        "name": "FoodDeliveryOrderRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.FoodDeliveryOrderRepository",
+        "description": "FoodDeliveryOrderRepository 是一个数据访问接口，负责提供食品配送订单的查询功能，包括根据车站食品商店ID查找订单和获取所有订单。该类在系统中作为仓储层组件，与 FoodDeliveryOrder 实体相关联，为上层业务逻辑提供数据支持。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/FoodDeliveryOrderRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 91,
+        "name": "ConsignPriceServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.ConsignPriceServiceImpl",
+        "description": "ConsignPriceServiceImpl 是一个实现类，负责处理托运价格相关的业务逻辑，包括根据重量和区域获取价格、查询价格信息、创建和修改价格配置以及获取当前价格配置。该类在系统中作为托运价格服务的核心实现，与价格配置管理和客户端请求处理紧密相关。",
+        "methods": [],
+        "dependencies": [
+            234,
+            91,
+            198,
+            218,
+            261
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/ConsignPriceServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 92,
+        "name": "WaitListOrder",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.WaitListOrder",
+        "description": "WaitListOrder类用于表示候补订单实体，包含候补订单的创建时间、出行时间和候补截止时间等关键信息，主要在票务系统中管理用户的候补购票请求。",
+        "methods": [],
+        "dependencies": [
+            132,
+            92,
+            249
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/WaitListOrder.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 93,
+        "name": "ExecuteServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.ExecuteServiceImpl",
+        "description": "ExecuteServiceImpl 是一个订单执行服务的实现类，主要负责处理车票订单的执行和收集操作。它通过调用内部方法与订单服务交互，根据订单ID更新订单状态，并支持从不同订单服务端点获取订单信息。该类在系统中承担了业务逻辑层中与订单执行相关的核心职责。",
+        "methods": [],
+        "dependencies": [
+            179,
+            37,
+            21,
+            70,
+            93,
+            218,
+            80
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/ExecuteServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 94,
+        "name": "PreserveServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.PreserveServiceImpl",
+        "description": "PreserveServiceImpl 是火车票预订服务的核心实现类，负责处理车票预订全流程，包括座位分配、订单创建、保险添加、餐饮及托运服务订购、安全校验、联系人信息获取、用户账户查询以及邮件通知等。该类作为服务层组件，协调多个内部方法并与外部服务交互，完成复杂的预订业务逻辑。",
+        "methods": [],
+        "dependencies": [
+            248,
+            212,
+            218,
+            141,
+            33,
+            37,
+            70,
+            74,
+            73,
+            13,
+            184,
+            155,
+            85,
+            192,
+            21,
+            20,
+            279,
+            94,
+            57,
+            124,
+            249,
+            97,
+            63,
+            205,
+            80
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/PreserveServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 95,
+        "name": "ConsignPriceInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.ConsignPriceInitData",
+        "description": "ConsignPriceInitData 是一个用于初始化托运价格数据的启动类，通过实现 run 方法在系统启动时执行相关数据初始化逻辑。",
+        "methods": [],
+        "dependencies": [
+            198,
+            95,
+            234,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/ConsignPriceInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 96,
+        "name": "Assurance",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Assurance",
+        "description": "通用实体类，用于表示保险（Assurance）相关信息，在系统中可能作为数据模型使用。",
+        "methods": [],
+        "dependencies": [
+            108,
+            96
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Assurance.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 97,
+        "name": "OrderTicketsInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.OrderTicketsInfo",
+        "description": "OrderTicketsInfo类用于封装车票订单的起止站点信息，提供获取出发地和目的地的方法，在系统中作为订单相关数据的传输对象。",
+        "methods": [],
+        "dependencies": [
+            249,
+            97
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/OrderTicketsInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 98,
+        "name": "OrderRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.OrderRepository",
+        "description": "OrderRepository 是一个抽象数据访问接口，负责提供对订单（Order）实体的持久化操作，包括根据ID查询、查询所有订单、按账户ID查询、按出行日期和车次查询以及删除订单。该类在系统中作为订单数据访问层的核心组件，供上层业务逻辑调用，不直接实现具体逻辑，需由具体子类实现。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/OrderRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 99,
+        "name": "SecurityServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.SecurityServiceImpl",
+        "description": "SecurityServiceImpl 是安全配置管理的核心服务实现类，负责提供安全配置的增删改查（CRUD）功能，并支持对用户账户的安全检查。该类通过与订单服务交互，获取与安全相关的订单信息，以完成安全验证逻辑，在系统中起到连接安全配置数据与业务订单的关键作用。",
+        "methods": [],
+        "dependencies": [
+            206,
+            99,
+            240,
+            21,
+            250,
+            218,
+            18
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/SecurityServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 100,
+        "name": "ConsignServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.ConsignServiceImpl",
+        "description": "ConsignServiceImpl 类负责实现托运服务的核心业务逻辑，包括托运记录的插入、更新以及基于账户ID、订单ID或收货人信息的查询功能。该类在系统中作为托运服务的实现层，处理与托运相关的数据操作请求，并与其他服务或数据访问层进行交互。",
+        "methods": [],
+        "dependencies": [
+            66,
+            52,
+            100,
+            21,
+            218,
+            141,
+            156,
+            80,
+            113
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/ConsignServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 101,
+        "name": "FoodController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.FoodController",
+        "description": "FoodController 是一个用于管理餐食订单的控制器类，提供餐食订单的创建、查询、更新和删除等 RESTful 接口，并支持批量操作和配送测试。该类位于 train-ticket 系统中，负责处理与餐食相关的 HTTP 请求，与前端或其他服务通过 HttpHeaders 进行认证或信息传递。",
+        "methods": [],
+        "dependencies": [
+            277,
+            101,
+            183,
+            212,
+            192,
+            218,
+            155
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/FoodController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 102,
+        "name": "RouteInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.RouteInitData",
+        "description": "RouteInitData 是一个用于初始化路线数据的启动类，通过 run 方法在系统启动时执行相关数据初始化逻辑。",
+        "methods": [],
+        "dependencies": [
+            51,
+            202,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/RouteInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 103,
+        "name": "TrainTicketApplication",
+        "qualifiedName": "edu.fudanselab.trainticket.TrainTicketApplication",
+        "description": "TrainTicketApplication 是一个 Spring Boot 应用的主启动类，负责初始化并运行火车票预订系统。它包含 main 方法作为程序入口，并通过 restTemplate 方法配置 RestTemplate 实例，用于支持系统内部或与其他服务之间的 HTTP 通信。",
+        "methods": [],
+        "dependencies": [
+            103
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/TrainTicketApplication.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 104,
+        "name": "PriceInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.PriceInfo",
+        "description": "PriceInfo 是一个用于表示票价信息的实体类，主要在 train-ticket 系统中承载与价格相关的数据。该类位于 edu.fudanselab.trainticket.entity 包中，作为数据模型用于封装票价相关信息，可能被其他服务或数据访问层使用。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/PriceInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 105,
+        "name": "AssuranceTypeBean",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.AssuranceTypeBean",
+        "description": "表示保险类型的实体类，用于封装保险类型相关信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/AssuranceTypeBean.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 106,
+        "name": "StationFoodService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.StationFoodService",
+        "description": "StationFoodService 是一个抽象服务类，负责管理车站食品商店的相关业务逻辑，包括创建食品商店、根据车站名称或ID查询食品商店列表等操作。该类为车站食品商店数据访问提供统一接口，通常由具体实现类完成实际的数据处理和持久化操作。",
+        "methods": [],
+        "dependencies": [
+            218,
+            86
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/StationFoodService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 107,
+        "name": "AdminTravelServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.AdminTravelServiceImpl",
+        "description": "AdminTravelServiceImpl 是一个管理员旅行服务实现类，负责提供旅行信息的全生命周期管理功能，包括查询、新增、修改和删除旅行信息，以及校验旅行信息和车站有效性。该类还支持通过名称查询列车类型，并内部封装了根据路线ID获取路线信息的辅助方法。它在系统中作为后端服务层组件，与路由、列车类型等其他服务协同工作。",
+        "methods": [],
+        "dependencies": [
+            220,
+            81,
+            21,
+            148,
+            107,
+            218,
+            274,
+            155
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/AdminTravelServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 108,
+        "name": "AssuranceType",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.AssuranceType",
+        "description": "AssuranceType 是一个表示保险类型的实体类，用于封装保险类型的相关信息，包括索引、名称和价格，并提供通过索引获取对应保险类型实例的静态方法。该类在系统中作为保险类型的数据模型，支持保险信息的存储与查询。",
+        "methods": [],
+        "dependencies": [
+            108
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/AssuranceType.java",
+        "typeKind": "enum"
+    },
+    {
+        "id": 109,
+        "name": "CookieUtil",
+        "qualifiedName": "edu.fudanselab.trainticket.util.CookieUtil",
+        "description": "CookieUtil 是一个用于处理 HTTP Cookie 的工具类，提供添加 Cookie 到响应、从请求中根据名称获取 Cookie 等功能，辅助 Web 应用中的 Cookie 管理。",
+        "methods": [],
+        "dependencies": [
+            109
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/util/CookieUtil.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 110,
+        "name": "ConsignInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.ConsignInitData",
+        "description": "ConsignInitData 类负责在系统启动时初始化托运相关数据，通过 run 方法执行初始化逻辑，是系统数据准备阶段的辅助组件。",
+        "methods": [],
+        "dependencies": [
+            52,
+            66
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/ConsignInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 111,
+        "name": "BasicService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.BasicService",
+        "description": "BasicService 是一个抽象服务类，定义了与旅行信息查询相关的基础接口，包括查询单个或多个行程信息以及根据车站名称查询车站ID的功能，为上层服务提供统一的查询抽象。",
+        "methods": [],
+        "dependencies": [
+            13,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author Chenjie\r\n@date 2017/6/6.\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/BasicService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 112,
+        "name": "RouteController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.RouteController",
+        "description": "RouteController 是一个用于管理列车路线信息的控制器类，提供创建、修改、删除、查询单条或多条路线以及根据起终点查询路线等 RESTful 接口，是系统中路线管理模块的核心入口。",
+        "methods": [],
+        "dependencies": [
+            112,
+            51,
+            202,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/RouteController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 113,
+        "name": "JWTUtil",
+        "qualifiedName": "edu.fudanselab.trainticket.config.jwt.JWTUtil",
+        "description": "JWTUtil 是一个用于处理 JWT（JSON Web Token）认证的工具类，主要负责从 HTTP 请求中提取并验证 JWT，解析用户身份和角色信息，为系统提供基于 JWT 的安全认证支持。",
+        "methods": [],
+        "dependencies": [
+            113,
+            284,
+            249,
+            255,
+            279,
+            37,
+            136,
+            43,
+            80
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/config/jwt/JWTUtil.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 114,
+        "name": "CancelService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.CancelService",
+        "description": "CancelService 是一个抽象服务类，负责处理订单取消和退款计算的核心逻辑。它定义了两个抽象方法：cancelOrder 用于取消指定订单，calculateRefund 用于计算订单的退款金额。该类在系统中作为订单取消相关业务的统一接口，供具体实现类扩展，并与订单管理模块紧密协作。",
+        "methods": [],
+        "dependencies": [
+            218
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/CancelService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 115,
+        "name": "FoodInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.FoodInitData",
+        "description": "FoodInitData 是一个用于初始化食品数据的工具类，主要职责是在系统启动时通过解析输入字符串生成食品列表并完成相关数据的初始化。该类实现了命令行运行接口，通常作为系统初始化流程的一部分，与食品数据模型 Food 紧密关联。",
+        "methods": [],
+        "dependencies": [
+            106,
+            115,
+            125,
+            218,
+            86
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/FoodInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 116,
+        "name": "TripOrderInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TripOrderInfo",
+        "description": "TripOrderInfo 是一个实体类，用于表示火车票订单的相关信息，在系统中主要承担数据存储和传输的职责，通常与数据库表映射并被其他业务逻辑类使用。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TripOrderInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 117,
+        "name": "AuthDto",
+        "qualifiedName": "edu.fudanselab.trainticket.dto.AuthDto",
+        "description": "AuthDto 是一个数据传输对象（DTO），用于在用户注册后从 user-service 向 auth-service 传递用户认证相关信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "user-service register user , then send to auth-service\r\n\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/dto/AuthDto.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 118,
+        "name": "AssuranceService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.AssuranceService",
+        "description": "AssuranceService 是一个抽象服务类，负责处理与保险相关的业务逻辑，包括保险的创建、查询、修改和删除操作。它在系统中作为保险管理模块的核心服务接口，定义了对保险记录及保险类型进行操作的标准方法，并通过 HttpHeaders 支持请求上下文传递。该类与订单模块紧密关联，通过订单ID进行保险的关联查询与管理。",
+        "methods": [],
+        "dependencies": [
+            218
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/AssuranceService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 119,
+        "name": "StationServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.StationServiceImpl",
+        "description": "StationServiceImpl 是车站信息服务的实现类，负责提供车站信息的增删改查功能，包括单个及批量查询车站信息（通过名称或ID）、创建、更新和删除车站，并支持验证车站是否存在。该类在系统中作为车站数据管理的核心服务，与 Station 实体类紧密关联，并通过 HttpHeaders 处理请求头信息。",
+        "methods": [],
+        "dependencies": [
+            68,
+            282,
+            62,
+            218,
+            119
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/StationServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 120,
+        "name": "TextMapUtil",
+        "qualifiedName": "edu.fudanselab.trainticket.util.TextMapUtil",
+        "description": "TextMapUtil 是一个工具类，提供将 Iterable<Map.Entry<String, String>> 转换为 Map<String, String> 的静态方法，用于简化键值对集合的转换操作。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/util/TextMapUtil.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 121,
+        "name": "TrainFoodRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.TrainFoodRepository",
+        "description": "TrainFoodRepository 是一个数据访问接口，负责管理 TrainFood 实体的持久化操作，提供根据 ID、行程 ID 查询以及删除和获取全部 TrainFood 记录的功能，位于系统数据访问层，通常由具体的数据存储实现类继承。",
+        "methods": [],
+        "dependencies": [
+            222
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/TrainFoodRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 122,
+        "name": "ConfigServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.ConfigServiceImpl",
+        "description": "ConfigServiceImpl 是配置管理服务的实现类，负责提供配置信息的增删改查功能，包括创建、更新、查询单个配置、删除配置以及查询所有配置。",
+        "methods": [],
+        "dependencies": [
+            46,
+            122,
+            65,
+            186,
+            218
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/ConfigServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 123,
+        "name": "ExceptionUtils",
+        "qualifiedName": "edu.fudanselab.trainticket.util.ExceptionUtils",
+        "description": "ExceptionUtils 是一个用于异常处理和调试的工具类，提供记录警告信息、获取最近异常、设置失败状态以及提取异常消息的功能，主要用于辅助系统中的错误诊断和日志记录。",
+        "methods": [],
+        "dependencies": [
+            123
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/util/ExceptionUtils.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 124,
+        "name": "TravelResult",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TravelResult",
+        "description": "TravelResult 类用于封装旅行查询的结果信息，其主要职责是表示与旅行相关的状态数据，通过 isStatus() 方法提供状态的访问。该类位于车票系统实体层，作为数据传输对象使用。",
+        "methods": [],
+        "dependencies": [
+            81,
+            274
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TravelResult.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 125,
+        "name": "Food",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Food",
+        "description": "表示火车票系统中食品信息的实体类，用于封装与食品相关的数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Food.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 126,
+        "name": "Travel2Controller",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.Travel2Controller",
+        "description": "Travel2Controller 是一个处理列车行程相关业务的控制器类，负责提供行程信息的增删改查、行程详情查询、路线与车次类型获取等 RESTful 接口，同时区分普通用户和管理员的查询权限。",
+        "methods": [],
+        "dependencies": [
+            148,
+            224,
+            126,
+            193,
+            218,
+            205
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/Travel2Controller.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 127,
+        "name": "RebookServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.RebookServiceImpl",
+        "description": "RebookServiceImpl 是一个实现改签业务逻辑的服务类，负责处理车票改签、差价支付、订单更新与创建、座位分配等核心功能，并与行程、路线、订单等相关服务进行交互。",
+        "methods": [],
+        "dependencies": [
+            34,
+            81,
+            85,
+            6,
+            218,
+            274,
+            69,
+            37,
+            21,
+            20,
+            279,
+            256,
+            74,
+            73,
+            184,
+            127,
+            249,
+            155,
+            205,
+            80,
+            113
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/RebookServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 128,
+        "name": "UserServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.UserServiceImpl",
+        "description": "UserServiceImpl 是用户服务的核心实现类，负责处理用户相关的业务逻辑，包括用户的增删改查、默认认证用户创建以及用户认证信息的删除。该类在系统中作为用户管理模块的服务层，与数据访问层和认证模块交互，为上层提供统一的用户操作接口。",
+        "methods": [],
+        "dependencies": [
+            160,
+            238,
+            21,
+            245,
+            128,
+            117,
+            218,
+            33
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/UserServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 129,
+        "name": "GetPriceDomain",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.GetPriceDomain",
+        "description": "表示票价查询相关数据的通用实体类，用于封装与价格获取相关的领域信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/GetPriceDomain.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 130,
+        "name": "Balance",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Balance",
+        "description": "表示用户账户余额的实体类，用于在火车票系统中存储和管理用户的余额信息。",
+        "methods": [],
+        "dependencies": [
+            130
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Balance.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 131,
+        "name": "Gender",
+        "qualifiedName": "edu.fudanselab.trainticket.dto.Gender",
+        "description": "Gender类用于表示性别信息，提供性别代码与名称之间的映射和查询功能，支持通过代码获取对应的性别名称。",
+        "methods": [],
+        "dependencies": [
+            131
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/dto/Gender.java",
+        "typeKind": "enum"
+    },
+    {
+        "id": 132,
+        "name": "WaitListOrderStatus",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.WaitListOrderStatus",
+        "description": "WaitListOrderStatus 是一个枚举辅助类，用于表示和管理候补订单状态的代码与名称映射。它提供方法获取状态码、状态名称，以及通过状态码查询对应名称的功能，在系统中起到统一管理和解析候补订单状态的作用。",
+        "methods": [],
+        "dependencies": [
+            37,
+            132
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/WaitListOrderStatus.java",
+        "typeKind": "enum"
+    },
+    {
+        "id": 133,
+        "name": "TripId",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TripId",
+        "description": "TripId 是一个用于标识行程的实体类，主要提供行程ID的字符串表示形式，通常用于系统中对行程的唯一标识和展示。",
+        "methods": [],
+        "dependencies": [
+            133,
+            260
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TripId.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 134,
+        "name": "TrainInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.TrainInitData",
+        "description": "负责初始化火车票系统中列车相关基础数据的启动类，通过 run 方法在应用启动时加载或设置必要的初始数据。",
+        "methods": [],
+        "dependencies": [
+            81,
+            137
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/TrainInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 135,
+        "name": "RoutePlanServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.RoutePlanServiceImpl",
+        "description": "RoutePlanServiceImpl 是一个实现路线规划服务的类，负责根据不同的策略（如 cheapest、quickest、最少停站）搜索最优出行方案。它通过调用高速和普通列车服务获取行程信息，并支持根据路线ID或行程ID查询详细信息，在系统中充当路线规划逻辑的核心处理组件。",
+        "methods": [],
+        "dependencies": [
+            152,
+            82,
+            135,
+            85,
+            193,
+            218,
+            274,
+            21,
+            20,
+            281,
+            184,
+            249,
+            205
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/RoutePlanServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 136,
+        "name": "OrderOtherServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.OrderOtherServiceImpl",
+        "description": "OrderOtherServiceImpl 是订单服务的核心实现类，负责处理与火车票订单相关的全生命周期操作，包括创建、查询、修改、取消、支付及安全校验等功能。该类在系统中作为订单业务逻辑的主要承载者，通过与 Seat、Order 等数据模型以及 HttpHeaders 进行交互，为上层提供完整的订单管理服务接口。",
+        "methods": [],
+        "dependencies": [
+            247,
+            136,
+            218,
+            254,
+            219,
+            240,
+            37,
+            21,
+            279,
+            70,
+            73,
+            74,
+            79,
+            172,
+            249,
+            187
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/OrderOtherServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 137,
+        "name": "TrainService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.TrainService",
+        "description": "TrainService 是一个抽象服务类，负责管理 TrainType 对象的全生命周期操作，包括创建、查询（按 ID、名称或全部）、更新和删除。该类在系统中作为列车类型数据访问的统一接口，供上层业务逻辑调用，并通过 HttpHeaders 支持请求上下文传递（如认证信息）。其具体实现由子类提供，与 TrainType 实体紧密关联。",
+        "methods": [],
+        "dependencies": [
+            81
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/TrainService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 138,
+        "name": "AllTripFood",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.AllTripFood",
+        "description": "AllTripFood 是一个实体类，用于表示与行程相关的所有餐饮信息，在系统中可能作为数据传输或持久化对象使用。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/AllTripFood.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 139,
+        "name": "CommonOrderAlterInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.CommonOrderAlterInfo",
+        "description": "通用订单修改信息实体类，用于封装火车票订单变更相关的基础数据。",
+        "methods": [],
+        "dependencies": [
+            256
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/CommonOrderAlterInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 140,
+        "name": "ExecuteControlller",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.ExecuteControlller",
+        "description": "ExecuteController 负责处理与车票执行相关的操作，包括执行出票和取票请求，同时提供主页入口。该控制器位于系统的服务接口层，通过 RESTful API 接收客户端请求，并与订单服务交互完成相应业务逻辑。",
+        "methods": [],
+        "dependencies": [
+            179,
+            218,
+            140,
+            93
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/ExecuteControlller.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 141,
+        "name": "Consign",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Consign",
+        "description": "Consign类是一个实体类，用于表示托运相关信息，在系统中可能用于封装与托运业务相关的数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Consign.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 142,
+        "name": "InsertConsignRecordResult",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.InsertConsignRecordResult",
+        "description": "表示插入托运记录操作结果的实体类，用于封装托运记录插入后的返回信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/InsertConsignRecordResult.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 143,
+        "name": "ConsignPriceController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.ConsignPriceController",
+        "description": "ConsignPriceController 是一个负责处理托运价格相关请求的控制器类，提供获取价格信息、根据重量和区域查询价格、获取及修改价格配置等功能，位于系统的Web层，用于对接前端请求并调用相应服务逻辑。",
+        "methods": [],
+        "dependencies": [
+            143,
+            198,
+            234,
+            218,
+            91
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/ConsignPriceController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 144,
+        "name": "Travel2InitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.Travel2InitData",
+        "description": "Travel2InitData 是一个用于初始化旅行相关数据的启动类，通过 run 方法执行初始化逻辑，通常在系统启动时加载必要的旅行模块数据。",
+        "methods": [],
+        "dependencies": [
+            148,
+            218,
+            237
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/Travel2InitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 145,
+        "name": "NotificationService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.NotificationService",
+        "description": "NotificationService 是一个抽象服务类，负责定义与订单状态变更相关的通知逻辑，包括订票成功、订单创建成功、订单修改成功和订单取消成功等场景的通知处理。该类为通知功能提供统一的抽象接口，由具体实现类完成实际的通知发送逻辑。",
+        "methods": [],
+        "dependencies": [
+            63
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author Wenvi\r\n@date 2017/6/15\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/NotificationService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 146,
+        "name": "ConfigController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.ConfigController",
+        "description": "ConfigController 是一个用于管理配置信息的控制器类，提供查询、创建、更新、删除和检索配置的 RESTful 接口，位于 train-ticket 系统的控制层，负责与前端或其他服务进行配置数据交互。",
+        "methods": [],
+        "dependencies": [
+            146,
+            186,
+            218,
+            46
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author Chenjie Xu\r\n@date 2017/5/11.\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/ConfigController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 147,
+        "name": "InsidePaymentController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.InsidePaymentController",
+        "description": "InsidePaymentController 负责处理与内部支付相关的操作，包括支付、创建账户、充值、查询支付信息、查询账户信息、提现以及支付差额等。该类作为支付服务的控制器，接收并处理来自客户端的支付相关请求，并与支付和账户服务进行交互。",
+        "methods": [],
+        "dependencies": [
+            89,
+            147,
+            199,
+            218,
+            42,
+            17,
+            255
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/InsidePaymentController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 148,
+        "name": "TravelInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TravelInfo",
+        "description": "TravelInfo 是一个实体类，用于表示与火车票相关的行程信息，在系统中主要承担数据模型的角色。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TravelInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 149,
+        "name": "PriceController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.PriceController",
+        "description": "PriceController 是一个用于管理票价配置的控制器类，提供查询、创建、更新和删除票价信息的 RESTful 接口，支持按路线与列车类型、批量查询及全量查询等多种查询方式，在系统中负责处理与票价相关的 HTTP 请求。",
+        "methods": [],
+        "dependencies": [
+            1,
+            231,
+            149,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/PriceController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 150,
+        "name": "AdminUserController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.AdminUserController",
+        "description": "AdminUserController 是一个用于管理用户信息的控制器类，提供管理员对用户进行增删改查操作的 RESTful 接口，位于系统的服务端控制层，与 UserDto 等数据传输对象协同工作。",
+        "methods": [],
+        "dependencies": [
+            238,
+            176,
+            150,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/AdminUserController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 151,
+        "name": "TravelPlanServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.TravelPlanServiceImpl",
+        "description": "TravelPlanServiceImpl 是一个实现旅行规划服务的类，主要负责根据不同的策略（如 cheapest、quickest、最少站点等）为用户提供列车行程方案，包括直达和中转方案。它通过调用内部私有方法处理高铁路线和普通路线的查询，并支持获取余票数量及列车类型信息，在系统中处于服务层，为上层提供行程规划相关的业务逻辑支持。",
+        "methods": [],
+        "dependencies": [
+            56,
+            81,
+            82,
+            193,
+            218,
+            21,
+            279,
+            11,
+            73,
+            75,
+            280,
+            281,
+            151,
+            249,
+            155
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/TravelPlanServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 152,
+        "name": "RoutePlanService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.RoutePlanService",
+        "description": "RoutePlanService 是一个抽象服务类，负责提供多种路线规划策略的接口，包括查询最便宜、最快和最少停站的行程方案。该类定义了三个抽象方法，由子类实现具体的路线规划逻辑，在系统中作为路线规划功能的核心服务层。",
+        "methods": [],
+        "dependencies": [
+            82,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/RoutePlanService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 153,
+        "name": "MicroserviceInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.MicroserviceInitData",
+        "description": "MicroserviceInitData 类负责在微服务启动时执行初始化数据的逻辑，通过 run 方法处理启动参数并完成相关初始化任务。",
+        "methods": [],
+        "dependencies": [
+            62,
+            218,
+            68
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/MicroserviceInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 154,
+        "name": "TravelController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.TravelController",
+        "description": "TravelController 是一个用于管理列车行程（Trip）相关操作的控制器类，提供包括行程创建、查询、更新、删除以及获取行程详细信息等 RESTful 接口。该类在系统中作为旅行服务的入口，处理来自客户端的 HTTP 请求，并与后端服务交互以完成相应业务逻辑。",
+        "methods": [],
+        "dependencies": [
+            148,
+            193,
+            218,
+            154,
+            237,
+            205,
+            249,
+            246
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/TravelController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 155,
+        "name": "JsonUtils",
+        "qualifiedName": "edu.fudanselab.trainticket.util.JsonUtils",
+        "description": "JsonUtils 是一个工具类，提供对象与 JSON 以及 Map 之间的相互转换功能，支持对象序列化为 JSON 字符串、JSON 反序列化为指定类型对象、对象转 Map、JSON 字符串转 Map，以及对象类型之间的转换。该类在系统中用于简化数据格式转换操作，通常被其他业务组件调用以处理 JSON 数据。",
+        "methods": [],
+        "dependencies": [
+            155
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/util/JsonUtils.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 156,
+        "name": "ConsignRecord",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.ConsignRecord",
+        "description": "ConsignRecord 是一个实体类，用于表示托运记录的相关信息，在系统中作为数据模型使用。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/ConsignRecord.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 157,
+        "name": "InsidePaymentMoney",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.InsidePaymentMoney",
+        "description": "InsidePaymentMoney 是一个实体类，用于表示内部支付金额相关信息，属于 train-ticket 系统中的数据模型组成部分。",
+        "methods": [],
+        "dependencies": [
+            157,
+            262
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/InsidePaymentMoney.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 158,
+        "name": "StationFoodRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.StationFoodRepository",
+        "description": "StationFoodRepository 是一个用于管理车站餐饮信息的仓储接口，提供基于车站名称或ID的查询、全量获取及删除操作，支持车站餐饮数据的持久化访问。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/StationFoodRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 159,
+        "name": "InsidePaymentRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.InsidePaymentRepository",
+        "description": "InsidePaymentRepository 是一个用于管理内部支付记录的持久化接口，提供基于 ID、订单 ID 和用户 ID 查询支付记录的功能，以及查询所有支付记录的能力。它在系统中作为数据访问层组件，与 InsidePayment 实体紧密关联，支持上层业务逻辑对支付数据的访问需求。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/InsidePaymentRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 160,
+        "name": "UserService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.UserService",
+        "description": "UserService 是一个抽象服务类，负责管理用户相关的业务逻辑，包括用户的增删改查操作。该类定义了用户保存、查询所有用户、按用户名或用户ID查询、更新和删除用户等核心方法，为上层调用提供统一的用户数据访问接口。",
+        "methods": [],
+        "dependencies": [
+            238,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/UserService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 161,
+        "name": "WaitListOrderService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.WaitListOrderService",
+        "description": "WaitListOrderService 是一个抽象服务类，负责候补订单的全生命周期管理，包括创建、查询、更新及状态修改等操作。该类定义了候补订单相关的核心业务接口，在系统中作为候补订单业务逻辑的统一入口，与订单数据模型（如 WaitListOrder 和 WaitListOrderVO）紧密协作。",
+        "methods": [],
+        "dependencies": [
+            92,
+            16,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/WaitListOrderService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 162,
+        "name": "AdminOrderService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.AdminOrderService",
+        "description": "AdminOrderService 是一个抽象服务类，负责管理火车票订单的全生命周期操作，包括查询所有订单、删除指定订单、更新订单信息和添加新订单。该类为管理员提供订单管理功能，在系统中位于服务层，通过 HttpHeaders 处理请求认证与上下文，并与 Order 等数据模型交互。",
+        "methods": [],
+        "dependencies": [
+            70,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/AdminOrderService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 163,
+        "name": "OutsidePaymentInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.OutsidePaymentInfo",
+        "description": "表示外部支付信息的实体类，用于封装与外部支付系统交互所需的数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/OutsidePaymentInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 164,
+        "name": "AdminRouteService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.AdminRouteService",
+        "description": "AdminRouteService 是一个抽象服务类，负责管理列车路线相关的管理员操作，包括获取所有路线、创建与修改路线以及删除指定路线。该类定义了路由管理的核心接口，需由具体实现类完成实际业务逻辑。",
+        "methods": [],
+        "dependencies": [
+            38,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/AdminRouteService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 165,
+        "name": "NotifyRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.NotifyRepository",
+        "description": "NotifyRepository 是一个数据访问接口，负责对通知信息（NotifyInfo）进行持久化操作，提供根据ID查询、查询全部和按ID删除等基本数据访问方法。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/NotifyRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 166,
+        "name": "GetAccountByIdInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.GetAccountByIdInfo",
+        "description": "该类是一个用于封装根据ID获取账户信息请求的实体类，主要在系统中作为数据传输对象（DTO）使用，不包含业务逻辑方法。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/GetAccountByIdInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 167,
+        "name": "StationFoodStoreInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.StationFoodStoreInfo",
+        "description": "表示车站内食品商店信息的实体类，用于存储和管理与车站食品商店相关的数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/StationFoodStoreInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 168,
+        "name": "TravelInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.TravelInitData",
+        "description": "TravelInitData 类负责在系统启动时初始化旅行相关数据，通过 run 方法执行初始化逻辑，通常用于加载或设置旅行服务所需的初始数据。",
+        "methods": [],
+        "dependencies": [
+            148,
+            218,
+            237
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/TravelInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 169,
+        "name": "TokenService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.TokenService",
+        "description": "TokenService 是一个抽象服务类，负责处理与令牌（Token）相关的认证请求，通过 getToken 方法接收认证信息并返回相应的响应，为系统提供统一的令牌获取接口。",
+        "methods": [],
+        "dependencies": [
+            19,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/TokenService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 170,
+        "name": "ConfigInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.ConfigInitData",
+        "description": "ConfigInitData 类负责在系统启动时执行配置初始化操作，通过 run 方法完成相关初始化逻辑，属于系统初始化模块的一部分。",
+        "methods": [],
+        "dependencies": [
+            186,
+            218,
+            46
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/ConfigInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 171,
+        "name": "OtherInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.OtherInitData",
+        "description": "负责系统初始化过程中其他辅助数据的加载和初始化，通常在应用启动时执行一次性初始化任务。",
+        "methods": [],
+        "dependencies": [
+            37,
+            279,
+            70,
+            247,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/OtherInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 172,
+        "name": "SoldTicket",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.SoldTicket",
+        "description": "表示已售车票的实体类，用于存储和管理售票相关的信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/SoldTicket.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 173,
+        "name": "InsidePaymentAddMoneyRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.InsidePaymentAddMoneyRepository",
+        "description": "InsidePaymentAddMoneyRepository 是一个数据访问接口，负责提供对用户充值记录（InsidePaymentMoney）的查询操作，包括根据用户ID查找充值记录和获取所有充值记录。该类位于 repository 层，用于与数据存储交互，支持支付模块中的充值相关功能。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/InsidePaymentAddMoneyRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 174,
+        "name": "Money",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Money",
+        "description": "表示金额的实体类，用于在火车票系统中封装货币相关数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Money.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 175,
+        "name": "AuthUserService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.AuthUserService",
+        "description": "AuthUserService 是一个抽象服务类，负责管理用户认证相关的核心操作，包括保存用户、获取所有用户列表、创建默认认证用户以及删除指定用户。该类在系统中作为用户认证模块的服务层接口，为上层提供统一的用户管理功能，并与 DTO 和 HTTP 请求头等组件交互。",
+        "methods": [],
+        "dependencies": [
+            264,
+            117,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/AuthUserService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 176,
+        "name": "AdminUserService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.AdminUserService",
+        "description": "AdminUserService 是一个抽象服务类，负责管理用户相关的后台操作，包括获取所有用户、删除用户、更新用户和添加用户。该类定义了用户管理的核心接口，供管理员使用，需由具体实现类完成实际逻辑。",
+        "methods": [],
+        "dependencies": [
+            238,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/AdminUserService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 177,
+        "name": "RoutePlanController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.RoutePlanController",
+        "description": "RoutePlanController 负责处理与路线规划相关的HTTP请求，提供获取最便宜、最快和最少停站路线的功能，是系统中路线规划服务的入口控制器。",
+        "methods": [],
+        "dependencies": [
+            82,
+            177,
+            152,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/RoutePlanController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 178,
+        "name": "AdminRouteController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.AdminRouteController",
+        "description": "AdminRouteController 是一个用于管理列车路线的控制器类，提供获取、添加和删除路线的 RESTful 接口，主要服务于管理员角色，并通过请求头进行权限或会话验证。",
+        "methods": [],
+        "dependencies": [
+            178,
+            38,
+            218,
+            164
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/AdminRouteController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 179,
+        "name": "ExecuteService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.ExecuteService",
+        "description": "ExecuteService 是一个抽象服务类，负责定义车票执行相关操作的接口，包括车票执行（ticketExecute）和车票收集（ticketCollect）两个核心方法，用于处理订单相关的票务执行逻辑。",
+        "methods": [],
+        "dependencies": [
+            218
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/ExecuteService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 180,
+        "name": "VerifyCodeServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.VerifyCodeServiceImpl",
+        "description": "VerifyCodeServiceImpl 是验证码服务的实现类，负责生成图像验证码并验证用户提交的验证码。该类提供获取验证码图片和验证验证码正确性的功能，支持在 Web 请求中集成使用。",
+        "methods": [],
+        "dependencies": [
+            15,
+            180,
+            109
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/VerifyCodeServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 181,
+        "name": "AdminTrip",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.AdminTrip",
+        "description": "AdminTrip 是一个实体类，用于表示管理员相关的车次信息，在系统中主要承担数据模型的角色。",
+        "methods": [],
+        "dependencies": [
+            81,
+            85,
+            274
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/AdminTrip.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 182,
+        "name": "FoodServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.FoodServiceImpl",
+        "description": "FoodServiceImpl 是食品订单服务的实现类，负责处理与食品订单相关的业务逻辑，包括创建、查询、更新和删除食品订单，以及根据行程信息获取可用食品列表。该类在系统中作为食品服务模块的核心实现，通过 HTTP 请求头传递上下文信息，并返回统一格式的响应结果。",
+        "methods": [],
+        "dependencies": [
+            183,
+            277,
+            35,
+            21,
+            182,
+            212,
+            138,
+            192,
+            218,
+            274,
+            155
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/FoodServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 183,
+        "name": "FoodService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.FoodService",
+        "description": "FoodService 是一个抽象服务类，负责管理与餐食订单相关的业务逻辑，包括创建、批量创建、删除、查询、更新餐食订单以及获取特定行程的可用餐食信息。该类在系统中作为餐食服务的核心接口，供上层调用并与数据访问层交互。",
+        "methods": [],
+        "dependencies": [
+            212,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/FoodService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 184,
+        "name": "TripAllDetail",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TripAllDetail",
+        "description": "TripAllDetail 是一个实体类，用于封装车票相关的完整行程详细信息，在系统中作为数据传输和持久化的载体。",
+        "methods": [],
+        "dependencies": [
+            20,
+            85
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TripAllDetail.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 185,
+        "name": "BasicServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.BasicServiceImpl",
+        "description": "BasicServiceImpl 是一个基础服务实现类，主要负责提供与车次、路线、车站及票价配置相关的查询功能。它在系统中作为底层服务支撑，为上层业务提供车站存在性校验、路线信息获取、列车类型查询以及票价配置查询等核心能力，并通过 HttpHeaders 传递请求上下文信息。",
+        "methods": [],
+        "dependencies": [
+            111,
+            81,
+            1,
+            133,
+            85,
+            218,
+            274,
+            21,
+            185,
+            13,
+            124,
+            155
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/BasicServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 186,
+        "name": "Config",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Config",
+        "description": "Config 类是一个通用配置实体类，用于封装系统中的配置信息，在系统中起到数据载体的作用，通常与数据库表或其他配置源对应。",
+        "methods": [],
+        "dependencies": [
+            186
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Config.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 187,
+        "name": "OrderAlterInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.OrderAlterInfo",
+        "description": "OrderAlterInfo 是一个用于封装订单改签相关信息的实体类，属于 train-ticket 系统中的数据模型层，主要用于在订单改签业务流程中传递和存储相关数据。",
+        "methods": [],
+        "dependencies": [
+            70
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/OrderAlterInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 188,
+        "name": "UserOperationException",
+        "qualifiedName": "edu.fudanselab.trainticket.exception.UserOperationException",
+        "description": "表示用户操作异常的通用异常类，用于封装与用户操作相关的错误信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/exception/UserOperationException.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 189,
+        "name": "AssuranceRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.AssuranceRepository",
+        "description": "AssuranceRepository 是一个用于管理保险（Assurance）数据的持久化接口，提供基于 ID 或订单 ID 的查询、删除及全量获取保险记录的功能，属于数据访问层组件。",
+        "methods": [],
+        "dependencies": [
+            96
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/AssuranceRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 190,
+        "name": "ContactsController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.ContactsController",
+        "description": "ContactsController 是一个用于管理用户联系人信息的控制器类，提供联系人的增删改查及列表获取等RESTful接口，同时支持普通用户和管理员操作，在系统中负责处理与联系人相关的HTTP请求。",
+        "methods": [],
+        "dependencies": [
+            190,
+            57,
+            232,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/ContactsController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 191,
+        "name": "AssuranceController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.AssuranceController",
+        "description": "AssuranceController 是一个处理保险相关业务的控制器类，负责提供 RESTful 接口以支持对保险记录的增删改查操作，包括根据订单 ID 或保险 ID 查询、创建、修改和删除保险信息，并支持获取所有保险类型及保险列表。",
+        "methods": [],
+        "dependencies": [
+            191,
+            118,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/AssuranceController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 192,
+        "name": "RabbitSend",
+        "qualifiedName": "edu.fudanselab.trainticket.mq.RabbitSend",
+        "description": "RabbitSend 类负责通过 RabbitMQ 发送消息，提供 send 方法用于将指定字符串消息发送到消息队列。",
+        "methods": [],
+        "dependencies": [
+            244,
+            192
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/mq/RabbitSend.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 193,
+        "name": "TripInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TripInfo",
+        "description": "TripInfo类用于封装行程信息，主要包含行程的起始地点和终点地点，提供获取起始地和目的地的方法。该类在系统中作为行程数据的实体类，用于数据传输和存储。",
+        "methods": [],
+        "dependencies": [
+            193,
+            249
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TripInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 194,
+        "name": "PreserveOtherController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.PreserveOtherController",
+        "description": "PreserveOtherController 负责处理与车票预定相关的其他业务请求，提供主页访问和车票预定接口，是订单服务的入口控制器之一。",
+        "methods": [],
+        "dependencies": [
+            209,
+            97,
+            218,
+            194,
+            249,
+            47,
+            99
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/PreserveOtherController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 195,
+        "name": "TrainController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.TrainController",
+        "description": "TrainController 是一个用于管理列车信息的 RESTful 控制器，提供创建、查询、更新和删除 TrainType 实体的功能，支持通过 ID 或名称检索列车类型，并处理相关的 HTTP 请求与响应。",
+        "methods": [],
+        "dependencies": [
+            81,
+            137,
+            218,
+            195
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/TrainController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 196,
+        "name": "FoodDeliveryController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.FoodDeliveryController",
+        "description": "FoodDeliveryController 是一个负责处理餐饮配送订单相关 HTTP 请求的控制器类，提供创建、删除、查询及更新配送订单信息（如行程ID、座位号、配送时间等）的 RESTful 接口，在系统中充当餐饮配送服务的入口。",
+        "methods": [],
+        "dependencies": [
+            196,
+            208,
+            207,
+            265,
+            116,
+            217,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/FoodDeliveryController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 197,
+        "name": "WebSecurityConfig",
+        "qualifiedName": "edu.fudanselab.trainticket.config.WebSecurityConfig",
+        "description": "WebSecurityConfig 是一个用于配置 Spring Security 的安全设置的类，主要负责认证管理、HTTP 安全策略、密码编码以及跨域（CORS）配置。它通过重写 configure 方法定义安全规则，并提供 AuthenticationManager 和 PasswordEncoder 等关键安全组件的 Bean 配置，在系统中起到核心安全控制作用。",
+        "methods": [],
+        "dependencies": [
+            197,
+            44
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/config/WebSecurityConfig.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 198,
+        "name": "ConsignPrice",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.ConsignPrice",
+        "description": "ConsignPrice 是一个实体类，用于表示托运价格相关信息，属于 train-ticket 系统中的数据模型部分。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/ConsignPrice.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 199,
+        "name": "AccountInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.AccountInfo",
+        "description": "表示用户账户信息的实体类，用于在系统中存储和传输账户相关数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/AccountInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 200,
+        "name": "TrainFoodService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.TrainFoodService",
+        "description": "TrainFoodService 是一个抽象服务类，负责管理列车餐饮相关操作，包括创建餐饮信息、列出所有餐饮以及根据行程ID查询对应餐饮。该类定义了列车餐饮服务的核心接口，供具体实现类继承和实现，并通过 HttpHeaders 支持请求上下文传递，在系统中充当列车餐饮业务逻辑的协调者。",
+        "methods": [],
+        "dependencies": [
+            222,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/TrainFoodService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 201,
+        "name": "EmailProperties",
+        "qualifiedName": "edu.fudanselab.trainticket.config.EmailProperties",
+        "description": "EmailProperties 类用于封装邮件服务的配置属性，包括主机地址、端口、用户名和密码等，提供相应的 getter 和 setter 方法以支持外部访问和配置。",
+        "methods": [],
+        "dependencies": [
+            201
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/config/EmailProperties.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 202,
+        "name": "RouteInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.RouteInfo",
+        "description": "RouteInfo 是一个实体类，用于表示路线相关信息，在系统中主要用于数据传输和持久化。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/RouteInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 203,
+        "name": "PriceConfigRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.PriceConfigRepository",
+        "description": "PriceConfigRepository 是一个数据访问接口，负责管理票价配置（PriceConfig）实体的持久化操作。它提供了根据ID、路线ID与列车类型等条件查询票价配置的方法，支持单条及批量查询，在系统中作为票价配置数据的访问入口，与业务逻辑层解耦。",
+        "methods": [],
+        "dependencies": [
+            1
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/PriceConfigRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 204,
+        "name": "FoodDeliveryServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.FoodDeliveryServiceImpl",
+        "description": "FoodDeliveryServiceImpl 是一个食品配送服务的实现类，负责处理与食品配送订单相关的业务逻辑，包括创建、删除、查询订单以及更新配送信息（如行程ID、座位号和配送时间）。该类在系统中作为食品配送服务的核心组件，提供RESTful API接口供外部调用。",
+        "methods": [],
+        "dependencies": [
+            208,
+            167,
+            90,
+            21,
+            207,
+            265,
+            116,
+            125,
+            204,
+            218,
+            217
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/FoodDeliveryServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 205,
+        "name": "TripAllDetailInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TripAllDetailInfo",
+        "description": "表示车票行程的完整详细信息，包含出发地和目的地等基本信息。",
+        "methods": [],
+        "dependencies": [
+            249,
+            205
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TripAllDetailInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 206,
+        "name": "SecurityService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.SecurityService",
+        "description": "SecurityService 是一个抽象服务类，负责安全管理相关的配置操作，包括查询、新增、修改、删除安全配置以及账户安全检查。该类为安全配置管理提供统一的接口，需由具体实现类完成实际逻辑。",
+        "methods": [],
+        "dependencies": [
+            218,
+            18
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/SecurityService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 207,
+        "name": "DeliveryInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.DeliveryInfo",
+        "description": "表示配送信息的实体类，用于封装与配送相关的数据，在系统中作为数据传输和持久化的对象。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/DeliveryInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 208,
+        "name": "FoodDeliveryService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.FoodDeliveryService",
+        "description": "FoodDeliveryService 是一个抽象服务类，负责管理餐食配送订单的全生命周期操作，包括创建、删除、查询（按ID、全部、按商店ID）以及更新订单关联的行程ID、座位号和配送时间。该类在系统中作为餐食配送业务逻辑的接口定义，供具体实现类继承并提供实际业务处理。",
+        "methods": [],
+        "dependencies": [
+            207,
+            265,
+            116,
+            218,
+            217
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/FoodDeliveryService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 209,
+        "name": "PreserveOtherService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.PreserveOtherService",
+        "description": "PreserveOtherService 是一个抽象服务类，定义了车票预订的核心接口 preserve，用于处理非主流程的订票请求。该类位于订单服务模块中，作为其他具体预订服务实现的基类，与 OrderTicketsInfo 和 HttpHeaders 协作完成请求处理。",
+        "methods": [],
+        "dependencies": [
+            97,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/PreserveOtherService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 210,
+        "name": "Gender",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Gender",
+        "description": "Gender 类用于表示性别信息，提供性别代码与名称之间的映射和查询功能，支持通过代码获取对应的性别名称。",
+        "methods": [],
+        "dependencies": [
+            210
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Gender.java",
+        "typeKind": "enum"
+    },
+    {
+        "id": 211,
+        "name": "AuthConstant",
+        "qualifiedName": "edu.fudanselab.trainticket.constant.AuthConstant",
+        "description": "AuthConstant 是一个用于集中管理认证相关常量的通用辅助类，通常包含与身份验证、授权相关的静态常量值，在系统中为其他组件提供统一的常量引用。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/constant/AuthConstant.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 212,
+        "name": "FoodOrder",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.FoodOrder",
+        "description": "FoodOrder类用于表示火车票系统中的食品订单实体，封装了与食品订购相关的数据属性，作为数据传输和持久化的载体。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/FoodOrder.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 213,
+        "name": "ContactsInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.ContactsInitData",
+        "description": "ContactsInitData 是一个用于初始化联系人数据的启动类，通过 run 方法在系统启动时执行相关初始化逻辑。",
+        "methods": [],
+        "dependencies": [
+            57,
+            232,
+            270,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/ContactsInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 214,
+        "name": "InsidePayment",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.InsidePayment",
+        "description": "InsidePayment 是一个实体类，用于表示系统内部支付相关信息，属于 train-ticket 系统的领域模型的一部分。",
+        "methods": [],
+        "dependencies": [
+            269,
+            214
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/InsidePayment.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 215,
+        "name": "ContactsServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.ContactsServiceImpl",
+        "description": "ContactsServiceImpl 是联系人管理服务的实现类，负责处理联系人的增删改查操作，包括根据ID或账户ID查询联系人、创建、修改、删除联系人以及获取所有联系人信息，为火车票预订系统提供联系人数据管理支持。",
+        "methods": [],
+        "dependencies": [
+            232,
+            57,
+            40,
+            215,
+            218
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/ContactsServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 216,
+        "name": "AdminOrderController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.AdminOrderController",
+        "description": "AdminOrderController 是一个用于管理订单的控制器类，提供管理员对订单的增删改查操作。它位于系统的控制层，负责处理与订单相关的 HTTP 请求，并与服务层交互以完成业务逻辑。",
+        "methods": [],
+        "dependencies": [
+            70,
+            216,
+            162,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/AdminOrderController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 217,
+        "name": "SeatInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.SeatInfo",
+        "description": "SeatInfo 是一个实体类，用于表示火车票系统中座位的基本信息，在系统中作为数据模型用于存储和传递座位相关数据。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/SeatInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 218,
+        "name": "Response",
+        "qualifiedName": "edu.fudanselab.trainticket.util.Response",
+        "description": "通用响应工具类，用于封装和处理系统返回结果。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/util/Response.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 219,
+        "name": "OrderOtherRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.OrderOtherRepository",
+        "description": "OrderOtherRepository 是一个抽象数据访问接口，负责提供对订单数据的持久化操作，包括根据ID、账户ID、旅行日期和车次等条件查询订单，以及删除指定订单。该类在系统中作为订单数据访问层的通用契约，供具体实现类继承和实现。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/OrderOtherRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 220,
+        "name": "AdminTravelService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.AdminTravelService",
+        "description": "AdminTravelService 是一个抽象服务类，负责管理旅行信息的 CRUD 操作（创建、读取、更新和删除），为管理员提供对行程数据的全面控制。该类定义了获取所有行程、添加新行程、更新现有行程和删除指定行程的抽象方法，需由具体实现类完成实际逻辑。",
+        "methods": [],
+        "dependencies": [
+            148,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/AdminTravelService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 221,
+        "name": "AssuranceInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.AssuranceInitData",
+        "description": "负责初始化保险相关数据的启动类，通过 run 方法在系统启动时执行初始化逻辑。",
+        "methods": [],
+        "dependencies": [
+            189,
+            118
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/AssuranceInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 222,
+        "name": "TrainFood",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TrainFood",
+        "description": "TrainFood类用于表示火车上的食品信息，作为实体类在系统中封装与列车餐饮相关的数据。",
+        "methods": [],
+        "dependencies": [
+            222,
+            125
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TrainFood.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 223,
+        "name": "PaymentRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.PaymentRepository",
+        "description": "PaymentRepository 是一个抽象的数据访问接口，负责对 Payment 实体进行持久化操作，提供根据 ID、订单 ID 和用户 ID 查询支付记录以及查询所有支付记录的功能。该类位于数据访问层，为上层业务逻辑提供支付数据的访问支持。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/PaymentRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 224,
+        "name": "TravelService2",
+        "qualifiedName": "edu.fudanselab.trainticket.service.TravelService2",
+        "description": "TravelService2 是一个抽象服务类，负责提供与行程（Trip）相关的完整业务操作接口，包括行程的创建、查询、更新和删除（CRUD），以及批量查询、行程详情获取、路线和列车类型查询等功能。该类在系统中作为行程管理模块的核心服务层，定义了供上层调用的标准接口，具体实现由子类完成。",
+        "methods": [],
+        "dependencies": [
+            148,
+            193,
+            218,
+            205
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author Chenjie Xu\r\n@date 2017/6/7.\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/TravelService2.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 225,
+        "name": "InfoConstant",
+        "qualifiedName": "edu.fudanselab.trainticket.constant.InfoConstant",
+        "description": "InfoConstant 是一个常量类，用于集中管理与系统信息相关的常量定义，属于通用辅助类。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/constant/InfoConstant.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 226,
+        "name": "ConsignController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.ConsignController",
+        "description": "ConsignController 是一个处理托运相关业务的控制器类，负责提供托运信息的增删改查功能，包括根据账户ID、订单ID或收货人查询托运记录，以及插入和更新托运信息。该类位于系统的Web层，通过HTTP接口与前端或其他服务进行交互。",
+        "methods": [],
+        "dependencies": [
+            66,
+            218,
+            226,
+            141,
+            100,
+            91
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/ConsignController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 227,
+        "name": "PollThread",
+        "qualifiedName": "edu.fudanselab.trainticket.util.PollThread",
+        "description": "PollThread 是一个用于轮询执行车票预留操作的线程类，通过 run() 方法驱动轮询逻辑，并利用 doPreserve() 方法向指定 URL 发起 HTTP 请求以完成预留操作。",
+        "methods": [],
+        "dependencies": [
+            132,
+            21,
+            16,
+            161,
+            218,
+            227
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/util/PollThread.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 228,
+        "name": "InsidePaymentInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.InsidePaymentInitData",
+        "description": "InsidePaymentInitData 是一个用于初始化内部支付相关数据的启动类，通过实现 run 方法在系统启动时执行必要的数据初始化逻辑。",
+        "methods": [],
+        "dependencies": [
+            89,
+            83,
+            199,
+            269,
+            223,
+            214,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/InsidePaymentInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 229,
+        "name": "MailService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.MailService",
+        "description": "负责发送邮件的业务实现类，基于指定模板向收件人发送邮件。",
+        "methods": [],
+        "dependencies": [
+            229,
+            29
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/MailService.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 230,
+        "name": "OrderInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.OrderInfo",
+        "description": "OrderInfo类用于封装订单查询相关的条件和状态信息，支持按旅行日期、购票日期和订单状态进行查询过滤，并提供相应的启用/禁用及状态获取方法。",
+        "methods": [],
+        "dependencies": [
+            230
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/OrderInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 231,
+        "name": "PriceService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.PriceService",
+        "description": "PriceService 是一个抽象服务类，负责管理票价配置（PriceConfig）的全生命周期操作，包括创建、查询、更新和删除。它在系统中作为票价管理的核心服务接口，提供基于路线ID和列车类型等多种条件的票价查询功能，并与 HTTP 请求头（HttpHeaders）集成以支持上下文传递。该类为具体实现类定义了统一的票价服务契约。",
+        "methods": [],
+        "dependencies": [
+            1,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/PriceService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 232,
+        "name": "ContactsService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.ContactsService",
+        "description": "ContactsService 是一个抽象服务类，负责管理联系人（Contacts）相关的业务逻辑，提供联系人的创建、删除、修改、查询（包括按ID、账户ID及获取全部联系人）等核心操作。该类位于系统的服务层，作为联系人数据操作的统一接口，供上层控制器调用，并与数据访问层协同工作。",
+        "methods": [],
+        "dependencies": [
+            57,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/ContactsService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 233,
+        "name": "StationController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.StationController",
+        "description": "StationController 是一个用于管理车站信息的 RESTful 控制器，提供车站的增删改查及批量查询功能，包括通过名称或 ID 查询车站、批量查询车站 ID 或名称等操作，并统一处理请求头中的认证信息。",
+        "methods": [],
+        "dependencies": [
+            233,
+            62,
+            218,
+            68
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/StationController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 234,
+        "name": "ConsignPriceService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.ConsignPriceService",
+        "description": "ConsignPriceService 是一个抽象服务类，负责处理与托运价格相关的业务逻辑，包括根据重量和区域获取价格、查询价格信息、创建和修改价格配置以及获取当前价格配置。该类为托运价格管理提供统一的接口，需由具体实现类完成实际逻辑。",
+        "methods": [],
+        "dependencies": [
+            198,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/ConsignPriceService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 235,
+        "name": "AuthUserController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.AuthUserController",
+        "description": "AuthUserController 负责处理与用户认证相关的请求，包括获取令牌、查询所有认证用户以及删除指定用户等操作，是系统中认证管理模块的控制器。",
+        "methods": [],
+        "dependencies": [
+            19,
+            169,
+            235,
+            218,
+            175,
+            188,
+            9
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/AuthUserController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 236,
+        "name": "JWTProvider",
+        "qualifiedName": "edu.fudanselab.trainticket.config.jwt.JWTProvider",
+        "description": "JWTProvider 类负责生成和管理 JWT（JSON Web Token）令牌，主要用于基于用户认证信息创建安全令牌，支持系统中的身份验证流程。",
+        "methods": [],
+        "dependencies": [
+            264,
+            225
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/config/jwt/JWTProvider.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 237,
+        "name": "TravelService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.TravelService",
+        "description": "TravelService 是一个抽象服务类，负责提供与旅行（车票、行程）相关的完整 CRUD 操作及多种查询功能，包括单条行程管理、批量查询、并行查询、行程详情获取、路线与列车类型查询等，同时支持管理员专用查询。该类作为旅行服务模块的核心接口，供具体实现类继承并实现其业务逻辑。",
+        "methods": [],
+        "dependencies": [
+            148,
+            193,
+            218,
+            205
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author Chenjie Xu\r\n@date 2017/5/9.\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/TravelService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 238,
+        "name": "UserDto",
+        "qualifiedName": "edu.fudanselab.trainticket.dto.UserDto",
+        "description": "UserDto 是一个数据传输对象（DTO），用于在系统中封装和传递用户相关的信息。该类位于 edu.fudanselab.trainticket.dto 包中，主要职责是作为用户数据的载体，通常用于服务层与表示层之间的数据交换。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/dto/UserDto.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 239,
+        "name": "UserController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.UserController",
+        "description": "UserController 是一个处理用户相关 HTTP 请求的控制器类，负责提供用户管理功能，包括用户注册、查询（按用户名或用户ID）、更新和删除等操作。该类位于系统的 Web 层，通过 RESTful 接口与前端或其他服务交互，并依赖 UserDto 传输用户数据。",
+        "methods": [],
+        "dependencies": [
+            238,
+            239,
+            160,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/UserController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 240,
+        "name": "OrderSecurity",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.OrderSecurity",
+        "description": "OrderSecurity 是一个与订单安全相关的实体类，用于在火车票预订系统中表示和管理订单的安全信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/OrderSecurity.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 241,
+        "name": "AdminRouteServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.AdminRouteServiceImpl",
+        "description": "AdminRouteServiceImpl 是一个管理列车路线的业务实现类，负责提供路线的增删改查及站点校验功能，主要服务于管理员对路线信息的操作需求。",
+        "methods": [],
+        "dependencies": [
+            164,
+            241,
+            21,
+            38,
+            218
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/AdminRouteServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 242,
+        "name": "SeatService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.SeatService",
+        "description": "SeatService 是一个抽象服务类，负责处理与座位相关的业务逻辑，包括座位分配和查询区间余票。该类定义了两个核心抽象方法：distributeSeat 用于分配座位，getLeftTicketOfInterval 用于获取指定区间的剩余票数。作为服务层组件，它为上层调用者提供座位管理的统一接口，具体实现由子类完成。",
+        "methods": [],
+        "dependencies": [
+            73,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/SeatService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 243,
+        "name": "OrderOtherController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.OrderOtherController",
+        "description": "OrderOtherController 是一个处理火车票订单相关业务的控制器类，负责提供订单的创建、查询、修改、删除、支付、价格计算、安全信息检查等RESTful API接口，同时支持获取座位列表和保存订单信息等功能，在系统中作为订单管理模块的入口与外部进行交互。",
+        "methods": [],
+        "dependencies": [
+            70,
+            243,
+            73,
+            247,
+            249,
+            254,
+            218,
+            136
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/OrderOtherController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 244,
+        "name": "Queues",
+        "qualifiedName": "edu.fudanselab.trainticket.config.Queues",
+        "description": "配置类，用于定义和管理消息队列（如邮件队列），在系统中提供队列的声明和初始化功能。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/config/Queues.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 245,
+        "name": "UserRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.UserRepository",
+        "description": "UserRepository 是一个数据访问接口，负责用户数据的持久化操作，提供根据用户名或用户ID查询用户、删除用户以及获取所有用户列表的功能。",
+        "methods": [],
+        "dependencies": [
+            33
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/UserRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 246,
+        "name": "TravelServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.TravelServiceImpl",
+        "description": "TravelServiceImpl 是旅行服务的核心实现类，负责处理与车次、路线、座位及票价相关的业务逻辑，包括创建、查询、更新和删除旅行信息，并提供多种查询方式（如批量查询、并行查询等）。该类通过调用其他服务获取路线、列车类型和余票信息，为上层控制器提供完整的旅行数据支持。",
+        "methods": [],
+        "dependencies": [
+            237,
+            81,
+            133,
+            85,
+            67,
+            193,
+            218,
+            274,
+            21,
+            20,
+            279,
+            181,
+            148,
+            73,
+            246,
+            184,
+            13,
+            124,
+            249,
+            155,
+            205
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/TravelServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 247,
+        "name": "OrderOtherService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.OrderOtherService",
+        "description": "OrderOtherService 是一个抽象服务类，负责处理与订单相关的各种操作，包括订单的创建、查询、修改、取消、支付及安全校验等。该类定义了订单管理的核心接口，为上层业务提供统一的订单服务抽象，需由具体实现类完成实际逻辑。",
+        "methods": [],
+        "dependencies": [
+            70,
+            73,
+            218,
+            254,
+            187
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/OrderOtherService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 248,
+        "name": "PreserveService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.PreserveService",
+        "description": "PreserveService 是一个抽象服务类，负责处理车票预订相关业务逻辑，定义了 preserve 方法用于执行订单车票的预留操作，需由具体实现类完成实际逻辑。",
+        "methods": [],
+        "dependencies": [
+            97,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/PreserveService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 249,
+        "name": "StringUtils",
+        "qualifiedName": "edu.fudanselab.trainticket.util.StringUtils",
+        "description": "StringUtils 是一个工具类，提供字符串与日期之间的相互转换以及字符串格式处理等辅助功能，用于简化常用数据类型转换操作。",
+        "methods": [],
+        "dependencies": [
+            255,
+            99,
+            80
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/util/StringUtils.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 250,
+        "name": "SecurityRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.SecurityRepository",
+        "description": "SecurityRepository 是一个用于管理 SecurityConfig 实体的抽象数据访问接口，提供基于名称或 ID 的查询、全量查询及删除操作，属于系统安全配置模块的数据持久层。",
+        "methods": [],
+        "dependencies": [
+            18
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/SecurityRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 251,
+        "name": "WaitListOrderRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.WaitListOrderRepository",
+        "description": "WaitListOrderRepository 是一个数据访问接口，负责对候补订单（WaitListOrder）实体进行持久化操作，包括根据ID查询、查询全部、按账户ID查询以及删除操作。该类在系统中位于数据访问层，为上层业务逻辑提供候补订单数据的存取服务。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/WaitListOrderRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 252,
+        "name": "AdminTravelController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.AdminTravelController",
+        "description": "AdminTravelController 是一个用于管理旅行信息的控制器类，提供管理员对旅行数据的增删改查操作。它位于系统的控制层，处理与旅行相关的 HTTP 请求，并依赖 HttpHeaders 进行请求头处理，与 TravelInfo 实体进行数据交互。",
+        "methods": [],
+        "dependencies": [
+            252,
+            148,
+            218,
+            220
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/AdminTravelController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 253,
+        "name": "TrainFoodInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.TrainFoodInitData",
+        "description": "TrainFoodInitData 是一个用于初始化列车食品数据的工具类，主要职责是在系统启动时加载并解析食品数据，将其转换为 Food 对象列表。该类通过 run 方法接收初始化参数，并利用 toFoodList 方法将字符串格式的数据转换为结构化食品列表，通常作为系统初始化流程的一部分。",
+        "methods": [],
+        "dependencies": [
+            222,
+            200,
+            253,
+            125
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/TrainFoodInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 254,
+        "name": "QueryInfo",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.QueryInfo",
+        "description": "QueryInfo类用于封装查询条件的配置，支持启用或禁用基于出行日期、购票日期和订单状态的查询功能，作为查询参数的构建器在系统中传递和管理查询条件。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/QueryInfo.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 255,
+        "name": "OrderServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.OrderServiceImpl",
+        "description": "OrderServiceImpl 是订单服务的核心实现类，负责处理火车票订单的全生命周期管理，包括创建、查询、修改、取消、支付等操作。该类在系统中作为订单业务逻辑的主要承载者，与 Seat、Order 等数据模型及 HTTP 请求上下文交互，为上层提供完整的订单服务接口。",
+        "methods": [],
+        "dependencies": [
+            266,
+            98,
+            230,
+            218,
+            240,
+            255,
+            37,
+            21,
+            279,
+            70,
+            73,
+            74,
+            79,
+            172,
+            249,
+            187
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/OrderServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 256,
+        "name": "CommonOrder",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.CommonOrder",
+        "description": "CommonOrder 是一个通用订单实体类，用于表示火车票系统中的普通订单信息。该类重写了 equals 和 hashCode 方法，以支持基于对象内容的相等性比较和哈希操作，通常用于集合存储、去重或作为 Map 的键。在系统中，它可能作为其他具体订单类型的基础或通用表示。",
+        "methods": [],
+        "dependencies": [
+            37,
+            279,
+            256,
+            249
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/CommonOrder.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 257,
+        "name": "BaseException",
+        "qualifiedName": "edu.fudanselab.trainticket.exception.BaseException",
+        "description": "BaseException 是一个通用的异常基类，用于在火车票系统中作为其他具体异常类的父类，提供统一的异常处理基础。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/exception/BaseException.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 258,
+        "name": "StationFoodController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.StationFoodController",
+        "description": "StationFoodController 负责处理与车站餐饮服务相关的 HTTP 请求，提供获取车站食品商店及其食品列表的接口。该类在系统中作为车站餐饮信息的控制器，与前端或其他服务通过 RESTful API 交互。",
+        "methods": [],
+        "dependencies": [
+            106,
+            258,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/StationFoodController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 259,
+        "name": "VerifyResult",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.VerifyResult",
+        "description": "VerifyResult 是一个通用实体类，用于封装验证操作的结果，在系统中可能作为验证逻辑的返回值类型，与其他业务模块进行数据交互。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/VerifyResult.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 260,
+        "name": "Type",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Type",
+        "description": "Type类用于表示某种类型的实体，包含类型名称和索引两个属性，提供静态方法通过索引获取名称，并支持对名称和索引的读写操作。",
+        "methods": [],
+        "dependencies": [
+            260
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Type.java",
+        "typeKind": "enum"
+    },
+    {
+        "id": 261,
+        "name": "ConsignPriceConfigRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.ConsignPriceConfigRepository",
+        "description": "ConsignPriceConfigRepository 是一个用于管理托运价格配置的仓库接口，提供根据索引查询托运价格配置的方法，属于数据访问层组件。",
+        "methods": [],
+        "dependencies": [
+            198
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/ConsignPriceConfigRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 262,
+        "name": "MoneyType",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.MoneyType",
+        "description": "MoneyType类用于表示和管理金额类型，提供通过索引获取名称、以及设置和获取名称与索引的功能，属于实体类。",
+        "methods": [],
+        "dependencies": [
+            262
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/MoneyType.java",
+        "typeKind": "enum"
+    },
+    {
+        "id": 263,
+        "name": "SeatServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.SeatServiceImpl",
+        "description": "SeatServiceImpl 是座位服务的核心实现类，负责处理座位分配和区间余票查询等业务逻辑。该类通过判断已售车票与目标座位的冲突情况来完成座位分配，并支持基于请求头参数计算直达比例以辅助余票查询。它在系统中处于服务层，为上层控制器提供座位相关的业务支撑。",
+        "methods": [],
+        "dependencies": [
+            242,
+            81,
+            21,
+            263,
+            73,
+            74,
+            79,
+            218
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/SeatServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 264,
+        "name": "AuthUser",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.AuthUser",
+        "description": "AuthUser类是一个用于表示认证用户的实体类，实现了Spring Security的UserDetails接口的核心方法，用于提供用户认证和授权所需的信息，如用户名、密码、权限以及账户状态等。",
+        "methods": [],
+        "dependencies": [
+            264
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/AuthUser.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 265,
+        "name": "FoodDeliveryOrder",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.FoodDeliveryOrder",
+        "description": "表示食品配送订单的实体类，用于存储和管理与餐食配送相关的订单信息。",
+        "methods": [],
+        "dependencies": [
+            125
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/FoodDeliveryOrder.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 266,
+        "name": "OrderService",
+        "qualifiedName": "edu.fudanselab.trainticket.service.OrderService",
+        "description": "OrderService 是一个抽象服务类，负责处理火车票订单相关的业务逻辑，包括订单的创建、查询、修改、取消、支付及安全管理等操作。该类定义了多个抽象方法，供具体实现类完成实际的订单处理功能，在系统中处于业务逻辑层，与订单数据模型和外部接口交互。",
+        "methods": [],
+        "dependencies": [
+            230,
+            70,
+            73,
+            218,
+            187
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/OrderService.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 267,
+        "name": "SecurityInitData",
+        "qualifiedName": "edu.fudanselab.trainticket.init.SecurityInitData",
+        "description": "负责系统安全模块的初始化数据加载，通常在应用启动时执行安全相关配置或数据的初始化。",
+        "methods": [],
+        "dependencies": [
+            206,
+            218,
+            18
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/SecurityInitData.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 268,
+        "name": "TrainFoodController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.TrainFoodController",
+        "description": "TrainFoodController 负责处理与列车餐饮相关的 HTTP 请求，提供获取全部列车餐饮信息及特定行程餐饮信息的接口，在系统中作为列车餐饮服务的前端控制器。",
+        "methods": [],
+        "dependencies": [
+            200,
+            268,
+            218
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/TrainFoodController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 269,
+        "name": "PaymentType",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.PaymentType",
+        "description": "PaymentType类用于表示支付方式的类型，封装了支付类型的名称和对应的索引值，提供静态和实例方法以获取名称，并支持对名称和索引的设置。该类在系统中作为支付相关模块的基础数据实体，与其他支付处理类协同工作。",
+        "methods": [],
+        "dependencies": [
+            269
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/PaymentType.java",
+        "typeKind": "enum"
+    },
+    {
+        "id": 270,
+        "name": "DocumentType",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.DocumentType",
+        "description": "DocumentType 类用于表示和管理文档类型的枚举信息，提供通过代码获取名称的静态方法，以及实例化的代码和名称访问方法。",
+        "methods": [],
+        "dependencies": [
+            270
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/DocumentType.java",
+        "typeKind": "enum"
+    },
+    {
+        "id": 271,
+        "name": "StationFoodServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.StationFoodServiceImpl",
+        "description": "StationFoodServiceImpl 是一个提供车站餐饮服务管理功能的实现类，负责处理与车站食品商店相关的创建、查询等操作，包括按车站名称或ID获取食品商店信息，以及列出所有或特定车站的食品商店列表。",
+        "methods": [],
+        "dependencies": [
+            106,
+            158,
+            271,
+            218,
+            86
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/StationFoodServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 272,
+        "name": "AuthInitUser",
+        "qualifiedName": "edu.fudanselab.trainticket.init.AuthInitUser",
+        "description": "AuthInitUser 是一个用于初始化认证相关用户数据的启动类，通常在系统启动时执行用户初始化逻辑。",
+        "methods": [],
+        "dependencies": [
+            264,
+            7
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/init/AuthInitUser.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 273,
+        "name": "PaymentController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.PaymentController",
+        "description": "PaymentController 负责处理与支付相关的HTTP请求，包括支付、充值和查询账户信息等操作，是支付模块的入口控制器。",
+        "methods": [],
+        "dependencies": [
+            88,
+            60,
+            218,
+            273,
+            50
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author Chenjie\r\n@date 2017/4/7\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/PaymentController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 274,
+        "name": "Route",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Route",
+        "description": "Route类用于表示列车路线实体，作为系统中与路线相关数据的载体，可能包含起点、终点、途经站点等信息。",
+        "methods": [],
+        "dependencies": [
+            274
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Route.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 275,
+        "name": "GetAccountByIdResult",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.GetAccountByIdResult",
+        "description": "表示根据ID获取账户信息操作的结果实体类，用于封装查询返回的账户数据。",
+        "methods": [],
+        "dependencies": [
+            41
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/GetAccountByIdResult.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 276,
+        "name": "AdminBasicInfoController",
+        "qualifiedName": "edu.fudanselab.trainticket.controller.AdminBasicInfoController",
+        "description": "AdminBasicInfoController 是一个用于管理铁路订票系统基础数据的控制器类，提供对联系人、车站、列车类型、系统配置和票价等核心信息的增删改查操作。该类位于系统的控制层，负责接收管理员请求并调用相应服务完成基础数据维护，是后台管理功能的关键入口。",
+        "methods": [],
+        "dependencies": [
+            276,
+            81,
+            84,
+            57,
+            62,
+            186,
+            218,
+            104
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/controller/AdminBasicInfoController.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 277,
+        "name": "Delivery",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.Delivery",
+        "description": "Delivery类是用于表示配送相关信息的实体类，属于train-ticket系统中的数据模型层，主要用于封装配送相关的数据字段，支持持久化和业务逻辑处理。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/Delivery.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 278,
+        "name": "SwaggerConfig",
+        "qualifiedName": "edu.fudanselab.trainticket.config.SwaggerConfig",
+        "description": "SwaggerConfig 是用于配置 Swagger API 文档生成的类，通过 createRestApi() 方法定义 RESTful API 的文档化规则，并使用 apiInfo() 方法提供 API 的元信息。该类在系统中负责集成和定制 Swagger，以支持 API 的可视化和测试。",
+        "methods": [],
+        "dependencies": [
+            278
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/config/SwaggerConfig.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 279,
+        "name": "SeatClass",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.SeatClass",
+        "description": "SeatClass 是一个表示座位类别的实体类，用于封装座位类型的代码和名称，并提供通过代码获取对应名称的静态方法。该类在系统中主要用于票务相关的座位类型管理。",
+        "methods": [],
+        "dependencies": [
+            279,
+            113
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/SeatClass.java",
+        "typeKind": "enum"
+    },
+    {
+        "id": 280,
+        "name": "TransferTravelResult",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.TransferTravelResult",
+        "description": "表示中转行程查询结果的实体类，用于封装涉及换乘的列车出行信息。",
+        "methods": [],
+        "dependencies": [
+            280
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/TransferTravelResult.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 281,
+        "name": "RoutePlanResultUnit",
+        "qualifiedName": "edu.fudanselab.trainticket.entity.RoutePlanResultUnit",
+        "description": "表示路线规划结果中的单个结果单元，用于封装行程规划的某一段详细信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/entity/RoutePlanResultUnit.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 282,
+        "name": "StationRepository",
+        "qualifiedName": "edu.fudanselab.trainticket.repository.StationRepository",
+        "description": "StationRepository 是一个用于管理车站数据访问的抽象仓库类，提供根据名称、ID或全量查询车站信息的接口方法，供上层服务调用以实现对车站数据的检索。",
+        "methods": [],
+        "dependencies": [
+            62
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/repository/StationRepository.java",
+        "typeKind": "interface"
+    },
+    {
+        "id": 283,
+        "name": "AuthUserServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.AuthUserServiceImpl",
+        "description": "AuthUserServiceImpl 是认证用户管理的核心服务实现类，负责处理用户数据的增删查及默认用户创建等操作，同时包含用户创建信息的校验逻辑，在系统中承担用户认证与授权相关的基础服务职责。",
+        "methods": [],
+        "dependencies": [
+            175,
+            264,
+            211,
+            283,
+            225,
+            117,
+            218,
+            7,
+            188
+        ],
+        "edge_types": [
+            "extends",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/AuthUserServiceImpl.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 284,
+        "name": "TokenException",
+        "qualifiedName": "edu.fudanselab.trainticket.exception.TokenException",
+        "description": "TokenException 是一个用于处理与令牌（Token）相关的异常的类，属于 train-ticket 系统中的异常处理模块，用于封装和抛出与身份验证或授权令牌相关的错误。",
+        "methods": [],
+        "dependencies": [
+            257
+        ],
+        "edge_types": [
+            "extends"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/exception/TokenException.java",
+        "typeKind": "class"
+    },
+    {
+        "id": 285,
+        "name": "AuthUserDetailsServiceImpl",
+        "qualifiedName": "edu.fudanselab.trainticket.service.impl.AuthUserDetailsServiceImpl",
+        "description": "AuthUserDetailsServiceImpl 是 Spring Security 中用于加载用户详细信息的实现类，负责根据用户名查询并返回用户认证信息，以支持系统的身份验证流程。",
+        "methods": [],
+        "dependencies": [
+            264,
+            225,
+            7,
+            285
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "\r\n@author fdse\r\n",
+        "filePath": "src/main/java/edu/fudanselab/trainticket/service/impl/AuthUserDetailsServiceImpl.java",
+        "typeKind": "class"
+    }
+]

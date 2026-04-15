@@ -1,0 +1,484 @@
+
+    {
+        "id": 0,
+        "name": "ImageServlet",
+        "qualifiedName": "ImageServlet",
+        "description": "ImageServlet 是一个用于处理图像相关请求的 Servlet 类，通常负责接收 HTTP 请求并返回图像数据。",
+        "methods": [],
+        "dependencies": [
+            0,
+            6,
+            15
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 1,
+        "name": "Customer",
+        "qualifiedName": "Customer",
+        "description": "Customer类用于表示系统中的客户实体，封装客户的基本信息和相关行为。作为业务模型的核心组成部分，该类在系统中承担客户数据的存储与管理职责。",
+        "methods": [],
+        "dependencies": [
+            1
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 2,
+        "name": "AccountBean",
+        "qualifiedName": "AccountBean",
+        "description": "AccountBean 是一个用于封装账户相关信息的数据载体类，通常在系统中作为数据传输对象（DTO）或模型类使用，提供对账户数据的访问和操作接口。",
+        "methods": [],
+        "dependencies": [
+            24,
+            1,
+            2,
+            14,
+            23,
+            5,
+            6,
+            22,
+            17,
+            7
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 3,
+        "name": "SuppliersBean",
+        "qualifiedName": "SuppliersBean",
+        "description": "SuppliersBean 是一个用于封装供应商相关信息的数据模型类，通常在系统中作为数据传输对象（DTO）或实体类使用，用于表示和管理供应商的数据。",
+        "methods": [],
+        "dependencies": [
+            6,
+            21
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 4,
+        "name": "PopulateDBBean",
+        "qualifiedName": "PopulateDBBean",
+        "description": "PopulateDBBean 是一个用于初始化或填充数据库数据的辅助类，通常在系统启动或测试阶段使用，负责将预定义的数据加载到数据库中。",
+        "methods": [],
+        "dependencies": [
+            6,
+            16
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 5,
+        "name": "ShoppingCartBean",
+        "qualifiedName": "ShoppingCartBean",
+        "description": "ShoppingCartBean 是一个用于表示购物车数据的 Java Bean 类，通常用于封装购物车相关的属性和状态，便于在应用各层之间传递和持久化购物车信息。",
+        "methods": [],
+        "dependencies": [
+            5,
+            11,
+            6,
+            20,
+            12
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 6,
+        "name": "Util",
+        "qualifiedName": "Util",
+        "description": "Util 类是一个通用工具类，提供静态方法以支持系统中常见的辅助功能。由于当前未定义具体方法，其职责可能涵盖如字符串处理、集合操作、日期格式化等通用工具函数。",
+        "methods": [],
+        "dependencies": [
+            6,
+            9,
+            3
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 7,
+        "name": "ShoppingBean",
+        "qualifiedName": "ShoppingBean",
+        "description": "ShoppingBean 是一个用于封装购物相关数据的 Java Bean 类，通常在 Web 应用中作为数据传输对象（DTO），用于在不同层之间传递购物车或商品信息。",
+        "methods": [],
+        "dependencies": [
+            15,
+            11,
+            18,
+            5,
+            7,
+            13
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 8,
+        "name": "BackOrder",
+        "qualifiedName": "BackOrder",
+        "description": "BackOrder类用于表示和管理缺货订单，即当商品库存不足时产生的延期交付订单。该类在系统中负责追踪和处理未能及时满足客户需求的订单信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 9,
+        "name": "ListProperties",
+        "qualifiedName": "ListProperties",
+        "description": "ListProperties 是一个用于封装或管理列表类型属性的类，可能作为数据结构或配置容器在系统中使用。",
+        "methods": [],
+        "dependencies": [
+            6,
+            9
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 10,
+        "name": "EMailMessage",
+        "qualifiedName": "EMailMessage",
+        "description": "EMailMessage 类用于表示电子邮件消息，封装邮件的基本信息和内容。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 11,
+        "name": "Inventory",
+        "qualifiedName": "Inventory",
+        "description": "Inventory类用于管理和维护库存信息，提供对库存数据的基本操作和访问功能。",
+        "methods": [],
+        "dependencies": [
+            11,
+            6
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 12,
+        "name": "Order",
+        "qualifiedName": "Order",
+        "description": "Order类用于表示和管理订单信息，是系统中处理订单相关业务的核心实体类。",
+        "methods": [],
+        "dependencies": [
+            12,
+            20
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 13,
+        "name": "ShoppingItem",
+        "qualifiedName": "ShoppingItem",
+        "description": "ShoppingItem类用于表示购物项，通常包含商品信息及其相关属性，在购物系统中作为基本的数据单元。",
+        "methods": [],
+        "dependencies": [
+            11,
+            13
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 14,
+        "name": "CustomerMgr",
+        "qualifiedName": "CustomerMgr",
+        "description": "CustomerMgr 是一个用于管理客户相关操作的类，负责协调客户数据的处理和业务逻辑。",
+        "methods": [],
+        "dependencies": [
+            1
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 15,
+        "name": "CatalogMgr",
+        "qualifiedName": "CatalogMgr",
+        "description": "CatalogMgr 是一个用于管理目录（catalog）相关操作的类，负责协调和处理与目录结构、内容或元数据相关的功能。在系统中，它通常作为目录管理的核心组件，提供对目录的组织、查询或维护能力。",
+        "methods": [],
+        "dependencies": [
+            11,
+            15,
+            6,
+            21,
+            12,
+            1,
+            20,
+            8
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 16,
+        "name": "ResetDBBean",
+        "qualifiedName": "ResetDBBean",
+        "description": "ResetDBBean 是一个用于封装数据库重置相关操作的 Java Bean 类，通常在系统初始化或测试场景中用于触发数据库状态的重置。",
+        "methods": [],
+        "dependencies": [
+            6,
+            11,
+            15,
+            16,
+            14
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 17,
+        "name": "MailerAppException",
+        "qualifiedName": "MailerAppException",
+        "description": "MailerAppException 是一个用于表示邮件应用程序中特定异常情况的异常类，封装了与邮件发送或处理相关的错误信息。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 18,
+        "name": "ProductBean",
+        "qualifiedName": "ProductBean",
+        "description": "ProductBean 是一个用于封装产品相关数据的 Java Bean 类，通常作为数据传输对象（DTO）在系统各层之间传递产品信息。",
+        "methods": [],
+        "dependencies": [
+            11,
+            6
+        ],
+        "edge_types": [
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 19,
+        "name": "HelpBean",
+        "qualifiedName": "HelpBean",
+        "description": "HelpBean 是一个未定义具体功能的占位类，当前没有包含任何方法，可能用于未来扩展或作为数据载体。",
+        "methods": [],
+        "dependencies": [
+            6
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 20,
+        "name": "OrderItem",
+        "qualifiedName": "OrderItem",
+        "description": "OrderItem 类表示订单中的单个商品项，用于封装商品相关信息（如商品ID、数量、价格等），在订单系统中作为订单明细的基本组成单元。",
+        "methods": [],
+        "dependencies": [
+            11,
+            6,
+            20,
+            12
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 21,
+        "name": "Supplier",
+        "qualifiedName": "Supplier",
+        "description": "Supplier类用于表示供应商实体，通常在系统中作为数据模型存在，用于存储和管理供应商相关信息。",
+        "methods": [],
+        "dependencies": [
+            21
+        ],
+        "edge_types": [
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 22,
+        "name": "MailerBean",
+        "qualifiedName": "MailerBean",
+        "description": "MailerBean 是一个用于封装邮件发送功能的 Java Bean 类，通常在企业应用中负责处理邮件相关的配置和操作。",
+        "methods": [],
+        "dependencies": [
+            22,
+            6,
+            12,
+            1,
+            10
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 23,
+        "name": "OrderInfo",
+        "qualifiedName": "OrderInfo",
+        "description": "OrderInfo类用于表示订单的基本信息，作为订单数据的载体在系统中传递和存储。",
+        "methods": [],
+        "dependencies": [
+            23,
+            6,
+            12
+        ],
+        "edge_types": [
+            "call",
+            "call",
+            "call"
+        ],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    },
+    {
+        "id": 24,
+        "name": "LoginInfo",
+        "qualifiedName": "LoginInfo",
+        "description": "LoginInfo 类用于封装用户登录相关信息，作为数据载体在系统中传递或存储登录状态和凭证。",
+        "methods": [],
+        "dependencies": [],
+        "edge_types": [],
+        "javaDoc": "",
+        "filePath": "",
+        "typeKind": "class"
+    }
+]
