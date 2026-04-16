@@ -1,7 +1,7 @@
 """
-合并类依赖、继承和JavaDoc信息的脚本
-使用方法: python static_dependencies_mapper.py <目标路径> [目标包名]
-注意: 目标包名为可选参数，如果为空则不传递包名参数
+Script for merging class dependencies, inheritance, and JavaDoc information
+Usage: python static_dependencies_mapper.py <target_path> [target_package]
+Note: target_package is optional, if empty, package name parameter is not passed
 """
 
 import json
@@ -14,11 +14,11 @@ from microweaver.input_builder.config import InputConfig
 
 def run_java_analyzer(target_path, jar_path, class_info_path):
     if not os.path.exists(jar_path):
-        print(f"错误: 找不到JAR文件 {jar_path}")
+        print(f"Error: JAR file not found {jar_path}")
         sys.exit(1)
     
     cmd = ["java", "-jar", jar_path, target_path, class_info_path]
-    print(f"正在执行: java -jar {jar_path} {target_path} {class_info_path}")
+    print(f"Executing: java -jar {jar_path} {target_path} {class_info_path}")
     
     try:
         result = subprocess.run(
@@ -27,21 +27,21 @@ def run_java_analyzer(target_path, jar_path, class_info_path):
             capture_output=True,
             text=True
         )
-        print("Java分析器执行成功")
+        print("Java analyzer executed successfully")
         if result.stdout:
             print(result.stdout)
     except subprocess.CalledProcessError as e:
-        print(f"错误: Java分析器执行失败")
-        print(f"返回码: {e.returncode}")
+        print(f"Error: Java analyzer execution failed")
+        print(f"Return code: {e.returncode}")
         if e.stdout:
-            print(f"输出: {e.stdout}")
+            print(f"Output: {e.stdout}")
         if e.stderr:
-            print(f"错误信息: {e.stderr}")
+            print(f"Error message: {e.stderr}")
         sys.exit(1)
 
 
 def parse_json_file(config: InputConfig):
-    """解析JSON文件，将classInfo.json格式转换为data.json格式"""
+    """Parse JSON file, convert classInfo.json format to data.json format"""
     with open(config.class_info_json_path, "r", encoding="utf-8") as f:
         classInfo = json.load(f)
     
@@ -51,32 +51,32 @@ def parse_json_file(config: InputConfig):
     
     result = []
     for idx, (qualified_name, info) in enumerate(classInfo.items()):
-        # 获取 extendsAndImplements 和 dependencies
+        # Get extendsAndImplements and dependencies
         extends_and_implements = info.get("extendsAndImplements", [])
         dependencies = info.get("dependencies", [])
         
-        # 先处理 extendsAndImplements（edge_type 为 "extends"）
+        # Process extendsAndImplements first (edge_type is "extends")
         dep_ids = []
         edge_types = []
         
-        # 记录已经处理过的依赖（避免重复）
+        # Record processed dependencies (avoid duplicates)
         processed_deps = set()
         
-        # 处理 extendsAndImplements
+        # Process extendsAndImplements
         for dep_name in extends_and_implements:
             if dep_name in name_to_id and dep_name not in processed_deps:
                 dep_ids.append(name_to_id[dep_name])
                 edge_types.append("extends")
                 processed_deps.add(dep_name)
         
-        # 处理 dependencies（排除已经在 extendsAndImplements 中的）
+        # Process dependencies (exclude those already in extendsAndImplements)
         for dep_name in dependencies:
             if dep_name in name_to_id and dep_name not in processed_deps:
                 dep_ids.append(name_to_id[dep_name])
                 edge_types.append("call")
                 processed_deps.add(dep_name)
         
-        # 构建结果对象
+        # Build result object
         item = {
             "id": idx,
             "name": qualified_name.split(".")[-1],
@@ -96,13 +96,13 @@ def parse_json_file(config: InputConfig):
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=4)
     
-    print(f"转换完成！共 {len(result)} 个类")
-    print(f"结果已保存到 {output_file}")
+    print(f"Conversion completed! Total {len(result)} classes")
+    print(f"Result saved to {output_file}")
 
 
 def main(config: InputConfig):
     print("=" * 60)
-    print(f"目标路径: {config.resource_path}")
+    print(f"Target path: {config.resource_path}")
     print()
     
     run_java_analyzer(config.resource_path, config.static_jar_path, config.class_info_json_path)
@@ -111,5 +111,5 @@ def main(config: InputConfig):
     parse_json_file(config)
     
     print("=" * 60)
-    print("完成!")
+    print("Completed!")
     print("=" * 60)

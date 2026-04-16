@@ -1,9 +1,9 @@
-
+[
     {
         "id": 0,
         "name": "UpdateCartQuantitiesController",
         "qualifiedName": "UpdateCartQuantitiesController",
-        "description": "负责处理购物车商品数量更新请求的控制器类，协调相关业务逻辑以实现购物车中商品数量的修改。",
+        "description": "A controller class responsible for handling shopping cart product quantity update requests, coordinating related business logic to modify product quantities in the shopping cart.",
         "methods": [],
         "dependencies": [
             29,
@@ -23,7 +23,7 @@
         "id": 1,
         "name": "AccountFormController",
         "qualifiedName": "AccountFormController",
-        "description": "AccountFormController 是一个用于处理账户相关表单操作的控制器类，负责接收用户输入、协调业务逻辑并返回相应的视图或响应。",
+        "description": "AccountFormController is a controller class for handling account-related form operations, responsible for receiving user input, coordinating business logic, and returning corresponding views or responses.",
         "methods": [],
         "dependencies": [
             13,
@@ -47,7 +47,7 @@
         "id": 2,
         "name": "SqlMapSequenceDao",
         "qualifiedName": "SqlMapSequenceDao",
-        "description": "SqlMapSequenceDao 是一个用于通过 SQL 映射（如 iBatis/MyBatis）访问和管理数据库序列（sequence）的数据访问对象（DAO），负责提供与序列相关的持久化操作。",
+        "description": "SqlMapSequenceDao is a Data Access Object (DAO) for accessing and managing database sequences through SQL mapping (such as iBatis/MyBatis), responsible for providing persistence operations related to sequences.",
         "methods": [],
         "dependencies": [
             11
@@ -63,7 +63,7 @@
         "id": 3,
         "name": "SignonController",
         "qualifiedName": "SignonController",
-        "description": "SignonController 负责处理用户登录（签到）相关的请求，是认证流程的入口控制器。",
+        "description": "SignonController is responsible for handling user login (sign-on) related requests, serving as the entry controller for the authentication process.",
         "methods": [],
         "dependencies": [
             18,
@@ -83,7 +83,7 @@
         "id": 4,
         "name": "ListOrdersController",
         "qualifiedName": "ListOrdersController",
-        "description": "ListOrdersController 是一个用于处理订单列表相关请求的控制器类，负责协调订单数据的获取与展示。",
+        "description": "ListOrdersController is a controller class for handling order list related requests, responsible for coordinating order data retrieval and display.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -95,7 +95,7 @@
         "id": 5,
         "name": "SearchProductsController",
         "qualifiedName": "SearchProductsController",
-        "description": "SearchProductsController 是一个用于处理产品搜索相关请求的控制器类，负责接收用户搜索输入，调用相应服务进行产品查询，并返回搜索结果。",
+        "description": "SearchProductsController is a controller class for handling product search related requests, responsible for receiving user search input, calling corresponding services for product queries, and returning search results.",
         "methods": [],
         "dependencies": [
             18
@@ -111,7 +111,7 @@
         "id": 6,
         "name": "OrderForm",
         "qualifiedName": "OrderForm",
-        "description": "OrderForm 类用于表示订单表单，封装与订单相关的信息和操作，在系统中作为订单数据的载体。",
+        "description": "OrderForm class is used to represent order forms, encapsulating order-related information and operations, serving as a carrier for order data in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -123,7 +123,7 @@
         "id": 7,
         "name": "SqlMapProductDao",
         "qualifiedName": "SqlMapProductDao",
-        "description": "SqlMapProductDao 是一个数据访问对象（DAO）类，负责通过 SQL 映射机制对产品（Product）相关数据进行持久化操作，如增删改查等。",
+        "description": "SqlMapProductDao is a Data Access Object (DAO) class responsible for persisting product-related data through SQL mapping mechanisms, such as CRUD operations.",
         "methods": [],
         "dependencies": [
             16,
@@ -141,7 +141,7 @@
         "id": 8,
         "name": "CartItem",
         "qualifiedName": "CartItem",
-        "description": "CartItem 类用于表示购物车中的单个商品项，封装了商品的相关信息及其在购物车中的数量等属性。",
+        "description": "CartItem class is used to represent a single product item in the shopping cart, encapsulating product-related information and its quantity in the cart.",
         "methods": [],
         "dependencies": [
             12
@@ -157,7 +157,7 @@
         "id": 9,
         "name": "RemoveItemFromCartController",
         "qualifiedName": "RemoveItemFromCartController",
-        "description": "负责处理从购物车中移除商品的请求，作为控制器协调相关业务逻辑与用户交互。",
+        "description": "Responsible for handling requests to remove products from the shopping cart, serving as a controller to coordinate related business logic and user interaction.",
         "methods": [],
         "dependencies": [
             29
@@ -173,7 +173,7 @@
         "id": 10,
         "name": "Order",
         "qualifiedName": "Order",
-        "description": "Order类用于表示和管理订单信息，是系统中处理订单相关业务的核心实体类。",
+        "description": "Order class is used to represent and manage order information, serving as the core entity class for processing order-related business in the system.",
         "methods": [],
         "dependencies": [
             35,
@@ -195,7 +195,7 @@
         "id": 11,
         "name": "Sequence",
         "qualifiedName": "Sequence",
-        "description": "Sequence 类是一个用于表示或管理序列化数据的通用类，其具体职责和功能需结合上下文进一步明确。",
+        "description": "Sequence class is a general class for representing or managing serialized data, whose specific responsibilities and functions need to be further clarified based on context.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -207,7 +207,7 @@
         "id": 12,
         "name": "Item",
         "qualifiedName": "Item",
-        "description": "Item类是一个通用的数据项类，用于表示系统中的基本元素或条目，具体功能需结合上下文进一步明确。",
+        "description": "Item class is a general data item class used to represent basic elements or entries in the system, with specific functionality needing to be further clarified based on context.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -219,7 +219,7 @@
         "id": 13,
         "name": "AccountForm",
         "qualifiedName": "AccountForm",
-        "description": "AccountForm 是一个用于表示账户相关表单数据的类，通常作为数据传输对象（DTO）在用户界面与业务逻辑层之间传递账户信息。",
+        "description": "AccountForm is a class for representing account-related form data, typically serving as a Data Transfer Object (DTO) to pass account information between the user interface and business logic layer.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -231,7 +231,7 @@
         "id": 14,
         "name": "SqlMapItemDao",
         "qualifiedName": "SqlMapItemDao",
-        "description": "SqlMapItemDao 是一个数据访问对象（DAO）类，用于通过 SQL 映射机制对 Item 实体进行持久化操作，封装了与数据库交互的逻辑。",
+        "description": "SqlMapItemDao is a Data Access Object (DAO) class for persisting Item entities through SQL mapping mechanisms, encapsulating database interaction logic.",
         "methods": [],
         "dependencies": [
             12,
@@ -253,7 +253,7 @@
         "id": 15,
         "name": "ViewItemController",
         "qualifiedName": "ViewItemController",
-        "description": "ViewItemController 是一个用于处理查看项（View Item）相关操作的控制器类，负责协调用户请求与业务逻辑之间的交互。",
+        "description": "ViewItemController is a controller class for handling view item related operations, responsible for coordinating interaction between user requests and business logic.",
         "methods": [],
         "dependencies": [
             18,
@@ -271,7 +271,7 @@
         "id": 16,
         "name": "Product",
         "qualifiedName": "Product",
-        "description": "Product类用于表示系统中的产品实体，封装了产品的基本属性和行为。作为领域模型的核心组成部分，该类在业务逻辑层中承担产品信息的存储与管理职责。",
+        "description": "Product class is used to represent product entities in the system, encapsulating basic product attributes and behaviors. As a core component of the domain model, this class assumes responsibility for product information storage and management in the business logic layer.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -283,7 +283,7 @@
         "id": 17,
         "name": "SqlMapAccountDao",
         "qualifiedName": "SqlMapAccountDao",
-        "description": "SqlMapAccountDao 是一个数据访问对象（DAO）类，负责通过 SQL 映射机制对账户（Account）相关的数据进行持久化操作，如增删改查等。",
+        "description": "SqlMapAccountDao is a Data Access Object (DAO) class responsible for persisting account-related data through SQL mapping mechanisms, such as CRUD operations.",
         "methods": [],
         "dependencies": [
             35
@@ -299,7 +299,7 @@
         "id": 18,
         "name": "PetStoreImpl",
         "qualifiedName": "PetStoreImpl",
-        "description": "PetStoreImpl 是一个实现类，用于提供宠物商店相关功能的具体实现，但当前未定义任何方法。",
+        "description": "PetStoreImpl is an implementation class providing concrete implementations for pet store related functionality, though currently no methods are defined.",
         "methods": [],
         "dependencies": [
             27,
@@ -323,7 +323,7 @@
         "id": 19,
         "name": "OrderFormController",
         "qualifiedName": "OrderFormController",
-        "description": "OrderFormController 是一个控制器类，负责处理与订单表单相关的请求和业务逻辑协调。",
+        "description": "OrderFormController is a controller class responsible for handling order form related requests and coordinating business logic.",
         "methods": [],
         "dependencies": [
             6,
@@ -349,7 +349,7 @@
         "id": 20,
         "name": "AccountValidator",
         "qualifiedName": "AccountValidator",
-        "description": "AccountValidator 是一个用于验证账户相关信息的工具类，负责确保账户数据符合系统规定的格式和业务规则。",
+        "description": "AccountValidator is a utility class for validating account-related information, responsible for ensuring account data conforms to system-defined formats and business rules.",
         "methods": [],
         "dependencies": [
             13,
@@ -367,7 +367,7 @@
         "id": 21,
         "name": "LineItem",
         "qualifiedName": "LineItem",
-        "description": "LineItem 类表示购物车或订单中的单个商品条目，通常包含商品信息、数量和价格等属性，用于在结算或订单处理过程中管理具体的商品明细。",
+        "description": "LineItem class represents a single product entry in a shopping cart or order, typically containing product information, quantity, and price attributes, used to manage specific product details during checkout or order processing.",
         "methods": [],
         "dependencies": [
             8,
@@ -385,7 +385,7 @@
         "id": 22,
         "name": "ViewOrderController",
         "qualifiedName": "ViewOrderController",
-        "description": "ViewOrderController 负责处理与查看订单相关的用户请求，作为控制器协调视图与业务逻辑之间的交互。",
+        "description": "ViewOrderController is responsible for handling user requests related to viewing orders, serving as a controller to coordinate interaction between views and business logic.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -397,7 +397,7 @@
         "id": 23,
         "name": "OrderValidator",
         "qualifiedName": "OrderValidator",
-        "description": "OrderValidator 负责验证订单数据的合法性，确保订单在处理前满足业务规则和数据完整性要求。",
+        "description": "OrderValidator is responsible for validating the legitimacy of order data, ensuring orders meet business rules and data integrity requirements before processing.",
         "methods": [],
         "dependencies": [
             6,
@@ -415,7 +415,7 @@
         "id": 24,
         "name": "AddItemToCartController",
         "qualifiedName": "AddItemToCartController",
-        "description": "负责处理将商品添加到购物车的请求，作为控制器协调用户输入与业务逻辑之间的交互。",
+        "description": "Responsible for handling requests to add products to the shopping cart, serving as a controller to coordinate interaction between user input and business logic.",
         "methods": [],
         "dependencies": [
             29,
@@ -433,7 +433,7 @@
         "id": 25,
         "name": "ViewProductController",
         "qualifiedName": "ViewProductController",
-        "description": "ViewProductController 负责处理与产品查看相关的用户请求，作为控制器协调视图与模型之间的交互。",
+        "description": "ViewProductController is responsible for handling user requests related to viewing products, serving as a controller to coordinate interaction between views and models.",
         "methods": [],
         "dependencies": [
             18
@@ -449,7 +449,7 @@
         "id": 26,
         "name": "ViewCategoryController",
         "qualifiedName": "ViewCategoryController",
-        "description": "ViewCategoryController 是一个用于处理分类视图相关请求的控制器类，负责协调用户界面与后端逻辑之间的交互。",
+        "description": "ViewCategoryController is a controller class for handling category view related requests, responsible for coordinating interaction between the user interface and backend logic.",
         "methods": [],
         "dependencies": [
             18
@@ -465,7 +465,7 @@
         "id": 27,
         "name": "SqlMapCategoryDao",
         "qualifiedName": "SqlMapCategoryDao",
-        "description": "SqlMapCategoryDao 是一个数据访问对象（DAO）类，用于通过 SQL 映射方式对分类（Category）数据进行持久化操作，通常与 ORM 框架（如 iBATIS 或 MyBatis）配合使用。",
+        "description": "SqlMapCategoryDao is a Data Access Object (DAO) class for persisting category data through SQL mapping, typically used with ORM frameworks such as iBATIS or MyBatis.",
         "methods": [],
         "dependencies": [
             28
@@ -481,7 +481,7 @@
         "id": 28,
         "name": "Category",
         "qualifiedName": "Category",
-        "description": "Category 类用于表示分类或类别实体，通常在系统中作为数据模型存在，用于组织和管理具有共同特征的项目或内容。",
+        "description": "Category class is used to represent category or classification entities, typically serving as a data model in the system for organizing and managing items or content with common characteristics.",
         "methods": [],
         "dependencies": [
             28
@@ -497,7 +497,7 @@
         "id": 29,
         "name": "Cart",
         "qualifiedName": "Cart",
-        "description": "Cart类用于表示购物车，负责管理用户所选商品的集合，在系统中作为用户与商品之间的临时存储容器。",
+        "description": "Cart class is used to represent the shopping cart, responsible for managing the collection of products selected by users, serving as a temporary storage container between users and products in the system.",
         "methods": [],
         "dependencies": [
             8,
@@ -517,7 +517,7 @@
         "id": 30,
         "name": "SignonInterceptor",
         "qualifiedName": "SignonInterceptor",
-        "description": "SignonInterceptor 是一个用于拦截用户登录请求的拦截器类，主要职责是在请求处理前验证用户身份或执行登录相关的预处理逻辑。",
+        "description": "SignonInterceptor is an interceptor class for intercepting user login requests, primarily responsible for verifying user identity or executing login-related preprocessing logic before request processing.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -529,7 +529,7 @@
         "id": 31,
         "name": "SignoffController",
         "qualifiedName": "SignoffController",
-        "description": "SignoffController 是一个控制器类，负责处理与签核（Signoff）相关的请求和业务逻辑协调。",
+        "description": "SignoffController is a controller class responsible for handling signoff-related requests and coordinating business logic.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -541,7 +541,7 @@
         "id": 32,
         "name": "UserSession",
         "qualifiedName": "UserSession",
-        "description": "UserSession 类用于管理用户会话状态，维护用户在系统中的登录和交互上下文。",
+        "description": "UserSession class is used to manage user session state, maintaining user login and interaction context in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -553,7 +553,7 @@
         "id": 33,
         "name": "ViewCartController",
         "qualifiedName": "ViewCartController",
-        "description": "ViewCartController 负责处理与查看购物车相关的用户请求，作为控制器协调视图展示和业务逻辑交互。",
+        "description": "ViewCartController is responsible for handling user requests related to viewing the shopping cart, serving as a controller to coordinate view display and business logic interaction.",
         "methods": [],
         "dependencies": [
             29
@@ -569,7 +569,7 @@
         "id": 34,
         "name": "SqlMapOrderDao",
         "qualifiedName": "SqlMapOrderDao",
-        "description": "SqlMapOrderDao 是一个数据访问对象（DAO）类，负责处理与订单相关的数据库操作，通常通过 SQL 映射框架（如 iBATIS 或 MyBatis）实现持久层交互。",
+        "description": "SqlMapOrderDao is a Data Access Object (DAO) class responsible for handling database operations related to orders, typically implementing persistence layer interaction through SQL mapping frameworks such as iBATIS or MyBatis.",
         "methods": [],
         "dependencies": [
             2,
@@ -589,7 +589,7 @@
         "id": 35,
         "name": "Account",
         "qualifiedName": "Account",
-        "description": "Account类用于表示用户账户，作为系统中账户相关数据和操作的基础实体。",
+        "description": "Account class is used to represent user accounts, serving as the basic entity for account-related data and operations in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],

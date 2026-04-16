@@ -14,10 +14,10 @@ def queryGraphql(query, variables):
         "Content-Type": "application/json",
     }
 
-    # 发送 POST 请求
+    # Send POST request
     response = requests.post(url, json={"query": query, "variables": variables}, headers=headers)
 
-    # 检查响应
+    # Check response
     if response.status_code == 200:
         data = response.json()
     else:
@@ -27,7 +27,7 @@ def queryGraphql(query, variables):
     return data
 
 def queryServices():
-    # 定义 GraphQL 查询
+    # Define GraphQL query
     query = """
     query queryServices($layer: String!) {
         services: listServices(layer: $layer) {
@@ -54,7 +54,7 @@ def queryServices():
     return services
 
 def queryTraces(serviceId):
-    # 定义 GraphQL 查询
+    # Define GraphQL query
     query = """
     query queryTraces($condition: TraceQueryCondition) {
         data: queryBasicTraces(condition: $condition) {
@@ -99,7 +99,7 @@ def queryTraces(serviceId):
     return traces
 
 def queryTrace(traceId):
-    # 定义 GraphQL 查询
+    # Define GraphQL query
     query = """
     query queryTrace($traceId: ID!) {
         trace: queryTrace(traceId: $traceId) {
@@ -233,7 +233,7 @@ def addToGraph(G, spans):
             else:
                 G.add_node(node_id, execution_time=execution_time, count=1, type=node["type"])
 
-            # 如果 parentSpanId 不是 0，则添加边
+            # If parentSpanId is not 0, add edge
             if node["parentSpanId"] != 0:
                 parent_node = next((n for n in spans if n["spanId"] == node["parentSpanId"]), None)
                 if parent_node:
@@ -285,9 +285,9 @@ def buildGraph(G=nx.DiGraph(), source='json', saveSpans=True, proj_name=None):
 
 def writeDependencies(G, config: InputConfig):
     """
-    将图G中的所有节点以依赖关系格式输出
+    Output all nodes in graph G in dependency format
     """
-    # 首先创建node_id到id的映射
+    # First create mapping from node_id to id
     node_to_id = {}
     for idx, node_id in enumerate(G.nodes()):
         node_to_id[node_id] = idx
@@ -295,14 +295,14 @@ def writeDependencies(G, config: InputConfig):
     result = []
     
     for node_id in G.nodes():
-        # 获取节点的依赖（出边的目标节点），并转换为对应的id
+        # Get node dependencies (outgoing edge target nodes) and convert to corresponding ids
         dependencies = [node_to_id[target] for source, target in G.out_edges(node_id)]
         
-        # 构造节点信息
+        # Build node information
         node_info = {
-            "id": len(result),  # 使用当前列表长度作为ID
-            "name": node_id.split(".")[-1],  # qualifiedName的最后一个部分作为name
-            "qualifiedName": node_id,  # node_id作为qualifiedName
+            "id": len(result),  # Use current list length as ID
+            "name": node_id.split(".")[-1],  # Use last part of qualifiedName as name
+            "qualifiedName": node_id,  # Use node_id as qualifiedName
             "dependencies": dependencies
         }
         

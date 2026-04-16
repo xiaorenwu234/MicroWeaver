@@ -3,7 +3,7 @@
         "id": 0,
         "name": "TokenDto",
         "qualifiedName": "edu.fudanselab.trainticket.dto.TokenDto",
-        "description": "用于封装用户令牌（Token）信息的数据传输对象（DTO），主要职责是在用户认证成功后生成并返回令牌。",
+        "description": "A Data Transfer Object (DTO) used to encapsulate user token information, with the primary responsibility of generating and returning tokens after successful user authentication.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -15,7 +15,7 @@
         "id": 1,
         "name": "PriceConfig",
         "qualifiedName": "edu.fudanselab.trainticket.entity.PriceConfig",
-        "description": "PriceConfig 是一个用于表示票价配置信息的实体类，通常用于存储和管理与火车票价格相关的配置数据。",
+        "description": "PriceConfig is an entity class used to represent ticket price configuration information, typically used to store and manage configuration data related to train ticket prices.",
         "methods": [],
         "dependencies": [
             1
@@ -31,7 +31,7 @@
         "id": 2,
         "name": "GetOrderByIdInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.GetOrderByIdInfo",
-        "description": "该类是一个用于封装根据订单ID查询订单信息请求数据的实体类，在系统中作为数据传输对象（DTO）使用，主要用于订单查询相关操作的数据承载。",
+        "description": "This class is an entity class used to encapsulate request data for querying order information by order ID, used as a Data Transfer Object (DTO) in the system, mainly for carrying data related to order query operations.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -43,7 +43,7 @@
         "id": 3,
         "name": "RouteRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.RouteRepository",
-        "description": "RouteRepository 是一个抽象数据访问接口，负责管理 Route 实体的持久化操作，提供根据 ID、起止站点等条件查询路线，以及删除指定路线的功能。该类在系统中作为路由信息的数据访问层，被业务逻辑层调用以实现对路线数据的访问和管理。",
+        "description": "RouteRepository is an abstract data access interface responsible for managing persistence operations of Route entities, providing functions to query routes by ID, start/end stations, and delete specified routes. This class serves as the data access layer for routing information in the system, called by the business logic layer to access and manage route data.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -55,7 +55,7 @@
         "id": 4,
         "name": "EmailConfig",
         "qualifiedName": "edu.fudanselab.trainticket.config.EmailConfig",
-        "description": "该类是用于配置电子邮件相关设置的配置类，属于系统邮件功能的基础设施组件。",
+        "description": "This class is a configuration class for configuring email-related settings, belonging to the infrastructure components of the system email function.",
         "methods": [],
         "dependencies": [
             201
@@ -71,7 +71,7 @@
         "id": 5,
         "name": "RebookController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.RebookController",
-        "description": "RebookController 负责处理车票改签相关的请求，包括改签操作和差价支付，是系统中改签业务的入口控制器。",
+        "description": "RebookController is responsible for handling ticket rebooking-related requests, including rebooking operations and price difference payment, serving as the entry controller for rebooking business in the system.",
         "methods": [],
         "dependencies": [
             5,
@@ -95,7 +95,7 @@
         "id": 6,
         "name": "RebookInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.RebookInfo",
-        "description": "RebookInfo 是一个用于表示车票改签信息的实体类，主要在系统中承载与改签相关的数据。该类位于 edu.fudanselab.trainticket.entity 包中，作为数据模型与其他业务逻辑组件交互。",
+        "description": "RebookInfo is an entity class used to represent ticket rebooking information, mainly carrying data related to rebooking in the system. This class is located in the edu.fudanselab.trainticket.entity package and interacts with other business logic components as a data model.",
         "methods": [],
         "dependencies": [
             6,
@@ -113,7 +113,7 @@
         "id": 7,
         "name": "AuthUserRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.AuthUserRepository",
-        "description": "AuthUserRepository 是一个用于管理 AuthUser 实体的持久化接口，提供基于用户名的查询（包括单个和多个结果）以及通过用户 ID 删除用户的功能，属于数据访问层组件。",
+        "description": "AuthUserRepository is a persistence interface for managing AuthUser entities, providing query functions based on username (including single and multiple results) and the ability to delete users by user ID, belonging to the data access layer components.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -125,7 +125,7 @@
         "id": 8,
         "name": "NotificationServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.NotificationServiceImpl",
-        "description": "NotificationServiceImpl 是通知服务的具体实现类，负责处理与订单相关的各类通知操作，包括订单创建、修改、取消及车票预留成功后的通知。该类通过调用外部服务发送通知，是系统中通知模块的核心组件。",
+        "description": "NotificationServiceImpl is the concrete implementation class of the notification service, responsible for handling various order-related notification operations, including notifications after order creation, modification, cancellation, and successful ticket reservation. This class sends notifications by calling external services and is the core component of the notification module in the system.",
         "methods": [],
         "dependencies": [
             145,
@@ -149,7 +149,7 @@
         "id": 9,
         "name": "TokenServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.TokenServiceImpl",
-        "description": "TokenServiceImpl 是一个用于处理用户认证令牌的服务实现类，主要职责是根据用户提供的基本认证信息生成并返回认证令牌，位于系统的服务层，实现了与用户认证相关的 TokenService 接口。",
+        "description": "TokenServiceImpl is a service implementation class for handling user authentication tokens, with the primary responsibility of generating and returning authentication tokens based on basic authentication information provided by users. It is located in the service layer of the system and implements the TokenService interface related to user authentication.",
         "methods": [],
         "dependencies": [
             169,
@@ -189,7 +189,7 @@
         "id": 10,
         "name": "SecurityController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.SecurityController",
-        "description": "SecurityController 是一个用于管理安全配置的控制器类，提供安全配置的增删改查及账户安全检查等RESTful接口，位于系统安全模块的Web层，负责与前端交互并调用后端服务处理安全相关业务。",
+        "description": "SecurityController is a controller class for managing security configurations, providing RESTful interfaces for CRUD operations on security configurations and account security checks, located in the Web layer of the system security module, responsible for interacting with the frontend and calling backend services to handle security-related business.",
         "methods": [],
         "dependencies": [
             206,
@@ -211,7 +211,7 @@
         "id": 11,
         "name": "TransferTravelInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TransferTravelInfo",
-        "description": "表示中转行程信息的实体类，用于封装与中转旅行相关的数据，如出行日期等。",
+        "description": "An entity class representing transfer travel information, used to encapsulate data related to transfer travel, such as travel dates.",
         "methods": [],
         "dependencies": [
             11,
@@ -229,7 +229,7 @@
         "id": 12,
         "name": "PreserveController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.PreserveController",
-        "description": "PreserveController 负责处理车票预订相关的请求，提供车票预订和首页访问的接口，是车票预订功能的入口控制器。",
+        "description": "PreserveController is responsible for handling ticket reservation-related requests, providing interfaces for ticket reservation and homepage access, serving as the entry controller for the ticket reservation function.",
         "methods": [],
         "dependencies": [
             248,
@@ -257,7 +257,7 @@
         "id": 13,
         "name": "Travel",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Travel",
-        "description": "Travel类是火车票系统中的实体类，用于表示与旅行相关的信息。",
+        "description": "Travel class is an entity class in the train ticket system, used to represent travel-related information.",
         "methods": [],
         "dependencies": [
             85
@@ -273,7 +273,7 @@
         "id": 14,
         "name": "CancelController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.CancelController",
-        "description": "CancelController 是一个用于处理车票取消相关请求的控制器类，提供计算退票费用和执行退票操作的功能，同时支持首页访问。它位于系统的Web层，负责与客户端交互并协调相关业务逻辑。",
+        "description": "CancelController is a controller class for handling ticket cancellation-related requests, providing functions to calculate refund fees and execute refund operations, while also supporting homepage access. It is located in the Web layer of the system, responsible for interacting with clients and coordinating related business logic.",
         "methods": [],
         "dependencies": [
             114,
@@ -299,7 +299,7 @@
         "id": 15,
         "name": "VerifyCodeService",
         "qualifiedName": "edu.fudanselab.trainticket.service.VerifyCodeService",
-        "description": "VerifyCodeService 是一个抽象服务类，负责生成和验证验证码。它提供生成图像验证码和验证用户输入验证码的抽象方法，用于在 Web 应用中实现验证码功能，通常与 HTTP 请求/响应交互，并支持自定义头部信息。",
+        "description": "VerifyCodeService is an abstract service class responsible for generating and verifying verification codes. It provides abstract methods for generating image verification codes and verifying user-input verification codes, used to implement verification code functionality in Web applications, typically interacting with HTTP requests/responses and supporting custom header information.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -311,7 +311,7 @@
         "id": 16,
         "name": "WaitListOrderVO",
         "qualifiedName": "edu.fudanselab.trainticket.entity.WaitListOrderVO",
-        "description": "WaitListOrderVO 是一个用于表示候补订单信息的值对象（VO），主要包含与候补订单相关的日期信息，通过 getDate() 和 setDate() 方法进行访问和设置，在系统中用于数据传输和封装。",
+        "description": "WaitListOrderVO is a Value Object (VO) used to represent waitlist order information, mainly containing date information related to waitlist orders, accessed and set through getDate() and setDate() methods, used for data transmission and encapsulation in the system.",
         "methods": [],
         "dependencies": [
             249,
@@ -329,7 +329,7 @@
         "id": 17,
         "name": "InsidePaymentServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.InsidePaymentServiceImpl",
-        "description": "InsidePaymentServiceImpl 是一个内部支付服务的实现类，负责处理与用户账户和支付相关的业务逻辑，包括支付、创建账户、充值、查询账户与支付信息、退款以及支付差额处理等。该类在系统中作为支付模块的核心服务，与订单状态管理等功能协同工作。",
+        "description": "InsidePaymentServiceImpl is an implementation class for internal payment services, responsible for handling business logic related to user accounts and payments, including payments, account creation, recharges, querying account and payment information, refunds, and payment difference processing. This class serves as the core service of the payment module in the system, working collaboratively with order status management and other functions.",
         "methods": [],
         "dependencies": [
             89,
@@ -377,7 +377,7 @@
         "id": 18,
         "name": "SecurityConfig",
         "qualifiedName": "edu.fudanselab.trainticket.entity.SecurityConfig",
-        "description": "SecurityConfig 是一个用于安全配置的实体类，可能用于存储或管理与系统安全相关的配置信息。",
+        "description": "SecurityConfig is an entity class for security configurations, possibly used to store or manage configuration information related to system security.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -389,7 +389,7 @@
         "id": 19,
         "name": "BasicAuthDto",
         "qualifiedName": "edu.fudanselab.trainticket.dto.BasicAuthDto",
-        "description": "用于封装用户登录信息的数据传输对象（DTO），主要在用户认证过程中传递用户名和密码等基本认证凭据。",
+        "description": "A Data Transfer Object (DTO) used to encapsulate user login information, mainly used to transmit basic authentication credentials such as username and password during the user authentication process.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -401,7 +401,7 @@
         "id": 20,
         "name": "TripResponse",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TripResponse",
-        "description": "TripResponse 是一个用于封装列车票务系统中行程相关信息的实体类，主要作为数据传输对象（DTO）在服务间传递行程查询结果。",
+        "description": "TripResponse is an entity class used to encapsulate trip-related information in the train ticket system, mainly serving as a Data Transfer Object (DTO) for passing trip query results between services.",
         "methods": [],
         "dependencies": [
             133,
@@ -419,7 +419,7 @@
         "id": 21,
         "name": "ServiceResolver",
         "qualifiedName": "edu.fudanselab.trainticket.service.ServiceResolver",
-        "description": "ServiceResolver 是一个抽象类，用于解析服务名称到对应的服务 URL，主要职责是提供服务发现功能，其子类需实现具体的 URL 解析逻辑。",
+        "description": "ServiceResolver is an abstract class used to resolve service names to corresponding service URLs, with the primary responsibility of providing service discovery functionality. Its subclasses need to implement specific URL resolution logic.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -431,7 +431,7 @@
         "id": 22,
         "name": "DeliveryRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.DeliveryRepository",
-        "description": "DeliveryRepository 是一个数据访问接口，负责管理 Delivery 实体的持久化操作，提供根据 ID 或订单 ID 查询、删除以及获取全部配送记录的功能，是系统中配送模块与数据存储之间的桥梁。",
+        "description": "DeliveryRepository is a data access interface responsible for managing persistence operations of Delivery entities, providing functions to query by ID or order ID, delete, and retrieve all delivery records, serving as the bridge between the delivery module and data storage in the system.",
         "methods": [],
         "dependencies": [
             277
@@ -447,7 +447,7 @@
         "id": 23,
         "name": "AdminUserServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.AdminUserServiceImpl",
-        "description": "AdminUserServiceImpl 是一个管理用户信息的服务实现类，负责提供用户数据的增删改查功能，包括获取所有用户、删除指定用户、更新用户信息和添加新用户。该类位于系统的服务实现层，为管理员用户提供后台用户管理支持。",
+        "description": "AdminUserServiceImpl is a service implementation class for managing user information, responsible for providing CRUD functions for user data, including getting all users, deleting specified users, updating user information, and adding new users. This class is located in the service implementation layer of the system, providing backend user management support for administrator users.",
         "methods": [],
         "dependencies": [
             176,
@@ -471,7 +471,7 @@
         "id": 24,
         "name": "OrderController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.OrderController",
-        "description": "OrderController 是一个负责处理火车票订单相关业务的控制器类，提供订单创建、查询、修改、删除、支付及安全校验等RESTful接口，作为系统订单模块的入口与外部交互。",
+        "description": "OrderController is a controller class responsible for handling train ticket order-related business, providing RESTful interfaces for order creation, query, modification, deletion, payment, and security verification, serving as the entry point for the system order module to interact with external systems.",
         "methods": [],
         "dependencies": [
             230,
@@ -499,7 +499,7 @@
         "id": 25,
         "name": "AuthController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.AuthController",
-        "description": "AuthController 负责处理与用户认证相关的请求，包括创建默认用户和提供基础的健康检查接口（如返回问候信息）。该类位于系统的控制层，接收并处理来自客户端的认证相关 HTTP 请求，协调调用服务层完成业务逻辑，并返回相应的响应结果。",
+        "description": "AuthController is responsible for handling user authentication-related requests, including creating default users and providing basic health check interfaces (such as returning greeting messages). This class is located in the control layer of the system, receiving and processing authentication-related HTTP requests from clients, coordinating calls to the service layer to complete business logic, and returning corresponding response results.",
         "methods": [],
         "dependencies": [
             25,
@@ -523,7 +523,7 @@
         "id": 26,
         "name": "OrderInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.OrderInitData",
-        "description": "OrderInitData 类用于在系统启动时初始化订单相关数据，通过实现 run 方法支持命令行参数触发初始化逻辑，属于系统初始化模块的一部分。",
+        "description": "OrderInitData class is used to initialize order-related data at system startup, supporting command line parameter-triggered initialization logic through implementing the run method, belonging to the system initialization module.",
         "methods": [],
         "dependencies": [
             70,
@@ -541,7 +541,7 @@
         "id": 27,
         "name": "PlainAssurance",
         "qualifiedName": "edu.fudanselab.trainticket.entity.PlainAssurance",
-        "description": "表示火车票保险信息的实体类，用于存储和管理保险相关的数据。",
+        "description": "An entity class representing train ticket insurance information, used to store and manage insurance-related data.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -553,7 +553,7 @@
         "id": 28,
         "name": "TravelService2Impl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.TravelService2Impl",
-        "description": "TravelService2Impl 是一个旅行服务实现类，负责处理与火车票相关的查询、创建、更新和删除操作。它提供根据行程ID获取路线和列车类型、批量查询车票信息、管理行程详情等功能，并包含多个辅助方法用于内部逻辑处理，如获取余票数量、设置响应数据等。该类在系统中充当旅行信息业务逻辑的核心处理单元，与实体类（如TravelInfo、TripInfo）和其他服务交互以完成完整的票务操作。",
+        "description": "TravelService2Impl is a travel service implementation class responsible for handling query, create, update, and delete operations related to train tickets. It provides functions to get routes and train types by trip ID, batch query ticket information, manage trip details, and includes multiple auxiliary methods for internal logic processing, such as getting remaining ticket counts and setting response data. This class serves as the core processing unit for travel information business logic in the system, interacting with entity classes (such as TravelInfo, TripInfo) and other services to complete complete ticketing operations.",
         "methods": [],
         "dependencies": [
             224,
@@ -609,7 +609,7 @@
         "id": 29,
         "name": "Mail",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Mail",
-        "description": "表示邮件信息的实体类，用于封装邮件相关数据。",
+        "description": "An entity class representing email information, used to encapsulate email-related data.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -621,7 +621,7 @@
         "id": 30,
         "name": "ItemNameUtil",
         "qualifiedName": "edu.fudanselab.trainticket.util.ItemNameUtil",
-        "description": "ItemNameUtil 是一个工具类，提供字符串格式化方法，用于简化和转换项目名称，例如将名称转换为小写连字符格式或缩短名称。",
+        "description": "ItemNameUtil is a utility class providing string formatting methods for simplifying and converting item names, such as converting names to lowercase hyphen format or shortening names.",
         "methods": [],
         "dependencies": [
             30
@@ -637,7 +637,7 @@
         "id": 31,
         "name": "PriceInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.PriceInitData",
-        "description": "PriceInitData 是一个用于初始化票价数据的启动类，通过实现 run 方法在系统启动时执行票价相关数据的初始化逻辑。",
+        "description": "PriceInitData is an initialization class for initializing price data, executing price-related data initialization logic at system startup through implementing the run method.",
         "methods": [],
         "dependencies": [
             1,
@@ -657,7 +657,7 @@
         "id": 32,
         "name": "BasicController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.BasicController",
-        "description": "BasicController 是一个处理基础旅行相关查询请求的控制器类，负责提供首页访问、单个或批量行程查询以及车站ID查询等接口，位于系统Web层，通过HTTP请求与客户端交互。",
+        "description": "BasicController is a controller class for handling basic travel-related query requests, responsible for providing interfaces for homepage access, single or batch trip queries, and station ID queries, located in the system Web layer, interacting with clients through HTTP requests.",
         "methods": [],
         "dependencies": [
             13,
@@ -679,7 +679,7 @@
         "id": 33,
         "name": "User",
         "qualifiedName": "edu.fudanselab.trainticket.entity.User",
-        "description": "User类是系统中的用户实体类，用于表示和管理用户的基本信息，通常作为数据模型在持久化层和业务逻辑层之间传递。",
+        "description": "User class is the user entity class in the system, used to represent and manage basic user information, typically serving as a data model passed between the persistence layer and business logic layer.",
         "methods": [],
         "dependencies": [
             33
@@ -695,7 +695,7 @@
         "id": 34,
         "name": "RebookService",
         "qualifiedName": "edu.fudanselab.trainticket.service.RebookService",
-        "description": "RebookService 是一个抽象服务类，负责处理车票改签相关业务，包括执行改签操作和支付改签产生的票价差额。该类定义了改签流程的核心接口，需由具体实现类完成实际逻辑。",
+        "description": "RebookService is an abstract service class responsible for handling ticket rebooking-related business, including executing rebooking operations and paying the price difference generated by rebooking. This class defines the core interface for the rebooking process and requires concrete implementation classes to complete the actual logic.",
         "methods": [],
         "dependencies": [
             6,
@@ -713,7 +713,7 @@
         "id": 35,
         "name": "FoodOrderRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.FoodOrderRepository",
-        "description": "FoodOrderRepository 是一个数据访问接口，负责对食品订单（FoodOrder）实体进行持久化操作，包括根据ID或订单号查询、删除以及获取所有食品订单。该类在系统中作为仓储层组件，为上层业务逻辑提供对食品订单数据的访问能力。",
+        "description": "FoodOrderRepository is a data access interface responsible for persistence operations on FoodOrder entities, including querying by ID or order number, deleting, and retrieving all food orders. This class serves as a repository layer component in the system, providing upper-level business logic with access to food order data.",
         "methods": [],
         "dependencies": [
             212
@@ -729,7 +729,7 @@
         "id": 36,
         "name": "AdminOrderServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.AdminOrderServiceImpl",
-        "description": "AdminOrderServiceImpl 是一个管理员订单服务实现类，负责处理与火车票订单相关的管理操作，包括查询所有订单、删除订单、更新订单和添加订单。该类在系统中作为订单管理模块的服务层实现，为管理员提供对订单数据的完整控制能力。",
+        "description": "AdminOrderServiceImpl is an administrator order service implementation class responsible for handling management operations related to train ticket orders, including querying all orders, deleting orders, updating orders, and adding orders. This class serves as the service layer implementation of the order management module in the system, providing administrators with complete control over order data.",
         "methods": [],
         "dependencies": [
             162,
@@ -753,7 +753,7 @@
         "id": 37,
         "name": "OrderStatus",
         "qualifiedName": "edu.fudanselab.trainticket.entity.OrderStatus",
-        "description": "OrderStatus 是一个用于表示订单状态的枚举类，提供状态码与状态名称之间的映射和查询功能。",
+        "description": "OrderStatus is an enum class used to represent order status, providing mapping and query functions between status codes and status names.",
         "methods": [],
         "dependencies": [
             37,
@@ -771,7 +771,7 @@
         "id": 38,
         "name": "RouteInfoCommon",
         "qualifiedName": "edu.fudanselab.trainticket.entity.RouteInfoCommon",
-        "description": "RouteInfoCommon类用于封装路线的通用信息，主要包括途经站点列表和相邻站点间的距离列表。该类在系统中作为数据传输对象（DTO），用于在不同模块间传递路线相关的基本数据。",
+        "description": "RouteInfoCommon class is used to encapsulate common route information, mainly including a list of passing stations and distance lists between adjacent stations. This class serves as a Data Transfer Object (DTO) in the system for passing basic route-related data between different modules.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -783,7 +783,7 @@
         "id": 39,
         "name": "TrainServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.TrainServiceImpl",
-        "description": "TrainServiceImpl 是 TrainService 接口的实现类，负责提供列车类型（TrainType）的完整 CRUD 操作，包括创建、查询（按 ID、名称或名称列表）、更新和删除，同时支持通用查询。该类在系统中作为列车类型数据的核心业务逻辑处理单元，与数据访问层及上层服务交互，所有方法均携带 HttpHeaders 以支持请求上下文传递。",
+        "description": "TrainServiceImpl is the implementation class of the TrainService interface, responsible for providing complete CRUD operations for TrainType, including create, query (by ID, name, or name list), update, and delete, while also supporting general queries. This class serves as the core business logic processing unit for train type data in the system, interacting with the data access layer and upper-level services, with all methods carrying HttpHeaders to support request context passing.",
         "methods": [],
         "dependencies": [
             137,
@@ -805,7 +805,7 @@
         "id": 40,
         "name": "ContactsRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.ContactsRepository",
-        "description": "ContactsRepository 是一个抽象数据访问接口，负责管理联系人（Contacts）实体的持久化操作。它提供基于账户ID、文档号和文档类型等条件的查询方法，以及删除和全量查询功能，在系统中作为联系人数据访问层的核心组件。",
+        "description": "ContactsRepository is an abstract data access interface responsible for managing persistence operations of Contacts entities. It provides query methods based on conditions such as account ID, document number, and document type, as well as delete and full query functions, serving as the core component of the contact data access layer in the system.",
         "methods": [],
         "dependencies": [
             57
@@ -821,7 +821,7 @@
         "id": 41,
         "name": "Account",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Account",
-        "description": "表示用户账户信息的实体类，用于在火车票系统中存储和管理账户相关数据。",
+        "description": "An entity class representing user account information, used to store and manage account-related data in the train ticket system.",
         "methods": [],
         "dependencies": [
             210,
@@ -839,7 +839,7 @@
         "id": 42,
         "name": "PaymentInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.PaymentInfo",
-        "description": "PaymentInfo 是一个实体类，用于表示与火车票支付相关的支付信息，在系统中主要用于数据持久化和传输。",
+        "description": "PaymentInfo is an entity class used to represent payment information related to train ticket payments, mainly used for data persistence and transmission in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -851,7 +851,7 @@
         "id": 43,
         "name": "CancelServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.CancelServiceImpl",
-        "description": "CancelServiceImpl 是一个负责处理订单取消业务的核心服务类，主要职责包括取消订单、计算退款金额、执行退款操作以及发送通知邮件。该类通过与订单服务和其他外部服务交互，完成跨服务的订单取消流程，并提供用户账户信息获取和资金回退功能，在系统中扮演订单取消与退款协调者的角色。",
+        "description": "CancelServiceImpl is a core service class responsible for handling order cancellation business, with main responsibilities including canceling orders, calculating refund amounts, executing refund operations, and sending notification emails. This class interacts with order services and other external services to complete cross-service order cancellation processes, and provides user account information retrieval and fund rollback functions, playing the role of order cancellation and refund coordinator in the system.",
         "methods": [],
         "dependencies": [
             114,
@@ -885,7 +885,7 @@
         "id": 44,
         "name": "JWTFilter",
         "qualifiedName": "edu.fudanselab.trainticket.config.jwt.JWTFilter",
-        "description": "JWTFilter 是一个用于处理 JWT（JSON Web Token）认证的过滤器，负责在请求处理链中验证和解析 JWT 令牌，确保请求的安全性。",
+        "description": "JWTFilter is a filter for handling JWT (JSON Web Token) authentication, responsible for verifying and parsing JWT tokens in the request processing chain to ensure request security.",
         "methods": [],
         "dependencies": [
             113,
@@ -931,7 +931,7 @@
         "id": 45,
         "name": "FoodDeliveryInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.FoodDeliveryInitData",
-        "description": "负责初始化食品配送相关数据的启动类，通过 run 方法执行初始化逻辑。",
+        "description": "An initialization class responsible for initializing food delivery-related data, executing initialization logic through the run method.",
         "methods": [],
         "dependencies": [
             208,
@@ -949,7 +949,7 @@
         "id": 46,
         "name": "ConfigService",
         "qualifiedName": "edu.fudanselab.trainticket.service.ConfigService",
-        "description": "ConfigService 是一个抽象服务类，负责管理系统中的配置信息，提供配置的创建、更新、查询（单个和全部）以及删除等核心操作。该类作为配置管理模块的服务层接口，定义了标准的 CRUD 方法，供具体实现类继承和实现。",
+        "description": "ConfigService is an abstract service class responsible for managing configuration information in the system, providing core operations for configuration creation, update, query (single and all), and deletion. This class serves as the service layer interface for the configuration management module, defining standard CRUD methods for concrete implementation classes to inherit and implement.",
         "methods": [],
         "dependencies": [
             186,
@@ -967,7 +967,7 @@
         "id": 47,
         "name": "PreserveOtherServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.PreserveOtherServiceImpl",
-        "description": "PreserveOtherServiceImpl 是一个用于处理火车票预定相关业务逻辑的服务实现类，主要职责包括订单创建、座位分配、保险添加、联系人信息获取、餐饮及托运服务创建、安全校验以及通知邮件发送等。该类通过调用其他内部服务（如用户服务、行程详情服务、站点查询等）协同完成完整的车票预定流程，在系统中扮演核心业务协调者的角色。",
+        "description": "PreserveOtherServiceImpl is a service implementation class for handling train ticket reservation-related business logic, with main responsibilities including order creation, seat allocation, insurance addition, contact information retrieval, catering and consignment service creation, security verification, and notification email sending. This class collaborates with other internal services (such as user services, trip detail services, station queries, etc.) to complete the complete ticket reservation process, playing the role of core business coordinator in the system.",
         "methods": [],
         "dependencies": [
             209,
@@ -1031,7 +1031,7 @@
         "id": 48,
         "name": "WaitListOrderServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.WaitListOrderServiceImpl",
-        "description": "WaitListOrderServiceImpl 是候补订单服务的实现类，负责管理候补订单的创建、查询、更新及状态修改等核心业务逻辑，并通过触发线程处理候补订单的后续流程。该类在系统中作为候补订单模块的服务层组件，与订单数据模型和外部接口交互。",
+        "description": "WaitListOrderServiceImpl is the implementation class for waitlist order services, responsible for managing core business logic such as creation, query, update, and status modification of waitlist orders, and processing subsequent waitlist order processes by triggering threads. This class serves as the service layer component of the waitlist order module in the system, interacting with order data models and external interfaces.",
         "methods": [],
         "dependencies": [
             161,
@@ -1061,7 +1061,7 @@
         "id": 49,
         "name": "UserInitUser",
         "qualifiedName": "edu.fudanselab.trainticket.init.UserInitUser",
-        "description": "UserInitUser 是一个用于初始化用户数据的启动类，通过实现 run 方法在系统启动时执行用户相关的初始化逻辑。",
+        "description": "UserInitUser is an initialization class for initializing user data, executing user-related initialization logic at system startup through implementing the run method.",
         "methods": [],
         "dependencies": [
             245,
@@ -1081,7 +1081,7 @@
         "id": 50,
         "name": "PaymentServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.PaymentServiceImpl",
-        "description": "PaymentServiceImpl 是支付服务的核心实现类，负责处理与支付相关的业务逻辑，包括支付、充值、查询账户信息以及支付初始化等操作。该类位于服务实现层，为上层调用提供具体的支付功能支持。",
+        "description": "PaymentServiceImpl is the core implementation class for payment services, responsible for handling payment-related business logic, including payment, recharge, account information query, and payment initialization operations. This class is located in the service implementation layer, providing specific payment function support for upper-level calls.",
         "methods": [],
         "dependencies": [
             88,
@@ -1109,7 +1109,7 @@
         "id": 51,
         "name": "RouteService",
         "qualifiedName": "edu.fudanselab.trainticket.service.RouteService",
-        "description": "RouteService 是一个抽象服务类，负责管理路线（Route）相关的核心业务逻辑，包括根据起终点查询路线、获取所有路线、按ID查询单条或多条路线、创建/修改路线以及删除路线。该类为路线数据操作提供统一接口，通常由具体实现类完成实际的数据访问和处理，是系统中路线管理模块的关键组成部分。",
+        "description": "RouteService is an abstract service class responsible for managing core business logic related to Routes, including querying routes by start/end points, getting all routes, querying single or multiple routes by ID, creating/updating routes, and deleting routes. This class provides a unified interface for route data operations, typically completed by concrete implementation classes for actual data access and processing, and is a key component of the route management module in the system.",
         "methods": [],
         "dependencies": [
             218,
@@ -1127,7 +1127,7 @@
         "id": 52,
         "name": "ConsignRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.ConsignRepository",
-        "description": "ConsignRepository 是一个用于管理托运记录（ConsignRecord）的抽象数据访问接口，提供基于账户ID、订单ID、收货人等条件查询托运记录的功能。该类在系统中作为仓储层组件，负责与数据存储交互，为上层业务逻辑提供数据支持。",
+        "description": "ConsignRepository is an abstract data access interface for managing ConsignRecords, providing functions to query consignment records based on conditions such as account ID, order ID, and consignee. This class serves as a repository layer component in the system, responsible for interacting with data storage and providing data support for upper-level business logic.",
         "methods": [],
         "dependencies": [
             156
@@ -1143,7 +1143,7 @@
         "id": 53,
         "name": "SeatController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.SeatController",
-        "description": "SeatController 是一个用于处理座位相关业务请求的控制器类，主要职责包括创建座位信息和查询区间余票。它位于系统的控制层，接收 HTTP 请求并协调相应的服务逻辑，与其他组件通过 RESTful 接口进行交互。",
+        "description": "SeatController is a controller class for handling seat-related business requests, with main responsibilities including creating seat information and querying remaining tickets for intervals. It is located in the control layer of the system, receiving HTTP requests and coordinating corresponding service logic, interacting with other components through RESTful interfaces.",
         "methods": [],
         "dependencies": [
             242,
@@ -1165,7 +1165,7 @@
         "id": 54,
         "name": "TrainTicketInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.TrainTicketInitData",
-        "description": "负责初始化火车票系统相关数据的启动类，通过 run 方法执行初始化逻辑。",
+        "description": "An initialization class responsible for initializing train ticket system-related data, executing initialization logic through the run method.",
         "methods": [],
         "dependencies": [
             88,
@@ -1185,7 +1185,7 @@
         "id": 55,
         "name": "AssuranceServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.AssuranceServiceImpl",
-        "description": "AssuranceServiceImpl 是一个提供保险服务实现的类，负责处理与保险相关的增删改查操作，包括根据ID或订单ID查询保险、创建和修改保险、删除保险以及获取所有保险和保险类型信息。该类在系统中作为保险业务逻辑的核心实现，与订单服务紧密关联。",
+        "description": "AssuranceServiceImpl is a class providing insurance service implementation, responsible for handling insurance-related CRUD operations, including querying insurance by ID or order ID, creating and modifying insurance, deleting insurance, and getting all insurance and insurance type information. This class serves as the core implementation of insurance business logic in the system, closely associated with order services.",
         "methods": [],
         "dependencies": [
             118,
@@ -1215,7 +1215,7 @@
         "id": 56,
         "name": "TravelPlanService",
         "qualifiedName": "edu.fudanselab.trainticket.service.TravelPlanService",
-        "description": "TravelPlanService 是一个抽象服务类，负责提供旅行规划相关的功能，包括查询中转方案、获取最便宜、最快和最少站点的行程方案。该类定义了旅行规划的核心接口，供具体实现类扩展，与 TripInfo 和 TransferTravelInfo 等数据模型类协作，为上层调用者提供统一的行程查询服务。",
+        "description": "TravelPlanService is an abstract service class responsible for providing travel planning-related functions, including querying transfer plans, and getting the cheapest, fastest, and fewest-station trip plans. This class defines the core interface for travel planning, for concrete implementation classes to extend, collaborating with data model classes such as TripInfo and TransferTravelInfo to provide unified trip query services for upper-level callers.",
         "methods": [],
         "dependencies": [
             11,
@@ -1235,7 +1235,7 @@
         "id": 57,
         "name": "Contacts",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Contacts",
-        "description": "Contacts类用于表示用户联系人信息，重写了equals和hashCode方法以支持对象比较和哈希操作，在系统中通常用于管理购票相关的联系人数据。",
+        "description": "Contacts class is used to represent user contact information, overriding equals and hashCode methods to support object comparison and hash operations, typically used in the system to manage contact data related to ticket purchasing.",
         "methods": [],
         "dependencies": [
             57
@@ -1251,7 +1251,7 @@
         "id": 58,
         "name": "AdminBasicInfoServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.AdminBasicInfoServiceImpl",
-        "description": "AdminBasicInfoServiceImpl 是一个管理后台基础信息的业务实现类，负责提供对联系人、车站、列车、系统配置和票价等核心数据的增删改查操作。该类作为 AdminBasicInfoService 接口的具体实现，为管理员提供统一的数据管理接口，在系统中承担基础数据维护的核心职责。",
+        "description": "AdminBasicInfoServiceImpl is a business implementation class for managing backend basic information, responsible for providing CRUD operations on core data such as contacts, stations, trains, system configurations, and prices. This class serves as the concrete implementation of the AdminBasicInfoService interface, providing administrators with unified data management interfaces, and undertaking core responsibilities for basic data maintenance in the system.",
         "methods": [],
         "dependencies": [
             84,
@@ -1283,7 +1283,7 @@
         "id": 59,
         "name": "RouteServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.RouteServiceImpl",
-        "description": "RouteServiceImpl 是路线管理的核心服务实现类，负责提供路线的创建、修改、删除、查询（包括按ID、起终点、批量ID及全量查询）等业务功能，是系统中处理路线相关操作的主要服务组件。",
+        "description": "RouteServiceImpl is the core service implementation class for route management, responsible for providing business functions such as route creation, modification, deletion, and query (including by ID, start/end points, batch IDs, and full query), and is the main service component for handling route-related operations in the system.",
         "methods": [],
         "dependencies": [
             51,
@@ -1309,7 +1309,7 @@
         "id": 60,
         "name": "Payment",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Payment",
-        "description": "Payment实体类，用于表示火车票系统中的支付信息。",
+        "description": "Payment entity class, used to represent payment information in the train ticket system.",
         "methods": [],
         "dependencies": [
             60
@@ -1325,7 +1325,7 @@
         "id": 61,
         "name": "TrainFoodServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.TrainFoodServiceImpl",
-        "description": "TrainFoodServiceImpl 是一个实现类，负责处理列车餐饮相关业务逻辑，包括创建列车餐饮信息、列出所有列车餐饮以及根据行程ID查询对应的列车餐饮信息。该类在系统中作为服务层组件，提供与列车餐饮数据交互的接口。",
+        "description": "TrainFoodServiceImpl is an implementation class responsible for handling train catering-related business logic, including creating train catering information, listing all train catering, and querying corresponding train catering information by trip ID. This class serves as a service layer component in the system, providing interfaces for interacting with train catering data.",
         "methods": [],
         "dependencies": [
             200,
@@ -1349,7 +1349,7 @@
         "id": 62,
         "name": "Station",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Station",
-        "description": "Station类用于表示火车站实体，主要职责是封装车站相关信息，如车站名称，并提供相应属性的访问和修改方法。",
+        "description": "Station class is used to represent train station entities, with the main responsibility of encapsulating station-related information, such as station names, and providing access and modification methods for corresponding attributes.",
         "methods": [],
         "dependencies": [
             62
@@ -1365,7 +1365,7 @@
         "id": 63,
         "name": "NotifyInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.NotifyInfo",
-        "description": "通用通知信息实体类，用于封装通知相关的数据，在系统中作为数据传输对象（DTO）或持久化实体使用。",
+        "description": "A general notification information entity class, used to encapsulate notification-related data, used as a Data Transfer Object (DTO) or persistence entity in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -1377,7 +1377,7 @@
         "id": 64,
         "name": "TravelPlanController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.TravelPlanController",
-        "description": "TravelPlanController 是一个控制器类，负责处理与旅行规划相关的HTTP请求，包括获取中转方案、按最低价格、最短时间和最少站点查询行程信息。该类在系统中作为前端与旅行规划服务之间的接口，协调不同查询策略的调用。",
+        "description": "TravelPlanController is a controller class responsible for handling HTTP requests related to travel planning, including getting transfer plans, and querying trip information by lowest price, shortest time, and fewest stations. This class serves as the interface between the frontend and travel planning services in the system, coordinating calls to different query strategies.",
         "methods": [],
         "dependencies": [
             11,
@@ -1401,7 +1401,7 @@
         "id": 65,
         "name": "ConfigRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.ConfigRepository",
-        "description": "ConfigRepository 是一个抽象数据访问接口，负责对配置项（Config）进行持久化操作，包括根据名称查询、查询所有配置以及按名称删除配置。该类位于数据访问层，为上层业务逻辑提供统一的配置数据管理接口。",
+        "description": "ConfigRepository is an abstract data access interface responsible for persistence operations on configuration items (Config), including querying by name, querying all configurations, and deleting configurations by name. This class is located in the data access layer, providing a unified configuration data management interface for upper-level business logic.",
         "methods": [],
         "dependencies": [
             186
@@ -1417,7 +1417,7 @@
         "id": 66,
         "name": "ConsignService",
         "qualifiedName": "edu.fudanselab.trainticket.service.ConsignService",
-        "description": "ConsignService 是一个抽象服务类，负责处理托运记录的相关操作，包括插入、更新和多种方式查询托运记录（如按账户ID、订单ID或收货人名称）。该类在系统中作为托运业务逻辑的接口定义，供具体实现类继承并提供实际功能。",
+        "description": "ConsignService is an abstract service class responsible for handling operations related to consignment records, including insertion, update, and various ways of querying consignment records (such as by account ID, order ID, or consignee name). This class serves as the interface definition for consignment business logic in the system, for concrete implementation classes to inherit and provide actual functionality.",
         "methods": [],
         "dependencies": [
             218,
@@ -1435,7 +1435,7 @@
         "id": 67,
         "name": "TripRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.TripRepository",
-        "description": "TripRepository 是一个抽象的数据访问接口，负责对 Trip 实体进行持久化操作，包括根据 TripId 或 RouteId 查询行程、删除指定行程以及获取所有行程。该类为行程数据的访问提供统一接口，通常由具体的持久化实现类（如基于数据库的 Repository）继承并实现。",
+        "description": "TripRepository is an abstract data access interface responsible for persistence operations on Trip entities, including querying trips by TripId or RouteId, deleting specified trips, and getting all trips. This class provides a unified interface for trip data access, typically inherited and implemented by concrete persistence implementation classes (such as database-based Repositories).",
         "methods": [],
         "dependencies": [
             133,
@@ -1453,7 +1453,7 @@
         "id": 68,
         "name": "StationService",
         "qualifiedName": "edu.fudanselab.trainticket.service.StationService",
-        "description": "StationService 是一个抽象服务类，负责车站信息的 CRUD 操作及多种查询功能，包括按名称、ID 及批量方式查询车站。该类在系统中作为车站数据访问的统一接口，供上层业务调用，并与 Station 实体及 HTTP 请求头交互。",
+        "description": "StationService is an abstract service class responsible for CRUD operations and various query functions for station information, including querying stations by name, ID, and batch methods. This class serves as a unified interface for station data access in the system, for upper-level business calls, and interacts with Station entities and HTTP request headers.",
         "methods": [],
         "dependencies": [
             62,
@@ -1471,7 +1471,7 @@
         "id": 69,
         "name": "PaymentDifferenceInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.PaymentDifferenceInfo",
-        "description": "表示支付差额信息的实体类，用于封装与支付金额差异相关的数据。",
+        "description": "An entity class representing payment difference information, used to encapsulate data related to payment amount differences.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -1483,7 +1483,7 @@
         "id": 70,
         "name": "Order",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Order",
-        "description": "Order类用于表示火车票订单实体，主要职责是封装订单相关数据，并提供对象相等性判断和哈希码计算以支持集合操作。",
+        "description": "Order class is used to represent train ticket order entities, with the main responsibility of encapsulating order-related data, and providing object equality judgment and hash code calculation to support collection operations.",
         "methods": [],
         "dependencies": [
             37,
@@ -1505,7 +1505,7 @@
         "id": 71,
         "name": "TrainTypeRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.TrainTypeRepository",
-        "description": "TrainTypeRepository 是一个用于管理 TrainType 实体的持久化操作的抽象数据访问接口，提供根据 ID、名称或名称列表查询列车类型，以及删除和获取所有列车类型的功能。该类在系统中充当数据访问层，与 TrainType 实体紧密关联，通常被服务层调用以完成对列车类型数据的存取操作。",
+        "description": "TrainTypeRepository is an abstract data access interface for managing persistence operations of TrainType entities, providing functions to query train types by ID, name, or name list, as well as delete and get all train types. This class serves as the data access layer in the system, closely associated with TrainType entities, typically called by the service layer to complete access operations on train type data.",
         "methods": [],
         "dependencies": [
             81
@@ -1521,7 +1521,7 @@
         "id": 72,
         "name": "WaitListOrderController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.WaitListOrderController",
-        "description": "WaitListOrderController 是一个用于处理候补订单相关请求的控制器类，提供创建候补订单、获取所有订单以及获取候补订单列表等功能，位于系统的 Web 层，负责与前端进行交互。",
+        "description": "WaitListOrderController is a controller class for handling waitlist order-related requests, providing functions such as creating waitlist orders, getting all orders, and getting waitlist order lists, located in the Web layer of the system, responsible for interacting with the frontend.",
         "methods": [],
         "dependencies": [
             72,
@@ -1543,7 +1543,7 @@
         "id": 73,
         "name": "Seat",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Seat",
-        "description": "Seat类是一个实体类，用于表示火车票系统中的座位信息，属于领域模型的一部分。",
+        "description": "Seat class is an entity class used to represent seat information in the train ticket system, belonging to the domain model.",
         "methods": [],
         "dependencies": [
             73
@@ -1559,7 +1559,7 @@
         "id": 74,
         "name": "Ticket",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Ticket",
-        "description": "表示火车票信息的实体类，用于封装车票相关数据。",
+        "description": "An entity class representing train ticket information, used to encapsulate ticket-related data.",
         "methods": [],
         "dependencies": [
             74
@@ -1575,7 +1575,7 @@
         "id": 75,
         "name": "TravelAdvanceResultUnit",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TravelAdvanceResultUnit",
-        "description": "通用实体类，用于封装旅行预购结果的相关数据，具体职责需结合其属性或上下文进一步明确。",
+        "description": "A general entity class used to encapsulate relevant data for travel pre-purchase results, with specific responsibilities to be further clarified based on its attributes or context.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -1587,7 +1587,7 @@
         "id": 76,
         "name": "PriceServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.PriceServiceImpl",
-        "description": "PriceServiceImpl 是价格配置管理的服务实现类，负责提供价格配置的增删改查功能，包括根据路线ID和列车类型查询价格配置、批量查询、创建、更新和删除价格配置等操作。",
+        "description": "PriceServiceImpl is the service implementation class for price configuration management, responsible for providing CRUD functions for price configurations, including querying price configurations by route ID and train type, batch querying, creating, updating, and deleting price configurations.",
         "methods": [],
         "dependencies": [
             231,
@@ -1611,7 +1611,7 @@
         "id": 77,
         "name": "RabbitReceive",
         "qualifiedName": "edu.fudanselab.trainticket.mq.RabbitReceive",
-        "description": "RabbitReceive 类负责处理从 RabbitMQ 接收到的消息，其核心方法 process 用于解析和执行消息载荷所表示的业务逻辑，在系统中充当消息消费者的角色。",
+        "description": "RabbitReceive class is responsible for handling messages received from RabbitMQ, with its core method process used to parse and execute business logic represented by message payloads, serving as a message consumer in the system.",
         "methods": [],
         "dependencies": [
             229,
@@ -1639,7 +1639,7 @@
         "id": 78,
         "name": "NotificationController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.NotificationController",
-        "description": "NotificationController 负责处理与通知相关的 HTTP 请求，包括订单创建、修改、取消成功以及车票预订成功等场景的通知逻辑，同时提供测试邮件发送和主页访问的端点。该类作为通知服务的入口，接收 NotifyInfo 数据并触发相应的通知操作。",
+        "description": "NotificationController is responsible for handling HTTP requests related to notifications, including notification logic for scenarios such as successful order creation, modification, cancellation, and successful ticket reservation, while also providing endpoints for test email sending and homepage access. This class serves as the entry point for notification services, receiving NotifyInfo data and triggering corresponding notification operations.",
         "methods": [],
         "dependencies": [
             145,
@@ -1659,7 +1659,7 @@
         "id": 79,
         "name": "LeftTicketInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.LeftTicketInfo",
-        "description": "LeftTicketInfo类用于封装余票信息，是车票查询系统中的实体类，主要职责是存储和表示特定车次的余票数据。",
+        "description": "LeftTicketInfo class is used to encapsulate remaining ticket information, an entity class in the ticket query system, with the main responsibility of storing and representing remaining ticket data for specific trains.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -1671,7 +1671,7 @@
         "id": 80,
         "name": "ServiceResolverImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.ServiceResolverImpl",
-        "description": "ServiceResolverImpl 是一个服务解析实现类，负责根据服务名称获取对应的服务URL地址，用于服务间的通信定位。",
+        "description": "ServiceResolverImpl is a service resolution implementation class, responsible for obtaining corresponding service URL addresses based on service names, used for service-to-service communication positioning.",
         "methods": [],
         "dependencies": [
             21,
@@ -1689,7 +1689,7 @@
         "id": 81,
         "name": "TrainType",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TrainType",
-        "description": "表示列车类型的实体类，用于封装列车类型相关信息，在系统中作为数据模型使用。",
+        "description": "An entity class representing train types, used to encapsulate train type-related information, used as a data model in the system.",
         "methods": [],
         "dependencies": [
             81
@@ -1705,7 +1705,7 @@
         "id": 82,
         "name": "RoutePlanInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.RoutePlanInfo",
-        "description": "RoutePlanInfo类用于封装路线规划的基本信息，主要包含起始站和终点站的名称，为车票预订系统中的路线查询提供数据支持。",
+        "description": "RoutePlanInfo class is used to encapsulate basic route planning information, mainly containing the names of starting and ending stations, providing data support for route queries in the ticket reservation system.",
         "methods": [],
         "dependencies": [
             82,
@@ -1723,7 +1723,7 @@
         "id": 83,
         "name": "AddMoneyRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.AddMoneyRepository",
-        "description": "该类是一个数据访问层组件，用于处理与“充值”（AddMoney）相关的数据操作，但当前未定义具体方法。",
+        "description": "This class is a data access layer component used to handle data operations related to 'AddMoney' (recharge), but no specific methods are currently defined.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -1735,7 +1735,7 @@
         "id": 84,
         "name": "AdminBasicInfoService",
         "qualifiedName": "edu.fudanselab.trainticket.service.AdminBasicInfoService",
-        "description": "AdminBasicInfoService 是一个抽象服务类，负责提供铁路订票系统中管理员对基础数据的增删改查操作，包括联系人、车站、列车、配置和票价等信息。该类定义了一系列抽象方法，由具体实现类完成实际业务逻辑，是系统管理功能模块的核心接口。",
+        "description": "AdminBasicInfoService is an abstract service class responsible for providing administrators with CRUD operations on basic data in the railway booking system, including information such as contacts, stations, trains, configurations, and prices. This class defines a series of abstract methods, with concrete implementation classes completing actual business logic, and is the core interface of the system management function module.",
         "methods": [],
         "dependencies": [
             81,
@@ -1761,7 +1761,7 @@
         "id": 85,
         "name": "Trip",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Trip",
-        "description": "Trip类用于表示火车票系统中的行程实体，封装了与行程相关的数据属性，是系统中用于数据传输和持久化的基础实体类。",
+        "description": "Trip class is used to represent trip entities in the train ticket system, encapsulating data attributes related to trips, and is a basic entity class for data transmission and persistence in the system.",
         "methods": [],
         "dependencies": [
             133,
@@ -1781,7 +1781,7 @@
         "id": 86,
         "name": "StationFoodStore",
         "qualifiedName": "edu.fudanselab.trainticket.entity.StationFoodStore",
-        "description": "StationFoodStore 是一个实体类，用于表示火车站内的餐饮商店信息，在系统中主要用于数据持久化和业务逻辑中的相关信息传递。",
+        "description": "StationFoodStore is an entity class used to represent catering store information within train stations, mainly used for data persistence and related information transmission in business logic in the system.",
         "methods": [],
         "dependencies": [
             125,
@@ -1799,7 +1799,7 @@
         "id": 87,
         "name": "VerifyCodeController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.VerifyCodeController",
-        "description": "VerifyCodeController 负责处理验证码相关请求，包括生成图像验证码和验证用户提交的验证码。该控制器在系统中提供验证码服务，用于增强安全性，与其他控制器协同完成用户身份验证流程。",
+        "description": "VerifyCodeController is responsible for handling verification code-related requests, including generating image verification codes and verifying verification codes submitted by users. This controller provides verification code services in the system to enhance security, collaborating with other controllers to complete user identity verification processes.",
         "methods": [],
         "dependencies": [
             15,
@@ -1817,7 +1817,7 @@
         "id": 88,
         "name": "PaymentService",
         "qualifiedName": "edu.fudanselab.trainticket.service.PaymentService",
-        "description": "PaymentService 是一个抽象服务类，负责处理与支付相关的业务逻辑，包括支付、充值、查询账户信息以及支付初始化等操作。该类定义了支付模块的核心接口，供具体实现类扩展，是支付功能在系统中的统一入口。",
+        "description": "PaymentService is an abstract service class responsible for handling payment-related business logic, including payment, recharge, account information query, and payment initialization operations. This class defines the core interface for the payment module, for concrete implementation classes to extend, and is the unified entry point for payment functions in the system.",
         "methods": [],
         "dependencies": [
             60,
@@ -1835,7 +1835,7 @@
         "id": 89,
         "name": "InsidePaymentService",
         "qualifiedName": "edu.fudanselab.trainticket.service.InsidePaymentService",
-        "description": "InsidePaymentService 是一个抽象服务类，负责处理系统内部的支付相关业务逻辑，包括支付、账户创建、充值、退款、查询等操作。该类定义了支付服务的核心接口，供具体实现类继承和实现，是支付模块与系统其他部分交互的关键组件。",
+        "description": "InsidePaymentService is an abstract service class responsible for handling internal payment-related business logic, including payment, account creation, recharge, refund, query, and other operations. This class defines the core interface for payment services, for concrete implementation classes to inherit and implement, and is a key component for interaction between the payment module and other parts of the system.",
         "methods": [],
         "dependencies": [
             199,
@@ -1857,7 +1857,7 @@
         "id": 90,
         "name": "FoodDeliveryOrderRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.FoodDeliveryOrderRepository",
-        "description": "FoodDeliveryOrderRepository 是一个数据访问接口，负责提供食品配送订单的查询功能，包括根据车站食品商店ID查找订单和获取所有订单。该类在系统中作为仓储层组件，与 FoodDeliveryOrder 实体相关联，为上层业务逻辑提供数据支持。",
+        "description": "FoodDeliveryOrderRepository is a data access interface responsible for providing query functions for food delivery orders, including finding orders by station food store ID and getting all orders. This class serves as a repository layer component in the system, associated with FoodDeliveryOrder entities, providing data support for upper-level business logic.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -1869,7 +1869,7 @@
         "id": 91,
         "name": "ConsignPriceServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.ConsignPriceServiceImpl",
-        "description": "ConsignPriceServiceImpl 是一个实现类，负责处理托运价格相关的业务逻辑，包括根据重量和区域获取价格、查询价格信息、创建和修改价格配置以及获取当前价格配置。该类在系统中作为托运价格服务的核心实现，与价格配置管理和客户端请求处理紧密相关。",
+        "description": "ConsignPriceServiceImpl is an implementation class responsible for handling consignment price-related business logic, including getting prices by weight and region, querying price information, creating and modifying price configurations, and getting current price configurations. This class serves as the core implementation of consignment price services in the system, closely related to price configuration management and client request processing.",
         "methods": [],
         "dependencies": [
             234,
@@ -1893,7 +1893,7 @@
         "id": 92,
         "name": "WaitListOrder",
         "qualifiedName": "edu.fudanselab.trainticket.entity.WaitListOrder",
-        "description": "WaitListOrder类用于表示候补订单实体，包含候补订单的创建时间、出行时间和候补截止时间等关键信息，主要在票务系统中管理用户的候补购票请求。",
+        "description": "WaitListOrder class is used to represent waitlist order entities, containing key information such as creation time, travel time, and waitlist deadline, mainly managing users' waitlist ticket purchase requests in the ticketing system.",
         "methods": [],
         "dependencies": [
             132,
@@ -1913,7 +1913,7 @@
         "id": 93,
         "name": "ExecuteServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.ExecuteServiceImpl",
-        "description": "ExecuteServiceImpl 是一个订单执行服务的实现类，主要负责处理车票订单的执行和收集操作。它通过调用内部方法与订单服务交互，根据订单ID更新订单状态，并支持从不同订单服务端点获取订单信息。该类在系统中承担了业务逻辑层中与订单执行相关的核心职责。",
+        "description": "ExecuteServiceImpl is an implementation class for order execution services, mainly responsible for handling execution and collection operations of ticket orders. It interacts with order services by calling internal methods, updates order status based on order IDs, and supports getting order information from different order service endpoints. This class undertakes core responsibilities related to order execution in the business logic layer in the system.",
         "methods": [],
         "dependencies": [
             179,
@@ -1941,7 +1941,7 @@
         "id": 94,
         "name": "PreserveServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.PreserveServiceImpl",
-        "description": "PreserveServiceImpl 是火车票预订服务的核心实现类，负责处理车票预订全流程，包括座位分配、订单创建、保险添加、餐饮及托运服务订购、安全校验、联系人信息获取、用户账户查询以及邮件通知等。该类作为服务层组件，协调多个内部方法并与外部服务交互，完成复杂的预订业务逻辑。",
+        "description": "PreserveServiceImpl is the core implementation class for train ticket reservation services, responsible for handling the complete ticket reservation process, including seat allocation, order creation, insurance addition, catering and consignment service ordering, security verification, contact information retrieval, user account query, and email notification. This class serves as a service layer component, coordinating multiple internal methods and interacting with external services to complete complex reservation business logic.",
         "methods": [],
         "dependencies": [
             248,
@@ -2005,7 +2005,7 @@
         "id": 95,
         "name": "ConsignPriceInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.ConsignPriceInitData",
-        "description": "ConsignPriceInitData 是一个用于初始化托运价格数据的启动类，通过实现 run 方法在系统启动时执行相关数据初始化逻辑。",
+        "description": "ConsignPriceInitData is an initialization class for initializing consignment price data, executing related data initialization logic at system startup through implementing the run method.",
         "methods": [],
         "dependencies": [
             198,
@@ -2027,7 +2027,7 @@
         "id": 96,
         "name": "Assurance",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Assurance",
-        "description": "通用实体类，用于表示保险（Assurance）相关信息，在系统中可能作为数据模型使用。",
+        "description": "A general entity class used to represent insurance (Assurance) related information, possibly used as a data model in the system.",
         "methods": [],
         "dependencies": [
             108,
@@ -2045,7 +2045,7 @@
         "id": 97,
         "name": "OrderTicketsInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.OrderTicketsInfo",
-        "description": "OrderTicketsInfo类用于封装车票订单的起止站点信息，提供获取出发地和目的地的方法，在系统中作为订单相关数据的传输对象。",
+        "description": "OrderTicketsInfo class is used to encapsulate start and end station information for ticket orders, providing methods to get departure and destination locations, serving as a data transfer object for order-related data in the system.",
         "methods": [],
         "dependencies": [
             249,
@@ -2063,7 +2063,7 @@
         "id": 98,
         "name": "OrderRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.OrderRepository",
-        "description": "OrderRepository 是一个抽象数据访问接口，负责提供对订单（Order）实体的持久化操作，包括根据ID查询、查询所有订单、按账户ID查询、按出行日期和车次查询以及删除订单。该类在系统中作为订单数据访问层的核心组件，供上层业务逻辑调用，不直接实现具体逻辑，需由具体子类实现。",
+        "description": "OrderRepository is an abstract data access interface responsible for providing persistence operations on Order entities, including querying by ID, querying all orders, querying by account ID, querying by travel date and train number, and deleting orders. This class serves as the core component of the order data access layer in the system, called by upper-level business logic, not directly implementing specific logic, and needs to be implemented by concrete subclasses.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -2075,7 +2075,7 @@
         "id": 99,
         "name": "SecurityServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.SecurityServiceImpl",
-        "description": "SecurityServiceImpl 是安全配置管理的核心服务实现类，负责提供安全配置的增删改查（CRUD）功能，并支持对用户账户的安全检查。该类通过与订单服务交互，获取与安全相关的订单信息，以完成安全验证逻辑，在系统中起到连接安全配置数据与业务订单的关键作用。",
+        "description": "SecurityServiceImpl is the core service implementation class for security configuration management, responsible for providing CRUD functions for security configurations, and supporting security checks on user accounts. This class interacts with order services to get security-related order information, to complete security verification logic, playing a key role in connecting security configuration data with business orders in the system.",
         "methods": [],
         "dependencies": [
             206,
@@ -2103,7 +2103,7 @@
         "id": 100,
         "name": "ConsignServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.ConsignServiceImpl",
-        "description": "ConsignServiceImpl 类负责实现托运服务的核心业务逻辑，包括托运记录的插入、更新以及基于账户ID、订单ID或收货人信息的查询功能。该类在系统中作为托运服务的实现层，处理与托运相关的数据操作请求，并与其他服务或数据访问层进行交互。",
+        "description": "ConsignServiceImpl class is responsible for implementing the core business logic of consignment services, including insertion and update of consignment records, and query functions based on account ID, order ID, or consignee information. This class serves as the implementation layer of consignment services in the system, handling data operation requests related to consignment, and interacting with other services or data access layers.",
         "methods": [],
         "dependencies": [
             66,
@@ -2135,7 +2135,7 @@
         "id": 101,
         "name": "FoodController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.FoodController",
-        "description": "FoodController 是一个用于管理餐食订单的控制器类，提供餐食订单的创建、查询、更新和删除等 RESTful 接口，并支持批量操作和配送测试。该类位于 train-ticket 系统中，负责处理与餐食相关的 HTTP 请求，与前端或其他服务通过 HttpHeaders 进行认证或信息传递。",
+        "description": "FoodController is a controller class for managing food orders, providing RESTful interfaces for creating, querying, updating, and deleting food orders, and supporting batch operations and delivery testing. This class is located in the train-ticket system, responsible for handling HTTP requests related to food, and communicating with the frontend or other services through HttpHeaders for authentication or information transmission.",
         "methods": [],
         "dependencies": [
             277,
@@ -2163,7 +2163,7 @@
         "id": 102,
         "name": "RouteInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.RouteInitData",
-        "description": "RouteInitData 是一个用于初始化路线数据的启动类，通过 run 方法在系统启动时执行相关数据初始化逻辑。",
+        "description": "RouteInitData is an initialization class for initializing route data, executing related data initialization logic at system startup through the run method.",
         "methods": [],
         "dependencies": [
             51,
@@ -2183,7 +2183,7 @@
         "id": 103,
         "name": "TrainTicketApplication",
         "qualifiedName": "edu.fudanselab.trainticket.TrainTicketApplication",
-        "description": "TrainTicketApplication 是一个 Spring Boot 应用的主启动类，负责初始化并运行火车票预订系统。它包含 main 方法作为程序入口，并通过 restTemplate 方法配置 RestTemplate 实例，用于支持系统内部或与其他服务之间的 HTTP 通信。",
+        "description": "TrainTicketApplication is the main startup class for the Spring Boot application, responsible for initializing and running the train ticket reservation system. It contains the main method as the program entry point, and configures RestTemplate instances through the restTemplate method, used to support HTTP communication within the system or with other services.",
         "methods": [],
         "dependencies": [
             103
@@ -2199,7 +2199,7 @@
         "id": 104,
         "name": "PriceInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.PriceInfo",
-        "description": "PriceInfo 是一个用于表示票价信息的实体类，主要在 train-ticket 系统中承载与价格相关的数据。该类位于 edu.fudanselab.trainticket.entity 包中，作为数据模型用于封装票价相关信息，可能被其他服务或数据访问层使用。",
+        "description": "PriceInfo is an entity class used to represent price information, mainly carrying price-related data in the train-ticket system. This class is located in the edu.fudanselab.trainticket.entity package, used as a data model to encapsulate price-related information, and may be used by other services or data access layers.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -2211,7 +2211,7 @@
         "id": 105,
         "name": "AssuranceTypeBean",
         "qualifiedName": "edu.fudanselab.trainticket.entity.AssuranceTypeBean",
-        "description": "表示保险类型的实体类，用于封装保险类型相关信息。",
+        "description": "An entity class representing insurance types, used to encapsulate insurance type-related information.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -2223,7 +2223,7 @@
         "id": 106,
         "name": "StationFoodService",
         "qualifiedName": "edu.fudanselab.trainticket.service.StationFoodService",
-        "description": "StationFoodService 是一个抽象服务类，负责管理车站食品商店的相关业务逻辑，包括创建食品商店、根据车站名称或ID查询食品商店列表等操作。该类为车站食品商店数据访问提供统一接口，通常由具体实现类完成实际的数据处理和持久化操作。",
+        "description": "StationFoodService is an abstract service class responsible for managing business logic related to station food stores, including creating food stores, querying food store lists by station name or ID, and other operations. This class provides a unified interface for station food store data access, typically completed by concrete implementation classes for actual data processing and persistence operations.",
         "methods": [],
         "dependencies": [
             218,
@@ -2241,7 +2241,7 @@
         "id": 107,
         "name": "AdminTravelServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.AdminTravelServiceImpl",
-        "description": "AdminTravelServiceImpl 是一个管理员旅行服务实现类，负责提供旅行信息的全生命周期管理功能，包括查询、新增、修改和删除旅行信息，以及校验旅行信息和车站有效性。该类还支持通过名称查询列车类型，并内部封装了根据路线ID获取路线信息的辅助方法。它在系统中作为后端服务层组件，与路由、列车类型等其他服务协同工作。",
+        "description": "AdminTravelServiceImpl is an administrator travel service implementation class, responsible for providing full lifecycle management functions for travel information, including querying, adding, modifying, and deleting travel information, as well as verifying travel information and station validity. This class also supports querying train types by name, and internally encapsulates auxiliary methods for getting route information by route ID. It serves as a backend service layer component in the system, working collaboratively with other services such as routing and train types.",
         "methods": [],
         "dependencies": [
             220,
@@ -2271,7 +2271,7 @@
         "id": 108,
         "name": "AssuranceType",
         "qualifiedName": "edu.fudanselab.trainticket.entity.AssuranceType",
-        "description": "AssuranceType 是一个表示保险类型的实体类，用于封装保险类型的相关信息，包括索引、名称和价格，并提供通过索引获取对应保险类型实例的静态方法。该类在系统中作为保险类型的数据模型，支持保险信息的存储与查询。",
+        "description": "AssuranceType is an entity class representing assurance types, used to encapsulate information related to assurance types, including index, name, and price, and provides static methods to obtain corresponding assurance type instances by index. This class serves as the data model for assurance types in the system, supporting the storage and querying of assurance information.",
         "methods": [],
         "dependencies": [
             108
@@ -2287,7 +2287,7 @@
         "id": 109,
         "name": "CookieUtil",
         "qualifiedName": "edu.fudanselab.trainticket.util.CookieUtil",
-        "description": "CookieUtil 是一个用于处理 HTTP Cookie 的工具类，提供添加 Cookie 到响应、从请求中根据名称获取 Cookie 等功能，辅助 Web 应用中的 Cookie 管理。",
+        "description": "CookieUtil is a utility class for handling HTTP Cookies, providing functions such as adding cookies to responses and retrieving cookies by name from requests, assisting in cookie management in Web applications.",
         "methods": [],
         "dependencies": [
             109
@@ -2303,7 +2303,7 @@
         "id": 110,
         "name": "ConsignInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.ConsignInitData",
-        "description": "ConsignInitData 类负责在系统启动时初始化托运相关数据，通过 run 方法执行初始化逻辑，是系统数据准备阶段的辅助组件。",
+        "description": "The ConsignInitData class is responsible for initializing consignment-related data when the system starts, executing initialization logic through the run method, and is an auxiliary component in the system data preparation phase.",
         "methods": [],
         "dependencies": [
             52,
@@ -2321,7 +2321,7 @@
         "id": 111,
         "name": "BasicService",
         "qualifiedName": "edu.fudanselab.trainticket.service.BasicService",
-        "description": "BasicService 是一个抽象服务类，定义了与旅行信息查询相关的基础接口，包括查询单个或多个行程信息以及根据车站名称查询车站ID的功能，为上层服务提供统一的查询抽象。",
+        "description": "BasicService is an abstract service class that defines basic interfaces related to travel information queries, including querying single or multiple trip information and querying station IDs by station name, providing a unified query abstraction for upper-level services.",
         "methods": [],
         "dependencies": [
             13,
@@ -2339,7 +2339,7 @@
         "id": 112,
         "name": "RouteController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.RouteController",
-        "description": "RouteController 是一个用于管理列车路线信息的控制器类，提供创建、修改、删除、查询单条或多条路线以及根据起终点查询路线等 RESTful 接口，是系统中路线管理模块的核心入口。",
+        "description": "RouteController is a controller class for managing train route information, providing RESTful interfaces for creating, modifying, deleting, querying single or multiple routes, and querying routes by origin and destination, serving as the core entry point for the route management module in the system.",
         "methods": [],
         "dependencies": [
             112,
@@ -2361,7 +2361,7 @@
         "id": 113,
         "name": "JWTUtil",
         "qualifiedName": "edu.fudanselab.trainticket.config.jwt.JWTUtil",
-        "description": "JWTUtil 是一个用于处理 JWT（JSON Web Token）认证的工具类，主要负责从 HTTP 请求中提取并验证 JWT，解析用户身份和角色信息，为系统提供基于 JWT 的安全认证支持。",
+        "description": "JWTUtil is a utility class for handling JWT (JSON Web Token) authentication, primarily responsible for extracting and validating JWTs from HTTP requests, parsing user identity and role information, and providing JWT-based security authentication support for the system.",
         "methods": [],
         "dependencies": [
             113,
@@ -2393,7 +2393,7 @@
         "id": 114,
         "name": "CancelService",
         "qualifiedName": "edu.fudanselab.trainticket.service.CancelService",
-        "description": "CancelService 是一个抽象服务类，负责处理订单取消和退款计算的核心逻辑。它定义了两个抽象方法：cancelOrder 用于取消指定订单，calculateRefund 用于计算订单的退款金额。该类在系统中作为订单取消相关业务的统一接口，供具体实现类扩展，并与订单管理模块紧密协作。",
+        "description": "CancelService is an abstract service class responsible for handling the core logic of order cancellation and refund calculation. It defines two abstract methods: cancelOrder for canceling specified orders, and calculateRefund for calculating the refund amount of orders. This class serves as a unified interface for order cancellation-related business in the system, for concrete implementation classes to extend, and works closely with the order management module.",
         "methods": [],
         "dependencies": [
             218
@@ -2409,7 +2409,7 @@
         "id": 115,
         "name": "FoodInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.FoodInitData",
-        "description": "FoodInitData 是一个用于初始化食品数据的工具类，主要职责是在系统启动时通过解析输入字符串生成食品列表并完成相关数据的初始化。该类实现了命令行运行接口，通常作为系统初始化流程的一部分，与食品数据模型 Food 紧密关联。",
+        "description": "FoodInitData is a utility class for initializing food data, with its main responsibility being to generate food lists by parsing input strings and complete the initialization of related data when the system starts. This class implements the command line runner interface, typically as part of the system initialization process, and is closely associated with the food data model Food.",
         "methods": [],
         "dependencies": [
             106,
@@ -2433,7 +2433,7 @@
         "id": 116,
         "name": "TripOrderInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TripOrderInfo",
-        "description": "TripOrderInfo 是一个实体类，用于表示火车票订单的相关信息，在系统中主要承担数据存储和传输的职责，通常与数据库表映射并被其他业务逻辑类使用。",
+        "description": "TripOrderInfo is an entity class used to represent information related to train ticket orders, primarily responsible for data storage and transmission in the system, usually mapped to database tables and used by other business logic classes.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -2445,7 +2445,7 @@
         "id": 117,
         "name": "AuthDto",
         "qualifiedName": "edu.fudanselab.trainticket.dto.AuthDto",
-        "description": "AuthDto 是一个数据传输对象（DTO），用于在用户注册后从 user-service 向 auth-service 传递用户认证相关信息。",
+        "description": "AuthDto is a Data Transfer Object (DTO) used to transmit user authentication-related information from user-service to auth-service after user registration.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -2457,7 +2457,7 @@
         "id": 118,
         "name": "AssuranceService",
         "qualifiedName": "edu.fudanselab.trainticket.service.AssuranceService",
-        "description": "AssuranceService 是一个抽象服务类，负责处理与保险相关的业务逻辑，包括保险的创建、查询、修改和删除操作。它在系统中作为保险管理模块的核心服务接口，定义了对保险记录及保险类型进行操作的标准方法，并通过 HttpHeaders 支持请求上下文传递。该类与订单模块紧密关联，通过订单ID进行保险的关联查询与管理。",
+        "description": "AssuranceService is an abstract service class responsible for handling business logic related to assurances, including creation, querying, modification, and deletion of assurances. It serves as the core service interface for the assurance management module in the system, defining standard methods for operating on assurance records and assurance types, and supports request context passing through HttpHeaders. This class is closely associated with the order module, performing assurance-related queries and management through order IDs.",
         "methods": [],
         "dependencies": [
             218
@@ -2473,7 +2473,7 @@
         "id": 119,
         "name": "StationServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.StationServiceImpl",
-        "description": "StationServiceImpl 是车站信息服务的实现类，负责提供车站信息的增删改查功能，包括单个及批量查询车站信息（通过名称或ID）、创建、更新和删除车站，并支持验证车站是否存在。该类在系统中作为车站数据管理的核心服务，与 Station 实体类紧密关联，并通过 HttpHeaders 处理请求头信息。",
+        "description": "StationServiceImpl is the implementation class for station information service, responsible for providing CRUD functions for station information, including single and batch querying of station information (by name or ID), creating, updating, and deleting stations, and supporting verification of whether a station exists. This class serves as the core service for station data management in the system, closely associated with the Station entity class, and handles request header information through HttpHeaders.",
         "methods": [],
         "dependencies": [
             68,
@@ -2497,7 +2497,7 @@
         "id": 120,
         "name": "TextMapUtil",
         "qualifiedName": "edu.fudanselab.trainticket.util.TextMapUtil",
-        "description": "TextMapUtil 是一个工具类，提供将 Iterable<Map.Entry<String, String>> 转换为 Map<String, String> 的静态方法，用于简化键值对集合的转换操作。",
+        "description": "TextMapUtil is a utility class that provides static methods for converting Iterable<Map.Entry<String, String>> to Map<String, String>, used to simplify the conversion operations of key-value pair collections.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -2509,7 +2509,7 @@
         "id": 121,
         "name": "TrainFoodRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.TrainFoodRepository",
-        "description": "TrainFoodRepository 是一个数据访问接口，负责管理 TrainFood 实体的持久化操作，提供根据 ID、行程 ID 查询以及删除和获取全部 TrainFood 记录的功能，位于系统数据访问层，通常由具体的数据存储实现类继承。",
+        "description": "TrainFoodRepository is a data access interface responsible for managing persistent operations on TrainFood entities, providing functions to query by ID, trip ID, delete, and retrieve all TrainFood records, located in the system data access layer, usually inherited by concrete data storage implementation classes.",
         "methods": [],
         "dependencies": [
             222
@@ -2525,7 +2525,7 @@
         "id": 122,
         "name": "ConfigServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.ConfigServiceImpl",
-        "description": "ConfigServiceImpl 是配置管理服务的实现类，负责提供配置信息的增删改查功能，包括创建、更新、查询单个配置、删除配置以及查询所有配置。",
+        "description": "ConfigServiceImpl is the implementation class for configuration management service, responsible for providing CRUD functions for configuration information, including creating, updating, querying single configurations, deleting configurations, and querying all configurations.",
         "methods": [],
         "dependencies": [
             46,
@@ -2549,7 +2549,7 @@
         "id": 123,
         "name": "ExceptionUtils",
         "qualifiedName": "edu.fudanselab.trainticket.util.ExceptionUtils",
-        "description": "ExceptionUtils 是一个用于异常处理和调试的工具类，提供记录警告信息、获取最近异常、设置失败状态以及提取异常消息的功能，主要用于辅助系统中的错误诊断和日志记录。",
+        "description": "ExceptionUtils is a utility class for exception handling and debugging, providing functions for logging warning information, retrieving recent exceptions, setting failure status, and extracting exception messages, mainly used to assist in error diagnosis and logging in the system.",
         "methods": [],
         "dependencies": [
             123
@@ -2565,7 +2565,7 @@
         "id": 124,
         "name": "TravelResult",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TravelResult",
-        "description": "TravelResult 类用于封装旅行查询的结果信息，其主要职责是表示与旅行相关的状态数据，通过 isStatus() 方法提供状态的访问。该类位于车票系统实体层，作为数据传输对象使用。",
+        "description": "The TravelResult class is used to encapsulate the result information of travel queries, with its main responsibility being to represent status data related to travel, providing access to status through the isStatus() method. This class is located in the entity layer of the ticket system and is used as a data transfer object.",
         "methods": [],
         "dependencies": [
             81,
@@ -2583,7 +2583,7 @@
         "id": 125,
         "name": "Food",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Food",
-        "description": "表示火车票系统中食品信息的实体类，用于封装与食品相关的数据。",
+        "description": "An entity class representing food information in the train ticket system, used to encapsulate data related to food.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -2595,7 +2595,7 @@
         "id": 126,
         "name": "Travel2Controller",
         "qualifiedName": "edu.fudanselab.trainticket.controller.Travel2Controller",
-        "description": "Travel2Controller 是一个处理列车行程相关业务的控制器类，负责提供行程信息的增删改查、行程详情查询、路线与车次类型获取等 RESTful 接口，同时区分普通用户和管理员的查询权限。",
+        "description": "Travel2Controller is a controller class for handling train trip-related business, responsible for providing RESTful interfaces for trip information CRUD, trip detail queries, route and train type retrieval, while distinguishing query permissions between regular users and administrators.",
         "methods": [],
         "dependencies": [
             148,
@@ -2621,7 +2621,7 @@
         "id": 127,
         "name": "RebookServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.RebookServiceImpl",
-        "description": "RebookServiceImpl 是一个实现改签业务逻辑的服务类，负责处理车票改签、差价支付、订单更新与创建、座位分配等核心功能，并与行程、路线、订单等相关服务进行交互。",
+        "description": "RebookServiceImpl is a service class that implements rebooking business logic, responsible for handling core functions such as ticket rebooking, fare difference payment, order updates and creation, seat allocation, and interacting with related services such as trips, routes, and orders.",
         "methods": [],
         "dependencies": [
             34,
@@ -2677,7 +2677,7 @@
         "id": 128,
         "name": "UserServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.UserServiceImpl",
-        "description": "UserServiceImpl 是用户服务的核心实现类，负责处理用户相关的业务逻辑，包括用户的增删改查、默认认证用户创建以及用户认证信息的删除。该类在系统中作为用户管理模块的服务层，与数据访问层和认证模块交互，为上层提供统一的用户操作接口。",
+        "description": "UserServiceImpl is the core implementation class for user services, responsible for handling user-related business logic, including user CRUD operations, default authentication user creation, and deletion of user authentication information. This class serves as the service layer of the user management module in the system, interacting with the data access layer and authentication module, providing a unified user operation interface for upper layers.",
         "methods": [],
         "dependencies": [
             160,
@@ -2707,7 +2707,7 @@
         "id": 129,
         "name": "GetPriceDomain",
         "qualifiedName": "edu.fudanselab.trainticket.entity.GetPriceDomain",
-        "description": "表示票价查询相关数据的通用实体类，用于封装与价格获取相关的领域信息。",
+        "description": "A general entity class representing data related to price queries, used to encapsulate domain information related to price retrieval.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -2719,7 +2719,7 @@
         "id": 130,
         "name": "Balance",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Balance",
-        "description": "表示用户账户余额的实体类，用于在火车票系统中存储和管理用户的余额信息。",
+        "description": "An entity class representing user account balance, used to store and manage user balance information in the train ticket system.",
         "methods": [],
         "dependencies": [
             130
@@ -2735,7 +2735,7 @@
         "id": 131,
         "name": "Gender",
         "qualifiedName": "edu.fudanselab.trainticket.dto.Gender",
-        "description": "Gender类用于表示性别信息，提供性别代码与名称之间的映射和查询功能，支持通过代码获取对应的性别名称。",
+        "description": "The Gender class is used to represent gender information, providing mapping and query functions between gender codes and names, supporting the retrieval of corresponding gender names through codes.",
         "methods": [],
         "dependencies": [
             131
@@ -2751,7 +2751,7 @@
         "id": 132,
         "name": "WaitListOrderStatus",
         "qualifiedName": "edu.fudanselab.trainticket.entity.WaitListOrderStatus",
-        "description": "WaitListOrderStatus 是一个枚举辅助类，用于表示和管理候补订单状态的代码与名称映射。它提供方法获取状态码、状态名称，以及通过状态码查询对应名称的功能，在系统中起到统一管理和解析候补订单状态的作用。",
+        "description": "WaitListOrderStatus is an enumeration helper class used to represent and manage the mapping of codes and names for waitlist order statuses. It provides methods to obtain status codes, status names, and the function to query corresponding names through status codes, playing a role in unified management and parsing of waitlist order statuses in the system.",
         "methods": [],
         "dependencies": [
             37,
@@ -2769,7 +2769,7 @@
         "id": 133,
         "name": "TripId",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TripId",
-        "description": "TripId 是一个用于标识行程的实体类，主要提供行程ID的字符串表示形式，通常用于系统中对行程的唯一标识和展示。",
+        "description": "TripId is an entity class used to identify trips, mainly providing a string representation of the trip ID, typically used for unique identification and display of trips in the system.",
         "methods": [],
         "dependencies": [
             133,
@@ -2787,7 +2787,7 @@
         "id": 134,
         "name": "TrainInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.TrainInitData",
-        "description": "负责初始化火车票系统中列车相关基础数据的启动类，通过 run 方法在应用启动时加载或设置必要的初始数据。",
+        "description": "A startup class responsible for initializing train-related basic data in the train ticket system, loading or setting necessary initial data when the application starts through the run method.",
         "methods": [],
         "dependencies": [
             81,
@@ -2805,7 +2805,7 @@
         "id": 135,
         "name": "RoutePlanServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.RoutePlanServiceImpl",
-        "description": "RoutePlanServiceImpl 是一个实现路线规划服务的类，负责根据不同的策略（如 cheapest、quickest、最少停站）搜索最优出行方案。它通过调用高速和普通列车服务获取行程信息，并支持根据路线ID或行程ID查询详细信息，在系统中充当路线规划逻辑的核心处理组件。",
+        "description": "RoutePlanServiceImpl is a class that implements route planning services, responsible for searching for optimal travel plans based on different strategies (such as cheapest, quickest, minimum stops). It obtains trip information by calling high-speed and regular train services, and supports querying detailed information by route ID or trip ID, serving as the core processing component for route planning logic in the system.",
         "methods": [],
         "dependencies": [
             152,
@@ -2845,7 +2845,7 @@
         "id": 136,
         "name": "OrderOtherServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.OrderOtherServiceImpl",
-        "description": "OrderOtherServiceImpl 是订单服务的核心实现类，负责处理与火车票订单相关的全生命周期操作，包括创建、查询、修改、取消、支付及安全校验等功能。该类在系统中作为订单业务逻辑的主要承载者，通过与 Seat、Order 等数据模型以及 HttpHeaders 进行交互，为上层提供完整的订单管理服务接口。",
+        "description": "OrderOtherServiceImpl is the core implementation class for order services, responsible for handling full lifecycle operations related to train ticket orders, including creation, querying, modification, cancellation, payment, and security verification functions. This class serves as the main bearer of order business logic in the system, providing complete order management service interfaces for upper layers by interacting with data models such as Seat, Order, and HttpHeaders.",
         "methods": [],
         "dependencies": [
             247,
@@ -2891,7 +2891,7 @@
         "id": 137,
         "name": "TrainService",
         "qualifiedName": "edu.fudanselab.trainticket.service.TrainService",
-        "description": "TrainService 是一个抽象服务类，负责管理 TrainType 对象的全生命周期操作，包括创建、查询（按 ID、名称或全部）、更新和删除。该类在系统中作为列车类型数据访问的统一接口，供上层业务逻辑调用，并通过 HttpHeaders 支持请求上下文传递（如认证信息）。其具体实现由子类提供，与 TrainType 实体紧密关联。",
+        "description": "TrainService is an abstract service class responsible for managing the full lifecycle operations of TrainType objects, including creation, querying (by ID, name, or all), updating, and deletion. This class serves as a unified interface for train type data access in the system, for upper-level business logic to call, and supports request context passing (such as authentication information) through HttpHeaders. Its concrete implementation is provided by subclasses and is closely associated with the TrainType entity.",
         "methods": [],
         "dependencies": [
             81
@@ -2907,7 +2907,7 @@
         "id": 138,
         "name": "AllTripFood",
         "qualifiedName": "edu.fudanselab.trainticket.entity.AllTripFood",
-        "description": "AllTripFood 是一个实体类，用于表示与行程相关的所有餐饮信息，在系统中可能作为数据传输或持久化对象使用。",
+        "description": "AllTripFood is an entity class used to represent all dining information related to trips, and may be used as a data transfer or persistent object in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -2919,7 +2919,7 @@
         "id": 139,
         "name": "CommonOrderAlterInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.CommonOrderAlterInfo",
-        "description": "通用订单修改信息实体类，用于封装火车票订单变更相关的基础数据。",
+        "description": "A general order modification information entity class used to encapsulate basic data related to train ticket order changes.",
         "methods": [],
         "dependencies": [
             256
@@ -2935,7 +2935,7 @@
         "id": 140,
         "name": "ExecuteControlller",
         "qualifiedName": "edu.fudanselab.trainticket.controller.ExecuteControlller",
-        "description": "ExecuteController 负责处理与车票执行相关的操作，包括执行出票和取票请求，同时提供主页入口。该控制器位于系统的服务接口层，通过 RESTful API 接收客户端请求，并与订单服务交互完成相应业务逻辑。",
+        "description": "ExecuteController is responsible for handling ticket execution-related operations, including executing ticket issuance and ticket collection requests, while providing a homepage entry. This controller is located in the service interface layer of the system, receiving client requests through RESTful API and interacting with order services to complete corresponding business logic.",
         "methods": [],
         "dependencies": [
             179,
@@ -2957,7 +2957,7 @@
         "id": 141,
         "name": "Consign",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Consign",
-        "description": "Consign类是一个实体类，用于表示托运相关信息，在系统中可能用于封装与托运业务相关的数据。",
+        "description": "The Consign class is an entity class used to represent consignment-related information, and may be used in the system to encapsulate data related to consignment business.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -2969,7 +2969,7 @@
         "id": 142,
         "name": "InsertConsignRecordResult",
         "qualifiedName": "edu.fudanselab.trainticket.entity.InsertConsignRecordResult",
-        "description": "表示插入托运记录操作结果的实体类，用于封装托运记录插入后的返回信息。",
+        "description": "An entity class representing the result of inserting a consignment record operation, used to encapsulate the return information after inserting a consignment record.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -2981,7 +2981,7 @@
         "id": 143,
         "name": "ConsignPriceController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.ConsignPriceController",
-        "description": "ConsignPriceController 是一个负责处理托运价格相关请求的控制器类，提供获取价格信息、根据重量和区域查询价格、获取及修改价格配置等功能，位于系统的Web层，用于对接前端请求并调用相应服务逻辑。",
+        "description": "ConsignPriceController is a controller class responsible for handling consignment price-related requests, providing functions such as obtaining price information, querying prices by weight and region, retrieving and modifying price configurations, located in the Web layer of the system, used to interface with front-end requests and call corresponding service logic.",
         "methods": [],
         "dependencies": [
             143,
@@ -3005,7 +3005,7 @@
         "id": 144,
         "name": "Travel2InitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.Travel2InitData",
-        "description": "Travel2InitData 是一个用于初始化旅行相关数据的启动类，通过 run 方法执行初始化逻辑，通常在系统启动时加载必要的旅行模块数据。",
+        "description": "Travel2InitData is a startup class for initializing travel-related data, executing initialization logic through the run method, typically loading necessary travel module data when the system starts.",
         "methods": [],
         "dependencies": [
             148,
@@ -3025,7 +3025,7 @@
         "id": 145,
         "name": "NotificationService",
         "qualifiedName": "edu.fudanselab.trainticket.service.NotificationService",
-        "description": "NotificationService 是一个抽象服务类，负责定义与订单状态变更相关的通知逻辑，包括订票成功、订单创建成功、订单修改成功和订单取消成功等场景的通知处理。该类为通知功能提供统一的抽象接口，由具体实现类完成实际的通知发送逻辑。",
+        "description": "NotificationService is an abstract service class responsible for defining notification logic related to order status changes, including notification handling for scenarios such as successful booking, successful order creation, successful order modification, and successful order cancellation. This class provides a unified abstract interface for notification functions, with concrete implementation classes completing the actual notification sending logic.",
         "methods": [],
         "dependencies": [
             63
@@ -3041,7 +3041,7 @@
         "id": 146,
         "name": "ConfigController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.ConfigController",
-        "description": "ConfigController 是一个用于管理配置信息的控制器类，提供查询、创建、更新、删除和检索配置的 RESTful 接口，位于 train-ticket 系统的控制层，负责与前端或其他服务进行配置数据交互。",
+        "description": "ConfigController is a controller class for managing configuration information, providing RESTful interfaces for querying, creating, updating, deleting, and retrieving configurations, located in the control layer of the train-ticket system, responsible for configuration data interaction with the front-end or other services.",
         "methods": [],
         "dependencies": [
             146,
@@ -3063,7 +3063,7 @@
         "id": 147,
         "name": "InsidePaymentController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.InsidePaymentController",
-        "description": "InsidePaymentController 负责处理与内部支付相关的操作，包括支付、创建账户、充值、查询支付信息、查询账户信息、提现以及支付差额等。该类作为支付服务的控制器，接收并处理来自客户端的支付相关请求，并与支付和账户服务进行交互。",
+        "description": "InsidePaymentController is responsible for handling internal payment-related operations, including payment, account creation, recharge, querying payment information, querying account information, withdrawal, and paying differences. This class serves as the controller for payment services, receiving and processing payment-related requests from clients, and interacting with payment and account services.",
         "methods": [],
         "dependencies": [
             89,
@@ -3091,7 +3091,7 @@
         "id": 148,
         "name": "TravelInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TravelInfo",
-        "description": "TravelInfo 是一个实体类，用于表示与火车票相关的行程信息，在系统中主要承担数据模型的角色。",
+        "description": "TravelInfo is an entity class used to represent trip information related to train tickets, primarily serving as a data model in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3103,7 +3103,7 @@
         "id": 149,
         "name": "PriceController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.PriceController",
-        "description": "PriceController 是一个用于管理票价配置的控制器类，提供查询、创建、更新和删除票价信息的 RESTful 接口，支持按路线与列车类型、批量查询及全量查询等多种查询方式，在系统中负责处理与票价相关的 HTTP 请求。",
+        "description": "PriceController is a controller class for managing price configurations, providing RESTful interfaces for querying, creating, updating, and deleting price information, supporting various query methods such as by route and train type, batch queries, and full queries, responsible for handling HTTP requests related to prices in the system.",
         "methods": [],
         "dependencies": [
             1,
@@ -3125,7 +3125,7 @@
         "id": 150,
         "name": "AdminUserController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.AdminUserController",
-        "description": "AdminUserController 是一个用于管理用户信息的控制器类，提供管理员对用户进行增删改查操作的 RESTful 接口，位于系统的服务端控制层，与 UserDto 等数据传输对象协同工作。",
+        "description": "AdminUserController is a controller class for managing user information, providing RESTful interfaces for administrators to perform CRUD operations on users, located in the server-side control layer of the system, working in coordination with data transfer objects such as UserDto.",
         "methods": [],
         "dependencies": [
             238,
@@ -3147,7 +3147,7 @@
         "id": 151,
         "name": "TravelPlanServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.TravelPlanServiceImpl",
-        "description": "TravelPlanServiceImpl 是一个实现旅行规划服务的类，主要负责根据不同的策略（如 cheapest、quickest、最少站点等）为用户提供列车行程方案，包括直达和中转方案。它通过调用内部私有方法处理高铁路线和普通路线的查询，并支持获取余票数量及列车类型信息，在系统中处于服务层，为上层提供行程规划相关的业务逻辑支持。",
+        "description": "TravelPlanServiceImpl is a class that implements travel planning services, primarily responsible for providing users with train trip plans based on different strategies (such as cheapest, quickest, minimum stops, etc.), including direct and transfer plans. It processes high-speed and regular route queries by calling internal private methods, and supports obtaining remaining ticket quantities and train type information, located in the service layer of the system, providing business logic support for trip planning to upper layers.",
         "methods": [],
         "dependencies": [
             56,
@@ -3191,7 +3191,7 @@
         "id": 152,
         "name": "RoutePlanService",
         "qualifiedName": "edu.fudanselab.trainticket.service.RoutePlanService",
-        "description": "RoutePlanService 是一个抽象服务类，负责提供多种路线规划策略的接口，包括查询最便宜、最快和最少停站的行程方案。该类定义了三个抽象方法，由子类实现具体的路线规划逻辑，在系统中作为路线规划功能的核心服务层。",
+        "description": "RoutePlanService is an abstract service class responsible for providing interfaces for various route planning strategies, including querying for the cheapest, fastest, and least stops trip plans. This class defines three abstract methods, with subclasses implementing specific route planning logic, serving as the core service layer for route planning functionality in the system.",
         "methods": [],
         "dependencies": [
             82,
@@ -3209,7 +3209,7 @@
         "id": 153,
         "name": "MicroserviceInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.MicroserviceInitData",
-        "description": "MicroserviceInitData 类负责在微服务启动时执行初始化数据的逻辑，通过 run 方法处理启动参数并完成相关初始化任务。",
+        "description": "The MicroserviceInitData class is responsible for executing initialization data logic when microservices start, processing startup parameters and completing related initialization tasks through the run method.",
         "methods": [],
         "dependencies": [
             62,
@@ -3229,7 +3229,7 @@
         "id": 154,
         "name": "TravelController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.TravelController",
-        "description": "TravelController 是一个用于管理列车行程（Trip）相关操作的控制器类，提供包括行程创建、查询、更新、删除以及获取行程详细信息等 RESTful 接口。该类在系统中作为旅行服务的入口，处理来自客户端的 HTTP 请求，并与后端服务交互以完成相应业务逻辑。",
+        "description": "TravelController is a controller class for managing train trip-related operations, providing RESTful interfaces including trip creation, querying, updating, deletion, and retrieving detailed trip information. This class serves as the entry point for travel services in the system, handling HTTP requests from clients and interacting with backend services to complete corresponding business logic.",
         "methods": [],
         "dependencies": [
             148,
@@ -3259,7 +3259,7 @@
         "id": 155,
         "name": "JsonUtils",
         "qualifiedName": "edu.fudanselab.trainticket.util.JsonUtils",
-        "description": "JsonUtils 是一个工具类，提供对象与 JSON 以及 Map 之间的相互转换功能，支持对象序列化为 JSON 字符串、JSON 反序列化为指定类型对象、对象转 Map、JSON 字符串转 Map，以及对象类型之间的转换。该类在系统中用于简化数据格式转换操作，通常被其他业务组件调用以处理 JSON 数据。",
+        "description": "JsonUtils is a utility class that provides mutual conversion between objects, JSON, and Maps, supporting object serialization to JSON strings, JSON deserialization to specified type objects, object to Map conversion, JSON string to Map conversion, and conversion between object types. This class is used in the system to simplify data format conversion operations, typically called by other business components to handle JSON data.",
         "methods": [],
         "dependencies": [
             155
@@ -3275,7 +3275,7 @@
         "id": 156,
         "name": "ConsignRecord",
         "qualifiedName": "edu.fudanselab.trainticket.entity.ConsignRecord",
-        "description": "ConsignRecord 是一个实体类，用于表示托运记录的相关信息，在系统中作为数据模型使用。",
+        "description": "ConsignRecord is an entity class used to represent information related to consignment records, used as a data model in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3287,7 +3287,7 @@
         "id": 157,
         "name": "InsidePaymentMoney",
         "qualifiedName": "edu.fudanselab.trainticket.entity.InsidePaymentMoney",
-        "description": "InsidePaymentMoney 是一个实体类，用于表示内部支付金额相关信息，属于 train-ticket 系统中的数据模型组成部分。",
+        "description": "InsidePaymentMoney is an entity class used to represent information related to internal payment amounts, and is part of the data model in the train-ticket system.",
         "methods": [],
         "dependencies": [
             157,
@@ -3305,7 +3305,7 @@
         "id": 158,
         "name": "StationFoodRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.StationFoodRepository",
-        "description": "StationFoodRepository 是一个用于管理车站餐饮信息的仓储接口，提供基于车站名称或ID的查询、全量获取及删除操作，支持车站餐饮数据的持久化访问。",
+        "description": "StationFoodRepository is a repository interface for managing station dining information, providing query-based on station name or ID, full retrieval, and deletion operations, supporting persistent access to station dining data.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3317,7 +3317,7 @@
         "id": 159,
         "name": "InsidePaymentRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.InsidePaymentRepository",
-        "description": "InsidePaymentRepository 是一个用于管理内部支付记录的持久化接口，提供基于 ID、订单 ID 和用户 ID 查询支付记录的功能，以及查询所有支付记录的能力。它在系统中作为数据访问层组件，与 InsidePayment 实体紧密关联，支持上层业务逻辑对支付数据的访问需求。",
+        "description": "InsidePaymentRepository is a persistence interface for managing internal payment records, providing functions to query payment records by ID, order ID, and user ID, as well as the ability to query all payment records. It serves as a data access layer component in the system, closely associated with the InsidePayment entity, supporting the access needs of upper-level business logic to payment data.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3329,7 +3329,7 @@
         "id": 160,
         "name": "UserService",
         "qualifiedName": "edu.fudanselab.trainticket.service.UserService",
-        "description": "UserService 是一个抽象服务类，负责管理用户相关的业务逻辑，包括用户的增删改查操作。该类定义了用户保存、查询所有用户、按用户名或用户ID查询、更新和删除用户等核心方法，为上层调用提供统一的用户数据访问接口。",
+        "description": "UserService is an abstract service class responsible for managing user-related business logic, including user CRUD operations. This class defines core methods such as saving users, querying all users, querying by username or user ID, updating, and deleting users, providing a unified user data access interface for upper-level calls.",
         "methods": [],
         "dependencies": [
             238,
@@ -3347,7 +3347,7 @@
         "id": 161,
         "name": "WaitListOrderService",
         "qualifiedName": "edu.fudanselab.trainticket.service.WaitListOrderService",
-        "description": "WaitListOrderService 是一个抽象服务类，负责候补订单的全生命周期管理，包括创建、查询、更新及状态修改等操作。该类定义了候补订单相关的核心业务接口，在系统中作为候补订单业务逻辑的统一入口，与订单数据模型（如 WaitListOrder 和 WaitListOrderVO）紧密协作。",
+        "description": "WaitListOrderService is an abstract service class responsible for the full lifecycle management of waitlist orders, including creation, querying, updating, and status modification operations. This class defines core business interfaces related to waitlist orders, serving as a unified entry point for waitlist order business logic in the system, working closely with order data models (such as WaitListOrder and WaitListOrderVO).",
         "methods": [],
         "dependencies": [
             92,
@@ -3367,7 +3367,7 @@
         "id": 162,
         "name": "AdminOrderService",
         "qualifiedName": "edu.fudanselab.trainticket.service.AdminOrderService",
-        "description": "AdminOrderService 是一个抽象服务类，负责管理火车票订单的全生命周期操作，包括查询所有订单、删除指定订单、更新订单信息和添加新订单。该类为管理员提供订单管理功能，在系统中位于服务层，通过 HttpHeaders 处理请求认证与上下文，并与 Order 等数据模型交互。",
+        "description": "AdminOrderService is an abstract service class responsible for managing the full lifecycle operations of train ticket orders, including querying all orders, deleting specified orders, updating order information, and adding new orders. This class provides order management functions for administrators, located in the service layer of the system, handling request authentication and context through HttpHeaders, and interacting with data models such as Order.",
         "methods": [],
         "dependencies": [
             70,
@@ -3385,7 +3385,7 @@
         "id": 163,
         "name": "OutsidePaymentInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.OutsidePaymentInfo",
-        "description": "表示外部支付信息的实体类，用于封装与外部支付系统交互所需的数据。",
+        "description": "An entity class representing external payment information, used to encapsulate data required for interacting with external payment systems.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3397,7 +3397,7 @@
         "id": 164,
         "name": "AdminRouteService",
         "qualifiedName": "edu.fudanselab.trainticket.service.AdminRouteService",
-        "description": "AdminRouteService 是一个抽象服务类，负责管理列车路线相关的管理员操作，包括获取所有路线、创建与修改路线以及删除指定路线。该类定义了路由管理的核心接口，需由具体实现类完成实际业务逻辑。",
+        "description": "AdminRouteService is an abstract service class responsible for managing train route-related administrator operations, including retrieving all routes, creating and modifying routes, and deleting specified routes. This class defines the core interface for route management, with actual business logic to be completed by concrete implementation classes.",
         "methods": [],
         "dependencies": [
             38,
@@ -3415,7 +3415,7 @@
         "id": 165,
         "name": "NotifyRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.NotifyRepository",
-        "description": "NotifyRepository 是一个数据访问接口，负责对通知信息（NotifyInfo）进行持久化操作，提供根据ID查询、查询全部和按ID删除等基本数据访问方法。",
+        "description": "NotifyRepository is a data access interface responsible for persistent operations on notification information (NotifyInfo), providing basic data access methods such as querying by ID, querying all, and deleting by ID.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3427,7 +3427,7 @@
         "id": 166,
         "name": "GetAccountByIdInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.GetAccountByIdInfo",
-        "description": "该类是一个用于封装根据ID获取账户信息请求的实体类，主要在系统中作为数据传输对象（DTO）使用，不包含业务逻辑方法。",
+        "description": "This class is an entity class used to encapsulate requests for retrieving account information by ID, primarily used as a Data Transfer Object (DTO) in the system, and does not contain business logic methods.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3439,7 +3439,7 @@
         "id": 167,
         "name": "StationFoodStoreInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.StationFoodStoreInfo",
-        "description": "表示车站内食品商店信息的实体类，用于存储和管理与车站食品商店相关的数据。",
+        "description": "An entity class representing food store information within stations, used to store and manage data related to station food stores.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3451,7 +3451,7 @@
         "id": 168,
         "name": "TravelInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.TravelInitData",
-        "description": "TravelInitData 类负责在系统启动时初始化旅行相关数据，通过 run 方法执行初始化逻辑，通常用于加载或设置旅行服务所需的初始数据。",
+        "description": "The TravelInitData class is responsible for initializing travel-related data when the system starts, executing initialization logic through the run method, typically used to load or set initial data required for travel services.",
         "methods": [],
         "dependencies": [
             148,
@@ -3471,7 +3471,7 @@
         "id": 169,
         "name": "TokenService",
         "qualifiedName": "edu.fudanselab.trainticket.service.TokenService",
-        "description": "TokenService 是一个抽象服务类，负责处理与令牌（Token）相关的认证请求，通过 getToken 方法接收认证信息并返回相应的响应，为系统提供统一的令牌获取接口。",
+        "description": "TokenService is an abstract service class responsible for handling authentication requests related to tokens, receiving authentication information through the getToken method and returning corresponding responses, providing a unified token acquisition interface for the system.",
         "methods": [],
         "dependencies": [
             19,
@@ -3489,7 +3489,7 @@
         "id": 170,
         "name": "ConfigInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.ConfigInitData",
-        "description": "ConfigInitData 类负责在系统启动时执行配置初始化操作，通过 run 方法完成相关初始化逻辑，属于系统初始化模块的一部分。",
+        "description": "The ConfigInitData class is responsible for executing configuration initialization operations when the system starts, completing related initialization logic through the run method, and is part of the system initialization module.",
         "methods": [],
         "dependencies": [
             186,
@@ -3509,7 +3509,7 @@
         "id": 171,
         "name": "OtherInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.OtherInitData",
-        "description": "负责系统初始化过程中其他辅助数据的加载和初始化，通常在应用启动时执行一次性初始化任务。",
+        "description": "Responsible for loading and initializing other auxiliary data during system initialization, typically performing one-time initialization tasks when the application starts.",
         "methods": [],
         "dependencies": [
             37,
@@ -3533,7 +3533,7 @@
         "id": 172,
         "name": "SoldTicket",
         "qualifiedName": "edu.fudanselab.trainticket.entity.SoldTicket",
-        "description": "表示已售车票的实体类，用于存储和管理售票相关的信息。",
+        "description": "An entity class representing sold tickets, used to store and manage information related to ticket sales.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3545,7 +3545,7 @@
         "id": 173,
         "name": "InsidePaymentAddMoneyRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.InsidePaymentAddMoneyRepository",
-        "description": "InsidePaymentAddMoneyRepository 是一个数据访问接口，负责提供对用户充值记录（InsidePaymentMoney）的查询操作，包括根据用户ID查找充值记录和获取所有充值记录。该类位于 repository 层，用于与数据存储交互，支持支付模块中的充值相关功能。",
+        "description": "InsidePaymentAddMoneyRepository is a data access interface responsible for providing query operations on user recharge records (InsidePaymentMoney), including finding recharge records by user ID and retrieving all recharge records. This class is located in the repository layer, used to interact with data storage, and supports recharge-related functions in the payment module.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3557,7 +3557,7 @@
         "id": 174,
         "name": "Money",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Money",
-        "description": "表示金额的实体类，用于在火车票系统中封装货币相关数据。",
+        "description": "An entity class representing monetary amounts, used to encapsulate currency-related data in the train ticket system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3569,7 +3569,7 @@
         "id": 175,
         "name": "AuthUserService",
         "qualifiedName": "edu.fudanselab.trainticket.service.AuthUserService",
-        "description": "AuthUserService 是一个抽象服务类，负责管理用户认证相关的核心操作，包括保存用户、获取所有用户列表、创建默认认证用户以及删除指定用户。该类在系统中作为用户认证模块的服务层接口，为上层提供统一的用户管理功能，并与 DTO 和 HTTP 请求头等组件交互。",
+        "description": "AuthUserService is an abstract service class responsible for managing core operations related to user authentication, including saving users, retrieving all user lists, creating default authentication users, and deleting specified users. This class serves as the service layer interface for the user authentication module in the system, providing unified user management functions for upper layers, and interacting with components such as DTOs and HTTP request headers.",
         "methods": [],
         "dependencies": [
             264,
@@ -3589,7 +3589,7 @@
         "id": 176,
         "name": "AdminUserService",
         "qualifiedName": "edu.fudanselab.trainticket.service.AdminUserService",
-        "description": "AdminUserService 是一个抽象服务类，负责管理用户相关的后台操作，包括获取所有用户、删除用户、更新用户和添加用户。该类定义了用户管理的核心接口，供管理员使用，需由具体实现类完成实际逻辑。",
+        "description": "AdminUserService is an abstract service class responsible for managing user-related backend operations, including retrieving all users, deleting users, updating users, and adding users. This class defines the core interface for user management, for use by administrators, with actual logic to be completed by concrete implementation classes.",
         "methods": [],
         "dependencies": [
             238,
@@ -3607,7 +3607,7 @@
         "id": 177,
         "name": "RoutePlanController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.RoutePlanController",
-        "description": "RoutePlanController 负责处理与路线规划相关的HTTP请求，提供获取最便宜、最快和最少停站路线的功能，是系统中路线规划服务的入口控制器。",
+        "description": "RoutePlanController is responsible for handling HTTP requests related to route planning, providing functions to obtain the cheapest, fastest, and least stops routes, serving as the entry controller for route planning services in the system.",
         "methods": [],
         "dependencies": [
             82,
@@ -3629,7 +3629,7 @@
         "id": 178,
         "name": "AdminRouteController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.AdminRouteController",
-        "description": "AdminRouteController 是一个用于管理列车路线的控制器类，提供获取、添加和删除路线的 RESTful 接口，主要服务于管理员角色，并通过请求头进行权限或会话验证。",
+        "description": "AdminRouteController is a controller class for managing train routes, providing RESTful interfaces for retrieving, adding, and deleting routes, primarily serving the administrator role, and performing permission or session validation through request headers.",
         "methods": [],
         "dependencies": [
             178,
@@ -3651,7 +3651,7 @@
         "id": 179,
         "name": "ExecuteService",
         "qualifiedName": "edu.fudanselab.trainticket.service.ExecuteService",
-        "description": "ExecuteService 是一个抽象服务类，负责定义车票执行相关操作的接口，包括车票执行（ticketExecute）和车票收集（ticketCollect）两个核心方法，用于处理订单相关的票务执行逻辑。",
+        "description": "ExecuteService is an abstract service class responsible for defining interfaces for ticket execution-related operations, including two core methods: ticketExecute and ticketCollect, used to handle order-related ticket execution logic.",
         "methods": [],
         "dependencies": [
             218
@@ -3667,7 +3667,7 @@
         "id": 180,
         "name": "VerifyCodeServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.VerifyCodeServiceImpl",
-        "description": "VerifyCodeServiceImpl 是验证码服务的实现类，负责生成图像验证码并验证用户提交的验证码。该类提供获取验证码图片和验证验证码正确性的功能，支持在 Web 请求中集成使用。",
+        "description": "VerifyCodeServiceImpl is the implementation class for verification code service, responsible for generating image verification codes and verifying user-submitted verification codes. This class provides functions for obtaining verification code images and verifying the correctness of verification codes, supporting integration in Web requests.",
         "methods": [],
         "dependencies": [
             15,
@@ -3687,7 +3687,7 @@
         "id": 181,
         "name": "AdminTrip",
         "qualifiedName": "edu.fudanselab.trainticket.entity.AdminTrip",
-        "description": "AdminTrip 是一个实体类，用于表示管理员相关的车次信息，在系统中主要承担数据模型的角色。",
+        "description": "AdminTrip is an entity class used to represent train trip information related to administrators, primarily serving as a data model in the system.",
         "methods": [],
         "dependencies": [
             81,
@@ -3707,7 +3707,7 @@
         "id": 182,
         "name": "FoodServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.FoodServiceImpl",
-        "description": "FoodServiceImpl 是食品订单服务的实现类，负责处理与食品订单相关的业务逻辑，包括创建、查询、更新和删除食品订单，以及根据行程信息获取可用食品列表。该类在系统中作为食品服务模块的核心实现，通过 HTTP 请求头传递上下文信息，并返回统一格式的响应结果。",
+        "description": "FoodServiceImpl is the implementation class for food order service, responsible for handling business logic related to food orders, including creating, querying, updating, and deleting food orders, as well as obtaining available food lists based on trip information. This class serves as the core implementation of the food service module in the system, passing context information through HTTP request headers and returning uniformly formatted response results.",
         "methods": [],
         "dependencies": [
             183,
@@ -3743,7 +3743,7 @@
         "id": 183,
         "name": "FoodService",
         "qualifiedName": "edu.fudanselab.trainticket.service.FoodService",
-        "description": "FoodService 是一个抽象服务类，负责管理与餐食订单相关的业务逻辑，包括创建、批量创建、删除、查询、更新餐食订单以及获取特定行程的可用餐食信息。该类在系统中作为餐食服务的核心接口，供上层调用并与数据访问层交互。",
+        "description": "FoodService is an abstract service class responsible for managing business logic related to food orders, including creating, batch creating, deleting, querying, updating food orders, and obtaining available food information for specific trips. This class serves as the core interface for food services in the system, for upper layers to call and interact with the data access layer.",
         "methods": [],
         "dependencies": [
             212,
@@ -3761,7 +3761,7 @@
         "id": 184,
         "name": "TripAllDetail",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TripAllDetail",
-        "description": "TripAllDetail 是一个实体类，用于封装车票相关的完整行程详细信息，在系统中作为数据传输和持久化的载体。",
+        "description": "TripAllDetail is an entity class used to encapsulate complete trip details related to tickets, serving as a carrier for data transmission and persistence in the system.",
         "methods": [],
         "dependencies": [
             20,
@@ -3779,7 +3779,7 @@
         "id": 185,
         "name": "BasicServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.BasicServiceImpl",
-        "description": "BasicServiceImpl 是一个基础服务实现类，主要负责提供与车次、路线、车站及票价配置相关的查询功能。它在系统中作为底层服务支撑，为上层业务提供车站存在性校验、路线信息获取、列车类型查询以及票价配置查询等核心能力，并通过 HttpHeaders 传递请求上下文信息。",
+        "description": "BasicServiceImpl is a basic service implementation class, primarily responsible for providing query functions related to train trips, routes, stations, and price configurations. It serves as the underlying service support in the system, providing core capabilities for upper-level business such as station existence verification, route information retrieval, train type queries, and price configuration queries, and passes request context information through HttpHeaders.",
         "methods": [],
         "dependencies": [
             111,
@@ -3817,7 +3817,7 @@
         "id": 186,
         "name": "Config",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Config",
-        "description": "Config 类是一个通用配置实体类，用于封装系统中的配置信息，在系统中起到数据载体的作用，通常与数据库表或其他配置源对应。",
+        "description": "The Config class is a general configuration entity class used to encapsulate configuration information in the system, serving as a data carrier in the system, usually corresponding to database tables or other configuration sources.",
         "methods": [],
         "dependencies": [
             186
@@ -3833,7 +3833,7 @@
         "id": 187,
         "name": "OrderAlterInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.OrderAlterInfo",
-        "description": "OrderAlterInfo 是一个用于封装订单改签相关信息的实体类，属于 train-ticket 系统中的数据模型层，主要用于在订单改签业务流程中传递和存储相关数据。",
+        "description": "OrderAlterInfo is an entity class used to encapsulate information related to order rebooking, belonging to the data model layer of the train-ticket system, primarily used for transmitting and storing related data in the order rebooking business process.",
         "methods": [],
         "dependencies": [
             70
@@ -3849,7 +3849,7 @@
         "id": 188,
         "name": "UserOperationException",
         "qualifiedName": "edu.fudanselab.trainticket.exception.UserOperationException",
-        "description": "表示用户操作异常的通用异常类，用于封装与用户操作相关的错误信息。",
+        "description": "A general exception class representing user operation exceptions, used to encapsulate error information related to user operations.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -3861,7 +3861,7 @@
         "id": 189,
         "name": "AssuranceRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.AssuranceRepository",
-        "description": "AssuranceRepository 是一个用于管理保险（Assurance）数据的持久化接口，提供基于 ID 或订单 ID 的查询、删除及全量获取保险记录的功能，属于数据访问层组件。",
+        "description": "AssuranceRepository is a persistence interface for managing assurance data, providing functions to query, delete, and retrieve all assurance records based on ID or order ID, belonging to the data access layer component.",
         "methods": [],
         "dependencies": [
             96
@@ -3877,7 +3877,7 @@
         "id": 190,
         "name": "ContactsController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.ContactsController",
-        "description": "ContactsController 是一个用于管理用户联系人信息的控制器类，提供联系人的增删改查及列表获取等RESTful接口，同时支持普通用户和管理员操作，在系统中负责处理与联系人相关的HTTP请求。",
+        "description": "ContactsController is a controller class for managing user contact information, providing RESTful interfaces for contact CRUD and list retrieval, supporting both regular users and administrators, responsible for handling HTTP requests related to contacts in the system.",
         "methods": [],
         "dependencies": [
             190,
@@ -3899,7 +3899,7 @@
         "id": 191,
         "name": "AssuranceController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.AssuranceController",
-        "description": "AssuranceController 是一个处理保险相关业务的控制器类，负责提供 RESTful 接口以支持对保险记录的增删改查操作，包括根据订单 ID 或保险 ID 查询、创建、修改和删除保险信息，并支持获取所有保险类型及保险列表。",
+        "description": "AssuranceController is a controller class for handling assurance-related business, responsible for providing RESTful interfaces to support CRUD operations on assurance records, including querying, creating, modifying, and deleting assurance information by order ID or assurance ID, and supporting retrieval of all assurance types and assurance lists.",
         "methods": [],
         "dependencies": [
             191,
@@ -3919,7 +3919,7 @@
         "id": 192,
         "name": "RabbitSend",
         "qualifiedName": "edu.fudanselab.trainticket.mq.RabbitSend",
-        "description": "RabbitSend 类负责通过 RabbitMQ 发送消息，提供 send 方法用于将指定字符串消息发送到消息队列。",
+        "description": "The RabbitSend class is responsible for sending messages through RabbitMQ, providing a send method for sending specified string messages to message queues.",
         "methods": [],
         "dependencies": [
             244,
@@ -3937,7 +3937,7 @@
         "id": 193,
         "name": "TripInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TripInfo",
-        "description": "TripInfo类用于封装行程信息，主要包含行程的起始地点和终点地点，提供获取起始地和目的地的方法。该类在系统中作为行程数据的实体类，用于数据传输和存储。",
+        "description": "The TripInfo class is used to encapsulate trip information, mainly containing the starting and ending locations of the trip, providing methods to obtain the origin and destination. This class serves as an entity class for trip data in the system, used for data transmission and storage.",
         "methods": [],
         "dependencies": [
             193,
@@ -3955,7 +3955,7 @@
         "id": 194,
         "name": "PreserveOtherController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.PreserveOtherController",
-        "description": "PreserveOtherController 负责处理与车票预定相关的其他业务请求，提供主页访问和车票预定接口，是订单服务的入口控制器之一。",
+        "description": "PreserveOtherController is responsible for handling other business requests related to ticket reservation, providing homepage access and ticket reservation interfaces, and is one of the entry controllers for order services.",
         "methods": [],
         "dependencies": [
             209,
@@ -3983,7 +3983,7 @@
         "id": 195,
         "name": "TrainController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.TrainController",
-        "description": "TrainController 是一个用于管理列车信息的 RESTful 控制器，提供创建、查询、更新和删除 TrainType 实体的功能，支持通过 ID 或名称检索列车类型，并处理相关的 HTTP 请求与响应。",
+        "description": "TrainController is a RESTful controller for managing train information, providing functions to create, query, update, and delete TrainType entities, supporting retrieval of train types by ID or name, and handling related HTTP requests and responses.",
         "methods": [],
         "dependencies": [
             81,
@@ -4005,7 +4005,7 @@
         "id": 196,
         "name": "FoodDeliveryController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.FoodDeliveryController",
-        "description": "FoodDeliveryController 是一个负责处理餐饮配送订单相关 HTTP 请求的控制器类，提供创建、删除、查询及更新配送订单信息（如行程ID、座位号、配送时间等）的 RESTful 接口，在系统中充当餐饮配送服务的入口。",
+        "description": "FoodDeliveryController is a controller class responsible for handling HTTP requests related to food delivery orders, providing RESTful interfaces for creating, deleting, querying, and updating delivery order information (such as trip ID, seat number, delivery time, etc.), serving as the entry point for food delivery services in the system.",
         "methods": [],
         "dependencies": [
             196,
@@ -4033,7 +4033,7 @@
         "id": 197,
         "name": "WebSecurityConfig",
         "qualifiedName": "edu.fudanselab.trainticket.config.WebSecurityConfig",
-        "description": "WebSecurityConfig 是一个用于配置 Spring Security 的安全设置的类，主要负责认证管理、HTTP 安全策略、密码编码以及跨域（CORS）配置。它通过重写 configure 方法定义安全规则，并提供 AuthenticationManager 和 PasswordEncoder 等关键安全组件的 Bean 配置，在系统中起到核心安全控制作用。",
+        "description": "WebSecurityConfig is a class for configuring Spring Security settings, primarily responsible for authentication management, HTTP security policies, password encoding, and cross-origin (CORS) configuration. It defines security rules by overriding the configure method, and provides Bean configurations for key security components such as AuthenticationManager and PasswordEncoder, playing a core security control role in the system.",
         "methods": [],
         "dependencies": [
             197,
@@ -4051,7 +4051,7 @@
         "id": 198,
         "name": "ConsignPrice",
         "qualifiedName": "edu.fudanselab.trainticket.entity.ConsignPrice",
-        "description": "ConsignPrice 是一个实体类，用于表示托运价格相关信息，属于 train-ticket 系统中的数据模型部分。",
+        "description": "ConsignPrice is an entity class used to represent consignment price-related information, belonging to the data model part of the train-ticket system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4063,7 +4063,7 @@
         "id": 199,
         "name": "AccountInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.AccountInfo",
-        "description": "表示用户账户信息的实体类，用于在系统中存储和传输账户相关数据。",
+        "description": "An entity class representing user account information, used to store and transmit account-related data in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4075,7 +4075,7 @@
         "id": 200,
         "name": "TrainFoodService",
         "qualifiedName": "edu.fudanselab.trainticket.service.TrainFoodService",
-        "description": "TrainFoodService 是一个抽象服务类，负责管理列车餐饮相关操作，包括创建餐饮信息、列出所有餐饮以及根据行程ID查询对应餐饮。该类定义了列车餐饮服务的核心接口，供具体实现类继承和实现，并通过 HttpHeaders 支持请求上下文传递，在系统中充当列车餐饮业务逻辑的协调者。",
+        "description": "TrainFoodService is an abstract service class responsible for managing train dining-related operations, including creating dining information, listing all dining options, and querying corresponding dining by trip ID. This class defines the core interface for train dining services, for concrete implementation classes to inherit and implement, and supports request context passing through HttpHeaders, serving as a coordinator for train dining business logic in the system.",
         "methods": [],
         "dependencies": [
             222,
@@ -4093,7 +4093,7 @@
         "id": 201,
         "name": "EmailProperties",
         "qualifiedName": "edu.fudanselab.trainticket.config.EmailProperties",
-        "description": "EmailProperties 类用于封装邮件服务的配置属性，包括主机地址、端口、用户名和密码等，提供相应的 getter 和 setter 方法以支持外部访问和配置。",
+        "description": "The EmailProperties class is used to encapsulate configuration properties for mail services, including host address, port, username, and password, providing corresponding getter and setter methods to support external access and configuration.",
         "methods": [],
         "dependencies": [
             201
@@ -4109,7 +4109,7 @@
         "id": 202,
         "name": "RouteInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.RouteInfo",
-        "description": "RouteInfo 是一个实体类，用于表示路线相关信息，在系统中主要用于数据传输和持久化。",
+        "description": "RouteInfo is an entity class used to represent route-related information, primarily used for data transmission and persistence in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4121,7 +4121,7 @@
         "id": 203,
         "name": "PriceConfigRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.PriceConfigRepository",
-        "description": "PriceConfigRepository 是一个数据访问接口，负责管理票价配置（PriceConfig）实体的持久化操作。它提供了根据ID、路线ID与列车类型等条件查询票价配置的方法，支持单条及批量查询，在系统中作为票价配置数据的访问入口，与业务逻辑层解耦。",
+        "description": "PriceConfigRepository is a data access interface responsible for managing persistent operations on PriceConfig entities. It provides methods to query price configurations based on ID, route ID, train type, and other conditions, supporting single and batch queries, serving as the access entry point for price configuration data in the system, decoupled from the business logic layer.",
         "methods": [],
         "dependencies": [
             1
@@ -4137,7 +4137,7 @@
         "id": 204,
         "name": "FoodDeliveryServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.FoodDeliveryServiceImpl",
-        "description": "FoodDeliveryServiceImpl 是一个食品配送服务的实现类，负责处理与食品配送订单相关的业务逻辑，包括创建、删除、查询订单以及更新配送信息（如行程ID、座位号和配送时间）。该类在系统中作为食品配送服务的核心组件，提供RESTful API接口供外部调用。",
+        "description": "FoodDeliveryServiceImpl is an implementation class for food delivery service, responsible for handling business logic related to food delivery orders, including creating, deleting, querying orders, and updating delivery information (such as trip ID, seat number, and delivery time). This class serves as the core component of the food delivery service in the system, providing RESTful API interfaces for external calls.",
         "methods": [],
         "dependencies": [
             208,
@@ -4173,7 +4173,7 @@
         "id": 205,
         "name": "TripAllDetailInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TripAllDetailInfo",
-        "description": "表示车票行程的完整详细信息，包含出发地和目的地等基本信息。",
+        "description": "Represents complete detailed information about a ticket trip, including basic information such as departure and destination.",
         "methods": [],
         "dependencies": [
             249,
@@ -4191,7 +4191,7 @@
         "id": 206,
         "name": "SecurityService",
         "qualifiedName": "edu.fudanselab.trainticket.service.SecurityService",
-        "description": "SecurityService 是一个抽象服务类，负责安全管理相关的配置操作，包括查询、新增、修改、删除安全配置以及账户安全检查。该类为安全配置管理提供统一的接口，需由具体实现类完成实际逻辑。",
+        "description": "SecurityService is an abstract service class responsible for security management-related configuration operations, including querying, adding, modifying, deleting security configurations, and account security checks. This class provides a unified interface for security configuration management, with actual logic to be completed by concrete implementation classes.",
         "methods": [],
         "dependencies": [
             218,
@@ -4209,7 +4209,7 @@
         "id": 207,
         "name": "DeliveryInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.DeliveryInfo",
-        "description": "表示配送信息的实体类，用于封装与配送相关的数据，在系统中作为数据传输和持久化的对象。",
+        "description": "An entity class representing delivery information, used to encapsulate data related to delivery, serving as an object for data transmission and persistence in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4221,7 +4221,7 @@
         "id": 208,
         "name": "FoodDeliveryService",
         "qualifiedName": "edu.fudanselab.trainticket.service.FoodDeliveryService",
-        "description": "FoodDeliveryService 是一个抽象服务类，负责管理餐食配送订单的全生命周期操作，包括创建、删除、查询（按ID、全部、按商店ID）以及更新订单关联的行程ID、座位号和配送时间。该类在系统中作为餐食配送业务逻辑的接口定义，供具体实现类继承并提供实际业务处理。",
+        "description": "FoodDeliveryService is an abstract service class responsible for managing the full lifecycle operations of food delivery orders, including creating, deleting, querying (by ID, all, by store ID), and updating order-associated trip ID, seat number, and delivery time. This class serves as the interface definition for food delivery business logic in the system, for concrete implementation classes to inherit and provide actual business processing.",
         "methods": [],
         "dependencies": [
             207,
@@ -4245,7 +4245,7 @@
         "id": 209,
         "name": "PreserveOtherService",
         "qualifiedName": "edu.fudanselab.trainticket.service.PreserveOtherService",
-        "description": "PreserveOtherService 是一个抽象服务类，定义了车票预订的核心接口 preserve，用于处理非主流程的订票请求。该类位于订单服务模块中，作为其他具体预订服务实现的基类，与 OrderTicketsInfo 和 HttpHeaders 协作完成请求处理。",
+        "description": "PreserveOtherService is an abstract service class that defines the core interface preserve for ticket booking, used to handle non-main flow booking requests. This class is located in the order service module, serving as a base class for other concrete booking service implementations, collaborating with OrderTicketsInfo and HttpHeaders to complete request processing.",
         "methods": [],
         "dependencies": [
             97,
@@ -4263,7 +4263,7 @@
         "id": 210,
         "name": "Gender",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Gender",
-        "description": "Gender 类用于表示性别信息，提供性别代码与名称之间的映射和查询功能，支持通过代码获取对应的性别名称。",
+        "description": "The Gender class is used to represent gender information, providing mapping and query functions between gender codes and names, supporting retrieval of corresponding gender names through codes.",
         "methods": [],
         "dependencies": [
             210
@@ -4279,7 +4279,7 @@
         "id": 211,
         "name": "AuthConstant",
         "qualifiedName": "edu.fudanselab.trainticket.constant.AuthConstant",
-        "description": "AuthConstant 是一个用于集中管理认证相关常量的通用辅助类，通常包含与身份验证、授权相关的静态常量值，在系统中为其他组件提供统一的常量引用。",
+        "description": "AuthConstant is a general utility class for centrally managing authentication-related constants, typically containing static constant values related to authentication and authorization, providing unified constant references for other components in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4291,7 +4291,7 @@
         "id": 212,
         "name": "FoodOrder",
         "qualifiedName": "edu.fudanselab.trainticket.entity.FoodOrder",
-        "description": "FoodOrder类用于表示火车票系统中的食品订单实体，封装了与食品订购相关的数据属性，作为数据传输和持久化的载体。",
+        "description": "The FoodOrder class is used to represent food order entities in the train ticket system, encapsulating data attributes related to food ordering, serving as a carrier for data transmission and persistence.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4303,7 +4303,7 @@
         "id": 213,
         "name": "ContactsInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.ContactsInitData",
-        "description": "ContactsInitData 是一个用于初始化联系人数据的启动类，通过 run 方法在系统启动时执行相关初始化逻辑。",
+        "description": "ContactsInitData is a startup class for initializing contact data, executing relevant initialization logic when the system starts via the run method.",
         "methods": [],
         "dependencies": [
             57,
@@ -4325,7 +4325,7 @@
         "id": 214,
         "name": "InsidePayment",
         "qualifiedName": "edu.fudanselab.trainticket.entity.InsidePayment",
-        "description": "InsidePayment 是一个实体类，用于表示系统内部支付相关信息，属于 train-ticket 系统的领域模型的一部分。",
+        "description": "InsidePayment is an entity class used to represent internal payment-related information in the system, and is part of the domain model of the train-ticket system.",
         "methods": [],
         "dependencies": [
             269,
@@ -4343,7 +4343,7 @@
         "id": 215,
         "name": "ContactsServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.ContactsServiceImpl",
-        "description": "ContactsServiceImpl 是联系人管理服务的实现类，负责处理联系人的增删改查操作，包括根据ID或账户ID查询联系人、创建、修改、删除联系人以及获取所有联系人信息，为火车票预订系统提供联系人数据管理支持。",
+        "description": "ContactsServiceImpl is the implementation class for contact management service, responsible for handling CRUD operations on contacts, including querying contacts by ID or account ID, creating, modifying, deleting contacts, and retrieving all contact information, providing contact data management support for the train ticket booking system.",
         "methods": [],
         "dependencies": [
             232,
@@ -4367,7 +4367,7 @@
         "id": 216,
         "name": "AdminOrderController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.AdminOrderController",
-        "description": "AdminOrderController 是一个用于管理订单的控制器类，提供管理员对订单的增删改查操作。它位于系统的控制层，负责处理与订单相关的 HTTP 请求，并与服务层交互以完成业务逻辑。",
+        "description": "AdminOrderController is a controller class for managing orders, providing administrators with CRUD operations on orders. It is located in the control layer of the system, responsible for handling HTTP requests related to orders and interacting with the service layer to complete business logic.",
         "methods": [],
         "dependencies": [
             70,
@@ -4389,7 +4389,7 @@
         "id": 217,
         "name": "SeatInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.SeatInfo",
-        "description": "SeatInfo 是一个实体类，用于表示火车票系统中座位的基本信息，在系统中作为数据模型用于存储和传递座位相关数据。",
+        "description": "SeatInfo is an entity class used to represent basic seat information in the train ticket system, serving as a data model in the system for storing and transmitting seat-related data.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4401,7 +4401,7 @@
         "id": 218,
         "name": "Response",
         "qualifiedName": "edu.fudanselab.trainticket.util.Response",
-        "description": "通用响应工具类，用于封装和处理系统返回结果。",
+        "description": "A general response utility class used to encapsulate and process system return results.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4413,7 +4413,7 @@
         "id": 219,
         "name": "OrderOtherRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.OrderOtherRepository",
-        "description": "OrderOtherRepository 是一个抽象数据访问接口，负责提供对订单数据的持久化操作，包括根据ID、账户ID、旅行日期和车次等条件查询订单，以及删除指定订单。该类在系统中作为订单数据访问层的通用契约，供具体实现类继承和实现。",
+        "description": "OrderOtherRepository is an abstract data access interface responsible for providing persistent operations on order data, including querying orders by ID, account ID, travel date, train number, and other conditions, as well as deleting specified orders. This class serves as a general contract for the order data access layer in the system, to be inherited and implemented by concrete implementation classes.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4425,7 +4425,7 @@
         "id": 220,
         "name": "AdminTravelService",
         "qualifiedName": "edu.fudanselab.trainticket.service.AdminTravelService",
-        "description": "AdminTravelService 是一个抽象服务类，负责管理旅行信息的 CRUD 操作（创建、读取、更新和删除），为管理员提供对行程数据的全面控制。该类定义了获取所有行程、添加新行程、更新现有行程和删除指定行程的抽象方法，需由具体实现类完成实际逻辑。",
+        "description": "AdminTravelService is an abstract service class responsible for managing CRUD operations (Create, Read, Update, Delete) on travel information, providing administrators with comprehensive control over trip data. This class defines abstract methods for retrieving all trips, adding new trips, updating existing trips, and deleting specified trips, which need to be implemented by concrete implementation classes.",
         "methods": [],
         "dependencies": [
             148,
@@ -4443,7 +4443,7 @@
         "id": 221,
         "name": "AssuranceInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.AssuranceInitData",
-        "description": "负责初始化保险相关数据的启动类，通过 run 方法在系统启动时执行初始化逻辑。",
+        "description": "A startup class responsible for initializing assurance-related data, executing initialization logic when the system starts via the run method.",
         "methods": [],
         "dependencies": [
             189,
@@ -4461,7 +4461,7 @@
         "id": 222,
         "name": "TrainFood",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TrainFood",
-        "description": "TrainFood类用于表示火车上的食品信息，作为实体类在系统中封装与列车餐饮相关的数据。",
+        "description": "The TrainFood class is used to represent food information on trains, encapsulating data related to train catering as an entity class in the system.",
         "methods": [],
         "dependencies": [
             222,
@@ -4479,7 +4479,7 @@
         "id": 223,
         "name": "PaymentRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.PaymentRepository",
-        "description": "PaymentRepository 是一个抽象的数据访问接口，负责对 Payment 实体进行持久化操作，提供根据 ID、订单 ID 和用户 ID 查询支付记录以及查询所有支付记录的功能。该类位于数据访问层，为上层业务逻辑提供支付数据的访问支持。",
+        "description": "PaymentRepository is an abstract data access interface responsible for persistent operations on Payment entities, providing functions to query payment records by ID, order ID, and user ID, as well as querying all payment records. This class is located in the data access layer, providing payment data access support for upper-level business logic.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4491,7 +4491,7 @@
         "id": 224,
         "name": "TravelService2",
         "qualifiedName": "edu.fudanselab.trainticket.service.TravelService2",
-        "description": "TravelService2 是一个抽象服务类，负责提供与行程（Trip）相关的完整业务操作接口，包括行程的创建、查询、更新和删除（CRUD），以及批量查询、行程详情获取、路线和列车类型查询等功能。该类在系统中作为行程管理模块的核心服务层，定义了供上层调用的标准接口，具体实现由子类完成。",
+        "description": "TravelService2 is an abstract service class responsible for providing complete business operation interfaces related to trips, including CRUD operations (Create, Read, Update, Delete) on trips, as well as batch queries, trip detail retrieval, route and train type queries, and other functions. This class serves as the core service layer of the trip management module in the system, defining standard interfaces for upper-level calls, with concrete implementations completed by subclasses.",
         "methods": [],
         "dependencies": [
             148,
@@ -4513,7 +4513,7 @@
         "id": 225,
         "name": "InfoConstant",
         "qualifiedName": "edu.fudanselab.trainticket.constant.InfoConstant",
-        "description": "InfoConstant 是一个常量类，用于集中管理与系统信息相关的常量定义，属于通用辅助类。",
+        "description": "InfoConstant is a constant class used to centrally manage constant definitions related to system information, belonging to general utility classes.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4525,7 +4525,7 @@
         "id": 226,
         "name": "ConsignController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.ConsignController",
-        "description": "ConsignController 是一个处理托运相关业务的控制器类，负责提供托运信息的增删改查功能，包括根据账户ID、订单ID或收货人查询托运记录，以及插入和更新托运信息。该类位于系统的Web层，通过HTTP接口与前端或其他服务进行交互。",
+        "description": "ConsignController is a controller class for handling consignment-related business, responsible for providing CRUD functions for consignment information, including querying consignment records by account ID, order ID, or consignee, as well as inserting and updating consignment information. This class is located in the Web layer of the system, interacting with the front-end or other services through HTTP interfaces.",
         "methods": [],
         "dependencies": [
             66,
@@ -4551,7 +4551,7 @@
         "id": 227,
         "name": "PollThread",
         "qualifiedName": "edu.fudanselab.trainticket.util.PollThread",
-        "description": "PollThread 是一个用于轮询执行车票预留操作的线程类，通过 run() 方法驱动轮询逻辑，并利用 doPreserve() 方法向指定 URL 发起 HTTP 请求以完成预留操作。",
+        "description": "PollThread is a thread class for polling ticket reservation operations, driving the polling logic through the run() method, and using the doPreserve() method to initiate HTTP requests to a specified URL to complete reservation operations.",
         "methods": [],
         "dependencies": [
             132,
@@ -4577,7 +4577,7 @@
         "id": 228,
         "name": "InsidePaymentInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.InsidePaymentInitData",
-        "description": "InsidePaymentInitData 是一个用于初始化内部支付相关数据的启动类，通过实现 run 方法在系统启动时执行必要的数据初始化逻辑。",
+        "description": "InsidePaymentInitData is a startup class for initializing internal payment-related data, executing necessary data initialization logic when the system starts by implementing the run method.",
         "methods": [],
         "dependencies": [
             89,
@@ -4605,7 +4605,7 @@
         "id": 229,
         "name": "MailService",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.MailService",
-        "description": "负责发送邮件的业务实现类，基于指定模板向收件人发送邮件。",
+        "description": "A business implementation class responsible for sending emails, sending emails to recipients based on specified templates.",
         "methods": [],
         "dependencies": [
             229,
@@ -4623,7 +4623,7 @@
         "id": 230,
         "name": "OrderInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.OrderInfo",
-        "description": "OrderInfo类用于封装订单查询相关的条件和状态信息，支持按旅行日期、购票日期和订单状态进行查询过滤，并提供相应的启用/禁用及状态获取方法。",
+        "description": "The OrderInfo class is used to encapsulate conditions and status information related to order queries, supporting query filtering by travel date, purchase date, and order status, and providing corresponding enable/disable and status retrieval methods.",
         "methods": [],
         "dependencies": [
             230
@@ -4639,7 +4639,7 @@
         "id": 231,
         "name": "PriceService",
         "qualifiedName": "edu.fudanselab.trainticket.service.PriceService",
-        "description": "PriceService 是一个抽象服务类，负责管理票价配置（PriceConfig）的全生命周期操作，包括创建、查询、更新和删除。它在系统中作为票价管理的核心服务接口，提供基于路线ID和列车类型等多种条件的票价查询功能，并与 HTTP 请求头（HttpHeaders）集成以支持上下文传递。该类为具体实现类定义了统一的票价服务契约。",
+        "description": "PriceService is an abstract service class responsible for managing the full lifecycle operations of price configurations (PriceConfig), including creation, querying, updating, and deletion. It serves as the core service interface for price management in the system, providing price query functions based on various conditions such as route ID and train type, and integrates with HTTP request headers (HttpHeaders) to support context passing. This class defines a unified price service contract for concrete implementation classes.",
         "methods": [],
         "dependencies": [
             1,
@@ -4657,7 +4657,7 @@
         "id": 232,
         "name": "ContactsService",
         "qualifiedName": "edu.fudanselab.trainticket.service.ContactsService",
-        "description": "ContactsService 是一个抽象服务类，负责管理联系人（Contacts）相关的业务逻辑，提供联系人的创建、删除、修改、查询（包括按ID、账户ID及获取全部联系人）等核心操作。该类位于系统的服务层，作为联系人数据操作的统一接口，供上层控制器调用，并与数据访问层协同工作。",
+        "description": "ContactsService is an abstract service class responsible for managing business logic related to contacts, providing core operations such as creating, deleting, modifying, and querying contacts (including by ID, account ID, and retrieving all contacts). This class is located in the service layer of the system, serving as a unified interface for contact data operations, for upper-level controllers to call, and working in coordination with the data access layer.",
         "methods": [],
         "dependencies": [
             57,
@@ -4675,7 +4675,7 @@
         "id": 233,
         "name": "StationController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.StationController",
-        "description": "StationController 是一个用于管理车站信息的 RESTful 控制器，提供车站的增删改查及批量查询功能，包括通过名称或 ID 查询车站、批量查询车站 ID 或名称等操作，并统一处理请求头中的认证信息。",
+        "description": "StationController is a RESTful controller for managing station information, providing CRUD and batch query functions for stations, including querying stations by name or ID, batch querying station IDs or names, and uniformly handling authentication information in request headers.",
         "methods": [],
         "dependencies": [
             233,
@@ -4697,7 +4697,7 @@
         "id": 234,
         "name": "ConsignPriceService",
         "qualifiedName": "edu.fudanselab.trainticket.service.ConsignPriceService",
-        "description": "ConsignPriceService 是一个抽象服务类，负责处理与托运价格相关的业务逻辑，包括根据重量和区域获取价格、查询价格信息、创建和修改价格配置以及获取当前价格配置。该类为托运价格管理提供统一的接口，需由具体实现类完成实际逻辑。",
+        "description": "ConsignPriceService is an abstract service class responsible for handling business logic related to consignment prices, including obtaining prices based on weight and region, querying price information, creating and modifying price configurations, and retrieving current price configurations. This class provides a unified interface for consignment price management, with actual logic to be completed by concrete implementation classes.",
         "methods": [],
         "dependencies": [
             198,
@@ -4715,7 +4715,7 @@
         "id": 235,
         "name": "AuthUserController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.AuthUserController",
-        "description": "AuthUserController 负责处理与用户认证相关的请求，包括获取令牌、查询所有认证用户以及删除指定用户等操作，是系统中认证管理模块的控制器。",
+        "description": "AuthUserController is responsible for handling requests related to user authentication, including obtaining tokens, querying all authenticated users, and deleting specified users, serving as the controller for the authentication management module in the system.",
         "methods": [],
         "dependencies": [
             19,
@@ -4743,7 +4743,7 @@
         "id": 236,
         "name": "JWTProvider",
         "qualifiedName": "edu.fudanselab.trainticket.config.jwt.JWTProvider",
-        "description": "JWTProvider 类负责生成和管理 JWT（JSON Web Token）令牌，主要用于基于用户认证信息创建安全令牌，支持系统中的身份验证流程。",
+        "description": "The JWTProvider class is responsible for generating and managing JWT (JSON Web Token) tokens, primarily used for creating security tokens based on user authentication information, supporting the authentication process in the system.",
         "methods": [],
         "dependencies": [
             264,
@@ -4761,7 +4761,7 @@
         "id": 237,
         "name": "TravelService",
         "qualifiedName": "edu.fudanselab.trainticket.service.TravelService",
-        "description": "TravelService 是一个抽象服务类，负责提供与旅行（车票、行程）相关的完整 CRUD 操作及多种查询功能，包括单条行程管理、批量查询、并行查询、行程详情获取、路线与列车类型查询等，同时支持管理员专用查询。该类作为旅行服务模块的核心接口，供具体实现类继承并实现其业务逻辑。",
+        "description": "TravelService is an abstract service class responsible for providing complete CRUD operations and various query functions related to travel (tickets, trips), including single trip management, batch queries, parallel queries, trip detail retrieval, route and train type queries, etc., while also supporting administrator-specific queries. This class serves as the core interface for the travel service module, for concrete implementation classes to inherit and implement their business logic.",
         "methods": [],
         "dependencies": [
             148,
@@ -4783,7 +4783,7 @@
         "id": 238,
         "name": "UserDto",
         "qualifiedName": "edu.fudanselab.trainticket.dto.UserDto",
-        "description": "UserDto 是一个数据传输对象（DTO），用于在系统中封装和传递用户相关的信息。该类位于 edu.fudanselab.trainticket.dto 包中，主要职责是作为用户数据的载体，通常用于服务层与表示层之间的数据交换。",
+        "description": "UserDto is a Data Transfer Object (DTO) used to encapsulate and transmit user-related information in the system. This class is located in the edu.fudanselab.trainticket.dto package, with its main responsibility being to serve as a carrier for user data, typically used for data exchange between the service layer and the presentation layer.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4795,7 +4795,7 @@
         "id": 239,
         "name": "UserController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.UserController",
-        "description": "UserController 是一个处理用户相关 HTTP 请求的控制器类，负责提供用户管理功能，包括用户注册、查询（按用户名或用户ID）、更新和删除等操作。该类位于系统的 Web 层，通过 RESTful 接口与前端或其他服务交互，并依赖 UserDto 传输用户数据。",
+        "description": "UserController is a controller class for handling user-related HTTP requests, responsible for providing user management functions, including user registration, querying (by username or user ID), updating, and deleting operations. This class is located in the Web layer of the system, interacting with the front-end or other services through RESTful interfaces, and relies on UserDto to transmit user data.",
         "methods": [],
         "dependencies": [
             238,
@@ -4817,7 +4817,7 @@
         "id": 240,
         "name": "OrderSecurity",
         "qualifiedName": "edu.fudanselab.trainticket.entity.OrderSecurity",
-        "description": "OrderSecurity 是一个与订单安全相关的实体类，用于在火车票预订系统中表示和管理订单的安全信息。",
+        "description": "OrderSecurity is an entity class related to order security, used to represent and manage order security information in the train ticket booking system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4829,7 +4829,7 @@
         "id": 241,
         "name": "AdminRouteServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.AdminRouteServiceImpl",
-        "description": "AdminRouteServiceImpl 是一个管理列车路线的业务实现类，负责提供路线的增删改查及站点校验功能，主要服务于管理员对路线信息的操作需求。",
+        "description": "AdminRouteServiceImpl is a business implementation class for managing train routes, responsible for providing CRUD functions for routes and station verification, primarily serving administrators' operational needs for route information.",
         "methods": [],
         "dependencies": [
             164,
@@ -4853,7 +4853,7 @@
         "id": 242,
         "name": "SeatService",
         "qualifiedName": "edu.fudanselab.trainticket.service.SeatService",
-        "description": "SeatService 是一个抽象服务类，负责处理与座位相关的业务逻辑，包括座位分配和查询区间余票。该类定义了两个核心抽象方法：distributeSeat 用于分配座位，getLeftTicketOfInterval 用于获取指定区间的剩余票数。作为服务层组件，它为上层调用者提供座位管理的统一接口，具体实现由子类完成。",
+        "description": "SeatService is an abstract service class responsible for handling business logic related to seats, including seat allocation and querying remaining tickets for intervals. This class defines two core abstract methods: distributeSeat for allocating seats, and getLeftTicketOfInterval for obtaining the remaining ticket count for a specified interval. As a service layer component, it provides a unified interface for seat management to upper-level callers, with concrete implementation completed by subclasses.",
         "methods": [],
         "dependencies": [
             73,
@@ -4871,7 +4871,7 @@
         "id": 243,
         "name": "OrderOtherController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.OrderOtherController",
-        "description": "OrderOtherController 是一个处理火车票订单相关业务的控制器类，负责提供订单的创建、查询、修改、删除、支付、价格计算、安全信息检查等RESTful API接口，同时支持获取座位列表和保存订单信息等功能，在系统中作为订单管理模块的入口与外部进行交互。",
+        "description": "OrderOtherController is a controller class for handling train ticket order-related business, responsible for providing RESTful API interfaces for order creation, querying, modification, deletion, payment, price calculation, security information checking, etc., while supporting functions such as obtaining seat lists and saving order information, serving as the entry point for the order management module to interact with external systems.",
         "methods": [],
         "dependencies": [
             70,
@@ -4901,7 +4901,7 @@
         "id": 244,
         "name": "Queues",
         "qualifiedName": "edu.fudanselab.trainticket.config.Queues",
-        "description": "配置类，用于定义和管理消息队列（如邮件队列），在系统中提供队列的声明和初始化功能。",
+        "description": "Configuration class used to define and manage message queues (such as mail queues), providing queue declaration and initialization functions in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -4913,7 +4913,7 @@
         "id": 245,
         "name": "UserRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.UserRepository",
-        "description": "UserRepository 是一个数据访问接口，负责用户数据的持久化操作，提供根据用户名或用户ID查询用户、删除用户以及获取所有用户列表的功能。",
+        "description": "UserRepository is a data access interface responsible for persistent operations on user data, providing functions to query users by username or user ID, delete users, and retrieve lists of all users.",
         "methods": [],
         "dependencies": [
             33
@@ -4929,7 +4929,7 @@
         "id": 246,
         "name": "TravelServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.TravelServiceImpl",
-        "description": "TravelServiceImpl 是旅行服务的核心实现类，负责处理与车次、路线、座位及票价相关的业务逻辑，包括创建、查询、更新和删除旅行信息，并提供多种查询方式（如批量查询、并行查询等）。该类通过调用其他服务获取路线、列车类型和余票信息，为上层控制器提供完整的旅行数据支持。",
+        "description": "TravelServiceImpl is the core implementation class for travel services, responsible for handling business logic related to train trips, routes, seats, and prices, including creating, querying, updating, and deleting travel information, and providing various query methods (such as batch queries, parallel queries, etc.). This class obtains route, train type, and remaining ticket information by calling other services, providing complete travel data support for upper-level controllers.",
         "methods": [],
         "dependencies": [
             237,
@@ -4985,7 +4985,7 @@
         "id": 247,
         "name": "OrderOtherService",
         "qualifiedName": "edu.fudanselab.trainticket.service.OrderOtherService",
-        "description": "OrderOtherService 是一个抽象服务类，负责处理与订单相关的各种操作，包括订单的创建、查询、修改、取消、支付及安全校验等。该类定义了订单管理的核心接口，为上层业务提供统一的订单服务抽象，需由具体实现类完成实际逻辑。",
+        "description": "OrderOtherService is an abstract service class responsible for handling various operations related to orders, including order creation, querying, modification, cancellation, payment, and security verification. This class defines the core interface for order management, providing a unified order service abstraction for upper-level business, with actual logic to be completed by concrete implementation classes.",
         "methods": [],
         "dependencies": [
             70,
@@ -5009,7 +5009,7 @@
         "id": 248,
         "name": "PreserveService",
         "qualifiedName": "edu.fudanselab.trainticket.service.PreserveService",
-        "description": "PreserveService 是一个抽象服务类，负责处理车票预订相关业务逻辑，定义了 preserve 方法用于执行订单车票的预留操作，需由具体实现类完成实际逻辑。",
+        "description": "PreserveService is an abstract service class responsible for handling ticket booking-related business logic, defining the preserve method for executing order ticket reservation operations, with actual logic to be completed by concrete implementation classes.",
         "methods": [],
         "dependencies": [
             97,
@@ -5027,7 +5027,7 @@
         "id": 249,
         "name": "StringUtils",
         "qualifiedName": "edu.fudanselab.trainticket.util.StringUtils",
-        "description": "StringUtils 是一个工具类，提供字符串与日期之间的相互转换以及字符串格式处理等辅助功能，用于简化常用数据类型转换操作。",
+        "description": "StringUtils is a utility class that provides auxiliary functions such as mutual conversion between strings and dates, and string format processing, used to simplify common data type conversion operations.",
         "methods": [],
         "dependencies": [
             255,
@@ -5047,7 +5047,7 @@
         "id": 250,
         "name": "SecurityRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.SecurityRepository",
-        "description": "SecurityRepository 是一个用于管理 SecurityConfig 实体的抽象数据访问接口，提供基于名称或 ID 的查询、全量查询及删除操作，属于系统安全配置模块的数据持久层。",
+        "description": "SecurityRepository is an abstract data access interface for managing SecurityConfig entities, providing query-based on name or ID, full query, and deletion operations, belonging to the data persistence layer of the system security configuration module.",
         "methods": [],
         "dependencies": [
             18
@@ -5063,7 +5063,7 @@
         "id": 251,
         "name": "WaitListOrderRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.WaitListOrderRepository",
-        "description": "WaitListOrderRepository 是一个数据访问接口，负责对候补订单（WaitListOrder）实体进行持久化操作，包括根据ID查询、查询全部、按账户ID查询以及删除操作。该类在系统中位于数据访问层，为上层业务逻辑提供候补订单数据的存取服务。",
+        "description": "WaitListOrderRepository is a data access interface responsible for persistent operations on WaitListOrder entities, including querying by ID, querying all, querying by account ID, and deletion operations. This class is located in the data access layer of the system, providing storage and retrieval services for waitlist order data to upper-level business logic.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -5075,7 +5075,7 @@
         "id": 252,
         "name": "AdminTravelController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.AdminTravelController",
-        "description": "AdminTravelController 是一个用于管理旅行信息的控制器类，提供管理员对旅行数据的增删改查操作。它位于系统的控制层，处理与旅行相关的 HTTP 请求，并依赖 HttpHeaders 进行请求头处理，与 TravelInfo 实体进行数据交互。",
+        "description": "AdminTravelController is a controller class for managing travel information, providing administrators with CRUD operations on travel data. It is located in the control layer of the system, handling HTTP requests related to travel, and relies on HttpHeaders for request header processing, interacting with TravelInfo entities for data exchange.",
         "methods": [],
         "dependencies": [
             252,
@@ -5097,7 +5097,7 @@
         "id": 253,
         "name": "TrainFoodInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.TrainFoodInitData",
-        "description": "TrainFoodInitData 是一个用于初始化列车食品数据的工具类，主要职责是在系统启动时加载并解析食品数据，将其转换为 Food 对象列表。该类通过 run 方法接收初始化参数，并利用 toFoodList 方法将字符串格式的数据转换为结构化食品列表，通常作为系统初始化流程的一部分。",
+        "description": "TrainFoodInitData is a utility class for initializing train food data, with its main responsibility being to load and parse food data when the system starts, converting it into a list of Food objects. This class receives initialization parameters through the run method, and uses the toFoodList method to convert string-formatted data into structured food lists, typically as part of the system initialization process.",
         "methods": [],
         "dependencies": [
             222,
@@ -5119,7 +5119,7 @@
         "id": 254,
         "name": "QueryInfo",
         "qualifiedName": "edu.fudanselab.trainticket.entity.QueryInfo",
-        "description": "QueryInfo类用于封装查询条件的配置，支持启用或禁用基于出行日期、购票日期和订单状态的查询功能，作为查询参数的构建器在系统中传递和管理查询条件。",
+        "description": "The QueryInfo class is used to encapsulate query condition configurations, supporting enabling or disabling query functions based on travel date, purchase date, and order status, serving as a builder for query parameters to pass and manage query conditions in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -5131,7 +5131,7 @@
         "id": 255,
         "name": "OrderServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.OrderServiceImpl",
-        "description": "OrderServiceImpl 是订单服务的核心实现类，负责处理火车票订单的全生命周期管理，包括创建、查询、修改、取消、支付等操作。该类在系统中作为订单业务逻辑的主要承载者，与 Seat、Order 等数据模型及 HTTP 请求上下文交互，为上层提供完整的订单服务接口。",
+        "description": "OrderServiceImpl is the core implementation class for order services, responsible for handling the full lifecycle management of train ticket orders, including creation, querying, modification, cancellation, payment, and other operations. This class serves as the main bearer of order business logic in the system, interacting with data models such as Seat and Order, and HTTP request context, providing complete order service interfaces for upper layers.",
         "methods": [],
         "dependencies": [
             266,
@@ -5177,7 +5177,7 @@
         "id": 256,
         "name": "CommonOrder",
         "qualifiedName": "edu.fudanselab.trainticket.entity.CommonOrder",
-        "description": "CommonOrder 是一个通用订单实体类，用于表示火车票系统中的普通订单信息。该类重写了 equals 和 hashCode 方法，以支持基于对象内容的相等性比较和哈希操作，通常用于集合存储、去重或作为 Map 的键。在系统中，它可能作为其他具体订单类型的基础或通用表示。",
+        "description": "CommonOrder is a general order entity class used to represent ordinary order information in the train ticket system. This class overrides the equals and hashCode methods to support content-based equality comparison and hash operations, typically used for collection storage, deduplication, or as keys in Maps. In the system, it may serve as a base or general representation for other specific order types.",
         "methods": [],
         "dependencies": [
             37,
@@ -5199,7 +5199,7 @@
         "id": 257,
         "name": "BaseException",
         "qualifiedName": "edu.fudanselab.trainticket.exception.BaseException",
-        "description": "BaseException 是一个通用的异常基类，用于在火车票系统中作为其他具体异常类的父类，提供统一的异常处理基础。",
+        "description": "BaseException is a general exception base class used as the parent class for other specific exception classes in the train ticket system, providing a unified foundation for exception handling.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -5211,7 +5211,7 @@
         "id": 258,
         "name": "StationFoodController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.StationFoodController",
-        "description": "StationFoodController 负责处理与车站餐饮服务相关的 HTTP 请求，提供获取车站食品商店及其食品列表的接口。该类在系统中作为车站餐饮信息的控制器，与前端或其他服务通过 RESTful API 交互。",
+        "description": "StationFoodController is responsible for handling HTTP requests related to station food services, providing interfaces for obtaining station food stores and their food lists. This class serves as the controller for station food information in the system, interacting with the front-end or other services through RESTful APIs.",
         "methods": [],
         "dependencies": [
             106,
@@ -5231,7 +5231,7 @@
         "id": 259,
         "name": "VerifyResult",
         "qualifiedName": "edu.fudanselab.trainticket.entity.VerifyResult",
-        "description": "VerifyResult 是一个通用实体类，用于封装验证操作的结果，在系统中可能作为验证逻辑的返回值类型，与其他业务模块进行数据交互。",
+        "description": "VerifyResult is a general entity class used to encapsulate the results of verification operations, possibly serving as the return value type for verification logic in the system, and interacting with other business modules for data exchange.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -5243,7 +5243,7 @@
         "id": 260,
         "name": "Type",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Type",
-        "description": "Type类用于表示某种类型的实体，包含类型名称和索引两个属性，提供静态方法通过索引获取名称，并支持对名称和索引的读写操作。",
+        "description": "The Type class is used to represent entities of a certain type, containing two attributes: type name and index, providing static methods to obtain names by index, and supporting read and write operations on names and indexes.",
         "methods": [],
         "dependencies": [
             260
@@ -5259,7 +5259,7 @@
         "id": 261,
         "name": "ConsignPriceConfigRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.ConsignPriceConfigRepository",
-        "description": "ConsignPriceConfigRepository 是一个用于管理托运价格配置的仓库接口，提供根据索引查询托运价格配置的方法，属于数据访问层组件。",
+        "description": "ConsignPriceConfigRepository is a repository interface for managing consignment price configurations, providing methods to query consignment price configurations by index, belonging to the data access layer component.",
         "methods": [],
         "dependencies": [
             198
@@ -5275,7 +5275,7 @@
         "id": 262,
         "name": "MoneyType",
         "qualifiedName": "edu.fudanselab.trainticket.entity.MoneyType",
-        "description": "MoneyType类用于表示和管理金额类型，提供通过索引获取名称、以及设置和获取名称与索引的功能，属于实体类。",
+        "description": "The MoneyType class is used to represent and manage monetary types, providing functions to obtain names by index, and to set and get names and indexes, belonging to entity classes.",
         "methods": [],
         "dependencies": [
             262
@@ -5291,7 +5291,7 @@
         "id": 263,
         "name": "SeatServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.SeatServiceImpl",
-        "description": "SeatServiceImpl 是座位服务的核心实现类，负责处理座位分配和区间余票查询等业务逻辑。该类通过判断已售车票与目标座位的冲突情况来完成座位分配，并支持基于请求头参数计算直达比例以辅助余票查询。它在系统中处于服务层，为上层控制器提供座位相关的业务支撑。",
+        "description": "SeatServiceImpl is the core implementation class for seat services, responsible for handling business logic such as seat allocation and querying remaining tickets for intervals. This class completes seat allocation by determining conflicts between sold tickets and target seats, and supports calculating direct ratios based on request header parameters to assist in remaining ticket queries. It is located in the service layer of the system, providing seat-related business support for upper-level controllers.",
         "methods": [],
         "dependencies": [
             242,
@@ -5321,7 +5321,7 @@
         "id": 264,
         "name": "AuthUser",
         "qualifiedName": "edu.fudanselab.trainticket.entity.AuthUser",
-        "description": "AuthUser类是一个用于表示认证用户的实体类，实现了Spring Security的UserDetails接口的核心方法，用于提供用户认证和授权所需的信息，如用户名、密码、权限以及账户状态等。",
+        "description": "The AuthUser class is an entity class used to represent authenticated users, implementing the core methods of Spring Security's UserDetails interface, used to provide information required for user authentication and authorization, such as username, password, permissions, and account status.",
         "methods": [],
         "dependencies": [
             264
@@ -5337,7 +5337,7 @@
         "id": 265,
         "name": "FoodDeliveryOrder",
         "qualifiedName": "edu.fudanselab.trainticket.entity.FoodDeliveryOrder",
-        "description": "表示食品配送订单的实体类，用于存储和管理与餐食配送相关的订单信息。",
+        "description": "An entity class representing food delivery orders, used to store and manage order information related to food delivery.",
         "methods": [],
         "dependencies": [
             125
@@ -5353,7 +5353,7 @@
         "id": 266,
         "name": "OrderService",
         "qualifiedName": "edu.fudanselab.trainticket.service.OrderService",
-        "description": "OrderService 是一个抽象服务类，负责处理火车票订单相关的业务逻辑，包括订单的创建、查询、修改、取消、支付及安全管理等操作。该类定义了多个抽象方法，供具体实现类完成实际的订单处理功能，在系统中处于业务逻辑层，与订单数据模型和外部接口交互。",
+        "description": "OrderService is an abstract service class responsible for handling business logic related to train ticket orders, including operations such as order creation, querying, modification, cancellation, payment, and security management. This class defines multiple abstract methods for concrete implementation classes to complete actual order processing functions, located in the business logic layer of the system, interacting with order data models and external interfaces.",
         "methods": [],
         "dependencies": [
             230,
@@ -5377,7 +5377,7 @@
         "id": 267,
         "name": "SecurityInitData",
         "qualifiedName": "edu.fudanselab.trainticket.init.SecurityInitData",
-        "description": "负责系统安全模块的初始化数据加载，通常在应用启动时执行安全相关配置或数据的初始化。",
+        "description": "Responsible for initializing data loading for the system security module, typically executing security-related configuration or data initialization when the application starts.",
         "methods": [],
         "dependencies": [
             206,
@@ -5397,7 +5397,7 @@
         "id": 268,
         "name": "TrainFoodController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.TrainFoodController",
-        "description": "TrainFoodController 负责处理与列车餐饮相关的 HTTP 请求，提供获取全部列车餐饮信息及特定行程餐饮信息的接口，在系统中作为列车餐饮服务的前端控制器。",
+        "description": "TrainFoodController is responsible for handling HTTP requests related to train dining, providing interfaces for obtaining all train dining information and dining information for specific trips, serving as the front-end controller for train dining services in the system.",
         "methods": [],
         "dependencies": [
             200,
@@ -5417,7 +5417,7 @@
         "id": 269,
         "name": "PaymentType",
         "qualifiedName": "edu.fudanselab.trainticket.entity.PaymentType",
-        "description": "PaymentType类用于表示支付方式的类型，封装了支付类型的名称和对应的索引值，提供静态和实例方法以获取名称，并支持对名称和索引的设置。该类在系统中作为支付相关模块的基础数据实体，与其他支付处理类协同工作。",
+        "description": "The PaymentType class is used to represent payment method types, encapsulating the name of the payment type and its corresponding index value, providing static and instance methods to obtain names, and supporting setting of names and indexes. This class serves as a basic data entity for payment-related modules in the system, working in coordination with other payment processing classes.",
         "methods": [],
         "dependencies": [
             269
@@ -5433,7 +5433,7 @@
         "id": 270,
         "name": "DocumentType",
         "qualifiedName": "edu.fudanselab.trainticket.entity.DocumentType",
-        "description": "DocumentType 类用于表示和管理文档类型的枚举信息，提供通过代码获取名称的静态方法，以及实例化的代码和名称访问方法。",
+        "description": "The DocumentType class is used to represent and manage enumeration information for document types, providing static methods to obtain names by code, as well as instantiated code and name access methods.",
         "methods": [],
         "dependencies": [
             270
@@ -5449,7 +5449,7 @@
         "id": 271,
         "name": "StationFoodServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.StationFoodServiceImpl",
-        "description": "StationFoodServiceImpl 是一个提供车站餐饮服务管理功能的实现类，负责处理与车站食品商店相关的创建、查询等操作，包括按车站名称或ID获取食品商店信息，以及列出所有或特定车站的食品商店列表。",
+        "description": "StationFoodServiceImpl is an implementation class that provides station food service management functions, responsible for handling creation, querying, and other operations related to station food stores, including obtaining food store information by station name or ID, and listing food stores for all or specific stations.",
         "methods": [],
         "dependencies": [
             106,
@@ -5473,7 +5473,7 @@
         "id": 272,
         "name": "AuthInitUser",
         "qualifiedName": "edu.fudanselab.trainticket.init.AuthInitUser",
-        "description": "AuthInitUser 是一个用于初始化认证相关用户数据的启动类，通常在系统启动时执行用户初始化逻辑。",
+        "description": "AuthInitUser is a startup class used to initialize authentication-related user data, typically executing user initialization logic when the system starts.",
         "methods": [],
         "dependencies": [
             264,
@@ -5491,7 +5491,7 @@
         "id": 273,
         "name": "PaymentController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.PaymentController",
-        "description": "PaymentController 负责处理与支付相关的HTTP请求，包括支付、充值和查询账户信息等操作，是支付模块的入口控制器。",
+        "description": "PaymentController is responsible for handling HTTP requests related to payment, including payment, recharge, and querying account information, serving as the entry controller for the payment module.",
         "methods": [],
         "dependencies": [
             88,
@@ -5515,7 +5515,7 @@
         "id": 274,
         "name": "Route",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Route",
-        "description": "Route类用于表示列车路线实体，作为系统中与路线相关数据的载体，可能包含起点、终点、途经站点等信息。",
+        "description": "The Route class is used to represent train route entities, serving as a carrier for route-related data in the system, possibly containing information such as origin, destination, and intermediate stops.",
         "methods": [],
         "dependencies": [
             274
@@ -5531,7 +5531,7 @@
         "id": 275,
         "name": "GetAccountByIdResult",
         "qualifiedName": "edu.fudanselab.trainticket.entity.GetAccountByIdResult",
-        "description": "表示根据ID获取账户信息操作的结果实体类，用于封装查询返回的账户数据。",
+        "description": "An entity class representing the result of the operation to obtain account information by ID, used to encapsulate account data returned from queries.",
         "methods": [],
         "dependencies": [
             41
@@ -5547,7 +5547,7 @@
         "id": 276,
         "name": "AdminBasicInfoController",
         "qualifiedName": "edu.fudanselab.trainticket.controller.AdminBasicInfoController",
-        "description": "AdminBasicInfoController 是一个用于管理铁路订票系统基础数据的控制器类，提供对联系人、车站、列车类型、系统配置和票价等核心信息的增删改查操作。该类位于系统的控制层，负责接收管理员请求并调用相应服务完成基础数据维护，是后台管理功能的关键入口。",
+        "description": "AdminBasicInfoController is a controller class for managing basic data of the railway booking system, providing CRUD operations on core information such as contacts, stations, train types, system configurations, and prices. This class is located in the control layer of the system, responsible for receiving administrator requests and calling corresponding services to complete basic data maintenance, serving as a key entry point for backend management functions.",
         "methods": [],
         "dependencies": [
             276,
@@ -5577,7 +5577,7 @@
         "id": 277,
         "name": "Delivery",
         "qualifiedName": "edu.fudanselab.trainticket.entity.Delivery",
-        "description": "Delivery类是用于表示配送相关信息的实体类，属于train-ticket系统中的数据模型层，主要用于封装配送相关的数据字段，支持持久化和业务逻辑处理。",
+        "description": "The Delivery class is an entity class used to represent delivery-related information, belonging to the data model layer of the train-ticket system, primarily used to encapsulate delivery-related data fields, supporting persistence and business logic processing.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -5589,7 +5589,7 @@
         "id": 278,
         "name": "SwaggerConfig",
         "qualifiedName": "edu.fudanselab.trainticket.config.SwaggerConfig",
-        "description": "SwaggerConfig 是用于配置 Swagger API 文档生成的类，通过 createRestApi() 方法定义 RESTful API 的文档化规则，并使用 apiInfo() 方法提供 API 的元信息。该类在系统中负责集成和定制 Swagger，以支持 API 的可视化和测试。",
+        "description": "SwaggerConfig is a class used to configure Swagger API document generation, defining RESTful API documentation rules through the createRestApi() method, and providing API metadata through the apiInfo() method. This class is responsible for integrating and customizing Swagger in the system to support API visualization and testing.",
         "methods": [],
         "dependencies": [
             278
@@ -5605,7 +5605,7 @@
         "id": 279,
         "name": "SeatClass",
         "qualifiedName": "edu.fudanselab.trainticket.entity.SeatClass",
-        "description": "SeatClass 是一个表示座位类别的实体类，用于封装座位类型的代码和名称，并提供通过代码获取对应名称的静态方法。该类在系统中主要用于票务相关的座位类型管理。",
+        "description": "SeatClass is an entity class representing seat categories, used to encapsulate seat type codes and names, and provides static methods to obtain corresponding names by code. This class is mainly used in the system for ticket-related seat type management.",
         "methods": [],
         "dependencies": [
             279,
@@ -5623,7 +5623,7 @@
         "id": 280,
         "name": "TransferTravelResult",
         "qualifiedName": "edu.fudanselab.trainticket.entity.TransferTravelResult",
-        "description": "表示中转行程查询结果的实体类，用于封装涉及换乘的列车出行信息。",
+        "description": "An entity class representing transfer trip query results, used to encapsulate train travel information involving transfers.",
         "methods": [],
         "dependencies": [
             280
@@ -5639,7 +5639,7 @@
         "id": 281,
         "name": "RoutePlanResultUnit",
         "qualifiedName": "edu.fudanselab.trainticket.entity.RoutePlanResultUnit",
-        "description": "表示路线规划结果中的单个结果单元，用于封装行程规划的某一段详细信息。",
+        "description": "Represents a single result unit in route planning results, used to encapsulate detailed information for a certain segment of trip planning.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -5651,7 +5651,7 @@
         "id": 282,
         "name": "StationRepository",
         "qualifiedName": "edu.fudanselab.trainticket.repository.StationRepository",
-        "description": "StationRepository 是一个用于管理车站数据访问的抽象仓库类，提供根据名称、ID或全量查询车站信息的接口方法，供上层服务调用以实现对车站数据的检索。",
+        "description": "StationRepository is an abstract repository class for managing station data access, providing interface methods for querying station information by name, ID, or in full, for upper-level services to call to achieve retrieval of station data.",
         "methods": [],
         "dependencies": [
             62
@@ -5667,7 +5667,7 @@
         "id": 283,
         "name": "AuthUserServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.AuthUserServiceImpl",
-        "description": "AuthUserServiceImpl 是认证用户管理的核心服务实现类，负责处理用户数据的增删查及默认用户创建等操作，同时包含用户创建信息的校验逻辑，在系统中承担用户认证与授权相关的基础服务职责。",
+        "description": "AuthUserServiceImpl is the core service implementation class for authentication user management, responsible for handling operations such as adding, deleting, and querying user data, as well as creating default users, and includes validation logic for user creation information, undertaking basic service responsibilities related to user authentication and authorization in the system.",
         "methods": [],
         "dependencies": [
             175,
@@ -5699,7 +5699,7 @@
         "id": 284,
         "name": "TokenException",
         "qualifiedName": "edu.fudanselab.trainticket.exception.TokenException",
-        "description": "TokenException 是一个用于处理与令牌（Token）相关的异常的类，属于 train-ticket 系统中的异常处理模块，用于封装和抛出与身份验证或授权令牌相关的错误。",
+        "description": "TokenException is a class used to handle exceptions related to tokens, belonging to the exception handling module of the train-ticket system, used to encapsulate and throw errors related to authentication or authorization tokens.",
         "methods": [],
         "dependencies": [
             257
@@ -5715,7 +5715,7 @@
         "id": 285,
         "name": "AuthUserDetailsServiceImpl",
         "qualifiedName": "edu.fudanselab.trainticket.service.impl.AuthUserDetailsServiceImpl",
-        "description": "AuthUserDetailsServiceImpl 是 Spring Security 中用于加载用户详细信息的实现类，负责根据用户名查询并返回用户认证信息，以支持系统的身份验证流程。",
+        "description": "AuthUserDetailsServiceImpl is the implementation class in Spring Security used to load user details, responsible for querying and returning user authentication information based on usernames to support the system's authentication process.",
         "methods": [],
         "dependencies": [
             264,

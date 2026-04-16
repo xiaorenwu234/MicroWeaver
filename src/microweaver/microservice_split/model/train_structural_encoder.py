@@ -1,8 +1,8 @@
 """
-训练仅结构编码器，使直接相连的节点在embedding空间更接近。
-- 训练目标：基于图的多正样本InfoNCE + 拉普拉斯平滑（可选）
-- 仅使用结构信息（无文本、无跨注意力）
-- 训练完成后保存权重到 split/result/structural_best.pt
+Train structural-only encoder to make directly connected nodes closer in embedding space.
+- Training objective: Graph-based multi-positive InfoNCE + Laplacian smoothing (optional)
+- Only uses structural information (no text, no cross-attention)
+- After training, save weights to split/result/structural_best.pt
 """
 
 import os
@@ -40,7 +40,7 @@ def build_graph(classes: List[CodeClass], partition_config: PartitionConfig):
         edge_type_weights=partition_config.edge_type_weights
     )
 
-    # 构建无向邻接（正样本掩码）与对应的权重矩阵，忽略自环
+    # Build undirected adjacency (positive sample mask) and corresponding weight matrix, ignoring self-loops
     num_nodes = len(classes)
     adj = torch.zeros(num_nodes, num_nodes, dtype=torch.float32)
     pos_weight = torch.zeros(num_nodes, num_nodes, dtype=torch.float32)
@@ -73,9 +73,9 @@ class StructuralTrainer:
             lr: float = 1e-3,
             weight_decay: float = 1e-4,
             temperature: float = 0.2,
-            lambda_lap: float = 0.1,  # 拉普拉斯平滑系数（>0 即启用）
-            warmup_epochs: int = 10,  # 预热轮数
-            max_grad_norm: float = 1.0,  # 最大梯度范数，用于梯度裁剪
+            lambda_lap: float = 0.1,  # Laplacian smoothing coefficient (>0 enables)
+            warmup_epochs: int = 10,  # Warmup epochs
+            max_grad_norm: float = 1.0,  # Maximum gradient norm for gradient clipping
             device: torch.device | None = None,
     ):
         self.device = device or torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -106,28 +106,28 @@ class StructuralTrainer:
     def multi_positive_infonce(self, z: torch.Tensor, pos_mask: torch.Tensor,
                                pos_weight: torch.Tensor | None = None) -> torch.Tensor:
         """
-        多正样本InfoNCE（支持加权正样本）：
-        对于每个节点 i，正样本为其邻居集合 P(i)。
+        Multi-positive InfoNCE (supports weighted positive samples):
+        For each node i, positive samples are its neighbor set P(i).
         loss_i = -log( sum_{j in P(i)} w_ij * exp(sim(i,j)/tau) / sum_{k != i} exp(sim(i,k)/tau) )
-        仅对 P(i) 非空的节点计入损失。
+        Only nodes with non-empty P(i) are counted in loss.
         """
         z = F.normalize(z, p=2, dim=-1)
-        sim = torch.matmul(z, z.t())  # [N,N], 余弦相似度
+        sim = torch.matmul(z, z.t())  # [N,N], cosine similarity
         logits = sim / self.temperature
 
-        # 排除自身
+        # Exclude self
         N = z.size(0)
         eye = torch.eye(N, dtype=torch.bool, device=z.device)
         denom_mask = ~eye  # k != i
 
-        # 仅对有正样本的行计算
+        # Only compute for rows with positive samples
         pos_mask = pos_mask.to(z.device).bool()
         weight = pos_weight.to(z.device) if pos_weight is not None else pos_mask.float()
         has_pos = (weight > 0).any(dim=1)
         if has_pos.sum() == 0:
             return torch.tensor(0.0, device=z.device)
 
-        # 数值稳定：减去每行最大值
+        # Numerical stability: subtract max per row
         row_max = logits.max(dim=1, keepdim=True).values
         logits = logits - row_max
 
@@ -135,7 +135,7 @@ class StructuralTrainer:
         denom = (exp_logits * denom_mask.float()).sum(dim=1)  # [N]
         numer = (exp_logits * weight).sum(dim=1)  # [N]
 
-        # 仅保留有正样本的项
+        # Only keep items with positive samples
         numer = numer[has_pos]
         denom = denom[has_pos] + 1e-12
 
@@ -144,7 +144,7 @@ class StructuralTrainer:
 
     def laplacian_smoothing(self, z: torch.Tensor, adj: torch.Tensor) -> torch.Tensor:
         """
-        拉普拉斯平滑项：sum_{(i,j) in E} ||z_i - z_j||^2
+        Laplacian smoothing term: sum_{(i,j) in E} ||z_i - z_j||^2
         """
         if adj.sum() == 0:
             return torch.tensor(0.0, device=z.device)
@@ -173,32 +173,32 @@ class StructuralTrainer:
 
         os.makedirs(os.path.dirname(ckpt_path), exist_ok=True)
 
-        # 设置学习率调度器：预热 + 余弦退火
+        # Setup learning rate scheduler: warmup + cosine annealing
         warmup_epochs = min(self.warmup_epochs, epochs // 4)
         cosine_epochs = epochs - warmup_epochs
 
         if warmup_epochs > 0 and cosine_epochs > 0:
-            # 预热阶段：线性增长学习率
+            # Warmup phase: linearly increase learning rate
             warmup_scheduler = LinearLR(
                 self.optimizer,
                 start_factor=0.01,
                 end_factor=1.0,
                 total_iters=warmup_epochs
             )
-            # 余弦退火阶段：从初始学习率退火到最小值
+            # Cosine annealing phase: anneal from initial learning rate to minimum
             cosine_scheduler = CosineAnnealingLR(
                 self.optimizer,
                 T_max=cosine_epochs,
                 eta_min=self.base_lr * 0.01
             )
-            # 组合调度器：先预热，后余弦退火
+            # Combined scheduler: warmup first, then cosine annealing
             self.scheduler = SequentialLR(
                 self.optimizer,
                 schedulers=[warmup_scheduler, cosine_scheduler],
                 milestones=[warmup_epochs]
             )
         elif warmup_epochs > 0:
-            # 如果总轮数太少，只使用预热
+            # If total epochs too few, only use warmup
             self.scheduler = LinearLR(
                 self.optimizer,
                 start_factor=0.01,
@@ -206,7 +206,7 @@ class StructuralTrainer:
                 total_iters=warmup_epochs
             )
         else:
-            # 如果不使用预热，只使用余弦退火
+            # If not using warmup, only use cosine annealing
             self.scheduler = CosineAnnealingLR(
                 self.optimizer,
                 T_max=epochs,
@@ -228,14 +228,14 @@ class StructuralTrainer:
 
             self.scaler.scale(loss).backward()
 
-            # 梯度裁剪：先取消缩放，然后裁剪梯度范数
+            # Gradient clipping: unscale first, then clip gradient norm
             self.scaler.unscale_(self.optimizer)
             grad_norm = clip_grad_norm_(self.model.parameters(), max_norm=self.max_grad_norm)
 
             self.scaler.step(self.optimizer)
             self.scaler.update()
 
-            # 更新学习率
+            # Update learning rate
             if self.scheduler is not None:
                 self.scheduler.step()
 
@@ -252,9 +252,9 @@ class StructuralTrainer:
 
         if best_state is not None:
             torch.save(best_state, ckpt_path)
-            print(f"✓ 最优模型已保存: {ckpt_path}  | best_loss={best_loss:.6f}")
+            print(f"✓ Best model saved: {ckpt_path}  | best_loss={best_loss:.6f}")
         else:
-            print("! 未保存模型（未找到更优状态）")
+            print("! Model not saved (no better state found)")
 
 
 def main(config: MicroWeaverConfig):

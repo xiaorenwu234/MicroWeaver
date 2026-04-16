@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-微服务划分可视化 V2 - 两层交互式可视化
-Level 1: 微服务级别概览（气泡 + 服务间依赖）
-Level 2: 点击进入微服务内部查看类节点
+Microservice Split Visualization V2 - Two-level Interactive Visualization
+Level 1: Microservice-level Overview (Bubbles + Service Dependencies)
+Level 2: Click to view internal class nodes of microservice
 """
 
 import json
@@ -18,15 +18,15 @@ COLORS = [
 ]
 
 def main(config: VisualizationConfig):
-    print("正在加载数据...")
+    print("Loading data...")
     with open(config.data_path, "r", encoding="utf-8") as f:
         data_nodes = json.load(f)
     with open(config.result_path, "r", encoding="utf-8") as f:
         ms_map = json.load(f)
 
-    print(f"总节点数: {len(data_nodes)}, 微服务数: {len(ms_map)}")
+    print(f"Total nodes: {len(data_nodes)}, Microservices: {len(ms_map)}")
 
-    # 建立映射（同时支持 name 和 filePath 两种匹配方式）
+    # Build mapping (support both name and filePath matching)
     name_to_node = {}
     filepath_to_node = {}
     id_to_node = {}
@@ -41,17 +41,17 @@ def main(config: VisualizationConfig):
     for ms_name, members in ms_map.items():
         ms_nodes[ms_name] = []
         for member in members:
-            # 优先按类名匹配，其次按 filePath 匹配
+            # Priority: match by class name, then by filePath
             matched_node = name_to_node.get(member) or filepath_to_node.get(member)
             if matched_node:
                 nid = matched_node["id"]
                 node_to_ms[nid] = ms_name
                 ms_nodes[ms_name].append(nid)
 
-    # 按节点数排序
+    # Sort by node count
     ms_list = sorted(ms_nodes.keys(), key=lambda k: len(ms_nodes[k]), reverse=True)
 
-    # 统计边
+    # Count edges
     intra_edges = {}   # ms_name -> [(src, tgt), ...]
     inter_edges = {}   # (ms_a, ms_b) -> count
     inter_edge_details = {}  # (ms_a, ms_b) -> [(src_id, tgt_id), ...]
@@ -76,8 +76,8 @@ def main(config: VisualizationConfig):
                     inter_edge_details[key] = []
                 inter_edge_details[key].append((src_id, tgt_id))
 
-    # ===== 构建 Level 1 数据: 微服务级别 =====
-    # 每个微服务一个节点
+    # ===== Build Level 1 Data: Microservice Level =====
+    # One node per microservice
     ms_overview_nodes = []
     for i, ms_name in enumerate(ms_list):
         display = ms_name if ms_name else "(Unnamed)"
@@ -98,21 +98,21 @@ def main(config: VisualizationConfig):
             "count": cnt
         })
 
-    # ===== 构建 Level 2 数据: 每个微服务内部 =====
+    # ===== Build Level 2 Data: Inside Each Microservice =====
     ms_detail_data = {}
     for ms_name in ms_list:
         nids = ms_nodes[ms_name]
         nodes_data = []
         nid_set = set(nids)
         
-        # 计算每个节点的连接度（用于节点大小）
+        # Calculate degree for each node (used for node size)
         node_degree = {}
         edges_in = intra_edges.get(ms_name, [])
         for s, t in edges_in:
             node_degree[s] = node_degree.get(s, 0) + 1
             node_degree[t] = node_degree.get(t, 0) + 1
 
-        # 找出哪些节点有跨服务依赖
+        # Find which nodes have cross-service dependencies
         cross_nodes = set()
         for (a, b), details in inter_edge_details.items():
             if ms_name in (a, b):
@@ -137,7 +137,7 @@ def main(config: VisualizationConfig):
         for s, t in edges_in:
             edges_data.append({"source": str(s), "target": str(t)})
 
-        # 跨服务边（与该微服务相关的）
+        # Cross-service edges (related to this microservice)
         cross_edges = []
         for (a, b), details in inter_edge_details.items():
             if ms_name in (a, b):
@@ -157,8 +157,8 @@ def main(config: VisualizationConfig):
             "crossEdges": cross_edges
         }
 
-    # ===== 生成 HTML =====
-    print("正在生成 HTML...")
+    # ===== Generate HTML =====
+    print("Generating HTML...")
 
     overview_nodes_json = json.dumps(ms_overview_nodes, ensure_ascii=False)
     overview_links_json = json.dumps(ms_overview_links, ensure_ascii=False)
@@ -170,7 +170,7 @@ def main(config: VisualizationConfig):
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>微服务架构可视化</title>
+<title>Microservice Architecture Visualization</title>
 <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
 <style>
 * {{ margin:0; padding:0; box-sizing:border-box; }}
@@ -218,7 +218,7 @@ body {{
 }}
 svg {{ width: 100%; height: 100%; }}
 
-/* 侧边信息面板 */
+/* Side info panel */
 #info-panel {{
   position: fixed; top: 80px; right: 0; bottom: 0; width: 300px;
   background: rgba(255, 255, 255, 0.97);
@@ -249,7 +249,7 @@ svg {{ width: 100%; height: 100%; }}
 .dep-item .dep-name {{ color: #555; }}
 .dep-item .dep-count {{ color: #ef4444; font-weight: 600; }}
 
-/* 图例 */
+/* Legend */
 #legend {{
   position: fixed; bottom: 16px; left: 16px; z-index: 98;
   background: rgba(255, 255, 255, 0.93);
@@ -286,7 +286,7 @@ svg {{ width: 100%; height: 100%; }}
 .tooltip .tt-title {{ font-size: 14px; font-weight: 600; color: #222; margin-bottom: 4px; }}
 .tooltip .tt-sub {{ color: #888; font-size: 11px; }}
 
-/* 搜索框 */
+/* Search box */
 #search-box {{
   position: fixed; top: 86px; left: 50%; transform: translateX(-50%);
   z-index: 100; display: none;
@@ -311,7 +311,7 @@ svg {{ width: 100%; height: 100%; }}
 }}
 .search-item:hover {{ background: rgba(99,102,241,0.1); color: #222; }}
 
-/* 按钮 */
+/* Buttons */
 .ctrl-btn {{
   position: fixed; z-index: 100;
   background: rgba(99,102,241,0.1);
@@ -340,7 +340,7 @@ svg {{ width: 100%; height: 100%; }}
 <button class="ctrl-btn" id="btn-search" onclick="toggleSearch()">🔍 Search</button>
 
 <div id="search-box">
-  <input id="search-input" placeholder="搜索类名..." oninput="onSearch(this.value)">
+  <input id="search-input" placeholder="Search class name..." oninput="onSearch(this.value)">
   <div id="search-results"></div>
 </div>
 
@@ -370,7 +370,7 @@ let simulation = null;
 function renderOverview() {{
   currentView = 'overview';
   document.getElementById('btn-back').style.display = 'none';
-  document.getElementById('breadcrumb').innerHTML = '<span class="current">Overview \u00b7 \u5fae\u670d\u52a1\u67b6\u6784\u603b\u89c8</span>';
+  document.getElementById('breadcrumb').innerHTML = '<span class="current">Overview · Microservice Architecture Overview</span>';
   document.getElementById('info-panel').classList.remove('open');
   document.getElementById('search-box').style.display = 'none';
 
@@ -389,15 +389,15 @@ function renderOverview() {{
   svg.call(zoom);
   svg.call(zoom.transform, d3.zoomIdentity.translate(W/2, H/2).scale(0.9));
 
-  // 节点大小映射
+  // Node size mapping
   const maxCount = d3.max(msNodes, d => d.count);
   const rScale = d3.scaleSqrt().domain([1, maxCount]).range([30, 140]);
 
-  // 边宽度映射
+  // Edge width mapping
   const maxEdge = d3.max(msLinks, d => d.count) || 1;
   const wScale = d3.scaleLinear().domain([1, maxEdge]).range([1, 12]);
 
-  // 创建节点和id映射
+  // Create node and id mapping
   const nodeMap = new Map();
   const simNodes = msNodes.map(d => {{
     const obj = {{...d, r: rScale(d.count)}};
@@ -417,7 +417,7 @@ function renderOverview() {{
     .force('link', d3.forceLink(simLinks).id(d => d.id).distance(350).strength(0.3))
     .on('tick', ticked);
 
-  // 绘制边
+  // Draw edges
   const linkG = g.append('g');
   const links = linkG.selectAll('line')
     .data(simLinks).enter().append('line')
@@ -425,7 +425,7 @@ function renderOverview() {{
     .attr('stroke-width', d => wScale(d.count))
     .attr('stroke-linecap', 'round');
 
-  // 边上的数字
+  // Numbers on edges
   const linkLabels = linkG.selectAll('text')
     .data(simLinks).enter().append('text')
     .text(d => d.count)
@@ -434,7 +434,7 @@ function renderOverview() {{
     .attr('text-anchor', 'middle')
     .attr('dy', -4);
 
-  // 绘制节点
+  // Draw nodes
   const nodeG = g.append('g');
   const nodes = nodeG.selectAll('g')
     .data(simNodes).enter().append('g')
@@ -447,7 +447,7 @@ function renderOverview() {{
     .on('mouseover', (e, d) => showTooltip(e, d))
     .on('mouseout', () => tooltip.style('display', 'none'));
 
-  // 外圈光晕
+  // Outer glow
   nodes.append('circle')
     .attr('r', d => d.r + 6)
     .attr('fill', 'none')
@@ -455,7 +455,7 @@ function renderOverview() {{
     .attr('stroke-width', 2)
     .attr('stroke-opacity', 0.15);
 
-  // 主圆
+  // Main circle
   nodes.append('circle')
     .attr('r', d => d.r)
     .attr('fill', d => d.color)
@@ -464,7 +464,7 @@ function renderOverview() {{
     .attr('stroke-width', 2)
     .attr('stroke-opacity', 0.6);
 
-  // 名称
+  // Name
   nodes.append('text')
     .text(d => d.name)
     .attr('text-anchor', 'middle')
@@ -473,7 +473,7 @@ function renderOverview() {{
     .attr('fill', d => d.color)
     .attr('font-weight', 600);
 
-  // 数量
+  // Count
   nodes.append('text')
     .text(d => d.count + ' classes')
     .attr('text-anchor', 'middle')
@@ -496,7 +496,7 @@ function renderOverview() {{
   function dragEnd(e, d) {{ if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; }}
 
   function showTooltip(e, d) {{
-    // 找到与该服务相关的跨服务依赖
+    // Find cross-service dependencies related to this service
     let deps = msLinks.filter(l => l.source.id === d.id || l.target.id === d.id || l.source === d.id || l.target === d.id);
     let depsHtml = deps.map(l => {{
       let other = (l.source.id || l.source) === d.id ? (l.target.name || l.target) : (l.source.name || l.source);
@@ -511,7 +511,7 @@ function renderOverview() {{
       .style('top', (e.pageY - 10) + 'px');
   }}
 
-  // 图例
+  // Legend
   renderLegend();
 }}
 
@@ -540,14 +540,14 @@ function goDetail(msName) {{
     .on('zoom', (e) => g.attr('transform', e.transform));
   svg.call(zoom);
 
-  // 节点大小基于度
+  // Node size based on degree
   const maxDeg = d3.max(detail.nodes, d => d.degree) || 1;
   const rScale = d3.scaleLinear().domain([0, maxDeg]).range([3, 14]);
 
   const simNodes = detail.nodes.map(d => ({{...d, r: rScale(d.degree)}}));
   const simLinks = detail.intraEdges.map(d => ({{source: d.source, target: d.target}}));
 
-  // 根据节点数量调整力的参数
+  // Adjust force parameters based on node count
   const n = simNodes.length;
   const chargeStrength = n > 1000 ? -15 : n > 500 ? -30 : -60;
   const distFn = n > 1000 ? 20 : n > 500 ? 35 : 50;
@@ -560,11 +560,11 @@ function goDetail(msName) {{
     .alphaDecay(0.02)
     .on('tick', ticked);
 
-  // 初始缩放
+  // Initial zoom
   const initScale = Math.min(W, H) / (Math.sqrt(n) * 25);
   svg.call(zoom.transform, d3.zoomIdentity.translate(W/2, H/2).scale(Math.min(2, Math.max(0.15, initScale))));
 
-  // 边
+  // Edges
   const linkG = g.append('g');
   const links = linkG.selectAll('line')
     .data(simLinks).enter().append('line')
@@ -572,7 +572,7 @@ function goDetail(msName) {{
     .attr('stroke-opacity', 0.15)
     .attr('stroke-width', 0.8);
 
-  // 节点
+  // Nodes
   const nodeG = g.append('g');
   const nodes = nodeG.selectAll('circle')
     .data(simNodes).enter().append('circle')
@@ -597,7 +597,7 @@ function goDetail(msName) {{
       tooltip.style('display', 'none');
     }});
 
-  // 标签 - 只给度高的节点显示
+  // Labels - only show for high-degree nodes
   const labelThreshold = n > 500 ? Math.max(5, maxDeg * 0.3) : Math.max(2, maxDeg * 0.15);
   const labels = nodeG.selectAll('text')
     .data(simNodes.filter(d => d.degree >= labelThreshold))
@@ -616,13 +616,13 @@ function goDetail(msName) {{
     labels.attr('x', d => d.x).attr('y', d => d.y);
   }}
 
-  // 侧边面板 - 显示跨服务依赖统计
+  // Side panel - show cross-service dependency statistics
   showDetailInfo(msName, displayName, color, detail);
 }}
 
 function showDetailInfo(msName, displayName, color, detail) {{
   const panel = document.getElementById('info-panel');
-  // 统计跨服务依赖
+  // Count cross-service dependencies
   const crossMap = {{}};
   detail.crossEdges.forEach(e => {{
     crossMap[e.otherService] = (crossMap[e.otherService] || 0) + 1;
@@ -705,7 +705,7 @@ function onSearch(val) {{
   ).join('');
 }}
 
-// 键盘快捷键
+// Keyboard shortcuts
 document.addEventListener('keydown', (e) => {{
   if (e.key === 'Escape') {{
     if (currentView !== 'overview') goOverview();
@@ -718,7 +718,7 @@ document.addEventListener('keydown', (e) => {{
   }}
 }});
 
-// 启动
+// Start
 renderOverview();
 window.addEventListener('resize', () => {{
   if (currentView === 'overview') renderOverview();
@@ -731,9 +731,9 @@ window.addEventListener('resize', () => {{
         f.write(html)
 
     size_mb = os.path.getsize(config.html_save_path) / 1024 / 1024
-    print(f"\n✅ 已生成: {os.path.abspath(config.html_save_path)} ({size_mb:.1f} MB)")
-    print(f"   微服务数: {len(ms_list)}")
-    print(f"   总节点数: {sum(len(ms_nodes[ms]) for ms in ms_list)}")
+    print(f"\n✅ Generated: {os.path.abspath(config.html_save_path)} ({size_mb:.1f} MB)")
+    print(f"   Microservices: {len(ms_list)}")
+    print(f"   Total nodes: {sum(len(ms_nodes[ms]) for ms in ms_list)}")
 
 
 if __name__ == "__main__":

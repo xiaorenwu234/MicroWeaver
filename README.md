@@ -1,140 +1,140 @@
 # MicroWeaver
 
-> 基于深度学习与 AI Agent 的单体应用微服务自动拆分工具
+> Automated monolithic application microservice decomposition tool based on deep learning and AI Agent
 
-MicroWeaver 采用混合分析方法，结合**静态代码分析**、**动态依赖追踪**、**图神经网络编码**和 **LLM Agent 优化**，自动将单体 Java 应用拆分为微服务架构，并提供结构化评估与交互式可视化。
-
----
-
-## 目录
-
-- [系统架构](#系统架构)
-- [环境要求](#环境要求)
-- [安装](#安装)
-- [快速开始](#快速开始)
-- [详细使用说明](#详细使用说明)
-  - [阶段一：输入构建](#阶段一输入构建)
-  - [阶段二：微服务划分](#阶段二微服务划分)
-  - [阶段三：评估](#阶段三评估)
-  - [阶段四：可视化](#阶段四可视化)
-- [配置参数](#配置参数)
-  - [环境变量](#环境变量)
-  - [划分算法参数](#划分算法参数)
-  - [编码器配置](#编码器配置)
-- [数据格式](#数据格式)
-- [项目结构](#项目结构)
-- [内置示例应用](#内置示例应用)
+MicroWeaver adopts a hybrid analysis approach, combining **static code analysis**, **dynamic dependency tracing**, **graph neural network encoding**, and **LLM Agent optimization** to automatically decompose monolithic Java applications into microservice architectures, providing structured evaluation and interactive visualization.
 
 ---
 
-## 系统架构
+## Table of Contents
 
-MicroWeaver 的工作流由四个阶段组成：
+- [System Architecture](#system-architecture)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Detailed Usage](#detailed-usage)
+  - [Phase 1: Input Building](#phase-1-input-building)
+  - [Phase 2: Microservice Splitting](#phase-2-microservice-splitting)
+  - [Phase 3: Evaluation](#phase-3-evaluation)
+  - [Phase 4: Visualization](#phase-4-visualization)
+- [Configuration](#configuration)
+  - [Environment Variables](#environment-variables)
+  - [Partition Algorithm Parameters](#partition-algorithm-parameters)
+  - [Encoder Configuration](#encoder-configuration)
+- [Data Format](#data-format)
+- [Project Structure](#project-structure)
+- [Built-in Sample Applications](#built-in-sample-applications)
+
+---
+
+## System Architecture
+
+MicroWeaver's workflow consists of four phases:
 
 ```
 ┌─────────────┐    ┌─────────────────┐    ┌────────────┐    ┌─────────────┐
-│  输入构建    │───▶│  微服务划分      │───▶│   评估     │───▶│   可视化    │
-│ Input Builder│    │ Microservice    │    │ Evaluation │    │Visualization│
-│              │    │    Split        │    │            │    │             │
-│ · 静态分析   │    │ · GNN 编码      │    │ · 结构评估  │    │ · 交互图形  │
-│ · 动态分析   │    │ · 语义编码      │    │ · 语义评估  │    │ · 评估图表  │
-│ · 描述生成   │    │ · 约束优化      │    │            │    │ · 数据表格  │
-│ · 数据融合   │    │ · Agent 优化    │    │            │    │             │
+│ Input Build │───▶│ Microservice    │───▶│ Evaluation │───▶│Visualization│
+│Input Builder│    │    Split        │    │            │    │             │
+│             │    │                 │    │            │    │             │
+│ · Static    │    │ · GNN Encode    │    │ · Struct   │    │ · Interactive│
+│ · Dynamic   │    │ · Semantic      │    │ · Semantic │    │ · Charts    │
+│ · Desc Gen  │    │ · Constraint    │    │            │    │ · Tables    │
+│ · Data Merge│    │ · Agent Opt     │    │            │    │             │
 └─────────────┘    └─────────────────┘    └────────────┘    └─────────────┘
 ```
 
 ---
 
-## 环境要求
+## Requirements
 
-| 依赖项 | 版本要求                 |
-|--------|----------------------|
-| Python | 3.12+                |
-| CUDA   | 12.6（推荐，用于 GPU 加速）   |
-| Conda  | Miniconda / Anaconda |
-| Java   | JDK 21+（静态/动态分析模块需要） |
+| Dependency | Version Requirement |
+|------------|---------------------|
+| Python | 3.12+ |
+| CUDA | 12.6 (recommended, for GPU acceleration) |
+| Conda | Miniconda / Anaconda |
+| Java | JDK 21+ (required for static/dynamic analysis modules) |
 
 ---
 
-## 安装
+## Installation
 
-### 1. 克隆项目
+### 1. Clone the repository
 
 ```bash
 git clone <repository-url>
 cd MicroWeaver
 ```
 
-### 2. 创建 Conda 环境
+### 2. Create Conda Environment
 
 ```bash
 conda env create -f environment.yml
 conda activate MicroWeaver
 ```
 
-### 3. 配置 LLM API
+### 3. Configure LLM API
 
 ```bash
 export DASHSCOPE_API_KEY=your-dashscope-api-key
 ```
 
-### 4. 构建 Java 分析工具（可选，用于输入构建阶段）
+### 4. Build Java Analysis Tools (Optional, for Input Building phase)
 
 ```bash
-# 静态分析器
+# Static analyzer
 cd src/microweaver/input_builder/static_analyze/dependency-extractor
 ./mvnw package -DskipTests
 
-# 动态分析注入器
+# Dynamic analysis injector
 cd src/microweaver/input_builder/dynamic_analyze/skywalking-injector
 mvn package -DskipTests
 
-# 启动Skywalking动态分析后端
+# Start Skywalking dynamic analysis backend
 bash src/microweaver/input_builder/dynamic_analyze/run_dynamic_trace.sh
 ```
 
 ---
 
-## 快速开始
+## Quick Start
 
-### 方式一：使用批处理脚本（Linux/macOS）
+### Method 1: Using Batch Script (Linux/macOS)
 
 ```bash
 bash run.sh
 ```
 
-该脚本将依次对 5 个内置示例应用执行完整的四阶段流水线。
+This script will execute the complete four-phase pipeline for 5 built-in sample applications in sequence.
 
-### 方式二：逐步执行单个应用
+### Method 2: Step-by-step Single Application Execution
 
-进入工作目录并设置环境变量：
+Enter the working directory and set environment variables:
 
 ```bash
 cd src
 
-# 设置应用名称和划分参数
+# Set application name and partition parameters
 export APP_NAME=daytrader
 export NUM_CLUSTERS=5
 export BASE_DIR=/path/to/MicroWeaver
 ```
 
-依次运行四个阶段：
+Run the four phases in sequence:
 
 ```bash
-# 阶段一：构建输入数据
+# Phase 1: Build input data
 python -m microweaver.input_builder.main
 
-# 阶段二：执行微服务划分
+# Phase 2: Execute microservice splitting
 python -m microweaver.microservice_split.main
 
-# 阶段三：评估划分结果
+# Phase 3: Evaluate partition results
 python -m microweaver.evaluation.main
 
-# 阶段四：生成可视化
+# Phase 4: Generate visualization
 python -m microweaver.visualization.main
 ```
 
-### 方式三：Windows PowerShell
+### Method 3: Windows PowerShell
 
 ```powershell
 cd src
@@ -151,140 +151,140 @@ python -m microweaver.visualization.main
 
 ---
 
-## 详细使用说明
+## Detailed Usage
 
-### 阶段一：输入构建
+### Phase 1: Input Building
 
 ```bash
 python -m microweaver.input_builder.main
 ```
 
-该阶段负责从源代码中提取依赖关系和结构信息：
+This phase is responsible for extracting dependency relationships and structural information from source code:
 
-1. **静态分析**：基于 Java 源代码 AST 解析，提取类、方法、继承、调用等依赖关系
-2. **动态分析**：通过 SkyWalking Agent 采集运行时调用链路，捕获动态依赖
-3. **描述生成**：使用 LLM 为每个代码元素生成自然语言功能描述
-4. **数据融合**：将静态和动态分析结果合并为统一的代码图 JSON 文件
+1. **Static Analysis**: Based on Java source code AST parsing, extract dependencies such as classes, methods, inheritance, and calls
+2. **Dynamic Analysis**: Collect runtime call chains through SkyWalking Agent to capture dynamic dependencies
+3. **Description Generation**: Use LLM to generate natural language functional descriptions for each code element
+4. **Data Fusion**: Merge static and dynamic analysis results into a unified code graph JSON file
 
-**输出**：`data/inputs/<app_name>/data.json`
+**Output**: `data/inputs/<app_name>/data.json`
 
-> 注意：项目已包含 5 个预构建的示例数据集，可跳过此阶段直接进行划分。
+> Note: The project includes 5 pre-built sample datasets. You can skip this phase and proceed directly to splitting.
 
 ---
 
-### 阶段二：微服务划分
+### Phase 2: Microservice Splitting
 
 ```bash
 python -m microweaver.microservice_split.main
 ```
 
-这是核心划分阶段，主要步骤：
+This is the core splitting phase. Main steps:
 
-1. **结构编码**：使用多关系图注意力网络（R-GAT）编码代码依赖结构
-2. **语义编码**：使用 `BAAI/bge-m3` 预训练模型提取代码语义向量
-3. **特征融合**：通过注意力融合机制合并结构与语义特征
-4. **约束优化**：基于 OR-Tools 求解带约束的多目标优化问题
-   - 最大化结构内聚度
-   - 最大化语义内聚度
-   - 最小化跨服务耦合
-5. **Agent 优化**（可选）：LLM Agent 对划分结果进行语义审查和调整
+1. **Structural Encoding**: Use multi-relational graph attention network (R-GAT) to encode code dependency structure
+2. **Semantic Encoding**: Use `BAAI/bge-m3` pre-trained model to extract code semantic vectors
+3. **Feature Fusion**: Merge structural and semantic features through attention fusion mechanism
+4. **Constraint Optimization**: Solve constrained multi-objective optimization problems based on OR-Tools
+   - Maximize structural cohesion
+   - Maximize semantic cohesion
+   - Minimize cross-service coupling
+5. **Agent Optimization** (Optional): LLM Agent performs semantic review and adjustment of partition results
 
-**输出**：`results/splits/<app_name>/microweaver/result.json`
+**Output**: `results/splits/<app_name>/microweaver/result.json`
 
 ---
 
-### 阶段三：评估
+### Phase 3: Evaluation
 
 ```bash
 python -m microweaver.evaluation.main
 ```
 
-对划分结果进行多维度质量评估：
+Perform multi-dimensional quality evaluation of partition results:
 
-- **结构化评估**：计算模块化指标，包括凝聚度、耦合度等
-- **语义评估**：通过 AI Agent 进行语义相似性和功能连贯性分析
+- **Structural Evaluation**: Calculate modularity metrics, including cohesion and coupling
+- **Semantic Evaluation**: Perform semantic similarity and functional coherence analysis through AI Agent
 
-**输出**：`results/reports/<app_name>/report.json`
+**Output**: `results/reports/<app_name>/report.json`
 
 ---
 
-### 阶段四：可视化
+### Phase 4: Visualization
 
 ```bash
 python -m microweaver.visualization.main
 ```
 
-生成三类可视化输出：
+Generate three types of visualization outputs:
 
-| 输出 | 文件 | 说明 |
-|------|------|------|
-| 交互式架构图 | `graph_html.html` | 双层可视化，支持缩放、拖拽、钻取查看 |
-| 评估图表 | `evaluate_chart.png` | 各项评估指标的可视化图表 |
-| 评估表格 | `evaluate_table.png` | 详细评估数据的表格视图 |
+| Output | File | Description |
+|--------|------|-------------|
+| Interactive Architecture Diagram | `graph_html.html` | Two-level visualization, supports zoom, drag, and drill-down |
+| Evaluation Charts | `evaluate_chart.png` | Visualization charts for various evaluation metrics |
+| Evaluation Table | `evaluate_table.png` | Table view of detailed evaluation data |
 
-**输出目录**：`results/viz/<app_name>/`
+**Output Directory**: `results/viz/<app_name>/`
 
-交互式架构图功能：
-- **Level 1**：微服务总览，气泡大小表示类数量，连线表示服务间依赖
-- **Level 2**：点击进入微服务内部，查看类级别依赖关系
-- 支持搜索、拖拽、缩放、侧边面板详情展示
+Interactive architecture diagram features:
+- **Level 1**: Microservice overview, bubble size indicates class count, connections indicate service dependencies
+- **Level 2**: Click to enter microservice internals, view class-level dependency relationships
+- Supports search, drag, zoom, and side panel detail display
 
 ---
 
-## 配置参数
+## Configuration
 
-### 环境变量
+### Environment Variables
 
-所有关键参数均可通过环境变量配置：
+All key parameters can be configured through environment variables:
 
-| 环境变量 | 默认值 | 说明 |
+| Environment Variable | Default | Description |
 |---------|--------|------|
-| `APP_NAME` | `daytrader` | 目标应用名称 |
-| `NUM_CLUSTERS` | `5` | 划分的微服务数量 |
-| `BASE_DIR` | 项目根目录 | 项目基础路径 |
-| `alpha` | `5.0` | 结构内聚权重 |
-| `beta` | `1.0` | 语义内聚权重 |
-| `gamma` | `3.0` | 跨服务耦合惩罚权重 |
-| `beta_struct` | `1.0` | 结构编码器权重 |
-| `beta_sem` | `2.0` | 语义编码器权重 |
-| `beta_fused` | `1.0` | 融合编码器权重 |
-| `min_size` | `5` | 每个微服务最小类数 |
-| `max_size` | `35` | 每个微服务最大类数 |
-| `pair_threshold` | `0.95` | 配对约束相似度阈值 |
-| `time_limit` | `1200` | 求解器时间限制（秒） |
-| `max_iterations` | `1` | 最大迭代次数 |
-| `num_cpu` | `8` | 并行计算 CPU 核心数 |
-| `ENABLE_AGENT_OPTIMIZATION` | `True` | 是否启用 AI Agent 优化 |
-| `SKIP_MODEL_TRAINING` | `False` | 是否跳过模型训练 |
+| `APP_NAME` | `daytrader` | Target application name |
+| `NUM_CLUSTERS` | `5` | Number of microservices to partition |
+| `BASE_DIR` | Project root | Project base path |
+| `alpha` | `5.0` | Structural cohesion weight |
+| `beta` | `1.0` | Semantic cohesion weight |
+| `gamma` | `3.0` | Cross-service coupling penalty weight |
+| `beta_struct` | `1.0` | Structural encoder weight |
+| `beta_sem` | `2.0` | Semantic encoder weight |
+| `beta_fused` | `1.0` | Fused encoder weight |
+| `min_size` | `5` | Minimum classes per microservice |
+| `max_size` | `35` | Maximum classes per microservice |
+| `pair_threshold` | `0.95` | Pair constraint similarity threshold |
+| `time_limit` | `1200` | Solver time limit (seconds) |
+| `max_iterations` | `1` | Maximum iterations |
+| `num_cpu` | `8` | Parallel computation CPU cores |
+| `ENABLE_AGENT_OPTIMIZATION` | `True` | Whether to enable AI Agent optimization |
+| `SKIP_MODEL_TRAINING` | `False` | Whether to skip model training |
 
-### 划分算法参数
+### Partition Algorithm Parameters
 
-目标函数由三个加权项组成：
+The objective function consists of three weighted terms:
 
 ```
-Objective = α × 结构内聚 + β × 语义内聚 − γ × 跨服务耦合
+Objective = α × Structural Cohesion + β × Semantic Cohesion − γ × Cross-service Coupling
 ```
 
-- **增大 `alpha`**：更强调代码结构上的聚合，依赖紧密的类倾向于分到同一服务
-- **增大 `beta`**：更强调功能语义的相关性，功能相近的类倾向于聚合
-- **增大 `gamma`**：更严格地惩罚跨服务调用，减少服务间依赖
+- **Increase `alpha`**: Emphasizes code structural aggregation, classes with tight dependencies tend to be assigned to the same service
+- **Increase `beta`**: Emphasizes functional semantic relevance, classes with similar functionality tend to aggregate
+- **Increase `gamma`**: More strictly penalizes cross-service calls, reducing inter-service dependencies
 
-### 编码器配置
+### Encoder Configuration
 
-系统根据代码图规模自动选择编码器配置：
+The system automatically selects encoder configuration based on code graph scale:
 
-| 配置 | 节点数 | 隐层维度 | GNN 层数 | 注意力头 | 语义编码器冻结 |
+| Configuration | Node Count | Hidden Dim | GNN Layers | Attention Heads | Semantic Encoder Frozen |
 |------|--------|---------|---------|---------|------------|
-| 小规模图 | < 100 | 256 | 3 | 8 | 否 |
-| 中规模图 | 100-1000 | 256 | 2 | 4 | 是 |
+| Small Graph | < 100 | 256 | 3 | 8 | No |
+| Medium Graph | 100-1000 | 256 | 2 | 4 | Yes |
 
 ---
 
-## 数据格式
+## Data Format
 
-### 输入格式
+### Input Format
 
-输入为 JSON 数组，每个元素代表一个代码节点（类/接口）：
+Input is a JSON array, where each element represents a code node (class/interface):
 
 ```json
 [
@@ -292,7 +292,7 @@ Objective = α × 结构内聚 + β × 语义内聚 − γ × 跨服务耦合
     "id": 0,
     "name": "CustomerService",
     "qualifiedName": "com.example.CustomerService",
-    "description": "负责处理与客户相关的服务操作",
+    "description": "Responsible for handling customer-related service operations",
     "methods": ["getCustomer", "updateCustomer"],
     "dependencies": [1, 3],
     "edge_types": ["call", "extends"],
@@ -303,24 +303,24 @@ Objective = α × 结构内聚 + β × 语义内聚 − γ × 跨服务耦合
 ]
 ```
 
-**字段说明：**
+**Field Descriptions:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `id` | int | 全局唯一标识符 |
-| `name` | string | 类/接口简名 |
-| `qualifiedName` | string | 完全限定类名 |
-| `description` | string | 功能描述（由 LLM 生成或手动填写） |
-| `methods` | string[] | 方法列表 |
-| `dependencies` | int[] | 依赖目标节点的 `id` 列表 |
-| `edge_types` | string[] | 与 `dependencies` 对应的依赖类型（`call`、`extends` 等） |
-| `javaDoc` | string | JavaDoc 注释 |
-| `filePath` | string | 源文件路径 |
-| `typeKind` | string | 类型种类（`class`、`interface` 等） |
+| `id` | int | Globally unique identifier |
+| `name` | string | Class/interface short name |
+| `qualifiedName` | string | Fully qualified class name |
+| `description` | string | Functional description (generated by LLM or manually filled) |
+| `methods` | string[] | Method list |
+| `dependencies` | int[] | List of `id`s of dependent target nodes |
+| `edge_types` | string[] | Dependency types corresponding to `dependencies` (`call`, `extends`, etc.) |
+| `javaDoc` | string | JavaDoc comments |
+| `filePath` | string | Source file path |
+| `typeKind` | string | Type kind (`class`, `interface`, etc.) |
 
-### 输出格式
+### Output Format
 
-划分结果为 JSON 对象，键为微服务名称，值为该微服务包含的类名列表：
+Partition result is a JSON object, where keys are microservice names and values are lists of class names contained in that microservice:
 
 ```json
 {
@@ -332,66 +332,66 @@ Objective = α × 结构内聚 + β × 语义内聚 − γ × 跨服务耦合
 
 ---
 
-## 项目结构
+## Project Structure
 
 ```
 MicroWeaver/
-├── data/inputs/                    # 输入数据
-│   ├── acmeair/data.json          # AcmeAir 航空应用
-│   ├── daytrader/                 # DayTrader 交易应用
+├── data/inputs/                    # Input data
+│   ├── acmeair/data.json          # AcmeAir aviation application
+│   ├── daytrader/                 # DayTrader trading application
 │   │   ├── data.json
-│   │   └── model/                 # 预训练编码器模型
-│   ├── jpetstore/data.json        # JPetStore 宠物商店
-│   ├── plants/data.json           # Plants 植物商店
-│   └── trainticket/data.json      # TrainTicket 火车票系统
+│   │   └── model/                 # Pre-trained encoder models
+│   ├── jpetstore/data.json        # JPetStore pet store
+│   ├── plants/data.json           # Plants plant store
+│   └── trainticket/data.json      # TrainTicket train ticket system
 ├── src/microweaver/
-│   ├── config.py                  # 全局基础配置
-│   ├── input_builder/             # 阶段一：输入构建
-│   │   ├── main.py               # 入口
-│   │   ├── static_analyze/        # 静态分析（Java AST 解析）
-│   │   ├── dynamic_analyze/       # 动态分析（SkyWalking 追踪）
-│   │   ├── generate_description.py # LLM 描述生成
-│   │   └── merge.py              # 多源数据融合
-│   ├── microservice_split/        # 阶段二：微服务划分
-│   │   ├── main.py               # 入口
-│   │   ├── config.py             # 算法配置
-│   │   ├── model/                # 深度学习编码器
-│   │   │   ├── code_graph_encoder.py  # GNN + 语义融合编码器
+│   ├── config.py                  # Global base configuration
+│   ├── input_builder/             # Phase 1: Input Building
+│   │   ├── main.py               # Entry point
+│   │   ├── static_analyze/        # Static analysis (Java AST parsing)
+│   │   ├── dynamic_analyze/       # Dynamic analysis (SkyWalking tracing)
+│   │   ├── generate_description.py # LLM description generation
+│   │   └── merge.py              # Multi-source data fusion
+│   ├── microservice_split/        # Phase 2: Microservice Splitting
+│   │   ├── main.py               # Entry point
+│   │   ├── config.py             # Algorithm configuration
+│   │   ├── model/                # Deep learning encoders
+│   │   │   ├── code_graph_encoder.py  # GNN + semantic fusion encoder
 │   │   │   ├── train_structural_encoder.py
 │   │   │   └── train_full_encoder.py
-│   │   └── partition/            # 划分算法
-│   │       ├── microservice_partition.py  # 约束优化求解
-│   │       └── agent_optimize.py          # LLM Agent 优化
-│   ├── evaluation/                # 阶段三：评估
-│   │   ├── main.py               # 入口
-│   │   ├── evaluator.py          # 评估调度器
-│   │   ├── structural/           # 结构化指标评估
-│   │   └── semantic/             # 语义评估（AI Agent）
-│   ├── visualization/             # 阶段四：可视化
-│   │   ├── main.py               # 入口
-│   │   ├── graph_visualize/      # 交互式 D3.js 架构图
-│   │   └── report_visualize/     # 评估报表图表
-│   ├── util/                      # 工具模块
-│   │   ├── env.py                # 环境变量工具
-│   │   ├── file_op.py            # 文件操作
-│   │   └── silent_agent.py       # Agent 静默执行
-│   └── pipeline/                  # 流水线编排
-├── environment.yml                # Conda 环境定义
-└── run.sh                         # 批处理执行脚本
+│   │   └── partition/            # Partition algorithms
+│   │       ├── microservice_partition.py  # Constraint optimization solver
+│   │       └── agent_optimize.py          # LLM Agent optimization
+│   ├── evaluation/                # Phase 3: Evaluation
+│   │   ├── main.py               # Entry point
+│   │   ├── evaluator.py          # Evaluation scheduler
+│   │   ├── structural/           # Structural metrics evaluation
+│   │   └── semantic/             # Semantic evaluation (AI Agent)
+│   ├── visualization/             # Phase 4: Visualization
+│   │   ├── main.py               # Entry point
+│   │   ├── graph_visualize/      # Interactive D3.js architecture diagrams
+│   │   └── report_visualize/     # Evaluation report charts
+│   ├── util/                      # Utility modules
+│   │   ├── env.py                # Environment variable utilities
+│   │   ├── file_op.py            # File operations
+│   │   └── silent_agent.py       # Agent silent execution
+│   └── pipeline/                  # Pipeline orchestration
+├── environment.yml                # Conda environment definition
+└── run.sh                         # Batch execution script
 ```
 
 ---
 
-## 内置示例应用
+## Built-in Sample Applications
 
-项目在 `data/inputs/` 目录下提供了 5 个经典 Java 单体应用的预处理数据：
+The project provides pre-processed data for 5 classic Java monolithic applications in the `data/inputs/` directory:
 
-| 应用 | 说明 | 推荐微服务数 | 大小约束 |
+| Application | Description | Recommended Microservices | Size Constraints |
 |------|------|-------------|---------|
-| **daytrader** | IBM DayTrader 金融交易系统 | 5 | 5 - 35 |
-| **acmeair** | AcmeAir 航空预订系统 | 5 | 5 - 20 |
-| **jpetstore** | JPetStore 在线宠物商店 | 5 | 5 - 20 |
-| **plants** | Plants By WebSphere 植物商店 | 2 | 5 - 17 |
-| **trainticket** | TrainTicket 火车票预订系统 | 10 | 5 - 50 |
+| **daytrader** | IBM DayTrader financial trading system | 5 | 5 - 35 |
+| **acmeair** | AcmeAir aviation booking system | 5 | 5 - 20 |
+| **jpetstore** | JPetStore online pet store | 5 | 5 - 20 |
+| **plants** | Plants By WebSphere plant store | 2 | 5 - 17 |
+| **trainticket** | TrainTicket train ticket booking system | 10 | 5 - 50 |
 
-可直接使用这些数据集进行微服务划分实验，无需重新执行输入构建阶段。
+You can use these datasets directly for microservice splitting experiments without re-executing the input building phase.

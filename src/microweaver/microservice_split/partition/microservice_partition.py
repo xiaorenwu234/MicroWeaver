@@ -1,24 +1,24 @@
 """
-微服务分区优化器（0-1 IQP 通过 OR-Tools CP-SAT 线性化为 MILP）。
+Microservice Partition Optimizer (0-1 IQP linearized to MILP via OR-Tools CP-SAT).
 
-公式
-- 变量：x[i,k] in {0,1}（类 i 分配给服务 k）
-- 辅助变量：y[i,j,k] = x[i,k] & x[j,k]（线性化）
-- 目标函数（最大化）：
+Formulation
+- Variables: x[i,k] in {0,1} (class i assigned to service k)
+- Auxiliary variables: y[i,j,k] = x[i,k] & x[j,k] (linearization)
+- Objective function (maximize):
     alpha * sum_k sum_{i<j} S_struc[i,j] * y[i,j,k]
   + beta  * sum_k sum_{i<j} S_sem[i,j]   * y[i,j,k]
-  - gamma * sum_k sum_{i<j} C_run[i,j]   * (x[i,k] - y[i,j,k])   # 跨服务耦合
+  - gamma * sum_k sum_{i<j} C_run[i,j]   * (x[i,k] - y[i,j,k])   # cross-service coupling
 
-约束条件
-- Sum_k x[i,k] = 1（每个类恰好分配到一个服务）
-- 容量：L_k <= sum_i s_i * x[i,k] <= U_k（如果提供）
-- 线性化：y[i,j,k] <= x[i,k]; y[i,j,k] <= x[j,k]; y[i,j,k] >= x[i,k] + x[j,k] - 1
-- 必须链接（硬约束）：对所有 k，x[i,k] == x[j,k]
-- 不能链接（硬约束）：对所有 k，x[i,k] + x[j,k] <= 1
+Constraints
+- Sum_k x[i,k] = 1 (each class assigned to exactly one service)
+- Capacity: L_k <= sum_i s_i * x[i,k] <= U_k (if provided)
+- Linearization: y[i,j,k] <= x[i,k]; y[i,j,k] <= x[j,k]; y[i,j,k] >= x[i,k] + x[j,k] - 1
+- Must-link (hard constraint): for all k, x[i,k] == x[j,k]
+- Cannot-link (hard constraint): for all k, x[i,k] + x[j,k] <= 1
 
-注意
-- CP-SAT 是整数求解器；我们将所有实数值分数按整数 SCALE 缩放并四舍五入。
-- 对于大 N，为所有对创建 y 的复杂度为 O(N^2 K)。使用 pair_threshold 来稀疏化对。
+Notes
+- CP-SAT is an integer solver; we scale all real-valued scores by integer SCALE and round.
+- For large N, creating y for all pairs is O(N^2 K). Use pair_threshold to sparsify pairs.
 """
 from __future__ import annotations
 
@@ -43,9 +43,9 @@ class PartitionResult:
     objective_value: float
     solver_status: str
     stats: Dict[str, float]
-    iteration: int = 0  # 当前迭代次数
-    total_iterations: int = 3  # 总迭代次数
-    agent_feedback: Optional[Dict] = None  # Agent 优化的反馈信息
+    iteration: int = 0  # Current iteration count
+    total_iterations: int = 3  # Total iterations
+    agent_feedback: Optional[Dict] = None  # Agent optimization feedback
 
 
 def _save_iteration_result(
@@ -54,9 +54,9 @@ def _save_iteration_result(
         node_names: Optional[List[str]],
 ) -> None:
     """
-    将当前迭代的划分结果保存到 result 目录。
+    Save the partition result of current iteration to result directory.
 
-    文件命名为 result_iter_{iteration}.json，内容为 Service-x -> [类名或索引]。
+    File named result_iter_{iteration}.json, content is Service-x -> [class names or indices].
     """
     try:
         base_result_path = MicroWeaverConfig.result_path
@@ -74,9 +74,9 @@ def _save_iteration_result(
             groups[key].append(node_names[idx] if node_names else idx)
 
         save_json(groups, iter_path)
-        print(f"[迭代 {iteration}] 结果已保存到 {iter_path}")
+        print(f"[Iteration {iteration}] Result saved to {iter_path}")
     except Exception as e:
-        print(f"[迭代 {iteration}] 保存结果到 result 目录失败: {e}")
+        print(f"[Iteration {iteration}] Failed to save result to result directory: {e}")
 
 
 def cosine_similarity(emb: torch.Tensor) -> np.ndarray:
@@ -88,10 +88,10 @@ def cosine_similarity(emb: torch.Tensor) -> np.ndarray:
 
 def _cosine_similarity_01(emb: torch.Tensor) -> np.ndarray:
     """
-    将 embedding 映射为 [0,1] 区间的余弦相似度矩阵：
-    - 先做 L2 归一化
-    - 再计算余弦相似度 [-1,1]
-    - 最后映射到 [0,1]
+    Map embedding to cosine similarity matrix in [0,1] range:
+    - First do L2 normalization
+    - Then compute cosine similarity [-1,1]
+    - Finally map to [0,1]
     """
     sim = cosine_similarity(emb)  # [-1,1]
     return (sim + 1.0) / 2.0
@@ -102,17 +102,17 @@ def build_structural_similarity(num_nodes: int,
                                 weight: Optional[torch.Tensor] = None,
                                 symmetric: bool = True) -> np.ndarray:
     """
-    从有向边构建 S_struc。默认情况下，我们对称化以奖励相互内聚度。
-    S_ij 在 [0,1] 范围内，按最大度数归一化。
+    Build S_struc from directed edges. By default, we symmetrize to reward mutual cohesion.
+    S_ij is in [0,1] range, normalized by max degree.
     
     Args:
-        num_nodes: 节点数
-        edge_index: [2, num_edges] 边索引
-        weight: [num_edges] 边权重（可选），如果提供则使用这些权重
-        symmetric: 是否对称化相似度矩阵
+        num_nodes: Number of nodes
+        edge_index: [2, num_edges] Edge indices
+        weight: [num_edges] Edge weights (optional), use these if provided
+        symmetric: Whether to symmetrize similarity matrix
     
     Returns:
-        [num_nodes, num_nodes] 结构相似度矩阵
+        [num_nodes, num_nodes] Structural similarity matrix
     """
     A = np.zeros((num_nodes, num_nodes), dtype=np.float64)
     if edge_index.numel() > 0:
@@ -140,16 +140,16 @@ def build_runtime_coupling(num_nodes: int,
                            edge_index: torch.Tensor,
                            weight: Optional[torch.Tensor] = None) -> np.ndarray:
     """
-    从有向边构建 C_run；值越高意味着跨越服务的成本越高。
-    默认值：每条边 1。
+    Build C_run from directed edges; higher values mean higher cost of crossing services.
+    Default value: 1 per edge.
     
     Args:
-        num_nodes: 节点数
-        edge_index: [2, num_edges] 边索引
-        weight: [num_edges] 边权重（可选），如果提供则使用这些权重
+        num_nodes: Number of nodes
+        edge_index: [2, num_edges] Edge indices
+        weight: [num_edges] Edge weights (optional), use these if provided
     
     Returns:
-        [num_nodes, num_nodes] 运行时耦合矩阵
+        [num_nodes, num_nodes] Runtime coupling matrix
     """
     C = np.zeros((num_nodes, num_nodes), dtype=np.float64)
     if edge_index.numel() > 0:
@@ -171,34 +171,34 @@ def build_runtime_coupling(num_nodes: int,
 
 def _sparsify_pairs(weights: np.ndarray, quantile_threshold: float) -> List[Tuple[int, int, float]]:
     """
-    分位数稀疏化（替代固定阈值）
-    :param quantile_threshold: 分位数（0~1），例：0.9 → 保留前10%高亲和性类对
+    Quantile sparsification (alternative to fixed threshold)
+    :param quantile_threshold: Quantile (0~1), e.g., 0.9 -> keep top 10% high-affinity class pairs
     """
-    print("稀疏化阈值：", quantile_threshold)
+    print("Sparsification threshold:", quantile_threshold)
     N = weights.shape[0]
-    # 1. 收集所有i<j的类对权重（排除对角线）
+    # 1. Collect all i<j class pair weights (exclude diagonal)
     all_weights = []
     for i in range(N):
         for j in range(i + 1, N):
             all_weights.append(float(weights[i, j]))
 
-    # 2. 计算分位数阈值（核心：适配不同数据分布）
+    # 2. Compute quantile threshold (core: adapt to different data distributions)
     if not all_weights:
         return []
     threshold = np.quantile(all_weights, quantile_threshold)
 
-    # 3. 筛选高亲和性类对
+    # 3. Filter high-affinity class pairs
     pairs: List[Tuple[int, int, float]] = []
     for i in range(N):
         for j in range(i + 1, N):
             weight_val = float(weights[i, j])
-            if weight_val >= threshold:  # 无需abs，因weights非负
+            if weight_val >= threshold:  # No need for abs, as weights are non-negative
                 pairs.append((i, j, weight_val))
 
-    # 打印日志，方便调参
+    # Print log for tuning
     total = len(all_weights)
     kept = len(pairs)
-    print(f"稀疏化：总类对{total} → 保留{kept}，压缩比{kept / total:.2%}（分位数阈值={quantile_threshold}）")
+    print(f"Sparsification: total pairs {total} -> kept {kept}, compression ratio {kept / total:.2%} (quantile threshold={quantile_threshold})")
     return pairs
 
 
@@ -210,14 +210,14 @@ def _debug_print_objective_components(
         config: "PartitionConfig",
 ) -> None:
     """
-    根据最终的 assignments，按「原始定义公式」近似计算各目标项的分值，并打印出来，方便调试权重。
+    Based on final assignments, approximately compute scores for each objective term according to the "original definition formula", and print them for debugging weights.
 
-    这里不严格复现 MILP 中的稀疏化和线性化细节，而是按直观的目标：
-      - 结构内聚：同一服务内所有 (i<j) 的 S_struc[i,j] 之和
-      - 语义内聚：同一服务内所有 (i<j) 的 S_sem[i,j] 之和
-      - 运行时跨服务惩罚：所有跨服务有向对 (i!=j, svc[i]!=svc[j]) 的 C_run[i,j] 之和
+    Here we don't strictly reproduce the sparsification and linearization details in MILP, but follow the intuitive objectives:
+      - Structural cohesion: sum of S_struc[i,j] for all (i<j) within same service
+      - Semantic cohesion: sum of S_sem[i,j] for all (i<j) within same service
+      - Runtime cross-service penalty: sum of C_run[i,j] for all cross-service directed pairs (i!=j, svc[i]!=svc[j])
 
-    这样更便于你直观比较 alpha / beta / gamma 的相对量级。
+    This makes it easier to intuitively compare the relative magnitudes of alpha / beta / gamma.
     """
     N = len(assignments)
     alpha, beta, gamma = config.alpha, config.beta, config.gamma
@@ -226,7 +226,7 @@ def _debug_print_objective_components(
     intra_sem = 0.0
     cross_run = 0.0
 
-    # 同服务对的结构/语义内聚
+    # Structural/semantic cohesion for same-service pairs
     for i in range(N):
         si = assignments[i]
         if si < 0:
@@ -239,7 +239,7 @@ def _debug_print_objective_components(
                 intra_struc += float(S_struc[i, j])
                 intra_sem += float(S_sem[i, j])
 
-    # 跨服务运行时惩罚（有向）
+    # Cross-service runtime penalty (directed)
     for i in range(N):
         si = assignments[i]
         if si < 0:
@@ -258,21 +258,21 @@ def _debug_print_objective_components(
     weighted_run = -gamma * cross_run
     total_approx = weighted_struc + weighted_sem + weighted_run
 
-    print("\n[调试] 目标函数分量（基于 assignments 的近似计算）")
+    print("\n[Debug] Objective function components (approximate calculation based on assignments)")
     print("------------------------------------------------------------")
-    print(f"  节点数 N              : {N}")
-    print(f"  alpha (结构内聚权重) : {alpha}")
-    print(f"  beta  (语义内聚权重) : {beta}")
-    print(f"  gamma (跨服务惩罚权重): {gamma}")
+    print(f"  Number of nodes N     : {N}")
+    print(f"  alpha (structural cohesion weight): {alpha}")
+    print(f"  beta  (semantic cohesion weight)  : {beta}")
+    print(f"  gamma (cross-service penalty weight): {gamma}")
     print("------------------------------------------------------------")
-    print(f"  结构内聚  raw        : {intra_struc:.6f}")
-    print(f"  结构内聚  weighted   : {weighted_struc:.6f}")
-    print(f"  语义内聚  raw        : {intra_sem:.6f}")
-    print(f"  语义内聚  weighted   : {weighted_sem:.6f}")
-    print(f"  跨服务惩罚 raw       : {cross_run:.6f}")
-    print(f"  跨服务惩罚 weighted  : {weighted_run:.6f}")
+    print(f"  Structural cohesion raw     : {intra_struc:.6f}")
+    print(f"  Structural cohesion weighted: {weighted_struc:.6f}")
+    print(f"  Semantic cohesion raw       : {intra_sem:.6f}")
+    print(f"  Semantic cohesion weighted  : {weighted_sem:.6f}")
+    print(f"  Cross-service penalty raw   : {cross_run:.6f}")
+    print(f"  Cross-service penalty weighted: {weighted_run:.6f}")
     print("------------------------------------------------------------")
-    print(f"  近似总目标值（各项加权和）: {total_approx:.6f}\n")
+    print(f"  Approximate total objective (weighted sum): {total_approx:.6f}\n")
 
 
 def optimize_partition(S_struc: np.ndarray,
@@ -283,7 +283,7 @@ def optimize_partition(S_struc: np.ndarray,
                        config: PartitionConfig = None,
                        edge_index: Optional[torch.Tensor] = None) -> PartitionResult:
     """
-    通过 CP-SAT 求解微服务分区 MILP。
+    Solve microservice partition MILP via CP-SAT.
     """
     must_link = must_link or []
     cannot_link = cannot_link or []
@@ -296,9 +296,9 @@ def optimize_partition(S_struc: np.ndarray,
     assert S_sem.shape == (N, N)
     assert C_run.shape == (N, N)
 
-    # 预计算目标函数中 y[i,j,k] 使用的对权重
-    # 使用对称运行时耦合（合并友好）来帮助选择信息对
-    # 并在下面的单独跨服务惩罚中保持方向性 C_run。
+    # Precompute pair weights for y[i,j,k] used in objective function
+    # Use symmetric runtime coupling (merge-friendly) to help select informative pairs
+    # and keep directional C_run in the separate cross-service penalty below.
     C_sym = (C_run + C_run.T) / 2.0
     pair_weight = config.alpha * S_struc + config.beta * S_sem + config.gamma * C_sym
     pair_list = _sparsify_pairs(pair_weight, config.pair_threshold)
@@ -306,25 +306,25 @@ def optimize_partition(S_struc: np.ndarray,
 
     model = cp_model.CpModel()
 
-    # 变量 x[i,k]
+    # Variables x[i,k]
     x = [[model.NewBoolVar(f"x_{i}_{k}") for k in range(K)] for i in range(N)]
 
-    # y[i,j,k] 仅用于选定的对以减少大小
-    # 我们将在字典 y[(i,j,k)] 中索引它们
+    # y[i,j,k] only used for selected pairs to reduce size
+    # We will index them in dictionary y[(i,j,k)]
     y: Dict[Tuple[int, int, int], cp_model.IntVar] = {}
     for (i, j, _) in pair_list:
         for k in range(K):
             y[(i, j, k)] = model.NewBoolVar(f"y_{i}_{j}_{k}")
-            # 线性化
+            # Linearization
             model.Add(y[(i, j, k)] <= x[i][k])
             model.Add(y[(i, j, k)] <= x[j][k])
             model.Add(y[(i, j, k)] >= x[i][k] + x[j][k] - 1)
 
-    # 每个节点恰好分配到一个服务
+    # Each node assigned to exactly one service
     for i in range(N):
         model.Add(sum(x[i][k] for k in range(K)) == 1)
 
-    # 必须链接 / 不能链接（默认为硬约束）
+    # Must-link / Cannot-link (default hard constraints)
     for (i, j) in must_link:
         for k in range(K):
             model.Add(x[i][k] == x[j][k])
@@ -332,7 +332,7 @@ def optimize_partition(S_struc: np.ndarray,
         for k in range(K):
             model.Add(x[i][k] + x[j][k] <= 1)
 
-    # 容量约束
+    # Capacity constraints
     if config.size_lower is not None:
         for k in range(K):
             Lk = int(config.size_lower[k])
@@ -342,21 +342,21 @@ def optimize_partition(S_struc: np.ndarray,
             Uk = int(config.size_upper[k])
             model.Add(sum(x[i][k] for i in range(N)) <= Uk)
 
-    # 目标函数构造（缩放整数）
+    # Objective function construction (scaled integers)
     SCALE = config.scale
     objective_terms: List[cp_model.LinearExpr] = []
 
-    # 内聚度项：alpha*S_struc*y + beta*S_sem*y
+    # Cohesion terms: alpha*S_struc*y + beta*S_sem*y
     for (i, j, _) in pair_list:
         for k in range(K):
             coeff = int(round(SCALE * (config.alpha * S_struc[i, j] + config.beta * S_sem[i, j])))
             if coeff != 0:
                 objective_terms.append(coeff * y[(i, j, k)])
 
-    # 跨服务惩罚：-gamma*C_run[i,j]*(x_i_k - y_ij_k)
-    # 等价于 -gamma*C_run*x_i_k  + gamma*C_run*y_ij_k
-    # 第一项在有序对 (i,j) 上，第二项仅适用于我们为其创建 y 的对。
-    # 使用有序对来反映方向性。
+    # Cross-service penalty: -gamma*C_run[i,j]*(x_i_k - y_ij_k)
+    # Equivalent to -gamma*C_run*x_i_k  + gamma*C_run*y_ij_k
+    # First term over ordered pairs (i,j), second term only for pairs we create y for.
+    # Use ordered pairs to reflect directionality.
     for i in range(N):
         for j in range(N):
             if i == j:
@@ -365,7 +365,7 @@ def optimize_partition(S_struc: np.ndarray,
             if coeff_x != 0:
                 for k in range(K):
                     objective_terms.append(coeff_x * x[i][k])
-            # y 部分（仅当存在时；使用 base=(min(i,j),max(i,j)) 避免重复）
+            # y part (only when exists; use base=(min(i,j),max(i,j)) to avoid duplicates)
             base = (i, j) if i < j else (j, i)
             if base in pair_set:
                 coeff_y = int(round(SCALE * (config.gamma * C_run[i, j])))
@@ -392,15 +392,15 @@ def optimize_partition(S_struc: np.ndarray,
                     assignments[i] = k
                     break
 
-    # 目标值（重新缩放）
+    # Objective value (rescaled)
     obj_value = solver.ObjectiveValue() / SCALE
 
-    # 如果需要调试，按 assignments 近似分解各目标分量
+    # If debugging needed, approximate decomposition of objective components by assignments
     if status in (cp_model.OPTIMAL, cp_model.FEASIBLE):
         try:
             _debug_print_objective_components(assignments, S_struc, S_sem, C_run, config)
         except Exception as e:
-            print(f"[调试] 计算目标分量时发生异常: {e}")
+            print(f"[Debug] Exception occurred while computing objective components: {e}")
 
     return PartitionResult(
         assignments=assignments,
@@ -419,14 +419,14 @@ def optimize_partition(S_struc: np.ndarray,
 
 def _convert_assignments_to_partitions(assignments: List[int], num_nodes: int) -> Dict[int, List[int]]:
     """
-    将分配结果转换为分区字典格式。
+    Convert assignment results to partition dictionary format.
     
     Args:
-        assignments: [num_nodes] 每个节点的服务分配
-        num_nodes: 节点总数
+        assignments: [num_nodes] Service assignment for each node
+        num_nodes: Total number of nodes
     
     Returns:
-        {service_id: [node_ids]} 分区字典
+        {service_id: [node_ids]} Partition dictionary
     """
     partitions = {}
     for node_id, service_id in enumerate(assignments):
@@ -443,13 +443,13 @@ def _merge_constraints(
         agent_cannot_link: Optional[List[Tuple[int, int]]],
 ) -> Tuple[List[Tuple[int, int]], List[Tuple[int, int]]]:
     """
-    合并来自 Agent 的约束和原有约束。
+    Merge constraints from Agent with existing constraints.
     
     Args:
-        must_link: 原有的必须链接约束
-        cannot_link: 原有的不能链接约束
-        agent_must_link: Agent 建议的必须链接约束
-        agent_cannot_link: Agent 建议的不能链接约束
+        must_link: Original must-link constraints
+        cannot_link: Original cannot-link constraints
+        agent_must_link: Agent-suggested must-link constraints
+        agent_cannot_link: Agent-suggested cannot-link constraints
     
     Returns:
         (merged_must_link, merged_cannot_link)
@@ -457,7 +457,7 @@ def _merge_constraints(
     merged_must = list(must_link or [])
     merged_cannot = list(cannot_link or [])
 
-    # 添加 Agent 的建议，避免重复
+    # Add Agent suggestions, avoiding duplicates
     if agent_must_link:
         for constraint in agent_must_link:
             normalized = tuple(sorted(constraint))
@@ -480,33 +480,33 @@ async def _ask_agent_for_initial_constraints(
         safe_upper: int
 ) -> Optional[Tuple[List[Tuple[int, int]], List[Tuple[int, int]]]]:
     """
-    在正式迭代求解开始前，让 Agent 基于节点名称预估一份初始的 must-link / cannot-link 约束。
+    Before formal iterative solving begins, let Agent estimate initial must-link / cannot-link constraints based on node names.
 
-    这里不依赖任何已有划分结果，仅提供节点列表和说明。
+    This does not rely on any existing partition results, only provides node list and description.
     """
     if agent_optimize_fn is None or not node_names:
         return None
 
-    # 容量提示：告诉 Agent 每个服务的上界，并要求单个 must-link 分组不要超过安全上界
+    # Capacity hint: tell Agent the upper bound for each service, and require single must-link groups not to exceed safe upper bound
     capacity_hint = ""
     if config is not None and config.size_upper is not None:
         try:
             capacity_hint = (
-                f"请特别注意：任意一个 must-link 分组中的节点数量不要超过 {safe_upper}，注意，你要考虑的是类似并查集的连通分量大小，而不是简单的单个 must-link 分组的节点数量，最大的连通分量大小不能够超过 {safe_upper}。\n"
-                f"如果一个分组中节点过多，请你主动将其拆分成多个较小的 must-link 分组。\n" if safe_upper is not None else ""
+                f"Please note: the number of nodes in any must-link group should not exceed {safe_upper}. Note that you should consider the connected component size similar to union-find, not simply the node count of a single must-link group. The largest connected component size cannot exceed {safe_upper}.\n"
+                f"If a group has too many nodes, please proactively split it into multiple smaller must-link groups.\n" if safe_upper is not None else ""
             )
         except Exception:
             capacity_hint = ""
 
     advice = (
-        "下面是当前系统中所有的类或节点名称列表，请你基于语义/职责预估一份初始约束：\n"
+        "Below is the list of all classes or node names in the current system. Please estimate initial constraints based on semantics/responsibilities:\n"
         f"{node_names}\n"
         f"{capacity_hint}"
-        "请给出：\n"
-        "1. 一些合理的 must-link 分组（字段名 must_links，列表的列表，表示必须在同一服务中的节点名称集合）；\n"
-        "2. 一些合理的 cannot-link 约束（字段名 cannot_link，元素是二元组，[name1, name2]，表示不能在同一服务中）。\n"
-        "3. 请确保你给出的每个 must-link 分组规模都不超过上面提示中的容量上界安全值，如果需要请将过大的分组合并拆分为多个较小分组。\n"
-        "注意：给出你认为合理的一些约束。"
+        "Please provide:\n"
+        "1. Some reasonable must-link groups (field name must_links, list of lists, representing sets of node names that must be in the same service);\n"
+        "2. Some reasonable cannot-link constraints (field name cannot_link, elements are pairs [name1, name2], representing nodes that cannot be in the same service).\n"
+        "3. Please ensure that the size of each must-link group you provide does not exceed the capacity upper bound safety value mentioned above. If necessary, please split overly large groups into multiple smaller groups.\n"
+        "Note: Provide some constraints that you think are reasonable."
     )
 
     placeholder_partitions: Dict[str, list] = {}
@@ -514,7 +514,7 @@ async def _ask_agent_for_initial_constraints(
     try:
         optimize_result = await agent_optimize_fn(placeholder_partitions, advice)
     except Exception as e:
-        print(f"调用 Agent 获取初始 must-link / cannot-link 约束时发生异常: {e}")
+        print(f"Exception occurred when calling Agent to get initial must-link / cannot-link constraints: {e}")
         return None
 
     if optimize_result is None:
@@ -528,7 +528,7 @@ async def _ask_agent_for_initial_constraints(
 
     name_to_idx = {name: idx for idx, name in enumerate(node_names)}
 
-    # must-link: 名称列表的列表
+    # must-link: list of name lists
     for group in agent_must_link_groups:
         if not isinstance(group, (list, tuple)):
             continue
@@ -540,7 +540,7 @@ async def _ask_agent_for_initial_constraints(
                     if i_idx != j_idx:
                         flat_ml_pairs.append((i_idx, j_idx))
 
-    # cannot-link: 名称二元组列表
+    # cannot-link: list of name pairs
     for item in agent_cannot_links_raw:
         if not isinstance(item, (list, tuple)) or len(item) != 2:
             continue
@@ -565,17 +565,17 @@ async def _ask_agent_for_new_constraints_due_to_infeasible(
         safe_upper: int
 ) -> Optional[List[Tuple[int, int]]]:
     """
-    当因为 must-link / cannot-link 约束过多/过强导致模型不可行时，请求 Agent 重新给出一份可行的约束集合。
+    When the model becomes infeasible due to too many/strong must-link / cannot-link constraints, request Agent to provide a new feasible constraint set.
 
-    当前实现会：
-    - 构造一份基于名称的 must-link / cannot-link 列表
-    - 使用空的 partitions 作为占位，并在 advice 中详细说明当前约束导致不可行
-    - 让 Agent 返回新的 must_links / cannot_link，再转换回索引形式
+    Current implementation will:
+    - Construct a name-based must-link / cannot-link list
+    - Use empty partitions as placeholder, and explain in detail in advice why current constraints cause infeasibility
+    - Let Agent return new must_links / cannot_link, then convert back to index form
     """
     if agent_optimize_fn is None or not current_must_link:
         return None
 
-    # 使用并查集把 must-link 对合并成连通分量，构建嵌套 List 形式的约束
+    # Use union-find to merge must-link pairs into connected components, build nested List form constraints
     def _build_must_link_components(pairs: List[Tuple[int, int]]) -> List[List[int]]:
         parent: Dict[int, int] = {}
 
@@ -589,7 +589,7 @@ async def _ask_agent_for_new_constraints_due_to_infeasible(
             if rx != ry:
                 parent[ry] = rx
 
-        # 初始化并查集
+        # Initialize union-find
         for a, b in pairs:
             if a not in parent:
                 parent[a] = a
@@ -597,7 +597,7 @@ async def _ask_agent_for_new_constraints_due_to_infeasible(
                 parent[b] = b
             union(a, b)
 
-        # 收集每个连通分量
+        # Collect each connected component
         comp: Dict[int, List[int]] = {}
         for x in parent.keys():
             rx = find(x)
@@ -606,9 +606,9 @@ async def _ask_agent_for_new_constraints_due_to_infeasible(
 
     ml_components: List[List[int]] = _build_must_link_components(current_must_link) if current_must_link else []
 
-    # 将当前 must-link 转成名称形式，方便 Agent 理解
+    # Convert current must-link to name form for easier Agent understanding
     if node_names:
-        # must-link：使用并查集后的每个分量，构成一个名称列表
+        # must-link: each component after union-find forms a name list
         ml_names: List[List[str]] = [
             [node_names[i] for i in group if 0 <= i < len(node_names)]
             for group in ml_components
@@ -617,32 +617,32 @@ async def _ask_agent_for_new_constraints_due_to_infeasible(
     else:
         ml_names = [[str(i) for i in group] for group in ml_components if group]
 
-    # 构造容量信息提示，帮助 Agent 控制 must-link 分组规模
-    capacity_hint = f"请特别注意：任意一个 must-link 分组中的节点数量不要超过 {safe_upper}，否则在容量上界约束下可能无法找到可行解。\n" if safe_upper is not None else ""
+    # Construct capacity info hint to help Agent control must-link group size
+    capacity_hint = f"Please pay special attention: the number of nodes in any must-link group should not exceed {safe_upper}, otherwise it may be impossible to find a feasible solution under capacity upper bound constraints.\n" if safe_upper is not None else ""
 
     advice = (
-        "当前 MILP 求解因为 must-link 约束过多或不合理导致约束不可满足（模型不可行）。\n"
-        f"当前的 must-link 约束（按名称或索引）为：{ml_names}。\n"
+        "Current MILP solving is infeasible due to too many or unreasonable must-link constraints.\n"
+        f"Current must-link constraints (by name or index) are: {ml_names}.\n"
         f"{capacity_hint}"
-        "请基于这些信息，给出一份新的 must-link 约束建议：\n"
-        "1. 可以删除一部分约束，或调整分组，使得整体约束更容易被满足；\n"
-        "2. 请返回你认为更合理、可行的一组 must-link（字段名为 must_links，列表的列表形式）。\n"
-        "3. 请确保你给出的每个 must-link 分组规模都不超过上面提示中的容量上界安全值，如果某个分组超过该上界，请你主动将其拆分成两个或多个较小的 must-link 分组。\n"
+        "Please give a new must-link constraint suggestion based on this information:\n"
+        "1. You can delete some constraints or adjust groups to make overall constraints easier to satisfy;\n"
+        "2. Please return a more reasonable and feasible set of must-link (field name is must_links, list of lists format).\n"
+        "3. Please ensure that the size of each must-link group you give does not exceed the capacity upper bound safety value mentioned above. If a group exceeds this upper bound, please actively split it into two or more smaller must-link groups.\n"
     )
 
-    # 这里只需要 must-link，因此 partitions 用一个空占位即可
+    # Only need must-link here, so partitions use an empty placeholder
     placeholder_partitions: Dict[str, list] = {}
 
     try:
         optimize_result = await agent_optimize_fn(placeholder_partitions, advice)
     except Exception as e:
-        print(f"调用 Agent 以修正 must-link 约束时发生异常: {e}")
+        print(f"Exception occurred when calling Agent to fix must-link constraints: {e}")
         return None
 
     if optimize_result is None:
         return None
 
-    # Agent 返回的是名称，需要根据 node_names 映射回索引（只调整 must-link）
+    # Agent returns names, need to map back to indices based on node_names (only adjust must-link)
     agent_must_link_groups = getattr(optimize_result, "must_links", []) or []
 
     flat_ml_pairs: List[Tuple[int, int]] = []
@@ -650,7 +650,7 @@ async def _ask_agent_for_new_constraints_due_to_infeasible(
     if node_names:
         name_to_idx = {name: idx for idx, name in enumerate(node_names)}
 
-        # 处理 must-link（名称列表的列表）
+        # Process must-link (list of name lists)
         for group in agent_must_link_groups:
             if not isinstance(group, (list, tuple)):
                 continue
@@ -663,7 +663,7 @@ async def _ask_agent_for_new_constraints_due_to_infeasible(
                             flat_ml_pairs.append((i_idx, j_idx))
 
     else:
-        # 如果没有名称，只能尝试将字符串索引解析回整数
+        # If no names, can only try to parse string indices back to integers
         for group in agent_must_link_groups:
             if not isinstance(group, (list, tuple)):
                 continue
@@ -677,7 +677,7 @@ async def _ask_agent_for_new_constraints_due_to_infeasible(
                     if i_idx != j_idx:
                         flat_ml_pairs.append((i_idx, j_idx))
 
-    # 去重
+    # Deduplicate
     unique_ml = list({tuple(sorted(p)) for p in flat_ml_pairs})
     if not unique_ml:
         return None
@@ -695,20 +695,20 @@ async def iterative_optimize_partition(
         node_names: Optional[List[str]] = None,
 ) -> PartitionResult:
     """
-    迭代优化微服务分区：约束求解 → Agent 优化 → 约束求解 → ...
+    Iteratively optimize microservice partition: constraint solving → Agent optimization → constraint solving → ...
     
     Args:
-        S_struc: 结构相似度矩阵
-        S_sem: 语义相似度矩阵
-        C_run: 运行时耦合矩阵
-        config: 分区配置
-        edge_index: 边索引
-        agent_optimize_fn: Agent 优化函数（异步），签名为 async fn(partitions: Dict) -> Dict
-        agent_analyze_fn: Agent 评估函数（异步）
-        node_names: 节点名称列表（用于 Agent 理解）
+        S_struc: Structural similarity matrix
+        S_sem: Semantic similarity matrix
+        C_run: Runtime coupling matrix
+        config: Partition configuration
+        edge_index: Edge index
+        agent_optimize_fn: Agent optimization function (async), signature is async fn(partitions: Dict) -> Dict
+        agent_analyze_fn: Agent evaluation function (async)
+        node_names: Node name list (for Agent understanding)
     
     Returns:
-        最终的分区结果
+        Final partition result
     """
     if edge_index is None:
         edge_index = torch.tensor([], dtype=torch.long).reshape(2, 0)
@@ -720,7 +720,7 @@ async def iterative_optimize_partition(
     max_iterations = config.max_iterations
     enable_agent = config.enable_agent_optimization and agent_optimize_fn is not None
 
-    print(f"开始迭代优化：最大迭代次数={max_iterations}，启用Agent优化={enable_agent}")
+    print(f"Starting iterative optimization: max_iterations={max_iterations}, enable_agent_optimization={enable_agent}")
 
     size_lower_list = config.size_lower
     size_upper_list = config.size_upper
@@ -732,9 +732,9 @@ async def iterative_optimize_partition(
         safe_lower = max(float(l) for l in size_lower_list)
     safe_upper = min(safe_upper, len(node_names) - (config.num_communities - 1) * safe_lower)
 
-    # 在正式迭代前，如果启用了 Agent 且提供了节点名称，先让 Agent 预估一份初始约束（并告知容量上界）
+    # Before formal iteration, if Agent is enabled and node names are provided, let Agent estimate initial constraints (and inform capacity upper bound)
     if enable_agent and node_names:
-        print("在迭代开始前调用 Agent 预估初始 must-link / cannot-link 约束...")
+        print("Calling Agent to estimate initial must-link / cannot-link constraints before iteration starts...")
         initial_constraints = await _ask_agent_for_initial_constraints(
             node_names=node_names,
             agent_optimize_fn=agent_optimize_fn,
@@ -743,7 +743,7 @@ async def iterative_optimize_partition(
         )
         if initial_constraints:
             init_ml, init_cl = initial_constraints
-            print(f"Agent 给出了 {len(init_ml)} 条初始 must-link 和 {len(init_cl)} 条初始 cannot-link 约束")
+            print(f"Agent provided {len(init_ml)} initial must-link and {len(init_cl)} initial cannot-link constraints")
             current_must_link, current_cannot_link = _merge_constraints(
                 current_must_link,
                 current_cannot_link,
@@ -753,11 +753,11 @@ async def iterative_optimize_partition(
 
     for iteration in range(max_iterations):
         print(f"\n{'=' * 60}")
-        print(f"迭代 {iteration + 1}/{max_iterations}")
+        print(f"Iteration {iteration + 1}/{max_iterations}")
         print(f"{'=' * 60}")
 
-        # 第一步：约束求解
-        print(f"[迭代 {iteration + 1}] 执行约束求解...")
+        # Step 1: Constraint solving
+        print(f"[Iteration {iteration + 1}] Executing constraint solving...")
         result = optimize_partition(
             S_struc=S_struc,
             S_sem=S_sem,
@@ -771,23 +771,23 @@ async def iterative_optimize_partition(
         result.iteration = iteration
         result.total_iterations = max_iterations
 
-        print(f"[迭代 {iteration + 1}] 约束求解完成")
-        print(f"  - 目标值: {result.objective_value:.4f}")
-        print(f"  - 求解器状态: {result.solver_status}")
+        print(f"[Iteration {iteration + 1}] Constraint solving completed")
+        print(f"  - Objective value: {result.objective_value:.4f}")
+        print(f"  - Solver status: {result.solver_status}")
 
-        # 如果求解不可行（例如 must-link / cannot-link 约束过强或容量配置不合理），尝试分析原因并让 Agent 调整约束
+        # If solving is infeasible (e.g., must-link / cannot-link constraints too strong or capacity configuration unreasonable), try to analyze reasons and let Agent adjust constraints
         if result.solver_status not in ("OPTIMAL", "FEASIBLE"):
-            print(f"[迭代 {iteration + 1}] 求解结果不可行，开始分析可能原因...")
-            print(f"  - 当前 must-link 约束数量: {len(current_must_link)}")
-            print(f"  - 当前 cannot-link 约束数量: {len(current_cannot_link)}")
+            print(f"[Iteration {iteration + 1}] Solving result infeasible, starting to analyze possible reasons...")
+            print(f"  - Current must-link constraint count: {len(current_must_link)}")
+            print(f"  - Current cannot-link constraint count: {len(current_cannot_link)}")
 
-            # 多轮尝试：让 Agent 多次重新给 must-link（不再调整 cannot-link）
+            # Multiple attempts: let Agent re-give must-link multiple times (no longer adjust cannot-link)
             if enable_agent and current_must_link:
                 max_fix_tries = 2
                 fix_try = 0
                 while result.solver_status not in ("OPTIMAL", "FEASIBLE") and fix_try < max_fix_tries:
                     fix_try += 1
-                    print(f"[迭代 {iteration + 1}] 第 {fix_try} 次尝试通过 Agent 调整 must-link 约束...")
+                    print(f"[Iteration {iteration + 1}] Attempt {fix_try} to adjust must-link constraints through Agent...")
                     new_constraints = await _ask_agent_for_new_constraints_due_to_infeasible(
                         current_must_link=current_must_link,
                         node_names=node_names,
@@ -795,14 +795,14 @@ async def iterative_optimize_partition(
                         safe_upper=safe_upper
                     )
                     if not new_constraints:
-                        print(f"[迭代 {iteration + 1}] Agent 未能给出新的约束，停止进一步尝试")
+                        print(f"[Iteration {iteration + 1}] Agent failed to provide new constraints, stopping further attempts")
                         break
 
                     new_must_link = new_constraints
-                    print(f"[迭代 {iteration + 1}] Agent 返回的新 must-link 约束数量: {len(new_must_link)}")
+                    print(f"[Iteration {iteration + 1}] Agent returned new must-link constraint count: {len(new_must_link)}")
                     current_must_link = new_must_link
 
-                    # 使用更新后的约束重新求解一次（不增加迭代轮次）
+                    # Re-solve using updated constraints (without increasing iteration count)
                     result = optimize_partition(
                         S_struc=S_struc,
                         S_sem=S_sem,
@@ -815,12 +815,12 @@ async def iterative_optimize_partition(
                     result.iteration = iteration
                     result.total_iterations = max_iterations
                     print(
-                        f"[迭代 {iteration + 1}] 重新求解完成，状态: {result.solver_status}, 目标值: {result.objective_value:.4f}")
+                        f"[Iteration {iteration + 1}] Re-solving completed, status: {result.solver_status}, objective value: {result.objective_value:.4f}")
 
-            # 如果多次通过 Agent 调整后仍然不可行，则尝试完全移除 must-link / cannot-link 作为兜底
+            # If still infeasible after multiple Agent adjustments, try completely removing must-link / cannot-link as fallback
             if result.solver_status not in ("OPTIMAL", "FEASIBLE"):
                 print(
-                    f"[迭代 {iteration + 1}] 经过 Agent 多次调整后仍然不可行，将尝试在无 must-link / cannot-link 约束下重新求解（兜底）。")
+                    f"[Iteration {iteration + 1}] Still infeasible after multiple Agent adjustments, will try re-solving without must-link / cannot-link constraints (fallback).")
                 unconstrained_result = optimize_partition(
                     S_struc=S_struc,
                     S_sem=S_sem,
@@ -831,15 +831,15 @@ async def iterative_optimize_partition(
                     edge_index=edge_index,
                 )
                 print(
-                    f"[迭代 {iteration + 1}] 无约束兜底求解完成，状态: {unconstrained_result.solver_status}, 目标值: {unconstrained_result.objective_value:.4f}")
+                    f"[Iteration {iteration + 1}] Fallback solving without constraints completed, status: {unconstrained_result.solver_status}, objective value: {unconstrained_result.objective_value:.4f}")
                 if unconstrained_result.solver_status in ("OPTIMAL", "FEASIBLE"):
-                    print(f"[迭代 {iteration + 1}] 使用无 must-link / cannot-link 的兜底解作为当前迭代结果。")
+                    print(f"[Iteration {iteration + 1}] Using fallback solution without must-link / cannot-link as current iteration result.")
                     result = unconstrained_result
                     current_must_link = []
                     current_cannot_link = []
                 else:
                     print(
-                        f"[迭代 {iteration + 1}] 即便移除 must-link / cannot-link，问题仍然不可行，结束迭代并返回当前结果。")
+                        f"[Iteration {iteration + 1}] Even after removing must-link / cannot-link, problem is still infeasible, ending iteration and returning current result.")
                     return result
 
         _save_iteration_result(
@@ -848,16 +848,16 @@ async def iterative_optimize_partition(
             node_names=node_names
         )
 
-        # 如果是最后一次迭代或不启用 Agent 优化，直接返回
+        # If this is the last iteration or Agent optimization is not enabled, return directly
         if iteration == max_iterations - 1 or not enable_agent:
-            print(f"\n优化完成（迭代 {iteration + 1}/{max_iterations}）")
+            print(f"\nOptimization completed (iteration {iteration + 1}/{max_iterations})")
             return result
 
-        # 第二步：Agent 优化
-        print(f"[迭代 {iteration + 1}] 调用 Agent 进行优化...")
+        # Step 2: Agent optimization
+        print(f"[Iteration {iteration + 1}] Calling Agent for optimization...")
         partitions = _convert_assignments_to_partitions(result.assignments, N)
 
-        # 如果提供了节点名称，构建更友好的分区表示
+        # If node names are provided, build a more friendly partition representation
         if node_names:
             partitions_with_names = {
                 k: [node_names[i] for i in v]
@@ -866,7 +866,7 @@ async def iterative_optimize_partition(
         else:
             partitions_with_names = partitions
 
-        # 为分析 Agent 构造容量提示（_capacity_hint），告知 safe_upper 等信息
+        # Construct capacity hint for analysis Agent (_capacity_hint), informing safe_upper and other info
         analyze_input = partitions_with_names
         if config is not None and getattr(config, "size_upper", None) is not None:
             try:
@@ -888,29 +888,29 @@ async def iterative_optimize_partition(
         try:
             analyze_result = await agent_analyze_fn(analyze_input, safe_upper)
             if analyze_result is None:
-                print(f"[迭代 {iteration + 1}] Agent 分析返回 None，结束迭代")
+                print(f"[Iteration {iteration + 1}] Agent analysis returned None, ending iteration")
                 return result
             if hasattr(analyze_result, 'needs_optimization'):
                 if not analyze_result.needs_optimization:
-                    print(f"[迭代 {iteration + 1}] Agent 分析不需要优化，结束迭代")
+                    print(f"[Iteration {iteration + 1}] Agent analysis indicates no optimization needed, ending iteration")
                     return result
             suggestions = getattr(analyze_result, 'suggestions', '') or ''
-            suggestions = suggestions + f"每个服务的最大节点数量为 {safe_upper}"
+            suggestions = suggestions + f"Maximum number of nodes per service is {safe_upper}"
             optimize_result = await agent_optimize_fn(partitions_with_names, suggestions)
 
             if optimize_result is None:
-                print(f"[迭代 {iteration + 1}] Agent 返回 None，结束迭代")
+                print(f"[Iteration {iteration + 1}] Agent returned None, ending iteration")
                 return result
 
-            # 提取 Agent 的建议
+            # Extract Agent suggestions
             agent_must_link = getattr(optimize_result, 'must_links', []) or []
             agent_cannot_link = getattr(optimize_result, 'cannot_link', []) or []
 
-            print(f"[迭代 {iteration + 1}] Agent 建议:")
-            print(f"  - 必须链接: {len(agent_must_link)} 个约束")
-            print(f"  - 必须链接: {agent_must_link}")
-            print(f"  - 不能链接: {len(agent_cannot_link)} 个约束")
-            print(f"  - 不能链接: {agent_cannot_link}")
+            print(f"[Iteration {iteration + 1}] Agent suggestions:")
+            print(f"  - Must-link: {len(agent_must_link)} constraints")
+            print(f"  - Must-link: {agent_must_link}")
+            print(f"  - Cannot-link: {len(agent_cannot_link)} constraints")
+            print(f"  - Cannot-link: {agent_cannot_link}")
 
             agent_must_link_list = agent_must_link
             agent_must_link = []
@@ -920,7 +920,7 @@ async def iterative_optimize_partition(
                         if link_list[i] != link_list[j]:
                             agent_must_link.append((link_list[i], link_list[j]))
 
-            # 如果节点名称被使用，需要转换回节点索引
+            # If node names are used, need to convert back to node indices
             if node_names:
                 name_to_idx = {name: idx for idx, name in enumerate(node_names)}
                 agent_must_link = [
@@ -934,7 +934,7 @@ async def iterative_optimize_partition(
                     if c[0] in name_to_idx and c[1] in name_to_idx
                 ]
 
-            # 合并约束
+            # Merge constraints
             current_must_link, current_cannot_link = _merge_constraints(
                 current_must_link,
                 current_cannot_link,
@@ -942,18 +942,18 @@ async def iterative_optimize_partition(
                 agent_cannot_link,
             )
 
-            # 保存 Agent 反馈
+            # Save Agent feedback
             result.agent_feedback = {
                 "iteration": iteration,
                 "must_links": agent_must_link,
                 "cannot_link": agent_cannot_link,
             }
 
-            print(f"[迭代 {iteration + 1}] 约束已更新，准备下一轮求解")
+            print(f"[Iteration {iteration + 1}] Constraints updated, preparing for next round of solving")
 
         except Exception as e:
-            print(f"[迭代 {iteration + 1}] Agent 优化失败: {e}")
-            print(f"[迭代 {iteration + 1}] 返回当前最佳结果")
+            print(f"[Iteration {iteration + 1}] Agent optimization failed: {e}")
+            print(f"[Iteration {iteration + 1}] Returning current best result")
             return result
 
     return result
@@ -971,43 +971,43 @@ async def partition_from_multi_embeddings_iterative(
         node_names: Optional[List[str]] = None,
 ) -> PartitionResult:
     """
-    使用三种 embedding（结构 / 语义 / 融合）共同参与微服务划分（迭代版）。
+    Use three embeddings (structural / semantic / fused) to jointly participate in microservice partitioning (iterative version).
 
-    思路：
-        - S_struc 仍然由图结构（edge_index + edge_weights）构建；
-        - 将三种 embedding 的余弦相似度（映射到 [0,1]）按权重加权求和得到 S_sem_combined：
+    Idea:
+        - S_struc is still built from graph structure (edge_index + edge_weights);
+        - Combine cosine similarities of three embeddings (mapped to [0,1]) with weighted sum to get S_sem_combined:
               S_sem = w_s * cos(emb_struct) + w_t * cos(emb_sem) + w_f * cos(emb_fused)
-          其中权重由 beta_struct / beta_sem / beta_fused 控制。
-        - 之后复用原有的迭代 MILP 流程。
+          where weights are controlled by beta_struct / beta_sem / beta_fused.
+        - Then reuse the existing iterative MILP process.
 
-    参数说明：
+    Parameter description:
         emb_struct:
-            结构向量表示（结构 embedding），形状为 [num_nodes, dim]，
-            通常由结构编码器得到，强调调用关系、依赖图等结构信息。
+            Structural vector representation (structural embedding), shape [num_nodes, dim],
+            usually obtained from structural encoder, emphasizing structural information such as call relationships, dependency graphs, etc.
         emb_sem:
-            语义向量表示（语义 embedding），形状为 [num_nodes, dim]，
-            通常由代码文本/注释等语义模型得到，强调业务语义相似性。
+            Semantic vector representation (semantic embedding), shape [num_nodes, dim],
+            usually obtained from semantic models such as code text/comments, emphasizing business semantic similarity.
         emb_fused:
-            融合向量表示（融合 embedding），形状为 [num_nodes, dim]，
-            一般是结构 + 语义等多模态特征进一步融合后的表示。
+            Fused vector representation (fused embedding), shape [num_nodes, dim],
+            generally a representation after further fusion of multi-modal features such as structural + semantic.
         edge_index:
-            图的边索引，形状为 [2, num_edges]，每一列是一条有向边 (src, dst)，
-            用于构建结构相似度矩阵 S_struc 和运行时耦合矩阵 C_run。
+            Graph edge index, shape [2, num_edges], each column is a directed edge (src, dst),
+            used to build structural similarity matrix S_struc and runtime coupling matrix C_run.
         edge_weights:
-            边权重张量，形状为 [num_edges]（可选），
-            若提供则在构建 S_struc 和 C_run 时按权重累加而非简单计数。
+            Edge weight tensor, shape [num_edges] (optional),
+            if provided, weights are accumulated when building S_struc and C_run instead of simple counting.
         agent_optimize_fn:
-            Agent 优化函数（异步），签名大致为 async fn(partitions_or_result, suggestions: str) -> Any，
-            用于根据当前划分和提示信息返回新的约束建议（must_links / cannot_link）。
+            Agent optimization function (async), signature roughly async fn(partitions_or_result, suggestions: str) -> Any,
+            used to return new constraint suggestions (must_links / cannot_link) based on current partitioning and hint information.
         agent_analyze_fn:
-            Agent 分析函数（异步），签名大致为 async fn(partitions_or_result) -> Any，
-            用于评估当前划分质量、给出是否需要优化及建议文本等。
+            Agent analysis function (async), signature roughly async fn(partitions_or_result) -> Any,
+            used to evaluate current partitioning quality, give whether optimization is needed and suggestion text, etc.
         node_names:
-            节点名称列表（如类名、文件名等），长度为 num_nodes；
-            若提供，将在与 Agent 交互时使用人类可读的名称而非纯索引，便于理解和给出约束。
+            Node name list (such as class names, file names, etc.), length num_nodes;
+            if provided, will use human-readable names instead of pure indices when interacting with Agent, for easier understanding and giving constraints.
     """
     N = emb_struct.size(0)
-    assert emb_sem.size(0) == N and emb_fused.size(0) == N, "三种 embedding 的节点数必须一致"
+    assert emb_sem.size(0) == N and emb_fused.size(0) == N, "Number of nodes in three embeddings must be consistent"
 
     sims: List[np.ndarray] = []
     weights: List[float] = []
@@ -1033,7 +1033,7 @@ async def partition_from_multi_embeddings_iterative(
     for w, S in zip(weights_np, sims):
         S_vec += w * S
 
-    # 结构相似度仍然基于图结构，可在需要时改为也融合结构 embedding
+    # Structural similarity is still based on graph structure, can be changed to also fuse structural embedding if needed
     S_struc = build_structural_similarity(N, edge_index, weight=edge_weights, symmetric=config.symmetric_struc)
     C_run = build_runtime_coupling(N, edge_index, weight=edge_weights)
 

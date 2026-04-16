@@ -13,9 +13,9 @@ from microweaver.util.silent_agent import SilentReActAgent
 
 
 def create_agent(agent_name: str, system_prompt: str, toolkit: Toolkit) -> SilentReActAgent:
-    """根据给定信息创建智能体对象。"""
+    """Create agent object based on given information."""
     if system_prompt is None or system_prompt.strip() == "":
-        system_prompt = f"你是{agent_name}，一个专业的软件工程师。"
+        system_prompt = f"You are {agent_name}, a professional software engineer."
 
     return SilentReActAgent(
         name=agent_name,
@@ -31,12 +31,12 @@ def create_agent(agent_name: str, system_prompt: str, toolkit: Toolkit) -> Silen
 
 async def run_evaluate_agent(splits: List[Dict]) -> CompareResult | None:
     evaluate_agent = create_agent("evaluate_agent",
-                                  "你是一个软件工程师，我会给你几个针对相同的单体系统的不同微服务划分结果，我希望你能够对比分析这几个微服务划分结果的合理性，并分别从语义一致性、语义耦合性、服务边界清晰度三个方面对这几个划分结果进行评分，并分别给出你的理由",
+                                  "You are a software engineer. I will give you several different microservice partitioning results for the same monolithic system. I hope you can compare and analyze the rationality of these microservice partitioning results, and score each partitioning result from three aspects: semantic consistency, semantic coupling, and service boundary clarity, and give your reasons.",
                                   toolkit=Toolkit())
 
-    prompt = f"请你对以下微服务划分结果进行对比分析："
+    prompt = f"Please compare and analyze the following microservice partitioning results:"
     for idx, split in enumerate(splits):
-        prompt += f"\n划分结果 {idx + 1}：{json.dumps(split, indent=4, ensure_ascii=False)}"
+        prompt += f"\nPartition result {idx + 1}: {json.dumps(split, indent=4, ensure_ascii=False)}"
 
     res = await evaluate_agent(Msg(
         "user",
@@ -47,13 +47,13 @@ async def run_evaluate_agent(splits: List[Dict]) -> CompareResult | None:
     )
 
     if not hasattr(res, "metadata") or res.metadata is None:
-        print("警告：模型返回结果中无有效 metadata 数据，返回空结果")
+        print("Warning: No valid metadata in model response, returning empty result")
         return None
     try:
         analyze_result = CompareResult.model_validate(res.metadata)
         return analyze_result
 
     except ValidationError as e:
-        print(f"警告：结构化数据转换失败（模型返回格式不合法）：{e}")
-        print(f"模型原始返回的 metadata：{json.dumps(res.metadata, indent=4, ensure_ascii=False)}")
+        print(f"Warning: Structured data conversion failed (invalid model response format): {e}")
+        print(f"Original metadata returned by model: {json.dumps(res.metadata, indent=4, ensure_ascii=False)}")
         return None

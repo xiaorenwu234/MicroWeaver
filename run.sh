@@ -21,8 +21,8 @@ run_microweaver() {
     local num_cpu=$7
 
     echo -e "\n=================================================="
-    echo "开始执行 ${app_name} 的对比实验"
-    echo "配置：聚类数=${num_clusters} | 最小大小=${min_size} | 最大大小=${max_size} | 阈值=${pair_threshold} | 时间限制=${time_limit}s | CPU限制=${num_cpu}"
+    echo "Starting comparison experiment for ${app_name}"
+    echo "Config: clusters=${num_clusters} | min_size=${min_size} | max_size=${max_size} | threshold=${pair_threshold} | time_limit=${time_limit}s | cpu_limit=${num_cpu}"
     echo "=================================================="
 
     export APP_NAME="${app_name}"
@@ -35,41 +35,41 @@ run_microweaver() {
     export BASE_DIR="${BASE_DIR}"
 
     cd "$WORK_DIR" || {
-        echo "错误：无法切换到工作目录 $WORK_DIR"
+        echo "Error: cannot switch to working directory $WORK_DIR"
         exit 1
     }
 
     conda activate "$CONDA_ENV"
-    echo "已激活conda环境：$CONDA_ENV"
+    echo "Conda environment activated: $CONDA_ENV"
 
-    echo -e "\n 执行获取输入命令"
+    echo -e "\n Running generate input command"
     $GENERATE_INPUT_CMD
 
-    echo -e "\n 执行 MicroWeaver 算法"
+    echo -e "\n Running MicroWeaver algorithm"
     $MicroWeaver_CMD
 
-    echo -e "\n 执行评估命令"
+    echo -e "\n Running evaluation command"
     $EVALUATE_CMD
     if [ $? -ne 0 ]; then
-        echo "评估代码执行失败！"
+        echo "Evaluation code execution failed!"
         exit 1
     fi
 
-    echo -e "\n 执行可视化命令"
+    echo -e "\n Running visualization command"
     $VISUALIZE_EMD
 
-    # 退出环境
+    # Deactivate environment
     conda deactivate
-    echo -e "\n${app_name} 实验完成！"
+    echo -e "\n${app_name} experiment completed!"
 }
 
-echo "🔧 初始化conda环境..."
+echo "🔧 Initializing conda environment..."
 source "$CONDA_PATH/etc/profile.d/conda.sh" || {
-    echo "❌ 错误：无法加载conda环境配置"
+    echo "❌ Error: cannot load conda environment configuration"
     exit 1
 }
 
-echo -e "\n 开始执行实验..."
+echo -e "\n Starting experiments..."
 
 run_microweaver "daytrader" 5 5 35 0.5 600 12
 
@@ -81,5 +81,5 @@ run_microweaver "plants" 2 5 17 0.5 600 12
 
 run_microweaver "trainticket" 10 5 50 0.95 1200 12
 
-echo -e "\n 实验执行完成！"
+echo -e "\n All experiments completed!"
 exit 0

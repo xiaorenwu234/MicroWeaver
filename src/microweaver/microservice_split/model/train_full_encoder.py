@@ -1,16 +1,16 @@
 """
-联合训练结构编码器 + 语义编码器 + 跨注意力融合：
-- 结构部分：沿用当前 Graphormer 结构编码 + 多正样本 InfoNCE + （可选）拉普拉斯平滑
-- 语义部分：沿用当前 BGE-M3 语义编码
-- 跨注意力：使用 CrossAttentionFusion，将结构 / 文本对齐，使 cross-attn 有实际作用
+Joint training of structural encoder + semantic encoder + cross-attention fusion:
+- Structural part: uses current Graphormer structural encoding + multi-positive InfoNCE + (optional) Laplacian smoothing
+- Semantic part: uses current BGE-M3 semantic encoding
+- Cross-attention: uses CrossAttentionFusion to align structure/text, making cross-attn actually effective
 
-训练目标：
+Training objective:
     loss = loss_struct + lambda_lap * loss_lap + lambda_align * loss_align
 
-其中：
-- loss_struct: 和结构专训脚本相同的多正样本 InfoNCE
-- loss_lap:   拉普拉斯平滑项（可选）
-- loss_align: 结构 – 文本 对齐损失（每个类的结构向量和对应文本向量对齐）
+Where:
+- loss_struct: multi-positive InfoNCE same as structural specialized training script
+- loss_lap:   Laplacian smoothing term (optional)
+- loss_align: structure-text alignment loss (aligns structural vector with corresponding text vector for each class)
 """
 
 import os
@@ -43,10 +43,10 @@ def load_data(data_path: str) -> List[CodeClass]:
 
 def build_graph(classes: List[CodeClass], partition_config: PartitionConfig):
     """
-    构建图 + 正样本掩码 / 权重矩阵：
-    - adj: 无向 0/1 邻接矩阵，用于拉普拉斯平滑
-    - pos_mask: 同 adj，用于多正样本 InfoNCE
-    - pos_weight: 按边类型权重加权的正样本权重矩阵
+    Build graph + positive sample mask / weight matrix:
+    - adj: undirected 0/1 adjacency matrix, used for Laplacian smoothing
+    - pos_mask: same as adj, used for multi-positive InfoNCE
+    - pos_weight: positive sample weight matrix weighted by edge type
     """
     builder = CodeGraphDataBuilder(classes)
     x, edge_index, edge_types, pos_encoding, texts, edge_weights = builder.build_graph_data(
@@ -72,7 +72,7 @@ def build_graph(classes: List[CodeClass], partition_config: PartitionConfig):
     adj.fill_diagonal_(0.0)
     pos_weight.fill_diagonal_(0.0)
 
-    # pos_mask：无向邻接
+    # pos_mask: undirected adjacency
     pos_mask = (adj > 0).float()
 
     return (
@@ -96,8 +96,8 @@ def multi_positive_infonce(
         temperature: float = 0.2,
 ) -> torch.Tensor:
     """
-    多正样本 InfoNCE（与结构专训版本保持一致）：
-        对于每个节点 i，正样本为其邻居集合 P(i)。
+    Multi-positive InfoNCE (consistent with structural specialized training version):
+        For each node i, positive samples are its neighbor set P(i).
         loss_i = -log( sum_{j in P(i)} w_ij * exp(sim(i,j)/tau) / sum_{k != i} exp(sim(i,k)/tau) )
     """
     z = F.normalize(z, p=2, dim=-1)
@@ -130,7 +130,7 @@ def multi_positive_infonce(
 
 def laplacian_smoothing(z: torch.Tensor, adj: torch.Tensor) -> torch.Tensor:
     """
-    拉普拉斯平滑项：sum_{(i,j) in E} ||z_i - z_j||^2
+    Laplacian smoothing term: sum_{(i,j) in E} ||z_i - z_j||^2
     """
     if adj.sum() == 0:
         return torch.tensor(0.0, device=z.device)
@@ -146,14 +146,14 @@ def struct_text_alignment_loss(
         temperature: float = 0.1,
 ) -> torch.Tensor:
     """
-    结构 – 文本 对齐损失：
-    - z_struct[i] 应该和 z_text[i] 对齐
-    - 使用 InfoNCE / 分类形式的对齐：
+    Structure-text alignment loss:
+    - z_struct[i] should align with z_text[i]
+    - Uses InfoNCE / classification-style alignment:
         sim = z_struct @ z_text^T / tau
         labels = arange(N)
         loss = CrossEntropy(sim, labels)
     """
-    # 归一化后做对齐，更稳定
+    # Normalize before alignment for better stability
     z_s = F.normalize(z_struct, p=2, dim=-1)
     z_t = F.normalize(z_text, p=2, dim=-1)
 
@@ -168,29 +168,29 @@ def fused_alignment_loss(
         proj_layer: nn.Module | None = None,
 ) -> torch.Tensor:
     """
-    融合表示对齐损失（逐样本对齐，支持不同维度）：
-    - z_fused[i] 应该和 z_target[i] 对齐（逐样本对齐，而非全局匹配）
-    - 使用逐样本余弦相似度的负对数似然作为损失
-    - 支持 z_fused 和 z_target 维度不同的情况（通过投影层适配）
+    Fused representation alignment loss (per-sample alignment, supports different dimensions):
+    - z_fused[i] should align with z_target[i] (per-sample alignment, not global matching)
+    - Uses negative log-likelihood of per-sample cosine similarity as loss
+    - Supports cases where z_fused and z_target have different dimensions (adapted via projection layer)
 
-    修复：从全局CrossEntropy改为逐样本对齐，确保节点i的融合表示对齐节点i的语义/结构表示
-    使用投影层替代截断，避免信息丢失
+    Fix: Changed from global CrossEntropy to per-sample alignment, ensuring node i's fused representation aligns with node i's semantic/structural representation
+    Uses projection layer instead of truncation to avoid information loss
     """
-    # 使用投影层将目标表示投影到融合表示的维度
+    # Use projection layer to project target representation to fused representation dimension
     if proj_layer is not None:
         z_t_projected = proj_layer(z_target)  # [N, fused_dim]
     else:
         z_t_projected = z_target
 
-    # 归一化（投影后再归一化）
+    # Normalize (normalize after projection)
     z_f = F.normalize(z_fused, p=2, dim=-1)  # [N, fused_dim]
     z_t = F.normalize(z_t_projected, p=2, dim=-1)  # [N, fused_dim]
 
-    # 逐样本对齐：计算每个节点i的融合表示与对应目标表示的相似度
-    # 使用点积相似度（已归一化，等价于余弦相似度）
-    sim_per_sample = (z_f * z_t).sum(dim=-1)  # [N] 逐样本相似度
+    # Per-sample alignment: compute similarity between each node i's fused representation and corresponding target representation
+    # Use dot product similarity (already normalized, equivalent to cosine similarity)
+    sim_per_sample = (z_f * z_t).sum(dim=-1)  # [N] per-sample similarity
 
-    # 转换为损失：负对数似然（相似度越高，损失越小）
+    # Convert to loss: negative log-likelihood (higher similarity, lower loss)
     loss_per_sample = -torch.log(sim_per_sample.clamp(min=1e-8))  # [N]
 
     return loss_per_sample.mean()
@@ -236,7 +236,7 @@ class FullEncoderTrainer:
         else:
             self.alignment_proj_semantic = nn.Identity()
 
-        # 只优化需要训练的参数（包括对齐投影层）
+        # Only optimize parameters that need training (including alignment projection layers)
         model_params = [p for p in self.model.parameters() if p.requires_grad]
         alignment_params = list(self.alignment_proj_struct.parameters()) + list(
             self.alignment_proj_semantic.parameters())
@@ -278,7 +278,7 @@ class FullEncoderTrainer:
 
         os.makedirs(os.path.dirname(ckpt_path), exist_ok=True)
 
-        # 初始化学习率调度器
+        # Initialize learning rate scheduler
         if use_lr_scheduler:
             self.scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
                 self.optimizer, T_max=epochs, eta_min=self.optimizer.param_groups[0]['lr'] * 0.01
@@ -311,10 +311,10 @@ class FullEncoderTrainer:
 
                 loss_lap = laplacian_smoothing(z_fused, adj) if self.lambda_lap > 0 else 0.0
 
-                # 对齐损失：让融合后的表示对齐到结构表示和语义表示
-                # 关键修复：不detach()，因为冻结参数≠无梯度输出
-                # 冻结参数意味着参数不更新，但输出仍然可以有梯度，这样对齐损失才能传递梯度到融合模块
-                # 使用投影层替代截断，避免信息丢失
+                # Alignment loss: align fused representation to structural and semantic representations
+                # Key fix: no detach(), because frozen parameters != no gradient output
+                # Frozen parameters mean parameters don't update, but output can still have gradients so alignment loss can propagate to fusion module
+                # Use projection layer instead of truncation to avoid information loss
                 loss_align_struct = fused_alignment_loss(
                     z_fused, z_struct,
                     proj_layer=self.alignment_proj_struct
@@ -331,7 +331,7 @@ class FullEncoderTrainer:
             self.scaler.step(self.optimizer)
             self.scaler.update()
 
-            # 学习率调度
+            # Learning rate scheduling
             if use_lr_scheduler and hasattr(self, 'scheduler'):
                 self.scheduler.step()
 
@@ -359,9 +359,9 @@ class FullEncoderTrainer:
 
         if best_state is not None:
             torch.save(best_state, ckpt_path)
-            print(f"✓ 最优 full encoder 模型已保存: {ckpt_path}  | best_loss={best_loss:.6f}")
+            print(f"✓ Best full encoder model saved: {ckpt_path}  | best_loss={best_loss:.6f}")
         else:
-            print("! 未保存模型（未找到更优状态）")
+            print("! Model not saved (no better state found)")
 
 
 def main(config: MicroWeaverConfig):
@@ -402,29 +402,29 @@ def main(config: MicroWeaverConfig):
     struct_ckpt = config.structural_model_path
     if os.path.exists(struct_ckpt):
         try:
-            print(f"\n[FullEncoder] 检测到结构预训练模型: {struct_ckpt}")
+            print(f"\n[FullEncoder] Structural pre-trained model detected: {struct_ckpt}")
             model.structural_encoder.load_pretrained(struct_ckpt, device=device)
-            print("✓ 结构编码器已用 structural_best.pt 初始化")
+            print("✓ Structural encoder initialized with structural_best.pt")
         except Exception as e:
-            print(f"! 加载结构预训练模型失败: {e}，将使用随机初始化结构编码器")
+            print(f"! Failed to load structural pre-trained model: {e}, will use randomly initialized structural encoder")
     else:
-        print(f"\n[FullEncoder] 未找到结构预训练模型 ({struct_ckpt})，将使用随机初始化结构编码器")
+        print(f"\n[FullEncoder] Structural pre-trained model not found ({struct_ckpt}), will use randomly initialized structural encoder")
 
-    # 4.2 冻结结构编码器和语义编码器，只训练融合模块
+    # 4.2 Freeze structural encoder and semantic encoder, only train fusion module
     for p in model.structural_encoder.parameters():
         p.requires_grad = False
 
-    # 冻结语义编码器
+    # Freeze semantic encoder
     for p in model.semantic_encoder.parameters():
         p.requires_grad = False
 
-    # 打印可训练参数信息
+    # Print trainable parameter information
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     total_params = sum(p.numel() for p in model.parameters())
-    print(f"\n[FullEncoder] 参数统计:")
-    print(f"  - 总参数数: {total_params:,}")
-    print(f"  - 可训练参数数: {trainable_params:,} (仅融合模块)")
-    print(f"  - 冻结参数数: {total_params - trainable_params:,} (结构+语义编码器)")
+    print(f"\n[FullEncoder] Parameter statistics:")
+    print(f"  - Total parameters: {total_params:,}")
+    print(f"  - Trainable parameters: {trainable_params:,} (fusion module only)")
+    print(f"  - Frozen parameters: {total_params - trainable_params:,} (structural + semantic encoders)")
 
     trainer = FullEncoderTrainer(
         encoder=model,
@@ -450,7 +450,7 @@ def main(config: MicroWeaverConfig):
         ckpt_path=config.full_model_path,
     )
 
-    # 5. 训练后调试：详细的节点对相似度统计分析
+    # 5. Post-training debugging: detailed node pair similarity statistical analysis
     model.eval()
     with torch.no_grad():
         z_struct, z_text, z_fused = model(
@@ -462,38 +462,38 @@ def main(config: MicroWeaverConfig):
             edge_weights=edge_weights.to(device) if edge_weights is not None and edge_weights.numel() > 0 else None,
         )
 
-        # 归一化并计算相似度矩阵
+        # Normalize and compute similarity matrix
         z_fused_norm = F.normalize(z_fused, p=2, dim=-1)
         z_text_norm = F.normalize(z_text, p=2, dim=-1)
         z_struct_norm = F.normalize(z_struct, p=2, dim=-1)
 
-        sim_fused = z_fused_norm @ z_fused_norm.t()  # [N, N] 融合向量相似度
-        sim_text = z_text_norm @ z_text_norm.t()  # [N, N] 语义向量相似度
-        sim_struct = z_struct_norm @ z_struct_norm.t()  # [N, N] 结构向量相似度
+        sim_fused = z_fused_norm @ z_fused_norm.t()  # [N, N] fused vector similarity
+        sim_text = z_text_norm @ z_text_norm.t()  # [N, N] semantic vector similarity
+        sim_struct = z_struct_norm @ z_struct_norm.t()  # [N, N] structural vector similarity
 
         N = sim_fused.size(0)
 
-        # ========== 2. 直接相连、两跳相连以及其它节点对的统计 ==========
+        # ========== 2. Statistics for directly connected, two-hop connected, and other node pairs ==========
         print("\n" + "=" * 80)
-        print("[Debug 1] 按图结构距离分组的融合向量相似度统计:")
+        print("[Debug 1] Fused vector similarity statistics grouped by graph structure distance:")
         print("=" * 80)
 
-        # 构建邻接矩阵（无向图）
+        # Build adjacency matrix (undirected graph)
         adj_matrix = torch.zeros(N, N, dtype=torch.bool, device=device)
         if edge_index.numel() > 0:
             src, dst = edge_index[0], edge_index[1]
             adj_matrix[src, dst] = True
             adj_matrix[dst, src] = True
 
-        # 计算两跳邻接矩阵（通过矩阵乘法）
+        # Compute two-hop adjacency matrix (via matrix multiplication)
         adj_2hop = (adj_matrix.float() @ adj_matrix.float()) > 0
-        adj_2hop = adj_2hop & (~adj_matrix)  # 排除一跳的边
-        adj_2hop.fill_diagonal_(False)  # 排除自环
+        adj_2hop = adj_2hop & (~adj_matrix)  # Exclude one-hop edges
+        adj_2hop.fill_diagonal_(False)  # Exclude self-loops
 
-        # 分类节点对
-        pairs_1hop = []  # 直接相连
-        pairs_2hop = []  # 两跳相连
-        pairs_other = []  # 其它（三跳及以上或不相连）
+        # Categorize node pairs
+        pairs_1hop = []  # Directly connected
+        pairs_2hop = []  # Two-hop connected
+        pairs_other = []  # Others (three-hop or more, or disconnected)
 
         for i in range(N):
             for j in range(i + 1, N):
@@ -516,34 +516,34 @@ def main(config: MicroWeaverConfig):
         mean_2hop, var_2hop, count_2hop = compute_stats(pairs_2hop)
         mean_other, var_other, count_other = compute_stats(pairs_other)
 
-        print(f"  直接相连（一跳）:")
-        print(f"    节点对数: {count_1hop}")
-        print(f"    平均相似度: {mean_1hop:.6f}")
-        print(f"    方差: {var_1hop:.6f}")
-        print(f"    标准差: {var_1hop ** 0.5:.6f}")
+        print(f"  Directly connected (1-hop):")
+        print(f"    Node pairs: {count_1hop}")
+        print(f"    Mean similarity: {mean_1hop:.6f}")
+        print(f"    Variance: {var_1hop:.6f}")
+        print(f"    Std dev: {var_1hop ** 0.5:.6f}")
 
-        print(f"\n  两跳相连:")
-        print(f"    节点对数: {count_2hop}")
-        print(f"    平均相似度: {mean_2hop:.6f}")
-        print(f"    方差: {var_2hop:.6f}")
-        print(f"    标准差: {var_2hop ** 0.5:.6f}")
+        print(f"\n  Two-hop connected:")
+        print(f"    Node pairs: {count_2hop}")
+        print(f"    Mean similarity: {mean_2hop:.6f}")
+        print(f"    Variance: {var_2hop:.6f}")
+        print(f"    Std dev: {var_2hop ** 0.5:.6f}")
 
-        print(f"\n  其它（三跳及以上或不相连）:")
-        print(f"    节点对数: {count_other}")
-        print(f"    平均相似度: {mean_other:.6f}")
-        print(f"    方差: {var_other:.6f}")
-        print(f"    标准差: {var_other ** 0.5:.6f}")
+        print(f"\n  Others (3+ hops or disconnected):")
+        print(f"    Node pairs: {count_other}")
+        print(f"    Mean similarity: {mean_other:.6f}")
+        print(f"    Variance: {var_other:.6f}")
+        print(f"    Std dev: {var_other ** 0.5:.6f}")
 
-        # ========== 3. 按语义相似度分组的融合向量相似度统计 ==========
+        # ========== 3. Fused vector similarity statistics grouped by semantic similarity ==========
         print("\n" + "=" * 80)
-        print("[Debug 2] 按语义相似度分组的融合向量相似度统计:")
+        print("[Debug 2] Fused vector similarity statistics grouped by semantic similarity:")
         print("=" * 80)
 
-        # 按语义相似度分组
-        pairs_sem_high = []  # 语义相似度 >= 0.7
-        pairs_sem_med_high = []  # 0.5 <= 语义相似度 < 0.7
-        pairs_sem_med_low = []  # 0.3 <= 语义相似度 < 0.5
-        pairs_sem_low = []  # 语义相似度 < 0.3
+        # Group by semantic similarity
+        pairs_sem_high = []  # Semantic similarity >= 0.7
+        pairs_sem_med_high = []  # 0.5 <= Semantic similarity < 0.7
+        pairs_sem_med_low = []  # 0.3 <= Semantic similarity < 0.5
+        pairs_sem_low = []  # Semantic similarity < 0.3
 
         for i in range(N):
             for j in range(i + 1, N):
@@ -564,29 +564,29 @@ def main(config: MicroWeaverConfig):
         mean_med_low, var_med_low, count_med_low = compute_stats(pairs_sem_med_low)
         mean_low, var_low, count_low = compute_stats(pairs_sem_low)
 
-        print(f"  语义相似度 >= 0.7:")
-        print(f"    节点对数: {count_high}")
-        print(f"    融合向量平均相似度: {mean_high:.6f}")
-        print(f"    方差: {var_high:.6f}")
-        print(f"    标准差: {var_high ** 0.5:.6f}")
+        print(f"  Semantic similarity >= 0.7:")
+        print(f"    Node pairs: {count_high}")
+        print(f"    Fused vector mean similarity: {mean_high:.6f}")
+        print(f"    Variance: {var_high:.6f}")
+        print(f"    Std dev: {var_high ** 0.5:.6f}")
 
-        print(f"\n  语义相似度 [0.5, 0.7):")
-        print(f"    节点对数: {count_med_high}")
-        print(f"    融合向量平均相似度: {mean_med_high:.6f}")
-        print(f"    方差: {var_med_high:.6f}")
-        print(f"    标准差: {var_med_high ** 0.5:.6f}")
+        print(f"\n  Semantic similarity [0.5, 0.7):")
+        print(f"    Node pairs: {count_med_high}")
+        print(f"    Fused vector mean similarity: {mean_med_high:.6f}")
+        print(f"    Variance: {var_med_high:.6f}")
+        print(f"    Std dev: {var_med_high ** 0.5:.6f}")
 
-        print(f"\n  语义相似度 [0.3, 0.5):")
-        print(f"    节点对数: {count_med_low}")
-        print(f"    融合向量平均相似度: {mean_med_low:.6f}")
-        print(f"    方差: {var_med_low:.6f}")
-        print(f"    标准差: {var_med_low ** 0.5:.6f}")
+        print(f"\n  Semantic similarity [0.3, 0.5):")
+        print(f"    Node pairs: {count_med_low}")
+        print(f"    Fused vector mean similarity: {mean_med_low:.6f}")
+        print(f"    Variance: {var_med_low:.6f}")
+        print(f"    Std dev: {var_med_low ** 0.5:.6f}")
 
-        print(f"\n  语义相似度 < 0.3:")
-        print(f"    节点对数: {count_low}")
-        print(f"    融合向量平均相似度: {mean_low:.6f}")
-        print(f"    方差: {var_low:.6f}")
-        print(f"    标准差: {var_low ** 0.5:.6f}")
+        print(f"\n  Semantic similarity < 0.3:")
+        print(f"    Node pairs: {count_low}")
+        print(f"    Fused vector mean similarity: {mean_low:.6f}")
+        print(f"    Variance: {var_low:.6f}")
+        print(f"    Std dev: {var_low ** 0.5:.6f}")
 
         print("\n" + "=" * 80)
 

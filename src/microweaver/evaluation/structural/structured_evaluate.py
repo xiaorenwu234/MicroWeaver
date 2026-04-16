@@ -18,37 +18,37 @@ class Evaluator:
 
     def calculate_SSB(self):
         """
-        计算服务规模平衡性（Service Size Balance, SSB）
-        公式：SSB = 标准差(服务节点数) / 均值(服务节点数)
+        Calculate Service Size Balance (SSB)
+        Formula: SSB = std_dev(service node counts) / mean(service node counts)
         """
-        # 统计每个服务的节点数
+        # Count nodes per service
         service_sizes = [len(nodes) for nodes in self.partitions.values()]
         if len(service_sizes) <= 1:
-            return 0.0  # 只有1个服务时无失衡问题
+            return 0.0  # No imbalance issue when only 1 service
 
-        # 计算均值和标准差
+        # Calculate mean and std dev
         mean_size = statistics.mean(service_sizes)
         std_size = statistics.stdev(service_sizes) if len(service_sizes) > 1 else 0.0
 
-        # 计算SSB（避免除零错误）
+        # Calculate SSB (avoid division by zero)
         ssb = std_size / mean_size if mean_size > 0 else 0.0
         return ssb
 
     def calculate_SII(self):
         """
-        计算结构不稳定性指数（Structural Instability Index, SII）
-        公式：SII(S_k) = Fan_out / (Fan_in + Fan_out)
-        Fan_out：服务对外调用数；Fan_in：服务被外部调用数
-        返回：所有服务的平均SII
+        Calculate Structural Instability Index (SII)
+        Formula: SII(S_k) = Fan_out / (Fan_in + Fan_out)
+        Fan_out: number of outgoing calls from service; Fan_in: number of incoming calls to service
+        Returns: average SII across all services
         """
         total_sii = 0.0
         num_services = 0
 
-        # 预计算每个服务的Fan_in和Fan_out
+        # Pre-calculate Fan_in and Fan_out for each service
         service_fan_out = {s: 0 for s in self.partitions.keys()}
         service_fan_in = {s: 0 for s in self.partitions.keys()}
 
-        # 1. 计算Fan_out（服务对外调用数）
+        # 1. Calculate Fan_out (outgoing calls from service)
         for service_name, service_nodes in self.partitions.items():
             service_node_ids = {self.name_id_map[node] for node in service_nodes if node in self.name_id_map}
             fan_out = 0
@@ -66,25 +66,25 @@ class Evaluator:
                                 fan_out += 1
             service_fan_out[service_name] = fan_out
 
-        # 2. 计算Fan_in（服务被外部调用数）
+        # 2. Calculate Fan_in (incoming calls to service)
         for service_name, service_nodes in self.partitions.items():
             service_node_ids = {self.name_id_map[node] for node in service_nodes if node in self.name_id_map}
             fan_in = 0
-            # 遍历所有节点，统计调用当前服务的外部节点数
+            # Iterate through all nodes, count external nodes calling current service
             for node_id, dep_node_ids in self.dependencies.items():
                 node_name = self.id_name_map.get(node_id)
                 if not node_name:
                     continue
                 caller_service = self.name_service_map.get(node_name)
                 if caller_service == service_name:
-                    continue  # 内部调用，跳过
-                # 检查是否调用当前服务的节点
+                    continue  # Internal call, skip
+                # Check if calls nodes in current service
                 for dep_node_id in dep_node_ids:
                     if dep_node_id in service_node_ids:
                         fan_in += 1
             service_fan_in[service_name] = fan_in
 
-        # 3. 计算每个服务的SII
+        # 3. Calculate SII for each service
         for service_name in self.partitions.keys():
             fan_in = service_fan_in[service_name]
             fan_out = service_fan_out[service_name]
@@ -99,15 +99,15 @@ class Evaluator:
 
     def calculate_modularity(self):
         """
-        计算模块度（Modularity）
-        将依赖图视为无向图，基于 Newman-Girvan 模块度定义：
+        Calculate Modularity
+        Treat dependency graph as undirected, based on Newman-Girvan modularity definition:
         Q = Σ_k [ (l_k / m) - (d_k / (2m))^2 ]
-        其中：
-            - m：图中无向边的数量
-            - l_k：社区（服务）k 内部的边数
-            - d_k：社区（服务）k 中所有节点度数之和
+        Where:
+            - m: number of undirected edges in graph
+            - l_k: number of edges inside community (service) k
+            - d_k: sum of degrees of all nodes in community (service) k
         """
-        # 构建 id -> service_name 映射
+        # Build id -> service_name mapping
         id_service_map = {}
         for service_name, service_nodes in self.partitions.items():
             for node in service_nodes:
@@ -115,15 +115,15 @@ class Evaluator:
                 if node_id is not None:
                     id_service_map[node_id] = service_name
 
-        # 统计总边数 m、每个节点度数以及每个服务内部边数
-        m = 0  # 无向边数量（以依赖关系作无向边）
+        # Count total edges m, degree per node, and internal edges per service
+        m = 0  # Number of undirected edges (treat dependencies as undirected)
         node_degree = {node_id: 0 for node_id in self.dependencies.keys()}
         service_internal_edges = {service_name: 0 for service_name in self.partitions.keys()}
 
         for src_id, dep_ids in self.dependencies.items():
             for dst_id in dep_ids:
                 m += 1
-                # 将依赖视为无向边，出入度都 +1
+                # Treat dependency as undirected edge, increment both in and out degrees
                 if src_id not in node_degree:
                     node_degree[src_id] = 0
                 if dst_id not in node_degree:
@@ -139,7 +139,7 @@ class Evaluator:
         if m == 0:
             return 0.0
 
-        # 计算每个服务的 d_k（社区内节点度数之和）
+        # Calculate d_k for each service (sum of degrees of nodes in community)
         service_degree_sum = {service_name: 0 for service_name in self.partitions.keys()}
         for node_id, degree in node_degree.items():
             service_name = id_service_map.get(node_id)
@@ -156,9 +156,9 @@ class Evaluator:
 
     def calculate_ICP(self):
         """
-        计算内部调用占比（Internal Call Proportion, ICP）
-        公式：ICP = 内部调用数 / 总调用数
-        返回：所有服务的平均ICP
+        Calculate Internal Call Proportion (ICP)
+        Formula: ICP = internal_calls / total_calls
+        Returns: average ICP across all services
         """
         internal_calls = 0
         total_calls = 0
@@ -181,7 +181,7 @@ class Evaluator:
 
     def evaluate(self):
         """
-        执行评估，返回评估报告
+        Execute evaluation, return evaluation report
         """
         results = []
         for folder in os.listdir(EvaluateConfig.partition_result_folder_path):

@@ -3,7 +3,7 @@
         "id": 0,
         "name": "AirportCodeMapping",
         "qualifiedName": "AirportCodeMapping",
-        "description": "AirportCodeMapping 类用于管理和映射机场代码，提供机场代码与其他标识符之间的转换关系。",
+        "description": "AirportCodeMapping class is used to manage and map airport codes, providing conversion relationships between airport codes and other identifiers.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -15,7 +15,7 @@
         "id": 1,
         "name": "AuthServiceImpl",
         "qualifiedName": "AuthServiceImpl",
-        "description": "AuthServiceImpl 是一个认证服务的实现类，负责提供用户认证相关的业务逻辑实现，在系统中充当认证功能的核心处理组件。",
+        "description": "AuthServiceImpl is an authentication service implementation class responsible for providing business logic implementations related to user authentication, serving as the core processing component for authentication functionality in the system.",
         "methods": [],
         "dependencies": [
             6
@@ -31,7 +31,7 @@
         "id": 2,
         "name": "CustomerService",
         "qualifiedName": "CustomerService",
-        "description": "CustomerService 类用于处理与客户相关的服务操作，提供客户支持和管理功能。",
+        "description": "CustomerService class is used to handle customer-related service operations, providing customer support and management functionality.",
         "methods": [],
         "dependencies": [
             10
@@ -47,7 +47,7 @@
         "id": 3,
         "name": "FlightLoader",
         "qualifiedName": "FlightLoader",
-        "description": "FlightLoader 是一个用于加载航班数据的类，在系统中负责从数据源读取并初始化航班相关信息。",
+        "description": "FlightLoader is a class for loading flight data, responsible in the system for reading and initializing flight-related information from data sources.",
         "methods": [],
         "dependencies": [
             20,
@@ -69,7 +69,7 @@
         "id": 4,
         "name": "BookingsREST",
         "qualifiedName": "BookingsREST",
-        "description": "BookingsREST 是一个用于处理预订相关 RESTful API 请求的类，提供预订资源的访问和操作接口。",
+        "description": "BookingsREST is a class for handling booking-related RESTful API requests, providing access and operation interfaces for booking resources.",
         "methods": [],
         "dependencies": [
             12
@@ -85,7 +85,7 @@
         "id": 5,
         "name": "CustomerInfo",
         "qualifiedName": "CustomerInfo",
-        "description": "CustomerInfo类用于表示和管理客户的基本信息，作为系统中客户数据的载体。",
+        "description": "CustomerInfo class is used to represent and manage customer basic information, serving as a carrier for customer data in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -97,7 +97,7 @@
         "id": 6,
         "name": "ConnectionManager",
         "qualifiedName": "ConnectionManager",
-        "description": "ConnectionManager 负责管理应用程序与外部资源（如数据库或服务）之间的连接，包括连接的创建、维护和释放，以确保高效且可靠的资源使用。",
+        "description": "ConnectionManager is responsible for managing connections between the application and external resources (such as databases or services), including connection creation, maintenance, and release, to ensure efficient and reliable resource usage.",
         "methods": [],
         "dependencies": [
             6
@@ -113,7 +113,7 @@
         "id": 7,
         "name": "RESTCookieSessionFilter",
         "qualifiedName": "RESTCookieSessionFilter",
-        "description": "RESTCookieSessionFilter 是一个用于在 RESTful 服务中处理基于 Cookie 的会话管理的过滤器，负责拦截请求并维护或验证用户会话状态。",
+        "description": "RESTCookieSessionFilter is a filter for handling cookie-based session management in RESTful services, responsible for intercepting requests and maintaining or verifying user session status.",
         "methods": [],
         "dependencies": [
             17,
@@ -145,7 +145,7 @@
         "id": 8,
         "name": "AddressInfo",
         "qualifiedName": "AddressInfo",
-        "description": "AddressInfo类用于表示和管理地址相关信息，作为系统中地址数据的封装实体。",
+        "description": "AddressInfo class is used to represent and manage address-related information, serving as an encapsulation entity for address data in the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -157,7 +157,7 @@
         "id": 9,
         "name": "Loader",
         "qualifiedName": "Loader",
-        "description": "Loader类当前无明确职责描述，未定义任何方法，可能为占位类或待实现的加载器基类。",
+        "description": "Loader class currently has no clear responsibility description, no methods defined, possibly a placeholder class or a loader base class to be implemented.",
         "methods": [],
         "dependencies": [
             9,
@@ -183,7 +183,7 @@
         "id": 10,
         "name": "CustomerServiceImpl",
         "qualifiedName": "CustomerServiceImpl",
-        "description": "CustomerServiceImpl 是客户服务功能的具体实现类，负责提供客户相关业务逻辑的实现，在系统中充当服务层组件，用于处理与客户实体相关的操作和事务。",
+        "description": "CustomerServiceImpl is the concrete implementation class for customer service functionality, responsible for providing implementations of customer-related business logic, serving as a service layer component in the system for handling operations and transactions related to customer entities.",
         "methods": [],
         "dependencies": [
             6
@@ -199,7 +199,7 @@
         "id": 11,
         "name": "AppConfig",
         "qualifiedName": "AppConfig",
-        "description": "AppConfig 是一个用于配置应用程序的类，负责管理应用的配置参数和设置。",
+        "description": "AppConfig is a class for configuring the application, responsible for managing application configuration parameters and settings.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -211,7 +211,7 @@
         "id": 12,
         "name": "BookingServiceImpl",
         "qualifiedName": "BookingServiceImpl",
-        "description": "BookingServiceImpl 是一个实现预订业务逻辑的服务类，负责处理与预订相关的操作和流程。",
+        "description": "BookingServiceImpl is a service class implementing booking business logic, responsible for handling operations and processes related to bookings.",
         "methods": [],
         "dependencies": [
             6,
@@ -231,7 +231,7 @@
         "id": 13,
         "name": "BookingLoader",
         "qualifiedName": "BookingLoader",
-        "description": "BookingLoader 负责加载预订（Booking）相关数据，在系统中充当数据加载器的角色，通常用于从数据源获取预订信息并提供给其他组件使用。",
+        "description": "BookingLoader is responsible for loading booking-related data, serving as a data loader role in the system, typically used to retrieve booking information from data sources and provide it to other components.",
         "methods": [],
         "dependencies": [
             12
@@ -247,7 +247,7 @@
         "id": 14,
         "name": "AuthService",
         "qualifiedName": "AuthService",
-        "description": "AuthService 负责处理用户认证相关逻辑，是系统中认证功能的核心服务类。",
+        "description": "AuthService is responsible for handling user authentication-related logic, serving as the core service class for authentication functionality in the system.",
         "methods": [],
         "dependencies": [
             15,
@@ -265,7 +265,7 @@
         "id": 15,
         "name": "KeyGenerator",
         "qualifiedName": "KeyGenerator",
-        "description": "KeyGenerator 是一个用于生成密钥的工具类，在系统中负责提供安全的密钥生成功能。",
+        "description": "KeyGenerator is a utility class for generating keys, responsible in the system for providing secure key generation functionality.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -277,7 +277,7 @@
         "id": 16,
         "name": "FlightsREST",
         "qualifiedName": "FlightsREST",
-        "description": "FlightsREST 类是一个用于处理航班相关 RESTful API 请求的控制器类，负责提供航班信息的查询、管理等接口服务。",
+        "description": "FlightsREST class is a controller class for handling flight-related RESTful API requests, responsible for providing flight information query, management, and other interface services.",
         "methods": [],
         "dependencies": [
             23
@@ -293,7 +293,7 @@
         "id": 17,
         "name": "ServiceLocator",
         "qualifiedName": "ServiceLocator",
-        "description": "ServiceLocator 是一个用于集中管理和提供服务实例的定位器类，通常实现服务查找与解耦，使系统组件能够通过统一接口获取所需服务而无需直接依赖具体实现。",
+        "description": "ServiceLocator is a locator class for centrally managing and providing service instances, typically implementing service lookup and decoupling, allowing system components to obtain required services through a unified interface without directly depending on concrete implementations.",
         "methods": [],
         "dependencies": [
             12,
@@ -319,7 +319,7 @@
         "id": 18,
         "name": "AcmeAirApp",
         "qualifiedName": "AcmeAirApp",
-        "description": "AcmeAirApp 是一个应用程序入口类，用于启动和管理 AcmeAir 应用的生命周期，通常作为系统的主要启动点。",
+        "description": "AcmeAirApp is an application entry class for starting and managing the AcmeAir application lifecycle, typically serving as the main startup point for the system.",
         "methods": [],
         "dependencies": [],
         "edge_types": [],
@@ -331,7 +331,7 @@
         "id": 19,
         "name": "CustomerLoader",
         "qualifiedName": "CustomerLoader",
-        "description": "CustomerLoader 负责加载客户数据，在系统中作为客户信息的加载器组件。",
+        "description": "CustomerLoader is responsible for loading customer data, serving as a customer information loader component in the system.",
         "methods": [],
         "dependencies": [
             10
@@ -347,7 +347,7 @@
         "id": 20,
         "name": "FlightServiceImpl",
         "qualifiedName": "FlightServiceImpl",
-        "description": "FlightServiceImpl 是一个实现航班相关业务逻辑的服务类，负责处理与航班操作相关的具体功能。",
+        "description": "FlightServiceImpl is a service class implementing flight-related business logic, responsible for handling specific functions related to flight operations.",
         "methods": [],
         "dependencies": [
             6,
@@ -367,7 +367,7 @@
         "id": 21,
         "name": "CustomerREST",
         "qualifiedName": "CustomerREST",
-        "description": "CustomerREST 是一个用于处理客户相关 RESTful API 请求的控制器类，负责接收和响应与客户资源相关的 HTTP 操作。",
+        "description": "CustomerREST is a controller class for handling customer-related RESTful API requests, responsible for receiving and responding to HTTP operations related to customer resources.",
         "methods": [],
         "dependencies": [
             21,
@@ -389,7 +389,7 @@
         "id": 22,
         "name": "LoginREST",
         "qualifiedName": "LoginREST",
-        "description": "LoginREST 是一个用于处理用户登录相关 RESTful API 请求的类，负责接收登录请求、验证用户凭据并返回相应的认证结果。",
+        "description": "LoginREST is a class for handling user login-related RESTful API requests, responsible for receiving login requests, verifying user credentials, and returning corresponding authentication results.",
         "methods": [],
         "dependencies": [
             2,
@@ -409,7 +409,7 @@
         "id": 23,
         "name": "FlightService",
         "qualifiedName": "FlightService",
-        "description": "FlightService 是一个用于处理航班相关业务逻辑的服务类，负责协调和管理与航班操作相关的功能。",
+        "description": "FlightService is a service class for handling flight-related business logic, responsible for coordinating and managing functions related to flight operations.",
         "methods": [],
         "dependencies": [
             20
@@ -425,7 +425,7 @@
         "id": 24,
         "name": "SupportWebSocket",
         "qualifiedName": "SupportWebSocket",
-        "description": "SupportWebSocket 是一个用于支持 WebSocket 功能的类，可能作为 WebSocket 相关功能的基类或工具类，但当前未定义具体方法。",
+        "description": "SupportWebSocket is a class for supporting WebSocket functionality, possibly serving as a base class or utility class for WebSocket-related features, though currently no specific methods are defined.",
         "methods": [],
         "dependencies": [
             24
@@ -441,7 +441,7 @@
         "id": 25,
         "name": "SessionLoader",
         "qualifiedName": "SessionLoader",
-        "description": "SessionLoader 是一个用于加载会话数据的类，在系统中负责从存储介质中读取并初始化会话信息。",
+        "description": "SessionLoader is a class for loading session data, responsible in the system for reading and initializing session information from storage media.",
         "methods": [],
         "dependencies": [
             1
@@ -457,7 +457,7 @@
         "id": 26,
         "name": "AcmeAirConfiguration",
         "qualifiedName": "AcmeAirConfiguration",
-        "description": "AcmeAirConfiguration 类用于配置 AcmeAir 应用的相关设置，提供系统运行所需的配置参数。",
+        "description": "AcmeAirConfiguration class is used to configure AcmeAir application-related settings, providing configuration parameters required for system operation.",
         "methods": [],
         "dependencies": [
             17,
@@ -481,7 +481,7 @@
         "id": 27,
         "name": "LoaderREST",
         "qualifiedName": "LoaderREST",
-        "description": "LoaderREST 是一个用于通过 REST 接口加载数据的类，负责与远程服务通信以获取或提交数据。",
+        "description": "LoaderREST is a class for loading data through REST interfaces, responsible for communicating with remote services to retrieve or submit data.",
         "methods": [],
         "dependencies": [
             9

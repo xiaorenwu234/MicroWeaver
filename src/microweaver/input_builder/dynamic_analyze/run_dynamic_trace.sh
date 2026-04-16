@@ -1,61 +1,61 @@
 #!/bin/bash
 
-# 动态追踪工具执行脚本
+# Dynamic tracing tool execution script
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "=========================================="
-echo "     动态追踪工具 - 执行脚本"
+echo "     Dynamic Tracing Tool - Execution Script"
 echo "=========================================="
 echo ""
 
-# 步骤 1: 启动 SkyWalking 服务
-echo "【步骤 1】启动 SkyWalking 服务..."
+# Step 1: Start SkyWalking service
+echo "[Step 1] Starting SkyWalking service..."
 echo "------------------------------------------"
 cd "${SCRIPT_DIR}/docker"
 bash ./quickstart.sh
 cd "${SCRIPT_DIR}"
-echo "✓ SkyWalking 服务已启动"
+echo "✓ SkyWalking service started"
 echo ""
 
-# 步骤 2: 静态代码注入
-echo "【步骤 2】静态代码注入"
+# Step 2: Static code injection
+echo "[Step 2] Static code injection"
 echo "------------------------------------------"
-read -p "请输入项目路径: " PROJECT_PATH
+read -p "Please enter project path: " PROJECT_PATH
 
 if [ ! -d "$PROJECT_PATH" ]; then
-    echo "错误: 项目路径不存在: $PROJECT_PATH"
+    echo "Error: Project path does not exist: $PROJECT_PATH"
     exit 1
 fi
 
-echo "正在注入 SkyWalking 代码到项目: $PROJECT_PATH"
+echo "Injecting SkyWalking code into project: $PROJECT_PATH"
 java -jar "${SCRIPT_DIR}/skywalking-injector/target/skywalking-injector.jar" "$PROJECT_PATH"
-echo "✓ 代码注入完成"
+echo "✓ Code injection completed"
 echo ""
 
-# 步骤 3: 项目打包
-echo "【步骤 3】项目打包"
+# Step 3: Project packaging
+echo "[Step 3] Project packaging"
 echo "------------------------------------------"
-echo "正在执行 Maven 打包..."
+echo "Running Maven packaging..."
 cd "$PROJECT_PATH"
 mvn clean package
 cd "${SCRIPT_DIR}"
-echo "✓ 项目打包完成"
+echo "✓ Project packaging completed"
 echo ""
 
-# 步骤 4: 启动应用
-echo "【步骤 4】启动应用（带 SkyWalking 代理）"
+# Step 4: Start application
+echo "[Step 4] Start application (with SkyWalking agent)"
 echo "------------------------------------------"
-read -p "请输入 JAR 包路径: " JAR_PATH
+read -p "Please enter JAR path: " JAR_PATH
 
 if [ ! -f "$JAR_PATH" ]; then
-    echo "错误: JAR 包不存在: $JAR_PATH"
+    echo "Error: JAR file does not exist: $JAR_PATH"
     exit 1
 fi
 
-echo "正在启动应用: $JAR_PATH"
+echo "Starting application: $JAR_PATH"
 echo ""
 java -javaagent:"${SCRIPT_DIR}/skywalking-agent/skywalking-agent.jar" \
      -Dskywalking.agent.service_name=train-ticket \

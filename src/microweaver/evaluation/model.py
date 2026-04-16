@@ -4,10 +4,10 @@ from pydantic import BaseModel, Field
 
 
 class CompareResult(BaseModel):
-    SC: List[int] = Field(description="语义内聚性评分，范围0-100分，分数越高表示内聚度越高")
-    SCP: List[int] = Field(description="语义耦合性评分，范围0-100分，分数越低表示耦合度越低")
-    SBC: List[int] = Field(description="服务边界清晰度评分，范围0-100分，分数越高表示服务边界越清晰")
-    judge_result: List[str] = Field(description="当前微服务划分的建议")
+    SC: List[int] = Field(description="Semantic cohesion score, range 0-100, higher score indicates higher cohesion")
+    SCP: List[int] = Field(description="Semantic coupling score, range 0-100, lower score indicates lower coupling")
+    SBC: List[int] = Field(description="Service boundary clarity score, range 0-100, higher score indicates clearer service boundaries")
+    judge_result: List[str] = Field(description="Suggestions for current microservice partitioning")
 
 
 class EvaluateResult:

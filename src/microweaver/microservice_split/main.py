@@ -1,5 +1,5 @@
 """
-主入口：使用 full encoder 产生结构 / 语义 / 融合三种 embedding，并用三种 embedding 共同进行微服务划分。
+Main entry: Use full encoder to produce structural / semantic / fused three embeddings, and perform microservice partitioning using all three embeddings.
 """
 
 import os
@@ -42,73 +42,73 @@ def load_data(data_path: str) -> List[CodeClass]:
 
 
 def print_debug_data(z_struct, edge_index):
-    print("\n[调试] 计算语义向量相似度（按连接关系分类）...")
+    print("\n[Debug] Computing semantic vector similarity (by connection relationship)...")
 
     num_nodes = z_struct.size(0)
 
-    # 1. 构建无向邻接矩阵
+    # 1. Build undirected adjacency matrix
     adj = torch.zeros(num_nodes, num_nodes, dtype=torch.float32, device=z_struct.device)
     if edge_index.numel() > 0:
         src, dst = edge_index[0], edge_index[1]
         adj[src, dst] = 1.0
-        adj[dst, src] = 1.0  # 无向图
-    adj.fill_diagonal_(0.0)  # 排除自环
+        adj[dst, src] = 1.0  # Undirected graph
+    adj.fill_diagonal_(0.0)  # Exclude self-loops
 
-    # 2. 计算结构相似度矩阵
+    # 2. Compute structural similarity matrix
     z_struct_norm = F.normalize(z_struct, p=2, dim=-1)  # [N, D]
     sim_matrix = torch.matmul(z_struct_norm, z_struct_norm.t())  # [N, N]
 
-    # 3. 分类节点对
-    # 直接相连的节点对（距离=1）
+    # 3. Categorize node pairs
+    # Directly connected node pairs (distance=1)
     direct_connected = (adj > 0).float()
     direct_mask = direct_connected.bool()
 
-    # 距离为2的节点对（通过一个中间节点连接）
-    # 计算 A^2，然后减去直接相连的和自环
+    # Node pairs at distance 2 (connected through one intermediate node)
+    # Compute A^2, then subtract direct connections and self-loops
     adj_squared = torch.matmul(adj, adj)
-    adj_squared.fill_diagonal_(0.0)  # 排除自环
-    distance_2 = (adj_squared > 0).float() * (1 - direct_connected)  # 距离为2且不是直接相连
+    adj_squared.fill_diagonal_(0.0)  # Exclude self-loops
+    distance_2 = (adj_squared > 0).float() * (1 - direct_connected)  # Distance 2 and not directly connected
     distance_2_mask = distance_2.bool()
 
-    # 不相连的节点对（距离>2或没有路径）
+    # Not connected node pairs (distance>2 or no path)
     not_connected = (1 - direct_connected - distance_2).float()
-    not_connected.fill_diagonal_(0.0)  # 排除自环
+    not_connected.fill_diagonal_(0.0)  # Exclude self-loops
     not_connected_mask = not_connected.bool()
 
-    # 4. 计算各组的平均相似度
-    # 直接相连的节点对
+    # 4. Compute average similarity for each group
+    # Directly connected node pairs
     direct_sims = sim_matrix[direct_mask]
     avg_direct = direct_sims.mean().item() if direct_sims.numel() > 0 else 0.0
     count_direct = direct_sims.numel()
 
-    # 距离为2的节点对
+    # Node pairs at distance 2
     distance_2_sims = sim_matrix[distance_2_mask]
     avg_distance_2 = distance_2_sims.mean().item() if distance_2_sims.numel() > 0 else 0.0
     count_distance_2 = distance_2_sims.numel()
 
-    # 不相连的节点对
+    # Not connected node pairs
     not_connected_sims = sim_matrix[not_connected_mask]
     avg_not_connected = not_connected_sims.mean().item() if not_connected_sims.numel() > 0 else 0.0
     count_not_connected = not_connected_sims.numel()
 
-    # 5. 输出结果
-    print(f"\n[调试] 语义相似度统计（按连接关系）：")
-    print(f"{'连接关系':<25} {'节点对数量':<15} {'平均相似度':<15} {'标准差':<15}")
+    # 5. Output results
+    print(f"\n[Debug] Semantic similarity statistics (by connection relationship):")
+    print(f"{'Connection Type':<25} {'Node Pairs':<15} {'Avg Similarity':<15} {'Std Dev':<15}")
     print("-" * 70)
     print(
-        f"{'直接相连（距离=1）':<25} {count_direct:<15} {avg_direct:<15.6f} {direct_sims.std().item():<15.6f}" if count_direct > 0 else f"{'直接相连（距离=1）':<25} {count_direct:<15} {'N/A':<15} {'N/A':<15}")
+        f"{'Directly Connected (dist=1)':<25} {count_direct:<15} {avg_direct:<15.6f} {direct_sims.std().item():<15.6f}" if count_direct > 0 else f"{'Directly Connected (dist=1)':<25} {count_direct:<15} {'N/A':<15} {'N/A':<15}")
     print(
-        f"{'中转1节点（距离=2）':<25} {count_distance_2:<15} {avg_distance_2:<15.6f} {distance_2_sims.std().item():<15.6f}" if count_distance_2 > 0 else f"{'中转1节点（距离=2）':<25} {count_distance_2:<15} {'N/A':<15} {'N/A':<15}")
+        f"{'1-hop Transit (dist=2)':<25} {count_distance_2:<15} {avg_distance_2:<15.6f} {distance_2_sims.std().item():<15.6f}" if count_distance_2 > 0 else f"{'1-hop Transit (dist=2)':<25} {count_distance_2:<15} {'N/A':<15} {'N/A':<15}")
     print(
-        f"{'不相连（距离>2）':<25} {count_not_connected:<15} {avg_not_connected:<15.6f} {not_connected_sims.std().item():<15.6f}" if count_not_connected > 0 else f"{'不相连（距离>2）':<25} {count_not_connected:<15} {'N/A':<15} {'N/A':<15}")
+        f"{'Not Connected (dist>2)':<25} {count_not_connected:<15} {avg_not_connected:<15.6f} {not_connected_sims.std().item():<15.6f}" if count_not_connected > 0 else f"{'Not Connected (dist>2)':<25} {count_not_connected:<15} {'N/A':<15} {'N/A':<15}")
 
-    # 计算总节点对数量（用于验证）
-    total_pairs = num_nodes * (num_nodes - 1) // 2  # 无向图，排除自环
-    print(f"\n[调试] 验证：")
-    print(f"  总节点数: {num_nodes}")
-    print(f"  理论节点对总数（无向图）: {total_pairs}")
-    print(f"  实际统计节点对总数: {count_direct + count_distance_2 + count_not_connected}")
-    print(f"  差异: {total_pairs - (count_direct + count_distance_2 + count_not_connected)}")
+    # Compute total node pairs (for verification)
+    total_pairs = num_nodes * (num_nodes - 1) // 2  # Undirected graph, exclude self-loops
+    print(f"\n[Debug] Verification:")
+    print(f"  Total nodes: {num_nodes}")
+    print(f"  Theoretical total pairs (undirected): {total_pairs}")
+    print(f"  Actual counted pairs: {count_direct + count_distance_2 + count_not_connected}")
+    print(f"  Difference: {total_pairs - (count_direct + count_distance_2 + count_not_connected)}")
 
     print("\n" + "=" * 70)
 
@@ -122,24 +122,24 @@ def main():
     classes = load_data(config.data_path)
     class_names = [cls.name for cls in classes]
 
-    # 构建图数据（使用边类型权重）
+    # Build graph data (using edge type weights)
     builder = CodeGraphDataBuilder(classes)
     x, edge_index, edge_types, pos_encoding, texts, edge_weights = builder.build_graph_data(
         edge_type_weights=config.partition_config.edge_type_weights
     )
 
-    print(f"\n[FullEncoder] 项目信息:")
-    print(f"  类数: {len(classes)}")
-    print(f"  边数: {edge_index.size(1)}")
-    print(f"  边类型: {list(builder.edge_type_to_idx.keys())}")
+    print(f"\n[FullEncoder] Project Info:")
+    print(f"  Classes: {len(classes)}")
+    print(f"  Edges: {edge_index.size(1)}")
+    print(f"  Edge types: {list(builder.edge_type_to_idx.keys())}")
 
-    # 根据数据规模自动选择配置
+    # Auto-select config based on data scale
     encoder_config = get_config_by_graph_size(len(classes))
-    print(f"  自动选择的配置: {encoder_config.__class__.__name__}")
+    print(f"  Auto-selected config: {encoder_config.__class__.__name__}")
 
-    # 初始化 full encoder（结构 + 语义 + 融合）
+    # Initialize full encoder (structural + semantic + fusion)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"  设备: {device}")
+    print(f"  Device: {device}")
 
     model = CodeGraphEncoder(
         structural_hidden_dim=encoder_config.structural.hidden_dim,
@@ -155,29 +155,29 @@ def main():
         structural_only=False,
     ).to(device)
 
-    # 加载 full encoder 预训练权重
+    # Load full encoder pretrained weights
     pretrained_path = config.full_model_path
     if os.path.exists(pretrained_path):
-        print(f"\n[FullEncoder] 检测到预训练模型: {pretrained_path}")
+        print(f"\n[FullEncoder] Detected pretrained model: {pretrained_path}")
         try:
             state_dict = torch.load(pretrained_path, map_location=device)
             model.load_state_dict(state_dict, strict=True)
-            print("✓ full encoder 权重加载成功")
+            print("✓ full encoder weights loaded successfully")
         except Exception as e:
-            print(f"! 加载 full encoder 预训练权重失败: {e}，将使用随机初始化")
+            print(f"! Failed to load full encoder pretrained weights: {e}, will use random initialization")
     else:
-        print(f"\n[FullEncoder] 未找到预训练模型 ({pretrained_path})，使用随机初始化")
-        print("  提示：先运行 'python -m split.train_full_encoder' 来训练 full encoder")
+        print(f"\n[FullEncoder] Pretrained model not found ({pretrained_path}), using random initialization")
+        print("  Tip: Run 'python -m split.train_full_encoder' to train full encoder")
 
-    # 移动数据到设备
+    # Move data to device
     x = x.to(device)
     edge_index = edge_index.to(device)
     edge_types = edge_types.to(device)
     pos_encoding = pos_encoding.to(device)
     edge_weights = edge_weights.to(device) if edge_weights is not None and edge_weights.numel() > 0 else None
 
-    # 前向传播，获得三种 embedding
-    print("\n[FullEncoder] 执行编码（结构 + 语义 + 融合）...")
+    # Forward pass, get three embeddings
+    print("\n[FullEncoder] Executing encoding (structural + semantic + fusion)...")
     model.eval()
     with torch.no_grad():
         z_struct, z_text, z_fused = model(
@@ -189,33 +189,33 @@ def main():
             edge_weights=edge_weights,
         )
 
-    print("✓ 编码完成！")
-    print(f"  结构 embedding 形状: {z_struct.shape}")
-    print(f"  语义 embedding 形状: {z_text.shape}")
-    print(f"  融合 embedding 形状: {z_fused.shape}")
+    print("✓ Encoding completed!")
+    print(f"  Structural embedding shape: {z_struct.shape}")
+    print(f"  Semantic embedding shape: {z_text.shape}")
+    print(f"  Fused embedding shape: {z_fused.shape}")
 
     print_debug_data(z_struct, edge_index)
 
-    # ========== 使用三种 embedding 进行微服务划分（迭代版） ==========
-    print("\n[FullEncoder] 开始微服务划分...")
+    # ========== Microservice partitioning using three embeddings (iterative version) ==========
+    print("\n[FullEncoder] Starting microservice partitioning...")
 
-    # 从配置读取迭代与 Agent 开关
+    # Read iteration and Agent switches from config
     max_iterations = config.partition_config.max_iterations
     enable_agent_cfg = config.partition_config.enable_agent_optimization
 
-    # 尝试加载 Agent 优化函数；若环境未配置（如缺少 DASHSCOPE_API_KEY），则回退为禁用 Agent
+    # Try to load Agent optimization functions; if environment not configured (e.g., missing DASHSCOPE_API_KEY), fall back to disabling Agent
     agent_optimize_fn = None
     agent_analyze_fn = None
     try:
         agent_optimize_fn = _agent_optimize
         agent_analyze_fn = _agent_analyze
     except Exception as e:
-        print(f"[FullEncoder] 未启用 Agent 优化（原因：{e}），将仅执行迭代求解而不调用 Agent")
+        print(f"[FullEncoder] Agent optimization not enabled (reason: {e}), will only perform iterative solving without calling Agent")
 
     enable_agent = enable_agent_cfg and (agent_optimize_fn is not None)
     print(
-        f"[FullEncoder] 配置：max_iterations={max_iterations}, "
-        f"enable_agent_optimization={enable_agent_cfg}, 启用Agent={enable_agent}"
+        f"[FullEncoder] Config: max_iterations={max_iterations}, "
+        f"enable_agent_optimization={enable_agent_cfg}, AgentEnabled={enable_agent}"
     )
 
     part_res = asyncio.run(
@@ -232,10 +232,10 @@ def main():
         )
     )
 
-    print(f"[FullEncoder] 划分求解状态: {part_res.solver_status}")
-    print(f"[FullEncoder] 目标值: {part_res.objective_value:.4f}")
+    print(f"[FullEncoder] Partition solver status: {part_res.solver_status}")
+    print(f"[FullEncoder] Objective value: {part_res.objective_value:.4f}")
 
-    # 打印服务分组并保存
+    # Print service groups and save
     groups = {k: [] for k in range(config.num_clusters)}
     for i, k in enumerate(part_res.assignments):
         if k >= 0:
@@ -246,8 +246,8 @@ def main():
 
     os.makedirs(os.path.dirname(config.result_path), exist_ok=True)
     save_json(groups, config.result_path)
-    print(f"[FullEncoder] ✓ 微服务划分结果已保存到 {config.result_path}")
-    print("[FullEncoder] 服务分组结果：")
+    print(f"[FullEncoder] ✓ Microservice partition result saved to {config.result_path}")
+    print("[FullEncoder] Service group results:")
     for k in range(config.num_clusters):
         print(f"  Service-{k}: {groups[k]}")
 

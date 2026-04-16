@@ -1,23 +1,23 @@
 """
-配置文件：定义系统的各种参数
+Configuration file: defines various parameters of the system
 
-该模块包含以下配置类：
-1. DataConfig: 数据路径配置
-2. PartitionConfig: 微服务划分配置
-3. StructuralEncoderConfig: 结构编码器配置
-4. SemanticEncoderConfig: 语义编码器配置
-5. FusionConfig: 融合模块配置
-6. HierarchicalEncoderConfig: 分层编码器配置
-7. CodeGraphEncoderConfig: 完整编码器配置（包含上述三个编码器）
+This module contains the following configuration classes:
+1. DataConfig: Data path configuration
+2. PartitionConfig: Microservice partitioning configuration
+3. StructuralEncoderConfig: Structural encoder configuration
+4. SemanticEncoderConfig: Semantic encoder configuration
+5. FusionConfig: Fusion module configuration
+6. HierarchicalEncoderConfig: Hierarchical encoder configuration
+7. CodeGraphEncoderConfig: Complete encoder configuration (contains the above three encoders)
 
-预定义配置模板：
-- SMALL_GRAPH_CONFIG: 小规模图 (< 100 节点)
-- MEDIUM_GRAPH_CONFIG: 中规模图 (100-1000 节点)
+Predefined configuration templates:
+- SMALL_GRAPH_CONFIG: Small-scale graph (< 100 nodes)
+- MEDIUM_GRAPH_CONFIG: Medium-scale graph (100-1000 nodes)
 
-使用方式：
-1. 自动选择: config = get_config_by_graph_size(num_nodes)
-2. 手动选择: config = MEDIUM_GRAPH_CONFIG
-3. 自定义: config = CodeGraphEncoderConfig(...)
+Usage:
+1. Auto-select: config = get_config_by_graph_size(num_nodes)
+2. Manual select: config = MEDIUM_GRAPH_CONFIG
+3. Custom: config = CodeGraphEncoderConfig(...)
 """
 import os
 from dataclasses import dataclass
@@ -28,25 +28,25 @@ from microweaver.util.env import get_env_numeric, get_env_boolean
 
 @dataclass
 class EdgeTypeWeightConfig:
-    """边类型权重配置"""
-    type_weights: dict = None  # 边类型到权重的映射，如 {"call": 1.0, "import": 0.8}
+    """Edge type weight configuration"""
+    type_weights: dict = None  # Mapping from edge type to weight, e.g., {"call": 1.0, "import": 0.8}
 
     def __post_init__(self):
         if self.type_weights is None:
-            # 默认权重配置
+            # Default weight configuration
             self.type_weights = {
-                "call": 0.8,  # 方法调用：中等权重
-                "extends": 1.0,  # 继承关系：最高权重
+                "call": 0.8,  # Method call: medium weight
+                "extends": 1.0,  # Inheritance: highest weight
             }
 
     def get_weight(self, edge_type: str) -> float:
-        """获取指定边类型的权重，默认为1.0"""
+        """Get weight for specified edge type, default is 1.0"""
         return self.type_weights.get(edge_type, 1.0)
 
 
 @dataclass
 class StructuralEncoderConfig:
-    """结构编码器配置"""
+    """Structural encoder configuration"""
     node_feature_dim: int = 1
     hidden_dim: int = 256
     output_dim: int = 256
@@ -58,7 +58,7 @@ class StructuralEncoderConfig:
 
 @dataclass
 class SemanticEncoderConfig:
-    """语义编码器配置"""
+    """Semantic encoder configuration"""
     model_name: str = "BAAI/bge-m3"
     output_dim: int = 256
     freeze_encoder: bool = False
@@ -67,7 +67,7 @@ class SemanticEncoderConfig:
 
 @dataclass
 class FusionConfig:
-    """融合模块配置"""
+    """Fusion module configuration"""
     structural_dim: int = 256
     semantic_dim: int = 256
     output_dim: int = 512
@@ -77,7 +77,7 @@ class FusionConfig:
 
 @dataclass
 class CodeGraphEncoderConfig:
-    """完整编码器配置"""
+    """Complete encoder configuration"""
     structural: StructuralEncoderConfig = None
     semantic: SemanticEncoderConfig = None
     fusion: FusionConfig = None
@@ -90,7 +90,7 @@ class CodeGraphEncoderConfig:
         if self.fusion is None:
             self.fusion = FusionConfig()
 
-# 小规模图配置（< 100 节点）
+# Small-scale graph configuration (< 100 nodes)
 SMALL_GRAPH_CONFIG = CodeGraphEncoderConfig(
     structural=StructuralEncoderConfig(
         hidden_dim=256,
@@ -113,7 +113,7 @@ SMALL_GRAPH_CONFIG = CodeGraphEncoderConfig(
     )
 )
 
-# 中规模图配置（100-1000 节点）
+# Medium-scale graph configuration (100-1000 nodes)
 MEDIUM_GRAPH_CONFIG = CodeGraphEncoderConfig(
     structural=StructuralEncoderConfig(
         hidden_dim=256,
@@ -139,11 +139,11 @@ MEDIUM_GRAPH_CONFIG = CodeGraphEncoderConfig(
 
 def get_config_by_graph_size(num_nodes: int) -> CodeGraphEncoderConfig:
     """
-    根据图的大小自动选择配置
+    Automatically select configuration based on graph size
     Args:
-        num_nodes: 图中的节点数
+        num_nodes: Number of nodes in graph
     Returns:
-        推荐的配置对象
+        Recommended configuration object
     """
     if num_nodes < 100:
         return SMALL_GRAPH_CONFIG
@@ -153,12 +153,12 @@ def get_config_by_graph_size(num_nodes: int) -> CodeGraphEncoderConfig:
 
 @dataclass
 class PartitionConfig:
-    """划分配置"""
+    """Partition configuration"""
     num_communities: int = BaseConfig.num_clusters
     random_seed: int = 42
-    alpha = get_env_numeric("alpha", 5.0)  # 结构内聚权重（默认5.0）
-    beta = get_env_numeric("beta", 1.0)  # 语义内聚权重（默认1.0）
-    gamma = get_env_numeric("gamma", 3.0)  # 跨服务耦合惩罚（默认3.0）
+    alpha = get_env_numeric("alpha", 5.0)  # Structural cohesion weight (default 5.0)
+    beta = get_env_numeric("beta", 1.0)  # Semantic cohesion weight (default 1.0)
+    gamma = get_env_numeric("gamma", 3.0)  # Cross-service coupling penalty (default 3.0)
     beta_struct = get_env_numeric("beta_struct", 1.0)
     beta_sem = get_env_numeric("beta_sem", 2.0)
     beta_fused = get_env_numeric("beta_fused", 1.0)
@@ -174,7 +174,7 @@ class PartitionConfig:
     num_cpu = get_env_numeric("num_cpu", 8)
 
     enable_agent_optimization = get_env_boolean("ENABLE_AGENT_OPTIMIZATION", True)
-    edge_type_weights: EdgeTypeWeightConfig = None  # 边类型权重配置
+    edge_type_weights: EdgeTypeWeightConfig = None  # Edge type weight configuration
 
     print(f"PartitionConfig initialized with alpha={alpha}, beta={beta}, gamma={gamma}, "
           f"beta_struct={beta_struct}, beta_sem={beta_sem}, beta_fused={beta_fused}, "
